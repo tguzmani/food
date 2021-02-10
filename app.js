@@ -1,5 +1,5 @@
 const express = require('express')
-const connectDB = require('./db')
+const connectDB = require('./database')
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
 const path = require('path')
