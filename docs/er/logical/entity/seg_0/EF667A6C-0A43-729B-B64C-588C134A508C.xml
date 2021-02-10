@@ -1,0 +1,205 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EF667A6C-0A43-729B-B64C-588C134A508C" name="USER">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:58:18 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="_id" id="669E5715-03BD-A7FC-2AF3-1A760C2516CE">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:58:18 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="89DFE13E-D015-47C0-72F3-13180BF4665D">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:58:18 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="email" id="CE5F86A6-0768-6B28-36DC-4E84733171F6">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:58:18 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="password" id="CC666CD8-D705-970A-DBD1-BC44A0C1A062">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:58:18 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="sex" id="1036BA12-E51C-9353-ECFA-855782C1988B">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:00:57 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="units" id="622340BC-A882-1062-B3C1-2E221878721E">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:58:18 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="role" id="BCA15687-EA99-84DF-9F2C-2D86845C5352">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:58:18 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="goals" id="39D7B1D8-DFF1-1BCC-E64C-754F43C62626">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:58:18 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="baseWeight" id="EDD7A593-6648-0669-A58E-555B8E0A840D">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:58:18 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="activity" id="86254EE8-2AE1-B4C9-ABE1-903CF1EBF933">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:58:18 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="age" id="B6EE5B5E-D515-5A69-1652-AE1E8F9F470D">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:00:47 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="height" id="34498FF5-873D-3DFF-503A-37FC09A39FBE">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:00:50 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="offset" id="3F4C8178-783B-C67E-EBDD-2BA678FFBE48">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:00:53 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="isSetupComplete" id="21D9DBAF-4346-7BDA-B6C3-F3BAC8D2D669">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:01:09 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="proteinPref" id="FF9BA5B1-DBD0-94C2-C047-7EC8CB3A6F9D">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:01:15 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fatPref" id="35E61702-CB7F-B875-4BA7-40A14BAF14D9">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:01:20 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="_id1" id="51B56BC3-0F9A-BFCB-BEDD-54FF7AB0D6A7">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:05:13 UTC</createdTime>
+<generatorID>E3F2EBFA-1D63-1DB4-8899-F6069BC1AD83</generatorID>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<referedAttribute>0943E695-9052-AE61-5503-DD37F556A0E6</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D92AA88C-FFBB-2C1C-0648-D032B0129B24" name="FOOD PK">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:58:18 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>669E5715-03BD-A7FC-2AF3-1A760C2516CE</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

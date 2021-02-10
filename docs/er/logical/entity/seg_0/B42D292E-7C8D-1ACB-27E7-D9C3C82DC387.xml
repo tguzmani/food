@@ -1,0 +1,65 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B42D292E-7C8D-1ACB-27E7-D9C3C82DC387" name="RECIPE">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:02:39 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="_id" id="9E1E1499-7269-17CE-9689-D57E10F3120E">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:02:39 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="8DAC97C1-3ACD-8E9A-019A-92EA1DA27B1E">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:02:39 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="_id1" id="B3A6F889-2BD8-B294-6EC2-AE5C86E6379F">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:05:44 UTC</createdTime>
+<generatorID>A954DD23-A1CF-59E5-C348-39756E3C4B5A</generatorID>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<referedAttribute>669E5715-03BD-A7FC-2AF3-1A760C2516CE</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D639C6F7-80A3-6F72-0C0B-FD0371FDCD5A" name="FOOD PK">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:02:39 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9E1E1499-7269-17CE-9689-D57E10F3120E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

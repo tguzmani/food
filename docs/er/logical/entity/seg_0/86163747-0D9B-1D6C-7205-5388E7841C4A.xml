@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="86163747-0D9B-1D6C-7205-5388E7841C4A" name="MEASURE">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:03:20 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="_id" id="45FB1EBB-EF26-A363-4F5E-60D4470A9D0B">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:03:20 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="weight" id="061C7D2A-2385-C4DE-1C0D-FA2537BF444E">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:03:20 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fat" id="1B51F84A-8D21-7F0F-74BB-8FA85DF46492">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:03:20 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="sleep" id="70ED2CEF-0901-DD1B-A45E-DDDC1451C8A9">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:03:20 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="calories" id="9C64218A-2047-3F01-4DD7-4C5218EA9F92">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:03:20 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="alcohol" id="F0B12446-65B6-3CB7-9E8D-1992F2D1FA15">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:03:20 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="_id1" id="25DFA4D5-4530-00B9-F7F1-02315B8ADC85">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:05:04 UTC</createdTime>
+<generatorID>D5DE594C-6D57-355E-29C2-E863482B1AE6</generatorID>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<referedAttribute>669E5715-03BD-A7FC-2AF3-1A760C2516CE</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="0482FE8B-8575-4968-219B-4D2EC876F9A4" name="FOOD PK">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:03:20 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>45FB1EBB-EF26-A363-4F5E-60D4470A9D0B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

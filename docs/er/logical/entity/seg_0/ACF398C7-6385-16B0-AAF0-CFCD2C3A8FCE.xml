@@ -1,0 +1,162 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="ACF398C7-6385-16B0-AAF0-CFCD2C3A8FCE" name="FOOD">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:55:38 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="_id" id="E3D9E3E0-6A1B-7FE5-81A8-CD5A4CE689C6">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:56:06 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="E19B2807-5C9C-58DE-6327-CC9FFAF927BB">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:56:10 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="quantity" id="470B092C-CF29-D76A-C168-D5ECCBF9988E">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:56:20 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="protein" id="BFE3C722-38A0-5C45-6F4D-83EE09394EF3">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:56:34 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="carbs" id="7A9565C8-742C-2C7C-B38D-7112C2E0653C">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:56:50 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fat" id="36CA53B2-C5F8-B3EF-B0B1-41FA5C9C323F">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:56:54 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="meal" id="2E99AD24-E58D-3982-6351-490BA198152D">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:57:13 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="isDirty" id="BA9F0E55-E053-6862-6AD2-55040CB0E024">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:56:57 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="isAlcohol" id="8BB78172-CA71-1FA5-8843-D3BD176545DC">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:57:02 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="_id1" id="33BE66FA-CE8B-D574-6B25-785B45EF56A2">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:04:47 UTC</createdTime>
+<generatorID>3FC53866-D309-08F0-EBDB-6DDE39F875B3</generatorID>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<referedAttribute>669E5715-03BD-A7FC-2AF3-1A760C2516CE</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="_id2" id="AD5E30E1-6F27-43B8-96A9-F1AFDD57DC86">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:04:51 UTC</createdTime>
+<generatorID>A79549B3-AF77-92BD-1E3B-9DDA98EBE8C5</generatorID>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<referedAttribute>0943E695-9052-AE61-5503-DD37F556A0E6</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="_id3" id="BD6E6A6B-A40F-D7CD-1370-FC168988A64C">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 17:04:55 UTC</createdTime>
+<generatorID>81504037-6EAA-5635-FC53-8C12A2936600</generatorID>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<referedAttribute>9E1E1499-7269-17CE-9689-D57E10F3120E</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="6EECFD96-3649-BD2D-CFF4-14A58B1A8367" name="FOOD PK">
+<createdBy>Tomas</createdBy>
+<createdTime>2021-02-04 16:56:13 UTC</createdTime>
+<ownerDesignName>er</ownerDesignName>
+<engineerTo>
+<item key="FCB6DD15-75F9-ADFF-75F4-6E55F65CCD65" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>E3D9E3E0-6A1B-7FE5-81A8-CD5A4CE689C6</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

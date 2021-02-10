@@ -1,0 +1,11 @@
+/* CSV */
+ffffff,00a7e1,00171f,003459,007ea7
+
+/* Array */
+["ffffff","00a7e1","00171f","003459","007ea7"]
+
+/* Object */
+{"White":"ffffff","Cerulean Crayola":"00a7e1","Rich Black FOGRA 29":"00171f","Prussian Blue":"003459","CG Blue":"007ea7"}
+
+/* Extended Array */
+[{"name":"White","hex":"ffffff","rgb":[255,255,255],"cmyk":[0,0,0,0],"hsb":[0,0,100],"hsl":[0,0,100],"lab":[100,0,0]},{"name":"Cerulean Crayola","hex":"00a7e1","rgb":[0,167,225],"cmyk":[100,26,0,12],"hsb":[195,100,88],"hsl":[195,100,44],"lab":[64,-15,-39]},{"name":"Rich Black FOGRA 29","hex":"00171f","rgb":[0,23,31],"cmyk":[100,26,0,88],"hsb":[195,100,12],"hsl":[195,100,6],"lab":[6,-5,-8]},{"name":"Prussian Blue","hex":"003459","rgb":[0,52,89],"cmyk":[100,42,0,65],"hsb":[205,100,35],"hsl":[205,100,17],"lab":[21,0,-27]},{"name":"CG Blue","hex":"007ea7","rgb":[0,126,167],"cmyk":[100,25,0,35],"hsb":[195,100,65],"hsl":[195,100,33],"lab":[49,-14,-30]}]
