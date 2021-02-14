@@ -24,7 +24,7 @@ exports.updateUser = async (req, res) => {
     .catch(error => res.status(500).json({ error: error.message }))
 }
 
-exports.test = async (req, res) => {
+exports.readGoals = async (req, res) => {
   try {
     const user = await User.findById(req.userId)
 

@@ -41,7 +41,7 @@ exports.signin = async (req, res) => {
   const errors = validationResult(req)
 
   if (!errors.isEmpty()) {
-    res.status(400).json({ error: errors.array() })
+    res.status(400).json({ message: errors.array()[0].msg, severity: 'error' })
   }
 
   try {
@@ -50,15 +50,18 @@ exports.signin = async (req, res) => {
 
     let user = await User.findOne({ email: req.body.email })
     if (!user) {
-      return res
-        .status(400)
-        .json({ message: 'There is no user with that email. Please sign up' })
+      return res.status(400).json({
+        message: 'There is no user with that email. Please sign up',
+        severity: 'info',
+      })
     }
 
     // Check password
     const isMatch = await compare(password, user.password)
     if (!isMatch) {
-      return res.status(400).json({ msg: "Email and password don't match" })
+      return res
+        .status(400)
+        .json({ message: "Email and password don't match", severity: 'error' })
     }
 
     user.password = undefined
