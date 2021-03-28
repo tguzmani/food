@@ -3,3 +3,4 @@ misc
 testing.js
 .env
 framework
+dev.*

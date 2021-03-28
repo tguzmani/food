@@ -1,9 +1,7 @@
 import React from 'react'
 
-import Button from '@material-ui/core/Button'
-
 const Dashboard = () => {
-  return <div>Hola</div>
+  return <div>Dashboard</div>
 }
 
 export default Dashboard

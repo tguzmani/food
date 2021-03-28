@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { readUser } from '../../state/auth/authActions'
+import Navigation from '../layout/Navigation'
 
 const PrivateRoute = ({
   readUser,
@@ -12,17 +13,19 @@ const PrivateRoute = ({
 }) => {
   useEffect(() => {
     readUser()
-  }, [])
+  }, [readUser])
 
   const condition = !isAuthenticated && !loading
 
   return (
-    <Route
-      {...rest}
-      render={props =>
-        condition ? <Redirect to='/login' /> : <Component {...props} />
-      }
-    />
+    <Navigation>
+      <Route
+        {...rest}
+        render={props =>
+          condition ? <Redirect to='/login' /> : <Component {...props} />
+        }
+      />
+    </Navigation>
   )
 }
 

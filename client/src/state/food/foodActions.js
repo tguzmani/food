@@ -1,0 +1,69 @@
+import {
+  ERROR,
+  LOADING,
+  CLEAR_MESSAGE,
+  CREATE,
+  READ_ALL,
+  UPDATE,
+  SOFT_UPDATE,
+  DELETE,
+} from './foodTypes'
+
+import axios from 'axios'
+
+import { config } from '../../util/state'
+
+export const handleError = (dispatch, error) => {
+  dispatch({ type: ERROR, payload: error.response.data })
+  setTimeout(() => {
+    dispatch({ type: CLEAR_MESSAGE, payload: error.response.data.message })
+  }, 3000)
+}
+
+export const setLoading = () => dispatch => {
+  return dispatch({ type: LOADING })
+}
+
+export const createFood = food => async dispatch => {
+  setLoading()(dispatch)
+  try {
+    const res = await axios.post(`/api/food/${food.name}`, food, config)
+    dispatch({ type: CREATE, payload: res.data })
+  } catch (error) {
+    handleError(dispatch, error)
+  }
+}
+
+export const readFoods = () => async dispatch => {
+  setLoading()(dispatch)
+  try {
+    const res = await axios.get('/api/food/all')
+    dispatch({ type: READ_ALL, payload: res.data })
+  } catch (error) {
+    handleError(dispatch, error)
+  }
+}
+
+export const updateFood = (food, loading = true) => async dispatch => {
+  if (loading) setLoading()(dispatch)
+  try {
+    const res = await axios.put(`/api/food/${food._id}`, food, config)
+    dispatch({ type: UPDATE, payload: res.data })
+  } catch (error) {
+    handleError(dispatch, error)
+  }
+}
+
+export const softUpdate = food => dispatch => {
+  dispatch({ type: SOFT_UPDATE, payload: food })
+}
+
+export const deleteFood = food => async dispatch => {
+  setLoading()(dispatch)
+  try {
+    const res = await axios.delete(`/api/food/${food._id}`)
+    dispatch({ type: DELETE, payload: res.data })
+  } catch (error) {
+    handleError(dispatch, error)
+  }
+}

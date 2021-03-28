@@ -16,22 +16,40 @@ exports.foodById = async (req, res, next) => {
 // CRUD
 exports.createFood = async (req, res) => {
   const { quantity, recipe, meal } = req.body
-  const { reference } = req
 
-  Food.create({
-    user: req.userId,
-    reference: reference._id,
-    name: reference.name,
-    protein: quantity * reference.protein,
-    carbs: quantity * reference.carbs,
-    fat: quantity * reference.fat,
-    isDirty: reference.isDirty,
-    meal,
-    recipe,
-    quantity,
-  })
-    .then(food => res.send(food))
-    .catch(error => res.status(400).json({ error: error.message }))
+  try {
+    const reference = await Reference.findOne({
+      name: req.params.referenceName,
+      user: req.userId,
+    })
+
+    if (!reference)
+      return res.status(400).json({ message: 'Reference does not exist' })
+
+    const food = await Food({
+      user: req.userId,
+      reference: reference._id,
+      name: reference.name,
+      protein: quantity * reference.protein,
+      carbs: quantity * reference.carbs,
+      fat: quantity * reference.fat,
+      isDirty: reference.isDirty,
+      meal,
+      recipe,
+      quantity,
+    })
+
+    food.save()
+
+    food
+      .populate({ path: 'reference', select: 'protein carbs fat -_id' })
+      .execPopulate()
+      .then(food => res.send(food))
+
+    // return res.send(food)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
 }
 
 exports.createFoodsByRecipe = async (req, res) => {
@@ -51,7 +69,11 @@ exports.createFoodsByRecipe = async (req, res) => {
 
 exports.readFoods = async (req, res) => {
   try {
-    const foods = await Food.find({ user: req.userId })
+    const foods = await Food.find({ user: req.userId }).populate({
+      path: 'reference',
+      select: 'protein carbs fat -_id',
+    })
+
     if (!foods) throw 'Foods not found'
     return res.json(foods)
   } catch (error) {
@@ -60,21 +82,22 @@ exports.readFoods = async (req, res) => {
 }
 
 exports.updateFood = async (req, res) => {
-  const { quantity } = req.body
-  const { reference } = req.food
+  const { quantity, meal, reference, name } = req.body
 
   const food = {
     user: req.userId,
-    name: reference.name,
     protein: quantity * reference.protein,
     carbs: quantity * reference.carbs,
     fat: quantity * reference.fat,
+    name,
     quantity,
+    meal,
   }
 
   Food.findByIdAndUpdate(req.params.foodId, food, {
     new: true,
   })
+    .populate({ path: 'reference', select: 'protein carbs fat -_id' })
     .then(food => {
       if (!food) return res.status(400).json({ message: 'Food not found' })
       else res.send(food)

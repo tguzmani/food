@@ -16,7 +16,7 @@ const {
 
 const { referenceById } = require('../controllers/referenceController')
 
-router.post('/:referenceId', auth, createFood)
+router.post('/:referenceName', auth, createFood)
 router.get('/all', auth, readFoods)
 router.put('/:foodId', auth, updateFood)
 router.delete('/', auth, deleteAllFood)
@@ -26,6 +26,6 @@ router.delete('/:foodId', deleteFood)
 router.post('/createMany/', auth, createManyFoods)
 
 router.param('foodId', foodById)
-router.param('referenceId', referenceById)
+// router.param('referenceId', referenceById)
 
 module.exports = router

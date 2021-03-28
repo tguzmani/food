@@ -46,7 +46,7 @@ exports.deleteReference = async (req, res) => {
       if (foods.length > 0)
         return res.status(400).json({
           message:
-            'There are foods using this reference. Remove then first and then try again',
+            'There are foods using this reference. Remove them first and then try again',
         })
 
       Reference.findByIdAndDelete(req.params.referenceId)
