@@ -14,9 +14,9 @@ import Dashboard from './components/pages/Dashboard'
 import NotFound from './components/pages/NotFound'
 import Login from './components/pages/Login'
 import Day from './components/pages/Day'
-import Measures from './components/pages/Measures'
+import MeasuresPage from './components/pages/MeasuresPage'
 import Recipes from './components/pages/Recipes'
-import References from './components/pages/References'
+import ReferencesPage from './components/pages/ReferencesPage'
 
 const App = () => {
   return (
@@ -28,8 +28,12 @@ const App = () => {
               <Route exact path='/login' component={Login} />
               <PrivateRoute exact path='/' component={Dashboard} />
               <PrivateRoute exact path='/day' component={Day} />
-              <PrivateRoute exact path='/measures' component={Measures} />
-              <PrivateRoute exact path='/references' component={References} />
+              <PrivateRoute exact path='/measures' component={MeasuresPage} />
+              <PrivateRoute
+                exact
+                path='/references'
+                component={ReferencesPage}
+              />
               <PrivateRoute exact path='/recipes' component={Recipes} />
               <Route path='*' component={NotFound} />
             </Switch>

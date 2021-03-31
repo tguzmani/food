@@ -42,7 +42,9 @@ const PreviewMeal = ({ foods, mealNumbers, updateFood, deleteFood }) => {
 
   // updates food new meal
   const handleCreate = () => {
-    const maxMealNumber = Math.max(...mealNumbers)
+    const maxMealNumber =
+      mealNumbers.length === 0 ? 0 : Math.max(...mealNumbers)
+
     previewMealFoods.forEach(food => {
       updateFood({ ...food, meal: maxMealNumber + 1 })
     })

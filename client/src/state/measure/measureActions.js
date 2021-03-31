@@ -3,11 +3,11 @@ import {
   LOADING,
   CLEAR_MESSAGE,
   CREATE,
+  READ,
   READ_ALL,
   UPDATE,
-  SOFT_UPDATE,
   DELETE,
-} from './foodTypes'
+} from './measureTypes'
 
 import axios from 'axios'
 
@@ -24,44 +24,40 @@ export const setLoading = () => dispatch => {
   return dispatch({ type: LOADING })
 }
 
-export const createFood = food => async dispatch => {
+export const createMeasure = measure => async dispatch => {
   setLoading()(dispatch)
   try {
-    const res = await axios.post(`/api/food/${food.name}`, food, config)
+    const res = await axios.post(`/api/measure`, measure, config)
     dispatch({ type: CREATE, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)
   }
 }
 
-export const readFoods = () => async dispatch => {
+export const readMeasures = () => async dispatch => {
   setLoading()(dispatch)
   try {
-    const res = await axios.get('/api/food/all')
+    const res = await axios.get('/api/measure/all')
     dispatch({ type: READ_ALL, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)
   }
 }
 
-export const updateFood = (food, loading = true) => async dispatch => {
-  if (loading) setLoading()(dispatch)
+export const updateMeasure = measure => async dispatch => {
+  setLoading()(dispatch)
   try {
-    const res = await axios.put(`/api/food/${food._id}`, food, config)
+    const res = await axios.put(`/api/measure/${measure._id}`, measure, config)
     dispatch({ type: UPDATE, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)
   }
 }
 
-export const softUpdateFood = food => dispatch => {
-  dispatch({ type: SOFT_UPDATE, payload: food })
-}
-
-export const deleteFood = food => async dispatch => {
+export const deleteMeasure = measure => async dispatch => {
   setLoading()(dispatch)
   try {
-    const res = await axios.delete(`/api/food/${food._id}`)
+    const res = await axios.delete(`/api/measure/${measure._id}`)
     dispatch({ type: DELETE, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)

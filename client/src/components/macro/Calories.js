@@ -23,7 +23,7 @@ const Calories = ({ foods, user }) => {
         <Typography variant='h5'>/ {Math.round(caloricGoal)} cal</Typography>
       </Box>
 
-      <Box display='flex' justifyContent='center'>
+      <Box display='flex' justifyContent='center' mb={2}>
         <Typography variant='caption' align='center'>
           {Math.abs(difference)} cal {verb}
         </Typography>

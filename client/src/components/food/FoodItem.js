@@ -9,8 +9,11 @@ import {
   Box,
 } from '@material-ui/core'
 import { capitalize } from './../../util/index'
-import { softUpdate } from '../../state/food/foodActions'
-import { updateFood, deleteFood } from './../../state/food/foodActions'
+import {
+  updateFood,
+  deleteFood,
+  softUpdateFood,
+} from './../../state/food/foodActions'
 import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
 import '@sandstreamdev/react-swipeable-list/dist/styles.css'
 import DeleteIcon from '@material-ui/icons/Delete'
@@ -43,7 +46,7 @@ const Delete = () => (
   </Box>
 )
 
-const FoodItem = ({ food, softUpdate, updateFood, deleteFood }) => {
+const FoodItem = ({ food, softUpdateFood, updateFood, deleteFood }) => {
   const [quantity, setQuantity] = React.useState(food.quantity)
   const classes = useStyles()
   const { protein, carbs, fat } = food.reference ? food.reference : food.ref
@@ -69,7 +72,7 @@ const FoodItem = ({ food, softUpdate, updateFood, deleteFood }) => {
 
   React.useEffect(() => {
     if (quantity !== food.quantity)
-      softUpdate({
+      softUpdateFood({
         ...food,
         quantity: isNaN(quantity) ? 0 : quantity,
         protein: isNaN(protein * quantity) ? 0 : protein * quantity,
@@ -89,7 +92,7 @@ const FoodItem = ({ food, softUpdate, updateFood, deleteFood }) => {
       <ListItem className={classes.root} divider>
         <Grid container spacing={2} alignItems='center'>
           <Grid item xs={5}>
-            {capitalize(food.name)}
+            {capitalize(food.name)} {food.isDirty && '*'}
           </Grid>
           <Grid item xs={7}>
             <Grid
@@ -119,7 +122,7 @@ const FoodItem = ({ food, softUpdate, updateFood, deleteFood }) => {
   )
 }
 
-const mapActionsToProps = { softUpdate, updateFood, deleteFood }
+const mapActionsToProps = { softUpdateFood, updateFood, deleteFood }
 
 const mapStateToProps = state => ({})
 
