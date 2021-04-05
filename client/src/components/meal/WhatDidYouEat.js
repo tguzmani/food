@@ -13,13 +13,13 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
   const queryMatcher = query => {
     const queryArray = query.split(' ')
 
-    const onlyFood = /^([a-zá-ú]+\s{0,1})+$/
-    const foodAndNumbers = /^([a-zá-ú]+\s[0-9]+\s{0,1})+$/
-    const recipe = /^r:[a-zá-ú]+$/
+    const onlyFood = /^([A-Za-zá-ú]+\s{0,1})+$/
+    const foodAndNumbers = /^([A-Za-zá-ú]+\s[0-9]+\s{0,1})+$/
+    const recipe = /^r:[A-Za-zá-ú]+$/
 
     if (onlyFood.test(query)) {
       const foodArray = queryArray.map(queryItem => ({
-        name: queryItem,
+        name: queryItem.toLowerCase(),
         quantity: 0,
         meal: 0,
       }))
@@ -37,7 +37,7 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
 
       for (i = 0; i < queryArray.length - 1; i += 2) {
         foodArray.push({
-          name: queryArray[i],
+          name: queryArray[i].toLowerCase(),
           quantity: queryArray[i + 1],
           meal: 0,
         })

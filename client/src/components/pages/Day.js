@@ -15,13 +15,17 @@ const Day = ({ readFoods, foodState }) => {
 
   const foods = useFoods('meals')
   const mealNumbers = useMealNumbers()
+  const [once, setOnce] = React.useState(false)
 
-  // React.useEffect(() => {
-  //   if (foods.length === 0 && loadingFood) readFoods()
-  // }, [foods, readFoods, loadingFood])
+  React.useEffect(() => {
+    if (foods.length === 0 && once) {
+      readFoods()
+      setOnce(false)
+    }
+  }, [foods])
 
-  if (foods.length === 0 && loadingFood)
-    return <BackdropLoading open={loadingFood} />
+  // if (foods.length === 0 && loadingFood)
+  //   return <BackdropLoading open={loadingFood} />
 
   return (
     <Container disableGutters maxWidth='md'>
