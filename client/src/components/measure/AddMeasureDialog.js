@@ -72,6 +72,8 @@ const AddMeasureDialog = () => {
 
     // 3/3 -- delete all food
     dispatch(deleteAllFoods())
+
+    handleClose()
   }
 
   return (

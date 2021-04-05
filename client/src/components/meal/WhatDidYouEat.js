@@ -55,19 +55,20 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
     }
   }
 
-  const handleOnKeyDown = e => {
-    if (e.key === 'Enter' && query !== '') queryMatcher(query)
+  const handleSubmit = e => {
+    e.preventDefault()
+    queryMatcher(query)
   }
 
   return (
-    <TextField
-      fullWidth
-      label='What did you eat?'
-      // variant='outlined'
-      value={query}
-      onChange={onChangeQuery}
-      onKeyDown={handleOnKeyDown}
-    />
+    <form onSubmit={handleSubmit}>
+      <TextField
+        fullWidth
+        label='What did you eat?'
+        value={query}
+        onChange={onChangeQuery}
+      />
+    </form>
   )
 }
 

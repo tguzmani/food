@@ -41,9 +41,9 @@ const StatisticsTable = ({ measures }) => {
               <TableCell className={classes.root} align='center'>
                 Stdev
               </TableCell>
-              <TableCell className={classes.root} align='center'>
+              {/* <TableCell className={classes.root} align='center'>
                 Sum
-              </TableCell>
+              </TableCell> */}
               <TableCell className={classes.root} align='center'>
                 Min
               </TableCell>
@@ -63,9 +63,9 @@ const StatisticsTable = ({ measures }) => {
               <TableCell className={classes.root} align='center'>
                 {row.stdev}
               </TableCell>
-              <TableCell className={classes.root} align='center'>
+              {/* <TableCell className={classes.root} align='center'>
                 {row.sum}
-              </TableCell>
+              </TableCell> */}
               <TableCell className={classes.root} align='center'>
                 {row.min}
               </TableCell>
