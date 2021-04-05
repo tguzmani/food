@@ -2,8 +2,11 @@ import { Box, Typography } from '@material-ui/core'
 import React from 'react'
 import { connect } from 'react-redux'
 import { getTotalCalories } from '../../util/food'
+import useFoods from '../../hooks/useFoods'
 
-const Calories = ({ foods, user }) => {
+const Calories = ({ user }) => {
+  const foods = useFoods('meals')
+
   if (!user) return <div>Loading...</div>
 
   const caloriesConsumed = getTotalCalories(foods)
@@ -23,7 +26,7 @@ const Calories = ({ foods, user }) => {
         <Typography variant='h5'>/ {Math.round(caloricGoal)} cal</Typography>
       </Box>
 
-      <Box display='flex' justifyContent='center' mb={2}>
+      <Box display='flex' justifyContent='center'>
         <Typography variant='caption' align='center'>
           {Math.abs(difference)} cal {verb}
         </Typography>
@@ -35,7 +38,6 @@ const Calories = ({ foods, user }) => {
 const mapActionsToProps = {}
 
 const mapStateToProps = state => ({
-  foods: state.food.foods,
   user: state.auth.user,
 })
 

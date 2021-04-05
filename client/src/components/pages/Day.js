@@ -1,32 +1,40 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 
 import { readFoods } from '../../state/food/foodActions'
 import Meals from './../meal/Meals'
 import BackdropLoading from '../layout/BackdropLoading'
 import PreviewMeal from '../meal/PreviewMeal'
 import Macros from '../macro/Macros'
+import useFoods from './../../hooks/useFoods'
+import useMealNumbers from './../../hooks/useMealNumbers'
+import { Container, Grid } from '@material-ui/core'
 
 const Day = ({ readFoods, foodState }) => {
-  const { foods, loading: loadingFood, mealNumbers } = foodState
+  const { loading: loadingFood } = foodState
 
-  React.useEffect(() => {
-    if (foods.length === 0) readFoods()
-  }, [foods.length, readFoods])
+  const foods = useFoods('meals')
+  const mealNumbers = useMealNumbers()
+
+  // React.useEffect(() => {
+  //   if (foods.length === 0 && loadingFood) readFoods()
+  // }, [foods, readFoods, loadingFood])
 
   if (foods.length === 0 && loadingFood)
     return <BackdropLoading open={loadingFood} />
 
   return (
-    <div>
+    <Container disableGutters maxWidth='md'>
       <Macros />
       <PreviewMeal />
+
       <Meals
         foods={foods.filter(food => food.meal !== 0)}
-        mealNumbers={mealNumbers.filter(number => number !== 0)}
+        mealNumbers={mealNumbers}
       />
+
       <BackdropLoading open={loadingFood} />
-    </div>
+    </Container>
   )
 }
 

@@ -5,6 +5,7 @@ const { auth } = require('../middleware/auth')
 const {
   foodById,
   createFood,
+  createFoodsByRecipe,
   createManyFoods,
   readFood,
   getFoodByName,
@@ -17,6 +18,7 @@ const {
 const { referenceById } = require('../controllers/referenceController')
 
 router.post('/:referenceName', auth, createFood)
+router.post('/byRecipe/:recipeName', auth, createFoodsByRecipe)
 router.get('/all', auth, readFoods)
 router.put('/:foodId', auth, updateFood)
 router.delete('/', auth, deleteAllFood)

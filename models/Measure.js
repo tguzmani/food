@@ -33,6 +33,29 @@ const measureSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+
+    macros: {
+      protein: {
+        type: Number,
+        default: 0,
+      },
+
+      carbs: {
+        type: Number,
+        default: 0,
+      },
+
+      fat: {
+        type: Number,
+        default: 0,
+      },
+    },
+
+    cleanliness: {
+      type: Number,
+      min: 0,
+      max: 100,
+    },
   },
   { timestamps: true }
 )

@@ -1,5 +1,6 @@
 const Food = require('../models/Food')
 const Reference = require('../models/Reference')
+const Recipe = require('../models/Recipe')
 
 // Middleware
 exports.foodById = async (req, res, next) => {
@@ -34,6 +35,7 @@ exports.createFood = async (req, res) => {
       carbs: quantity * reference.carbs,
       fat: quantity * reference.fat,
       isDirty: reference.isDirty,
+      isAlcohol: reference.isAlcohol,
       meal,
       recipe,
       quantity,
@@ -54,16 +56,24 @@ exports.createFood = async (req, res) => {
 
 exports.createFoodsByRecipe = async (req, res) => {
   try {
-    const recipeFoods = await Food.find({ recipe: req.params.recipeId })
+    const recipe = await Recipe.findOne({ name: req.params.recipeName }).select(
+      '_id'
+    )
+
+    const recipeFoods = await Food.find({ recipe: recipe._id })
+      .lean()
+      .select('-_id -recipe')
 
     const mealFoods = recipeFoods.map(food => ({
       ...food,
-      _id: undefined,
+      // _id: undefined,
+      // recipe: undefined,
       meal: req.body.meal,
     }))
 
     const newFoods = await Food.create(mealFoods)
-    res.json(newFoods)
+
+    return res.json(newFoods)
   } catch (error) {}
 }
 
@@ -71,7 +81,7 @@ exports.readFoods = async (req, res) => {
   try {
     const foods = await Food.find({ user: req.userId }).populate({
       path: 'reference',
-      select: 'protein carbs fat -_id',
+      select: 'protein carbs fat',
     })
 
     if (!foods) throw 'Foods not found'
@@ -97,7 +107,7 @@ exports.updateFood = async (req, res) => {
   Food.findByIdAndUpdate(req.params.foodId, food, {
     new: true,
   })
-    .populate({ path: 'reference', select: 'protein carbs fat -_id' })
+    .populate({ path: 'reference', select: 'protein carbs fat' })
     .then(food => {
       if (!food) return res.status(400).json({ message: 'Food not found' })
       else res.send(food)

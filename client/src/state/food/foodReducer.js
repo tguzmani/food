@@ -7,6 +7,8 @@ import {
   UPDATE,
   SOFT_UPDATE,
   DELETE,
+  CREATE_BY_RECIPE,
+  DELETE_ALL,
 } from './foodTypes'
 
 const initialState = {
@@ -14,7 +16,6 @@ const initialState = {
   message: null,
   foods: [],
   previewMealFoods: [],
-  mealNumbers: [],
 }
 
 let newFoods = []
@@ -28,14 +29,18 @@ const foodReducer = (state = initialState, action) => {
         foods: [action.payload, ...state.foods],
       }
 
+    case CREATE_BY_RECIPE:
+      return {
+        ...state,
+        loading: false,
+        foods: [...action.payload, ...state.foods],
+      }
+
     case READ_ALL:
       return {
         ...state,
         loading: false,
         foods: action.payload,
-        mealNumbers: [...new Set(action.payload.map(food => food.meal))].sort(
-          (a, b) => b - a
-        ),
       }
 
     case UPDATE:
@@ -47,9 +52,6 @@ const foodReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         foods: newFoods,
-        mealNumbers: [...new Set(newFoods.map(food => food.meal))].sort(
-          (a, b) => b - a
-        ),
       }
 
     case DELETE:
@@ -59,9 +61,12 @@ const foodReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         foods: state.foods.filter(food => food._id !== action.payload._id),
-        mealNumbers: [...new Set(newFoods.map(food => food.meal))].sort(
-          (a, b) => b - a
-        ),
+      }
+
+    case DELETE_ALL:
+      return {
+        ...state,
+        foods: [],
       }
 
     case CLEAR_MESSAGE:

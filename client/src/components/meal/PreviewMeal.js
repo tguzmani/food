@@ -16,6 +16,7 @@ import Foods from '../food/Foods'
 import Total from '../food/Total'
 import WhatDidYouEat from './WhatDidYouEat'
 import { deleteFood, updateFood } from './../../state/food/foodActions'
+import useMealNumbers from './../../hooks/useMealNumbers'
 
 const useStyles = makeStyles(theme => ({
   cardActions: {
@@ -27,8 +28,9 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const PreviewMeal = ({ foods, mealNumbers, updateFood, deleteFood }) => {
+const PreviewMeal = ({ foods, updateFood, deleteFood }) => {
   const classes = useStyles()
+  const mealNumbers = useMealNumbers()
 
   const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -76,23 +78,22 @@ const PreviewMeal = ({ foods, mealNumbers, updateFood, deleteFood }) => {
 
           {previewMealFoods.length > 0 && (
             <>
-              <Typography variant='body1' gutterBottom align='right'>
-                {Math.round(getTotalCalories(previewMealFoods))} cal
-              </Typography>
-              <Foods foods={previewMealFoods} />
-              <Total foods={previewMealFoods} />
+              <Box mt={2}>
+                <Typography variant='body1' gutterBottom align='right'>
+                  {Math.round(getTotalCalories(previewMealFoods))} cal
+                </Typography>
+                <Foods foods={previewMealFoods} />
+                <Total foods={previewMealFoods} />
+              </Box>
             </>
           )}
         </CardContent>
-
         {previewMealFoods.length > 0 && (
           <CardActions className={classes.cardActions}>
             <Button size='small' onClick={handleClear}>
               Clear
             </Button>
-
             <div className={classes.grow}></div>
-
             <Button size='small' color='primary' onClick={handleClick}>
               Add To Meal
             </Button>
@@ -110,7 +111,6 @@ const PreviewMeal = ({ foods, mealNumbers, updateFood, deleteFood }) => {
                   </MenuItem>
                 ))}
             </Menu>
-
             <Button
               size='small'
               color='primary'

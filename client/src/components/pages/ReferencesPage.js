@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import SearchOrAdd from '../reference/SearchOrAdd'
 import References from '../reference/References'
 import { readReferences } from '../../state/reference/referenceActions'
+import { Container } from '@material-ui/core'
 
 const ReferencesPage = ({
   readReferences,
@@ -18,10 +19,10 @@ const ReferencesPage = ({
   if (references.length === 0 && loading) return <div>Loading...</div>
 
   return (
-    <div>
+    <Container disableGutters maxWidth='md'>
       <SearchOrAdd />
       <References references={filtering ? filteredReferences : references} />
-    </div>
+    </Container>
   )
 }
 

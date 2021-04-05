@@ -13,14 +13,13 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 
-import HomeIcon from '@material-ui/icons/Home'
 import TodayIcon from '@material-ui/icons/Today'
 import AssessmentIcon from '@material-ui/icons/Assessment'
 import MenuBookIcon from '@material-ui/icons/MenuBook'
 import InfoIcon from '@material-ui/icons/Info'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const drawerWidth = 260
 
@@ -64,7 +63,6 @@ const useStyles = makeStyles(theme => ({
     background: theme.palette.dark.main,
     color: theme.palette.light.main,
     padding: theme.spacing(2),
-    // boxShadow: '0 0px 10px 8px rgba(127, 127 ,127 , .4)',
   },
 
   content: {
@@ -79,14 +77,28 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Navigation = props => {
+  const location = useLocation().pathname
+
+  const [title, setTitle] = React.useState('Food')
+
+  const titles = {
+    '/': 'Day',
+    '/measures': 'Measures',
+    '/recipes': 'Recipes',
+    '/references': 'References',
+  }
+
+  React.useEffect(() => {
+    setTitle(titles[location.match(/\/[a-z]*/)[0]])
+  }, [location])
+
   const { window, children } = props
   const classes = useStyles()
   const theme = useTheme()
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
   const links = [
-    { to: '/', text: 'Home', icon: <HomeIcon /> },
-    { to: '/day', text: 'Day', icon: <TodayIcon /> },
+    { to: '/', text: 'Day', icon: <TodayIcon /> },
     { to: '/measures', text: 'Measures', icon: <AssessmentIcon /> },
     { to: '/references', text: 'References', icon: <InfoIcon /> },
     {
@@ -98,6 +110,10 @@ const Navigation = props => {
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
+  }
+
+  const closeDrawer = () => {
+    setMobileOpen(false)
   }
 
   const applicationBar = (
@@ -113,7 +129,7 @@ const Navigation = props => {
           <MenuIcon />
         </IconButton>
         <Typography variant='h6' noWrap>
-          Food
+          {title}
         </Typography>
         <div className={classes.grow}></div>
 
@@ -133,7 +149,13 @@ const Navigation = props => {
       <div className={classes.toolbar} />
       <List>
         {links.map((link, index) => (
-          <ListItem button key={link.text} component={Link} to={link.to}>
+          <ListItem
+            button
+            key={link.text}
+            component={Link}
+            to={link.to}
+            onClick={closeDrawer}
+          >
             <ListItemIcon className={classes.icon}>{link.icon}</ListItemIcon>
             <ListItemText primary={link.text} />
           </ListItem>

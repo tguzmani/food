@@ -1,9 +1,9 @@
 import { Box, TextField } from '@material-ui/core'
 import { connect } from 'react-redux'
 import React from 'react'
-import { createFood } from './../../state/food/foodActions'
+import { createFood, createFoodsByRecipe } from './../../state/food/foodActions'
 
-const WhatDidYouEat = ({ createFood }) => {
+const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
   const [query, setQuery] = React.useState('')
 
   const onChangeQuery = e => {
@@ -15,6 +15,7 @@ const WhatDidYouEat = ({ createFood }) => {
 
     const onlyFood = /^([a-zá-ú]+\s{0,1})+$/
     const foodAndNumbers = /^([a-zá-ú]+\s[0-9]+\s{0,1})+$/
+    const recipe = /^r:[a-zá-ú]+$/
 
     if (onlyFood.test(query)) {
       const foodArray = queryArray.map(queryItem => ({
@@ -48,6 +49,10 @@ const WhatDidYouEat = ({ createFood }) => {
 
       setQuery('')
     }
+
+    if (recipe.test(query)) {
+      createFoodsByRecipe({ recipeName: query.substring(2), meal: 0 })
+    }
   }
 
   const handleOnKeyDown = e => {
@@ -66,7 +71,7 @@ const WhatDidYouEat = ({ createFood }) => {
   )
 }
 
-const mapActionsToProps = { createFood }
+const mapActionsToProps = { createFood, createFoodsByRecipe }
 
 const mapStateToProps = state => ({})
 

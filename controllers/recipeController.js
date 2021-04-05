@@ -25,10 +25,11 @@ exports.createRecipeFromFoods = async (req, res) => {
       recipe: recipe._id,
     }))
 
-    const recipeFoods = await Food.create(newFoods)
+    await Food.create(newFoods)
+
     await recipe.save()
 
-    res.send(recipeFoods)
+    res.send(recipe)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }

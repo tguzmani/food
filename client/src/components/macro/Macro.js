@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Grid, LinearProgress } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import { getTotalMacro } from './../../util/food'
-import { blue, red, green } from '@material-ui/core/colors'
 import Progress from './Progress'
+import useFoods from './../../hooks/useFoods'
+import { capitalize } from './../../util/index'
 
-const Macro = ({ macro, foods, user }) => {
+const Macro = ({ macro, user }) => {
+  const foods = useFoods('meals')
+
   if (!user) return <div>Loading...</div>
 
   const consumed = Math.round(getTotalMacro(foods, macro))
@@ -13,15 +16,18 @@ const Macro = ({ macro, foods, user }) => {
   const progress = (consumed / goal) * 100
 
   return (
-    <Grid container alignItems='center' spacing={2} justify='space-around'>
-      <Grid item xs={1}>
-        {macro.charAt(0).toUpperCase()}
+    <Grid container display='flex' direction='column' alignItems='center'>
+      {/* <Grid item>{capitalize(macro.charAt(0))}</Grid> */}
+
+      <Grid item>
+        <Progress progress={progress} macro={macro} />
       </Grid>
-      <Grid item xs={7}>
-        <Progress value={progress} />
+
+      <Grid item>
+        {consumed}/{goal}
       </Grid>
-      <Grid item xs={3} style={{ textAlign: 'right' }}>
-        {consumed} / {goal}
+      <Grid item>
+        <Typography variant='caption'>{goal - consumed}</Typography>
       </Grid>
     </Grid>
   )
@@ -30,7 +36,6 @@ const Macro = ({ macro, foods, user }) => {
 const mapActionsToProps = {}
 
 const mapStateToProps = state => ({
-  foods: state.food.foods,
   user: state.auth.user,
 })
 
