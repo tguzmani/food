@@ -21,7 +21,7 @@ import useDialog from '../../hooks/useDialog'
 import useFoods from './../../hooks/useFoods'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteAllFoods } from './../../state/food/foodActions'
+import { deleteAllFoods, readFoods } from './../../state/food/foodActions'
 
 import {
   updateMeasure,
@@ -37,6 +37,7 @@ const AddMeasureDialog = () => {
   const foods = useFoods('meals')
   const lastMeasure = useSelector(state => state.measure.measures)[0]
   const dispatch = useDispatch()
+  dispatch(readFoods())
 
   const [measure, setMeasure] = React.useState({
     weight: '',
