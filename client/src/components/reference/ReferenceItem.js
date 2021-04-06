@@ -63,7 +63,7 @@ const ReferenceItem = ({ reference, deleteReference, preview }) => {
             action: () => deleteReference(reference),
           }
         }
-        threshold={1}
+        threshold={0.9}
       >
         <ListItem className={classes.root} divider onClick={handleOpen}>
           <Grid container spacing={2} alignItems='center'>

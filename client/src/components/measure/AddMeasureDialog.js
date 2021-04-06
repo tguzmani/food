@@ -56,7 +56,7 @@ const AddMeasureDialog = () => {
     const measure = {
       _id: lastMeasure._id,
       calories: getTotalCalories(foods),
-      clealiness: getCleanliness(foods),
+      cleanliness: getCleanliness(foods),
       macros: {
         protein: getTotalMacro(foods, 'protein'),
         carbs: getTotalMacro(foods, 'carbs'),

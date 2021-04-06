@@ -87,7 +87,7 @@ const FoodItem = ({ food, softUpdateFood, updateFood, deleteFood }) => {
         content: <Delete />,
         action: () => deleteFood(food),
       }}
-      threshold={1}
+      threshold={0.9}
     >
       <ListItem className={classes.root} divider>
         <Grid container spacing={2} alignItems='center'>

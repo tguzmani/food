@@ -66,14 +66,19 @@ exports.createFoodsByRecipe = async (req, res) => {
 
     const mealFoods = recipeFoods.map(food => ({
       ...food,
-      // _id: undefined,
-      // recipe: undefined,
       meal: req.body.meal,
     }))
 
     const newFoods = await Food.create(mealFoods)
 
-    return res.json(newFoods)
+    const newFoodsIds = newFoods.map(food => food._id)
+
+    const resFoods = await Food.find({ _id: { $in: newFoodsIds } }).populate({
+      path: 'reference',
+      select: 'protein carbs fat -_id',
+    })
+
+    return res.json(resFoods)
   } catch (error) {}
 }
 

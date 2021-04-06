@@ -5,7 +5,6 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   TextField,
 } from '@material-ui/core'
@@ -31,7 +30,7 @@ const RecipeDialog = ({
   }
 
   const handleCreateRecipe = () => {
-    createRecipe({ foods, name })
+    createRecipe({ foods, name: name.toLowerCase() })
     readFoods()
     handleClose()
   }

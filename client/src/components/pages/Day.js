@@ -15,7 +15,7 @@ const Day = ({ readFoods, foodState }) => {
 
   const foods = useFoods('meals')
   const mealNumbers = useMealNumbers()
-  const [once, setOnce] = React.useState(false)
+  const [once, setOnce] = React.useState(true)
 
   React.useEffect(() => {
     if (foods.length === 0 && once) {

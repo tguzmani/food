@@ -13,9 +13,9 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
   const queryMatcher = query => {
     const queryArray = query.split(' ')
 
-    const onlyFood = /^([A-Za-zá-ú]+\s{0,1})+$/
-    const foodAndNumbers = /^([A-Za-zá-ú]+\s[0-9]+\s{0,1})+$/
-    const recipe = /^r:[A-Za-zá-ú]+$/
+    const onlyFood = /^([a-zá-ú]+\s{0,1})+$/i
+    const foodAndNumbers = /^([a-zá-ú]+\s[0-9]+\s{0,1})+$/i
+    const recipe = /^r:[a-zá-ú]+$/i
 
     if (onlyFood.test(query)) {
       const foodArray = queryArray.map(queryItem => ({
