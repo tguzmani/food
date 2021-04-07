@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import FAB from '../layout/FAB'
 import {
   Button,
@@ -37,7 +37,10 @@ const AddMeasureDialog = () => {
   const foods = useFoods('meals')
   const lastMeasure = useSelector(state => state.measure.measures)[0]
   const dispatch = useDispatch()
-  dispatch(readFoods())
+
+  useEffect(() => {
+    dispatch(readFoods())
+  }, [])
 
   const [measure, setMeasure] = React.useState({
     weight: '',

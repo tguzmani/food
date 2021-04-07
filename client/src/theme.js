@@ -23,16 +23,10 @@ const theme = createMuiTheme({
     },
 
     light: {
-      main: grey[200],
+      main: grey[100],
     },
 
-    macros: {
-      protein: '#ff7961',
-      carbs: blue[500],
-      fats: '#4caf50',
-    },
-
-    background: { default: grey[200] },
+    background: { default: grey[100] },
   },
 })
 

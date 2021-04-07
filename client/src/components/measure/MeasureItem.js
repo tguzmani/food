@@ -4,14 +4,32 @@ import {
   Grid,
   ListItem,
   ListItemText,
+  makeStyles,
   Typography,
 } from '@material-ui/core'
 
 import relativeTime from 'dayjs/plugin/relativeTime'
 import dayjs from 'dayjs'
+import { red, blue, green } from '@material-ui/core/colors'
 dayjs.extend(relativeTime)
 
+const useStyles = makeStyles(theme => ({
+  circle: {
+    borderRadius: '50%',
+    width: '0.5rem',
+    height: '0.5rem',
+  },
+}))
+
 const MeasureItem = ({ measure }) => {
+  const colors = {
+    protein: red[700],
+    carbs: blue[700],
+    fat: green[700],
+  }
+
+  const classes = useStyles()
+
   const {
     weight,
     sleep,
@@ -26,7 +44,19 @@ const MeasureItem = ({ measure }) => {
   const Macro = ({ macro }) => (
     <>
       {macros[macro] > 0 && (
-        <Typography variant='body2'>{Math.round(macros[macro])} </Typography>
+        <Box
+          display='flex'
+          alignItems='center'
+          style={{ marginRight: '0.25rem' }}
+        >
+          <div
+            className={classes.circle}
+            style={{ backgroundColor: colors[macro] }}
+          ></div>
+          <Typography style={{ margin: '0 0.25rem' }} variant='body2'>
+            {Math.round(macros[macro])}{' '}
+          </Typography>
+        </Box>
       )}
     </>
   )
@@ -39,7 +69,7 @@ const MeasureItem = ({ measure }) => {
             <span role='img'>{emoji}</span>
           </Grid>
           <Grid item>
-            {value}
+            {Math.round(value)}
             {symbol && symbol}
           </Grid>
         </Grid>
@@ -59,15 +89,15 @@ const MeasureItem = ({ measure }) => {
               {weight} lb
             </Typography>
             {calories > 0 && (
-              <Typography variant='body2'>
+              <Typography variant='body1'>
                 {Math.round(calories)} cal
               </Typography>
             )}
-            {/* <Box display='flex'>
+            <Box display='flex'>
               <Macro macro='protein' />
               <Macro macro='carbs' />
               <Macro macro='fat' />
-            </Box> */}
+            </Box>
           </Box>
         </Grid>
 
