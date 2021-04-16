@@ -2,6 +2,10 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import { blue, grey, green } from '@material-ui/core/colors'
 
 const theme = createMuiTheme({
+  typography: {
+    fontFamily: 'Nunito',
+  },
+
   palette: {
     primary: {
       light: '#757ce8',
