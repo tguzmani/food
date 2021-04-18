@@ -5,7 +5,7 @@ import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
+import MuiListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -20,6 +20,8 @@ import InfoIcon from '@material-ui/icons/Info'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 
 import { Link, useLocation } from 'react-router-dom'
+import { Box, Divider, Grid, withStyles } from '@material-ui/core'
+import { useSelector } from 'react-redux'
 
 const drawerWidth = 260
 
@@ -48,6 +50,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.default,
     boxShadow: 'none',
     borderBottom: theme.palette.light.main,
+    paddingTop: theme.spacing(1),
   },
 
   menuButton: {
@@ -76,7 +79,27 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Navigation = props => {
+const ListItem = withStyles(theme => ({
+  root: {
+    borderRadius: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+
+    '&.Mui-selected': {
+      backgroundColor: theme.palette.primary.main,
+      '&:hover': {
+        backgroundColor: theme.palette.primary.light,
+      },
+    },
+  },
+
+  button: {
+    '&:hover': {
+      backgroundColor: theme.palette.dark.light,
+    },
+  },
+}))(MuiListItem)
+
+const Navigation = ({ window, children }) => {
   const location = useLocation().pathname
 
   const [title, setTitle] = React.useState('Food')
@@ -92,7 +115,6 @@ const Navigation = props => {
     setTitle(titles[location.match(/\/[a-z]*/)[0]])
   }, [location])
 
-  const { window, children } = props
   const classes = useStyles()
   const theme = useTheme()
   const [mobileOpen, setMobileOpen] = React.useState(false)
@@ -146,11 +168,15 @@ const Navigation = props => {
 
   const drawer = (
     <div>
-      <div className={classes.toolbar} />
+      <Box ml={2} mt={1} mb={3}>
+        <Typography variant='h5'>Food</Typography>
+      </Box>
+
       <List>
-        {links.map((link, index) => (
+        {links.map(link => (
           <ListItem
             button
+            selected={location.match(/\/[a-z]*/)[0] === link.to}
             key={link.text}
             component={Link}
             to={link.to}

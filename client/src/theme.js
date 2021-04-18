@@ -1,37 +1,46 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 import { blue, grey, green } from '@material-ui/core/colors'
 
+const typography = {
+  fontFamily: 'Nunito',
+}
+
+const shape = {
+  borderRadius: 8,
+}
+
+const palette = {
+  primary: {
+    light: blue[400],
+    main: blue[500],
+    dark: '#002884',
+    contrastText: '#fff',
+  },
+
+  secondary: {
+    light: '#ff7961',
+    main: '#f44336',
+    dark: '#ba000d',
+    contrastText: '#fff',
+  },
+
+  dark: {
+    main: '#272C34',
+    light: '#39414d',
+    contrastText: '#fff',
+  },
+
+  light: {
+    main: '#F5F7FA',
+  },
+
+  background: { default: '#F5F7FA' },
+}
+
 const theme = createMuiTheme({
-  typography: {
-    fontFamily: 'Nunito',
-  },
-
-  palette: {
-    primary: {
-      light: '#757ce8',
-      main: blue[500],
-      dark: '#002884',
-      contrastText: '#fff',
-    },
-
-    secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#fff',
-    },
-
-    dark: {
-      main: '#272C34',
-      contrastText: '#fff',
-    },
-
-    light: {
-      main: grey[100],
-    },
-
-    background: { default: grey[100] },
-  },
+  typography,
+  shape,
+  palette,
 })
 
 export default theme
