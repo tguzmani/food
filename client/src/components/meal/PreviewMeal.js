@@ -94,9 +94,11 @@ const PreviewMeal = ({ foods, updateFood, deleteFood }) => {
               Clear
             </Button>
             <div className={classes.grow}></div>
-            <Button size='small' color='primary' onClick={handleClick}>
-              Add To Meal
-            </Button>
+            {mealNumbers.length > 0 && (
+              <Button size='small' color='primary' onClick={handleClick}>
+                Add To Meal
+              </Button>
+            )}
             <Menu
               anchorEl={anchorEl}
               keepMounted
