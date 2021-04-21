@@ -1,4 +1,11 @@
-import { ERROR, LOADING, READ_USER, SIGN_IN, CLEAR_MESSAGE } from './authTypes'
+import {
+  ERROR,
+  LOADING,
+  READ_USER,
+  SIGN_IN,
+  CLEAR_MESSAGE,
+  UPDATE_USER,
+} from './authTypes'
 const initialState = {
   loading: true,
   message: null,
@@ -25,6 +32,13 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         user: action.payload,
         isAuthenticated: true,
+      }
+
+    case UPDATE_USER:
+      return {
+        ...state,
+        loading: false,
+        user: action.payload,
       }
 
     case CLEAR_MESSAGE:

@@ -1,4 +1,11 @@
-import { ERROR, LOADING, READ_USER, SIGN_IN, CLEAR_MESSAGE } from './authTypes'
+import {
+  ERROR,
+  LOADING,
+  READ_USER,
+  UPDATE_USER,
+  SIGN_IN,
+  CLEAR_MESSAGE,
+} from './authTypes'
 import axios from 'axios'
 
 import { config } from '../../util/state'
@@ -31,6 +38,17 @@ export const readUser = () => async dispatch => {
   try {
     const res = await axios.get(`/api/user/`)
     dispatch({ type: READ_USER, payload: res.data })
+  } catch (error) {
+    dispatch({ type: ERROR, payload: error.response.data.message })
+  }
+}
+
+export const updateUser = user => async dispatch => {
+  setLoading()(dispatch)
+
+  try {
+    const res = await axios.put(`/api/user/`, user, config)
+    dispatch({ type: UPDATE_USER, payload: res.data })
   } catch (error) {
     dispatch({ type: ERROR, payload: error.response.data.message })
   }

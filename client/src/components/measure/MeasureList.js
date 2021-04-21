@@ -1,6 +1,7 @@
 import { Box, Card, CardContent, List } from '@material-ui/core'
 import React from 'react'
 import MeasureItem from './MeasureItem'
+import { sortByDate } from './../../util/measure'
 
 const Measures = ({ measures, half }) => {
   return (
@@ -8,7 +9,7 @@ const Measures = ({ measures, half }) => {
       <Card>
         <CardContent>
           <List>
-            {measures.map(measure => (
+            {sortByDate(measures, 'dec').map(measure => (
               <MeasureItem key={measure._id} measure={measure} />
             ))}
           </List>

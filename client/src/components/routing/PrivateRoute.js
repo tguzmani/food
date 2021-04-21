@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { readUser } from '../../state/auth/authActions'
-import Navigation from '../layout/Navigation'
+import Navigation from '../layout/Navigation/Navigation'
 
 const PrivateRoute = ({
   readUser,

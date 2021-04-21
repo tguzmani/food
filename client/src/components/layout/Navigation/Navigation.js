@@ -5,102 +5,31 @@ import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
-import MuiListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import MenuIcon from '@material-ui/icons/Menu'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-
+import { useTheme } from '@material-ui/core/styles'
 import TodayIcon from '@material-ui/icons/Today'
 import AssessmentIcon from '@material-ui/icons/Assessment'
 import MenuBookIcon from '@material-ui/icons/MenuBook'
 import InfoIcon from '@material-ui/icons/Info'
 import AccountCircle from '@material-ui/icons/AccountCircle'
+import NavItem from './NavItem'
+import PersonIcon from '@material-ui/icons/Person'
+import TimelineIcon from '@material-ui/icons/Timeline'
 
 import { Link, useLocation } from 'react-router-dom'
 import { Box, Divider, Grid, withStyles } from '@material-ui/core'
+
+import useStyles from './styles'
+import UserMenu from './UserMenu'
 import { useSelector } from 'react-redux'
-
-const drawerWidth = 260
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-  },
-
-  grow: {
-    flexGrow: 1,
-  },
-
-  drawer: {
-    [theme.breakpoints.up('sm')]: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-  },
-
-  appBar: {
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-    },
-    color: theme.palette.text.primary,
-    backgroundColor: theme.palette.background.default,
-    boxShadow: 'none',
-    borderBottom: theme.palette.light.main,
-    paddingTop: theme.spacing(1),
-  },
-
-  menuButton: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
-  },
-
-  toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    width: drawerWidth,
-    background: theme.palette.dark.main,
-    color: theme.palette.light.main,
-    padding: theme.spacing(2),
-  },
-
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-
-  icon: {
-    color: theme.palette.light.main,
-    marginRight: theme.spacing(1),
-  },
-}))
-
-const ListItem = withStyles(theme => ({
-  root: {
-    borderRadius: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-
-    '&.Mui-selected': {
-      backgroundColor: theme.palette.primary.main,
-      '&:hover': {
-        backgroundColor: theme.palette.primary.light,
-      },
-    },
-  },
-
-  button: {
-    '&:hover': {
-      backgroundColor: theme.palette.dark.light,
-    },
-  },
-}))(MuiListItem)
 
 const Navigation = ({ window, children }) => {
   const location = useLocation().pathname
+  const user = useSelector(state => state.auth.user)
 
   const [title, setTitle] = React.useState('Food')
 
@@ -109,6 +38,8 @@ const Navigation = ({ window, children }) => {
     '/measures': 'Measures',
     '/recipes': 'Recipes',
     '/references': 'References',
+    '/profile': 'Profile',
+    '/stats': 'Statistics',
   }
 
   React.useEffect(() => {
@@ -118,6 +49,15 @@ const Navigation = ({ window, children }) => {
   const classes = useStyles()
   const theme = useTheme()
   const [mobileOpen, setMobileOpen] = React.useState(false)
+  const [anchorEl, setAnchorEl] = React.useState(null)
+
+  const handleOpenMenu = event => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleCloseMenu = () => {
+    setAnchorEl(null)
+  }
 
   const links = [
     { to: '/', text: 'Day', icon: <TodayIcon /> },
@@ -128,6 +68,8 @@ const Navigation = ({ window, children }) => {
       text: 'Recipes',
       icon: <MenuBookIcon />,
     },
+    { to: '#', text: 'Statistics', icon: <TimelineIcon /> },
+    { to: '/profile', text: 'Profile', icon: <PersonIcon /> },
   ]
 
   const handleDrawerToggle = () => {
@@ -155,13 +97,11 @@ const Navigation = ({ window, children }) => {
         </Typography>
         <div className={classes.grow}></div>
 
-        <IconButton
-          edge='end'
-          // onClick={handleProfileMenuOpen}
-          color='inherit'
-        >
+        <Typography>{user && user.name.split(' ')[0]}</Typography>
+        <IconButton edge='end' color='inherit' onClick={handleOpenMenu}>
           <AccountCircle />
         </IconButton>
+        <UserMenu anchorEl={anchorEl} handleClose={handleCloseMenu} />
       </Toolbar>
     </AppBar>
   )
@@ -174,7 +114,7 @@ const Navigation = ({ window, children }) => {
 
       <List>
         {links.map(link => (
-          <ListItem
+          <NavItem
             button
             selected={location.match(/\/[a-z]*/)[0] === link.to}
             key={link.text}
@@ -184,7 +124,7 @@ const Navigation = ({ window, children }) => {
           >
             <ListItemIcon className={classes.icon}>{link.icon}</ListItemIcon>
             <ListItemText primary={link.text} />
-          </ListItem>
+          </NavItem>
         ))}
       </List>
     </div>

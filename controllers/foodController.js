@@ -155,8 +155,8 @@ exports.deleteFood = async (req, res) => {
 
 exports.deleteAllFood = async (req, res) => {
   try {
-    await Food.deleteMany({ user: req.userId })
-    res.send({ msg: 'Foods Cleared' })
+    await Food.deleteMany({ user: req.userId, recipe: null })
+    res.send({ message: 'Foods Cleared' })
   } catch (error) {
     res.status(400).json({ error: error.message })
   }

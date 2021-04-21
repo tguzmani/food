@@ -17,6 +17,7 @@ import Day from './components/pages/Day'
 import MeasuresPage from './components/pages/MeasuresPage'
 import RecipesPage from './components/pages/RecipesPage'
 import ReferencesPage from './components/pages/ReferencesPage'
+import ProfilePage from './components/pages/ProfilePage'
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
                 component={ReferencesPage}
               />
               <PrivateRoute exact path='/recipes' component={RecipesPage} />
+              <PrivateRoute exact path='/profile' component={ProfilePage} />
               <Route path='*' component={NotFound} />
             </Switch>
           </>

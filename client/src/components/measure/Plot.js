@@ -9,12 +9,25 @@ import {
 
 import dayjs from 'dayjs'
 
+import { curveCatmullRom, line } from 'd3-shape'
+import { ValueScale } from '@devexpress/dx-react-chart'
+
 const useStyles = makeStyles(theme => ({
   chart: {
     padding: theme.spacing(4),
     height: 100,
   },
 }))
+
+const Line = props => (
+  <LineSeries.Path
+    {...props}
+    path={line()
+      .x(({ arg }) => arg)
+      .y(({ val }) => val)
+      .curve(curveCatmullRom)}
+  />
+)
 
 const Plot = ({ measures }) => {
   const classes = useStyles()
@@ -33,8 +46,13 @@ const Plot = ({ measures }) => {
       <Paper>
         <Chart data={data} className={classes.chart} height={300}>
           <ArgumentAxis />
+
           <ValueAxis />
-          <LineSeries valueField='value' argumentField='argument' />
+          <LineSeries
+            valueField='value'
+            argumentField='argument'
+            seriesComponent={Line}
+          />
         </Chart>
       </Paper>
     </Box>

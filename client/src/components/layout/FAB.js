@@ -20,13 +20,13 @@ const useStyles = makeStyles(theme => ({
   fabFix: theme.mixins.toolbar,
 }))
 
-const FAB = ({ Icon, onClick, show }) => {
+const FAB = ({ Icon, onClick, show, disabled }) => {
   const classes = useStyles()
 
   return (
     <div className={classes.fab}>
       <Zoom in={show}>
-        <Fab color='primary' onClick={onClick}>
+        <Fab color='primary' onClick={onClick} disabled={disabled}>
           <Icon className={classes.fabIcon} />
         </Fab>
       </Zoom>

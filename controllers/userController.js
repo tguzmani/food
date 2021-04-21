@@ -11,17 +11,21 @@ exports.readUser = async (req, res) => {
 }
 
 exports.updateUser = async (req, res) => {
-  User.findByIdAndUpdate(req.userId, req.body, {
-    new: true,
-  })
-    .then(user => {
-      if (!user) return res.status(400).json({ message: 'User not found' })
-      else {
-        user.password = undefined
-        res.send(user)
-      }
+  try {
+    let user = await User.findByIdAndUpdate(req.userId, req.body, {
+      new: true,
     })
-    .catch(error => res.status(500).json({ error: error.message }))
+
+    user = await User.findByIdAndUpdate(
+      req.userId,
+      { goals: user.macroGoals },
+      { new: true }
+    )
+
+    res.send(user)
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
 }
 
 exports.readGoals = async (req, res) => {
