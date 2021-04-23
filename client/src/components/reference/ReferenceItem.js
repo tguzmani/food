@@ -63,7 +63,7 @@ const ReferenceItem = ({ reference, deleteReference, preview, divider }) => {
             action: () => deleteReference(reference),
           }
         }
-        threshold={0.8}
+        threshold={0.9}
       >
         <ListItem
           className={classes.root}
