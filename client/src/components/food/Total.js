@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
-    fontWeight: 500,
+    fontWeight: 600,
   },
 }))
 

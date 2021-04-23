@@ -6,58 +6,62 @@ import Drinks from './Drinks'
 import Macro from './Macro'
 import { getAlcoholUnits } from './../../util/food'
 import useFoods from './../../hooks/useFoods'
+import useResponsive from './../../hooks/useResponsive'
 
 const Macros = () => {
+  const isMobile = useResponsive()
   const foods = useFoods('meals')
-
-  console.log(getAlcoholUnits(foods))
+  const spacing = isMobile ? 0 : 10
+  const justify = isMobile ? 'space-around' : 'center'
 
   return (
-    <Card>
-      <CardContent>
-        <Box mb={2}>
-          <Grid
-            container
-            display='flex'
-            direction='column'
-            alignItems='center'
-            spacing={1}
-          >
-            <Grid item>
-              <Calories />
-            </Grid>
+    <Box>
+      {/* <Card>
+      <CardContent> */}
+      <Box mb={2}>
+        <Grid
+          container
+          display='flex'
+          direction='column'
+          alignItems='center'
+          spacing={1}
+        >
+          <Grid item>
+            <Calories />
+          </Grid>
 
-            <Grid item>
-              <Grid container spacing={4}>
-                <Grid item>
-                  <Cleanliness />
-                </Grid>
-
-                {getAlcoholUnits(foods) > 0 && (
-                  <Grid item>
-                    <Drinks />
-                  </Grid>
-                )}
+          <Grid item>
+            <Grid container spacing={4}>
+              <Grid item>
+                <Cleanliness />
               </Grid>
+
+              {getAlcoholUnits(foods) > 0 && (
+                <Grid item>
+                  <Drinks />
+                </Grid>
+              )}
             </Grid>
-          </Grid>
-        </Box>
-
-        <Grid container justify='space-around' spacing={1}>
-          <Grid item>
-            <Macro macro='protein' />
-          </Grid>
-
-          <Grid item>
-            <Macro macro='carbs' />
-          </Grid>
-
-          <Grid item>
-            <Macro macro='fat' />
           </Grid>
         </Grid>
-      </CardContent>
-    </Card>
+      </Box>
+
+      <Grid container justify={justify} spacing={spacing}>
+        <Grid item>
+          <Macro macro='protein' />
+        </Grid>
+
+        <Grid item>
+          <Macro macro='carbs' />
+        </Grid>
+
+        <Grid item>
+          <Macro macro='fat' />
+        </Grid>
+      </Grid>
+      {/* </CardContent>
+    </Card> */}
+    </Box>
   )
 }
 

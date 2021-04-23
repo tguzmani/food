@@ -151,8 +151,4 @@ userSchema.virtual('macroGoals').get(function () {
   return { protein, fat, carbs }
 })
 
-userSchema.virtual('setMacroGoals').set(function () {
-  this.set({ goals: this.macroGoals })
-})
-
 module.exports = mongoose.model('User', userSchema)

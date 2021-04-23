@@ -31,7 +31,6 @@ const Day = ({ readFoods, foodState }) => {
     <Container disableGutters maxWidth='md'>
       <Macros />
       <PreviewMeal />
-
       <Meals
         foods={foods.filter(food => food.meal !== 0)}
         mealNumbers={mealNumbers}

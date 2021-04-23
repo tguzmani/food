@@ -2,7 +2,16 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import { blue, grey, green } from '@material-ui/core/colors'
 
 const typography = {
-  fontFamily: 'Nunito',
+  fontFamily: ['Roboto', 'sans-serif'].join(','),
+  // fontWeightMedium: 700,
+}
+
+const overrides = {
+  MuiInputBase: {
+    root: {
+      backgroundColor: '#fff',
+    },
+  },
 }
 
 const shape = {
@@ -34,13 +43,14 @@ const palette = {
     main: '#F5F7FA',
   },
 
-  background: { default: '#F5F7FA' },
+  // background: { default: '#F5F7FA' },
 }
 
 const theme = createMuiTheme({
   typography,
   shape,
   palette,
+  // overrides,
 })
 
 export default theme

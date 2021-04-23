@@ -66,6 +66,7 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
         fullWidth
         label='What did you eat?'
         value={query}
+        variant='outlined'
         onChange={onChangeQuery}
       />
     </form>

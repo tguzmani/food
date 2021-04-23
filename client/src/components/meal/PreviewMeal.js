@@ -8,6 +8,8 @@ import {
   makeStyles,
   Menu,
   MenuItem,
+  CardHeader,
+  Avatar,
 } from '@material-ui/core'
 import { connect } from 'react-redux'
 import React from 'react'
@@ -15,8 +17,8 @@ import { getTotalCalories } from '../../util/food'
 import Foods from '../food/Foods'
 import Total from '../food/Total'
 import WhatDidYouEat from './WhatDidYouEat'
-import { deleteFood, updateFood } from './../../state/food/foodActions'
-import useMealNumbers from './../../hooks/useMealNumbers'
+import { deleteFood, updateFood } from '../../state/food/foodActions'
+import useMealNumbers from '../../hooks/useMealNumbers'
 
 const useStyles = makeStyles(theme => ({
   cardActions: {
@@ -71,59 +73,69 @@ const PreviewMeal = ({ foods, updateFood, deleteFood }) => {
   const previewMealFoods = foods.filter(food => food.meal === 0)
 
   return (
-    <Box mt={3}>
-      <Card>
-        <CardContent>
-          <WhatDidYouEat />
+    <Box mt={4} >
+      <WhatDidYouEat />
 
-          {previewMealFoods.length > 0 && (
-            <>
-              <Box mt={2}>
-                <Typography variant='body1' gutterBottom align='right'>
-                  {Math.round(getTotalCalories(previewMealFoods))} cal
-                </Typography>
-                <Foods foods={previewMealFoods} />
-                <Total foods={previewMealFoods} />
-              </Box>
-            </>
-          )}
-        </CardContent>
-        {previewMealFoods.length > 0 && (
-          <CardActions className={classes.cardActions}>
-            <Button size='small' onClick={handleClear}>
-              Clear
-            </Button>
-            <div className={classes.grow}></div>
-            {mealNumbers.length > 0 && (
-              <Button size='small' color='primary' onClick={handleClick}>
-                Add To Meal
-              </Button>
+      {previewMealFoods.length > 0 && (
+        <Box mt={2}>
+          <Card>
+            <CardHeader
+              avatar={<Avatar>P</Avatar>}
+              // action={
+              //   <Tooltip title='Create Recipe' placement='left'>
+              //     <IconButton onClick={handleOpen}>
+              //       <MenuBookIcon />
+              //     </IconButton>
+              //   </Tooltip>
+              // }
+              title='Preview'
+            />
+
+            <CardContent>
+              <Typography variant='body1' gutterBottom align='right'>
+                {Math.round(getTotalCalories(previewMealFoods))} cal
+              </Typography>
+              <Foods foods={previewMealFoods} />
+              <Total foods={previewMealFoods} />
+            </CardContent>
+            {previewMealFoods.length > 0 && (
+              <CardActions className={classes.cardActions}>
+                <Button size='small' onClick={handleClear}>
+                  Clear
+                </Button>
+                <div className={classes.grow}></div>
+                {mealNumbers.length > 0 && (
+                  <Button size='small' color='primary' onClick={handleClick}>
+                    Add To Meal
+                  </Button>
+                )}
+                <Menu
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  {mealNumbers
+                    .filter(number => number !== 0)
+                    .map(number => (
+                      <MenuItem value={number} onClick={handleAddToFood}>
+                        {number}
+                      </MenuItem>
+                    ))}
+                </Menu>
+                <Button
+                  size='small'
+                  color='primary'
+                  variant='contained'
+                  onClick={handleCreate}
+                >
+                  Create
+                </Button>
+              </CardActions>
             )}
-            <Menu
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              {mealNumbers
-                .filter(number => number !== 0)
-                .map(number => (
-                  <MenuItem value={number} onClick={handleAddToFood}>
-                    {number}
-                  </MenuItem>
-                ))}
-            </Menu>
-            <Button
-              size='small'
-              color='primary'
-              variant='contained'
-              onClick={handleCreate}
-            >
-              Create
-            </Button>
-          </CardActions>
-        )}
-      </Card>
+          </Card>
+        </Box>
+      )}
     </Box>
   )
 }

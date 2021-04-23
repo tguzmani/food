@@ -43,7 +43,9 @@ const Navigation = ({ window, children }) => {
   }
 
   React.useEffect(() => {
-    setTitle(titles[location.match(/\/[a-z]*/)[0]])
+    const title = titles[location.match(/\/[a-z]*/)[0]]
+    setTitle(title)
+    document.title = `Food | ${title}`
   }, [location])
 
   const classes = useStyles()

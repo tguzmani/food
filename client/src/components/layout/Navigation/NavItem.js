@@ -8,6 +8,7 @@ const NavItem = withStyles(theme => ({
 
     '&.Mui-selected': {
       backgroundColor: theme.palette.primary.main,
+
       '&:hover': {
         backgroundColor: theme.palette.primary.light,
       },
