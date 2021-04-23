@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
 
 const Login = () => {
   const classes = useStyles()
+  document.title = 'Food | Login'
 
   return (
     <>

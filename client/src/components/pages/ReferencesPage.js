@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import SearchOrAdd from '../reference/SearchOrAdd'
+import SearchReference from '../reference/SearchReference'
 import References from '../reference/References'
 import { readReferences } from '../../state/reference/referenceActions'
 import { Container } from '@material-ui/core'
@@ -20,7 +20,7 @@ const ReferencesPage = ({
 
   return (
     <Container disableGutters maxWidth='md'>
-      <SearchOrAdd />
+      <SearchReference />
       <References references={filtering ? filteredReferences : references} />
     </Container>
   )

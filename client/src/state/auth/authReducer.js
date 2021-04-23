@@ -5,6 +5,7 @@ import {
   SIGN_IN,
   CLEAR_MESSAGE,
   UPDATE_USER,
+  SIGN_OUT,
 } from './authTypes'
 const initialState = {
   loading: true,
@@ -46,6 +47,14 @@ const authReducer = (state = initialState, action) => {
 
     case ERROR:
       return { ...state, loading: false, message: action.payload }
+
+    case SIGN_OUT:
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: undefined,
+        loading: false,
+      }
 
     default:
       return state

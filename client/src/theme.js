@@ -2,14 +2,20 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import { blue, grey, green } from '@material-ui/core/colors'
 
 const typography = {
-  fontFamily: ['Roboto', 'sans-serif'].join(','),
+  fontFamily: ['Lato', 'sans-serif'].join(','),
   // fontWeightMedium: 700,
 }
 
 const overrides = {
-  MuiInputBase: {
+  MuiFormControl: {
     root: {
-      backgroundColor: '#fff',
+      '&.bg-white': { backgroundColor: '#fff' },
+    },
+  },
+
+  MuiTooltip: {
+    tooltip: {
+      fontSize: '1em',
     },
   },
 }
@@ -50,7 +56,7 @@ const theme = createMuiTheme({
   typography,
   shape,
   palette,
-  // overrides,
+  overrides,
 })
 
 export default theme

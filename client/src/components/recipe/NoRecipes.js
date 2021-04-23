@@ -1,4 +1,5 @@
 import React from 'react'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
 import MenuBookIcon from '@material-ui/icons/MenuBook'
 import { Box, Typography } from '@material-ui/core'
 
@@ -10,8 +11,8 @@ const NoRecipes = () => {
         No recipes!
       </Typography>
       <Typography variant='body1' align='center'>
-        Add new recipes going to the Day page, create a meal then press the{' '}
-        <MenuBookIcon fontSize='small' /> button
+        Add new recipes going to the Day page, create a meal, press the
+        <MoreVertIcon fontSize='small' /> button and then "Create Recipe"
       </Typography>
     </Box>
   )

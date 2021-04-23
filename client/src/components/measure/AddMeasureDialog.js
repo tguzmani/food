@@ -85,6 +85,7 @@ const AddMeasureDialog = () => {
         Icon={AddIcon}
         show={lastMeasure && !dayjs(lastMeasure.createdAt).isToday()}
         onClick={handleOpen}
+        tooltipTitle='Weight In!'
       />
 
       <Dialog fullWidth open={open} onClose={handleClose}>

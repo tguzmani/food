@@ -12,8 +12,12 @@ const References = ({ references, filtering }) => {
             <div>Reference not found</div>
           ) : (
             <List>
-              {references.map(reference => (
-                <ReferenceItem key={reference._id} reference={reference} />
+              {references.map((reference, index) => (
+                <ReferenceItem
+                  key={reference._id}
+                  reference={reference}
+                  divider={index !== references.length - 1}
+                />
               ))}
             </List>
           )}

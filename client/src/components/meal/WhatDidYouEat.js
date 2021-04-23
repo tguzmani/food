@@ -68,6 +68,7 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
         value={query}
         variant='outlined'
         onChange={onChangeQuery}
+        className='bg-white'
       />
     </form>
   )

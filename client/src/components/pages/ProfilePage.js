@@ -34,6 +34,7 @@ const ProfilePage = () => {
         show={showFAB}
         onClick={handleSaveChanges}
         disabled={loading}
+        tooltipTitle='Save Changes'
       />
     </div>
   )

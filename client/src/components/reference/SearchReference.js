@@ -14,7 +14,7 @@ import {
 } from '../../state/reference/referenceActions'
 import NewReferenceDialog from './NewReferenceDialog'
 
-const SearchOrAdd = ({
+const SearchReference = ({
   clearFilterReferences,
   filterReferences,
   filtering,
@@ -32,31 +32,19 @@ const SearchOrAdd = ({
   }, [input])
 
   return (
-    <Box mt={3}>
-      <Card>
-        <CardContent>
-          <TextField
-            fullWidth
-            label='Search or add reference'
-            value={input}
-            onChange={onChangeInput}
-            // onKeyDown={handleOnKeyDown}
-          />
-        </CardContent>
-        {filtering && filteredReferences.length === 0 && (
-          <CardActions>
-            <NewReferenceDialog referenceName={input} />
-            {/* <Button
-              size='small'
-              color='primary'
-              onClick={() => console.log(input)}
-            >
-              Add {input}
-            </Button> */}
-          </CardActions>
-        )}
-      </Card>
-    </Box>
+    <>
+      <Box mt={3}>
+        <TextField
+          fullWidth
+          label='Search Reference'
+          value={input}
+          onChange={onChangeInput}
+          variant='outlined'
+          className='bg-white'
+        />
+      </Box>
+      <NewReferenceDialog referenceName={input} />
+    </>
   )
 }
 
@@ -67,4 +55,4 @@ const mapStateToProps = state => ({
   filteredReferences: state.reference.filteredReferences,
 })
 
-export default connect(mapStateToProps, mapActionsToProps)(SearchOrAdd)
+export default connect(mapStateToProps, mapActionsToProps)(SearchReference)

@@ -5,6 +5,7 @@ import {
   UPDATE_USER,
   SIGN_IN,
   CLEAR_MESSAGE,
+  SIGN_OUT,
 } from './authTypes'
 import axios from 'axios'
 
@@ -49,6 +50,17 @@ export const updateUser = user => async dispatch => {
   try {
     const res = await axios.put(`/api/user/`, user, config)
     dispatch({ type: UPDATE_USER, payload: res.data })
+  } catch (error) {
+    dispatch({ type: ERROR, payload: error.response.data.message })
+  }
+}
+
+export const signout = () => async dispatch => {
+  setLoading()(dispatch)
+
+  try {
+    await axios.get(`/api/auth/signout`)
+    dispatch({ type: SIGN_OUT })
   } catch (error) {
     dispatch({ type: ERROR, payload: error.response.data.message })
   }

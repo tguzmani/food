@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Fab, Zoom } from '@material-ui/core'
+import { Fab, Tooltip, Zoom } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   fab: {
@@ -20,15 +20,17 @@ const useStyles = makeStyles(theme => ({
   fabFix: theme.mixins.toolbar,
 }))
 
-const FAB = ({ Icon, onClick, show, disabled }) => {
+const FAB = ({ Icon, onClick, show, disabled, tooltipTitle }) => {
   const classes = useStyles()
 
   return (
     <div className={classes.fab}>
       <Zoom in={show}>
-        <Fab color='primary' onClick={onClick} disabled={disabled}>
-          <Icon className={classes.fabIcon} />
-        </Fab>
+        <Tooltip placement='left' title={tooltipTitle} arrow>
+          <Fab color='primary' onClick={onClick} disabled={disabled}>
+            <Icon className={classes.fabIcon} />
+          </Fab>
+        </Tooltip>
       </Zoom>
     </div>
   )

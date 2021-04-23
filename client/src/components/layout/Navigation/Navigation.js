@@ -18,18 +18,20 @@ import InfoIcon from '@material-ui/icons/Info'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import NavItem from './NavItem'
 import PersonIcon from '@material-ui/icons/Person'
-import TimelineIcon from '@material-ui/icons/Timeline'
 
 import { Link, useLocation } from 'react-router-dom'
-import { Box, Divider, Grid, withStyles } from '@material-ui/core'
+import { Box, Divider, Grid, MenuItem, withStyles } from '@material-ui/core'
 
 import useStyles from './styles'
-import UserMenu from './UserMenu'
-import { useSelector } from 'react-redux'
+import Menu from '../Menu'
+import { useDispatch, useSelector } from 'react-redux'
+import useMenu from './../../../hooks/useMenu'
+import { signout } from '../../../state/auth/authActions'
 
 const Navigation = ({ window, children }) => {
   const location = useLocation().pathname
   const user = useSelector(state => state.auth.user)
+  const dispatch = useDispatch()
 
   const [title, setTitle] = React.useState('Food')
 
@@ -51,15 +53,13 @@ const Navigation = ({ window, children }) => {
   const classes = useStyles()
   const theme = useTheme()
   const [mobileOpen, setMobileOpen] = React.useState(false)
-  const [anchorEl, setAnchorEl] = React.useState(null)
 
-  const handleOpenMenu = event => {
-    setAnchorEl(event.currentTarget)
+  const handleLogout = () => {
+    handleCloseMenu()
+    dispatch(signout())
   }
 
-  const handleCloseMenu = () => {
-    setAnchorEl(null)
-  }
+  const [anchorEl, handleOpenMenu, handleCloseMenu] = useMenu()
 
   const links = [
     { to: '/', text: 'Day', icon: <TodayIcon /> },
@@ -70,7 +70,7 @@ const Navigation = ({ window, children }) => {
       text: 'Recipes',
       icon: <MenuBookIcon />,
     },
-    { to: '#', text: 'Statistics', icon: <TimelineIcon /> },
+    // { to: '#', text: 'Statistics', icon: <TimelineIcon /> },
     { to: '/profile', text: 'Profile', icon: <PersonIcon /> },
   ]
 
@@ -103,7 +103,13 @@ const Navigation = ({ window, children }) => {
         <IconButton edge='end' color='inherit' onClick={handleOpenMenu}>
           <AccountCircle />
         </IconButton>
-        <UserMenu anchorEl={anchorEl} handleClose={handleCloseMenu} />
+        <Menu anchorEl={anchorEl} handleClose={handleCloseMenu}>
+          <MenuItem component={Link} to='/profile' onClick={handleCloseMenu}>
+            Profile
+          </MenuItem>
+          <Divider />
+          <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        </Menu>
       </Toolbar>
     </AppBar>
   )

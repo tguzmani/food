@@ -13,12 +13,14 @@ import {
 import { connect } from 'react-redux'
 import { createReference } from './../../state/reference/referenceActions'
 import ReferenceItem from './ReferenceItem'
+import FAB from '../layout/FAB'
+import AddIcon from '@material-ui/icons/Add'
 
-const NewReferenceDialog = ({ referenceName, createReference }) => {
+const NewReferenceDialog = ({ createReference }) => {
   const [open, setOpen] = React.useState(false)
 
   const [reference, setReference] = React.useState({
-    name: referenceName,
+    name: '',
     protein: 0,
     carbs: 0,
     fat: 0,
@@ -59,9 +61,12 @@ const NewReferenceDialog = ({ referenceName, createReference }) => {
 
   return (
     <>
-      <Button color='primary' onClick={handleClickOpen}>
-        Add {referenceName}
-      </Button>
+      <FAB
+        show
+        Icon={AddIcon}
+        onClick={handleClickOpen}
+        tooltipTitle='Add Reference'
+      />
 
       <Dialog
         open={open}

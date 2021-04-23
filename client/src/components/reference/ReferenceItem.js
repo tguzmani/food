@@ -37,7 +37,7 @@ const Delete = () => (
   </Box>
 )
 
-const ReferenceItem = ({ reference, deleteReference, preview }) => {
+const ReferenceItem = ({ reference, deleteReference, preview, divider }) => {
   const classes = useStyles()
 
   const [open, setOpen] = React.useState(false)
@@ -63,27 +63,36 @@ const ReferenceItem = ({ reference, deleteReference, preview }) => {
             action: () => deleteReference(reference),
           }
         }
-        threshold={0.9}
+        threshold={0.8}
       >
-        <ListItem className={classes.root} divider onClick={handleOpen}>
+        <ListItem
+          className={classes.root}
+          divider={divider}
+          onClick={handleOpen}
+          button
+        >
           <Grid container spacing={2} alignItems='center'>
-            <Grid item xs={5}>
+            <Grid item xs={6}>
               {capitalize(reference.name)}
             </Grid>
-            <Grid item xs={7}>
+
+            <Grid item xs={6}>
               <Grid
                 container
                 justify='space-around'
                 spacing={2}
                 alignItems='center'
               >
-                <Value color=''>
-                  {reference.isDirty && 'D'}
-                  {reference.isAlcohol && 'A'}
-                </Value>
                 <Value color='red'>{displayMacro(reference.protein)}</Value>
                 <Value color='blue'>{displayMacro(reference.carbs)}</Value>
                 <Value color='green'>{displayMacro(reference.fat)}</Value>
+                <Grid item xs={3} style={{ textAlign: 'right' }}>
+                  <div>
+                    {reference.isDirty && reference.isAlcohol
+                      ? 'A'
+                      : reference.isDirty && 'D'}
+                  </div>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
