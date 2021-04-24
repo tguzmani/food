@@ -15,6 +15,7 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
 
     const onlyFood = /^([a-zá-ú]+\s{0,1})+$/i
     const foodAndNumbers = /^([a-zá-ú]+\s[0-9]+\s{0,1})+$/i
+    const foodAndCalc = /^[a-zá-ú]+\s[0-9]+\*[0-9]+(\/[0-9]+)?$/i
     const recipe = /^r:[a-zá-ú]+$/i
 
     if (onlyFood.test(query)) {
@@ -52,6 +53,17 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
 
     if (recipe.test(query)) {
       createFoodsByRecipe({ recipeName: query.substring(2), meal: 0 })
+      setQuery('')
+    }
+
+    if (foodAndCalc.test(query)) {
+      createFood({
+        name: queryArray[0].toLowerCase(),
+        quantity: eval(queryArray[1]),
+        meal: 0,
+      })
+
+      setQuery('')
     }
   }
 

@@ -4,10 +4,12 @@ import useFoods from './../../hooks/useFoods'
 
 const Cleanliness = () => {
   const foods = useFoods('meals')
+  const cleanliness = getCleanliness(foods)
 
   return (
     <div>
-      <span role='img'>💎</span> {Math.round(getCleanliness(foods))}%
+      <span role='img'>💎</span>{' '}
+      {!isNaN(cleanliness) && Math.round(cleanliness)}%
     </div>
   )
 }
