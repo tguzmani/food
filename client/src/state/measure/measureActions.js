@@ -5,6 +5,7 @@ import {
   CREATE,
   READ,
   READ_ALL,
+  READ_BY_QUERY,
   UPDATE,
   DELETE,
 } from './measureTypes'
@@ -39,6 +40,19 @@ export const readMeasures = () => async dispatch => {
   try {
     const res = await axios.get('/api/measure/all')
     dispatch({ type: READ_ALL, payload: res.data })
+  } catch (error) {
+    handleError(dispatch, error)
+  }
+}
+
+export const readMeasuresByQuery = query => async dispatch => {
+  setLoading()(dispatch)
+
+  const { from, to } = query
+
+  try {
+    const res = await axios.get(`/api/measure/q?from=${from}&to=${to}`)
+    dispatch({ type: READ_BY_QUERY, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)
   }

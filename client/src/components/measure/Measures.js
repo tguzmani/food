@@ -1,7 +1,7 @@
 import React from 'react'
 import dayjs from 'dayjs'
-import Plot from './Plot'
-import StatisticsTable from './StatisticsTable'
+import Plot from '../statistics/Plot'
+import StatisticsTable from '../statistics/StatisticsTable'
 import MeasureList from './MeasureList'
 
 const Measures = ({ measures, current }) => {
@@ -51,8 +51,8 @@ const Measures = ({ measures, current }) => {
 
   return (
     <>
-      <Plot measures={thisMeasures} />
-      <StatisticsTable measures={thisMeasures} />
+      <Plot data={thisMeasures} property='weight' />
+      <StatisticsTable data={thisMeasures} property='weight' />
       <MeasureList measures={thisMeasures} />
     </>
   )

@@ -12,6 +12,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { useTheme } from '@material-ui/core/styles'
 import TodayIcon from '@material-ui/icons/Today'
+import TimelineIcon from '@material-ui/icons/Timeline'
 import AssessmentIcon from '@material-ui/icons/Assessment'
 import MenuBookIcon from '@material-ui/icons/MenuBook'
 import InfoIcon from '@material-ui/icons/Info'
@@ -41,7 +42,7 @@ const Navigation = ({ window, children }) => {
     '/recipes': 'Recipes',
     '/references': 'References',
     '/profile': 'Profile',
-    '/stats': 'Statistics',
+    '/statistics': 'Statistics',
   }
 
   React.useEffect(() => {
@@ -70,7 +71,7 @@ const Navigation = ({ window, children }) => {
       text: 'Recipes',
       icon: <MenuBookIcon />,
     },
-    // { to: '#', text: 'Statistics', icon: <TimelineIcon /> },
+    { to: '/statistics', text: 'Statistics', icon: <TimelineIcon /> },
     { to: '/profile', text: 'Profile', icon: <PersonIcon /> },
   ]
 

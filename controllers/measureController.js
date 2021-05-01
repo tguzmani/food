@@ -45,7 +45,7 @@ exports.readMeasuresByQuery = async (req, res) => {
     user: req.userId,
     createdAt: {
       $gte: moment(initialDate),
-      $lt: moment(finalDate),
+      $lte: moment(finalDate),
     },
   })
     .then(measures => res.json(measures))

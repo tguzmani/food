@@ -15,17 +15,17 @@ const useStyles = makeStyles(theme => ({
   root: { padding: theme.spacing(1) },
 }))
 
-const StatisticsTable = ({ measures }) => {
-  const data = measures.map(measure => measure['weight'])
+const StatisticsTable = ({ data, property }) => {
+  const tableData = data.map(element => element[property])
 
   const classes = useStyles()
 
   const row = {
-    min: Math.min(...data),
-    max: Math.max(...data),
-    mean: mean(data).toFixed(2),
-    stdev: stdev(data).toFixed(2),
-    sum: sum(data).toFixed(2),
+    min: Math.min(...tableData),
+    max: Math.max(...tableData),
+    mean: mean(tableData).toFixed(2),
+    stdev: stdev(tableData).toFixed(2),
+    sum: sum(tableData).toFixed(2),
   }
 
   return (

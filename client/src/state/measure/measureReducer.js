@@ -7,12 +7,14 @@ import {
   READ_ALL,
   UPDATE,
   DELETE,
+  READ_BY_QUERY,
 } from './measureTypes'
 
 const initialState = {
   loading: false,
   message: null,
   measures: [],
+  measuresByQuery: [],
 }
 
 const measureReducer = (state = initialState, action) => {
@@ -43,6 +45,13 @@ const measureReducer = (state = initialState, action) => {
         measures: state.measures.filter(
           measure => measure._id !== action.payload._id
         ),
+      }
+
+    case READ_BY_QUERY:
+      return {
+        ...state,
+        loading: false,
+        measuresByQuery: action.payload,
       }
 
     case CLEAR_MESSAGE:

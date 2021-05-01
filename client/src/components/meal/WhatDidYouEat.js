@@ -10,6 +10,10 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
     setQuery(e.target.value)
   }
 
+  const clearQuery = () => {
+    setQuery('')
+  }
+
   const queryMatcher = query => {
     const queryArray = query.split(' ')
 
@@ -29,7 +33,7 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
         createFood(food)
       })
 
-      setQuery('')
+      clearQuery()
     }
 
     if (foodAndNumbers.test(query)) {
@@ -48,12 +52,12 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
         createFood(food)
       })
 
-      setQuery('')
+      clearQuery()
     }
 
     if (recipe.test(query)) {
       createFoodsByRecipe({ recipeName: query.substring(2), meal: 0 })
-      setQuery('')
+      clearQuery()
     }
 
     if (foodAndCalc.test(query)) {
@@ -63,7 +67,7 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
         meal: 0,
       })
 
-      setQuery('')
+      clearQuery()
     }
   }
 
