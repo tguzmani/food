@@ -14,17 +14,20 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { readMeasuresByQuery } from './../../state/measure/measureActions'
 import Plot from './Plot'
+import StatisticsTable from './StatisticsTable'
+import BackdropLoading from './../layout/BackdropLoading'
 
 const StatPanel = () => {
-  const measuresByQuery = useSelector(state => state.measure.measuresByQuery)
+  const { loading, measuresByQuery } = useSelector(state => state.measure)
   const dispatch = useDispatch()
 
   const properties = [
     'weight',
     'sleep',
     'fat',
+    'calories',
     'cleanliness',
-    'macros',
+    // 'macros',
     'alcohol',
   ]
 
@@ -52,7 +55,7 @@ const StatPanel = () => {
 
   return (
     <>
-      {/* <Typography variant='body1'>Property</Typography> */}
+      <BackdropLoading open={loading} />
 
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Box>
@@ -98,7 +101,10 @@ const StatPanel = () => {
       <Button onClick={handleSendQuery}>Send Query</Button>
 
       {measuresByQuery.length > 0 && (
-        <Plot data={measuresByQuery} property={property} />
+        <>
+          <StatisticsTable data={measuresByQuery} property={property} />
+          <Plot data={measuresByQuery} property={property} />
+        </>
       )}
     </>
   )

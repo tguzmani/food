@@ -2,7 +2,6 @@ const User = require('../models/User')
 const { genSalt, hash, compare } = require('bcryptjs')
 const { validationResult } = require('express-validator')
 const jwt = require('jsonwebtoken') // generates signed token
-const expressJwt = require('express-jwt') // for authorization check
 
 // returns: user object with no password
 exports.signup = async (req, res) => {
@@ -34,10 +33,7 @@ exports.signup = async (req, res) => {
   }
 }
 
-// effects: stores token in cookie named t
-// returns: object with jswtoken and
 exports.signin = async (req, res) => {
-  // Validation
   const errors = validationResult(req)
 
   if (!errors.isEmpty()) {

@@ -34,14 +34,9 @@ const useStyles = makeStyles(theme => ({
 const LoginForm = ({ signin, isAuthenticated, history, loading }) => {
   const classes = useStyles()
 
-  // const [credentials, setCredentials] = useState({
-  //   email: '',
-  //   password: '',
-  // })
-
   const [credentials, setCredentials] = useState({
-    email: 'tomasg92@gmail.com',
-    password: 'perros',
+    email: '',
+    password: '',
   })
 
   useEffect(() => {
