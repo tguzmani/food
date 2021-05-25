@@ -119,7 +119,7 @@ const MacroInformation = () => {
           value={proteinPref}
           onChange={(e, value) => setProteinPref(value)}
           marks
-          min={0.8}
+          min={0.7}
           max={1.5}
           step={0.1}
           valueLabelDisplay='auto'

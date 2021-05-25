@@ -16,7 +16,9 @@ const BMRs = () => {
     user.units === 'kg' ? profile.baseWeight : profile.baseWeight / 2.2
 
   const bmr =
-    66.5 + 13.75 * weight + 5.003 * profile.height - 6.755 * profile.age
+    user?.sex === 'f'
+      ? 655.1 + 9.563 * weight + 1.85 * profile.height - 4.676 * profile.age
+      : 66.5 + 13.75 * weight + 5.003 * profile.height - 6.755 * profile.age
 
   const bmra = bmr * profile.activity
 
