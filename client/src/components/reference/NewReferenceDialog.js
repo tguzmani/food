@@ -54,6 +54,7 @@ const NewReferenceDialog = ({ createReference }) => {
 
   const computedReference = {
     ...reference,
+    name: reference.name.toLowerCase(),
     protein: protein / portion,
     carbs: carbs / portion,
     fat: fat / portion,
@@ -76,6 +77,8 @@ const NewReferenceDialog = ({ createReference }) => {
         <DialogTitle id='form-dialog-title'>Add Reference</DialogTitle>
         <DialogContent>
           <TextField
+            error={name.match(/\s+/)}
+            helperText={name.match(/\s+/) && 'Name cannot contain spaces'}
             autoFocus
             margin='dense'
             label='Name'
@@ -161,7 +164,7 @@ const NewReferenceDialog = ({ createReference }) => {
           <Button
             onClick={handleCreate}
             color='primary'
-            disabled={portion == 0 || name === ''}
+            disabled={portion == 0 || name === '' || name.match(/\s+/)}
           >
             Add
           </Button>

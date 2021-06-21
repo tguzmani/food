@@ -12,7 +12,7 @@ exports.createRecipe = async (req, res) => {
 
 exports.createRecipeFromFoods = async (req, res) => {
   try {
-    const recipe = Recipe({
+    const recipe = await Recipe({
       ...req.body.foods,
       name: req.body.name,
       user: req.userId,
@@ -36,7 +36,7 @@ exports.createRecipeFromFoods = async (req, res) => {
 }
 
 exports.readRecipes = async (req, res) => {
-  Recipe.find()
+  Recipe.find({ user: req.userId })
     .then(recipes => res.send(recipes))
     .catch(error => res.status(500).json({ error: error.message }))
 }

@@ -66,9 +66,10 @@ exports.readReference = (req, res) => {
 }
 
 exports.createManyReferences = async (req, res) => {
-  const data = req.body.data.map(reference => ({
+  const data = req.body.map(reference => ({
     ...reference,
     user: req.params.userId,
+    _id: undefined,
   }))
   try {
     const references = await Reference.create(data)

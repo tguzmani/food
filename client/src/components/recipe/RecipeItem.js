@@ -36,7 +36,7 @@ const RecipeItem = ({ recipe, deleteRecipe }) => {
         <CardHeader
           avatar={<Avatar>{capitalize(recipe.name).substring(0, 1)}</Avatar>}
           action={
-            <Tooltip title='Create Recipe' placement='left'>
+            <Tooltip title='Delete Recipe' placement='left'>
               <IconButton onClick={() => deleteRecipe(recipe)}>
                 <DeleteIcon />
               </IconButton>
