@@ -57,19 +57,21 @@ const AddMeasureDialog = () => {
 
   const handleAddMeasure = () => {
     // 1/3 -- update last measure
-    const measure = {
-      _id: lastMeasure._id,
-      calories: getTotalCalories(foods),
-      cleanliness: getCleanliness(foods),
-      macros: {
-        protein: getTotalMacro(foods, 'protein'),
-        carbs: getTotalMacro(foods, 'carbs'),
-        fat: getTotalMacro(foods, 'fat'),
-      },
-      alcohol: getAlcoholUnits(foods),
-    }
+    if (lastMeasure) {
+      const measure = {
+        _id: lastMeasure._id,
+        calories: getTotalCalories(foods),
+        cleanliness: getCleanliness(foods),
+        macros: {
+          protein: getTotalMacro(foods, 'protein'),
+          carbs: getTotalMacro(foods, 'carbs'),
+          fat: getTotalMacro(foods, 'fat'),
+        },
+        alcohol: getAlcoholUnits(foods),
+      }
 
-    dispatch(updateMeasure(measure))
+      dispatch(updateMeasure(measure))
+    }
 
     // 2/3 -- create measure
     dispatch(createMeasure({ weight, fat, sleep }))
