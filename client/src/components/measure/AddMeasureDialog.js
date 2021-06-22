@@ -35,7 +35,8 @@ dayjs.extend(isToday)
 const AddMeasureDialog = () => {
   const [open, handleOpen, handleClose] = useDialog()
   const foods = useFoods('meals')
-  const lastMeasure = useSelector(state => state.measure.measures)[0]
+  const measures = useSelector(state => state.measure.measures)
+  const lastMeasure = measures[0]
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -83,7 +84,10 @@ const AddMeasureDialog = () => {
     <>
       <FAB
         Icon={AddIcon}
-        show={lastMeasure && !dayjs(lastMeasure.createdAt).isToday()}
+        show={
+          (lastMeasure && !dayjs(lastMeasure.createdAt).isToday()) ||
+          measures.length === 0
+        }
         onClick={handleOpen}
         tooltipTitle='Weight In!'
       />
