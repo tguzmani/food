@@ -14,6 +14,8 @@ const MacroDistribution = () => {
   const bmr =
     66.5 + 13.75 * weight + 5.003 * profile.height - 6.755 * profile.age
 
+  console.log(bmr)
+
   const bmra = bmr * profile.activity
 
   const bmro = bmra + profile.offset
