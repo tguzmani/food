@@ -60,11 +60,6 @@ exports.deleteReference = async (req, res) => {
     .catch(error => res.status(500).json({ error: error.message }))
 }
 
-// Deprecated?
-exports.readReference = (req, res) => {
-  return res.json(req.product)
-}
-
 exports.createManyReferences = async (req, res) => {
   const data = req.body.map(reference => ({
     ...reference,
@@ -77,4 +72,9 @@ exports.createManyReferences = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message })
   }
+}
+
+// Deprecated?
+exports.readReference = (req, res) => {
+  return res.json(req.product)
 }

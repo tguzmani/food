@@ -63,7 +63,7 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
     if (foodAndCalc.test(query)) {
       createFood({
         name: queryArray[0].toLowerCase(),
-        quantity: eval(queryArray[1]),
+        quantity: eval(queryArray[1]).toFixed(0),
         meal: 0,
       })
 
