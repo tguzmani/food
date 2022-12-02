@@ -1,6 +1,9 @@
 {
   "name": "food",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.14"
+  },
   "description": "A calorie and body measure tracker",
   "main": "app.js",
   "scripts": {
