@@ -1,8 +1,8 @@
 {
-  "name": "food",
+  "name": "food-backend",
   "version": "1.0.0",
   "engines": {
-    "node": "14.19"
+    "node": "18.9"
   },
   "description": "A calorie and body measure tracker",
   "main": "app.js",
