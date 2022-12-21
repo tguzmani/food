@@ -7,8 +7,6 @@ const {
   updateReferenceValidator
 } = require('../references/references.validators')
 
-console.log('updateReferenceValidator', updateReferenceValidator)
-
 const referencesController = require('../references/references.controller')
 
 router.post(

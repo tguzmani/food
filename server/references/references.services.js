@@ -1,4 +1,5 @@
 const referencesRepository = require('./references.mongo.repository')
+const foodsServices = require('../foods/foods.services')
 const Food = require('../models/Food')
 
 const referenceExists = async (name, userId) => {
@@ -30,7 +31,7 @@ const readReferenceById = async referenceId => {
   return await referencesRepository.readReferenceById(referenceId)
 }
 
-const readReferenceByName = async (name, userId) => {
+exports.readReferenceByName = async (name, userId) => {
   return await referencesRepository.readReferenceByName(name, userId)
 }
 
@@ -50,7 +51,7 @@ exports.deleteReference = async (referenceId, userId) => {
 
   if (!reference) throw new Error('Reference not found')
 
-  const foods = await Food.find({ reference: referenceId })
+  const foods = await foodsServices.readFoodsByReference(referenceId)
 
   if (foods.length > 0)
     throw new Error(

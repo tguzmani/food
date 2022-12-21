@@ -8,7 +8,9 @@ exports.createReference = async (reference, userId) => {
 }
 
 exports.readReferenceByName = async (name, userId) => {
-  return await Reference.findOne({ name, user: userId })
+  const reference = await Reference.findOne({ name, user: userId })
+
+  return referencesMapper.mapReferenceToDomain(reference)
 }
 
 exports.readReferencesByUserId = async userId => {

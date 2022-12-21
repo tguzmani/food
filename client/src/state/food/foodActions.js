@@ -29,7 +29,7 @@ export const setLoading = () => dispatch => {
 export const createFood = food => async dispatch => {
   setLoading()(dispatch)
   try {
-    const res = await axios.post(`/api/food/${food.name}`, food, config)
+    const res = await axios.post(`/api/foods`, food, config)
     dispatch({ type: CREATE, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)
@@ -41,7 +41,7 @@ export const createFoodsByRecipe = data => async dispatch => {
   setLoading()(dispatch)
   try {
     const res = await axios.post(
-      `/api/food/byRecipe/${recipeName}`,
+      `/api/foods/byRecipe/${recipeName}`,
       { meal },
       config
     )
@@ -54,7 +54,7 @@ export const createFoodsByRecipe = data => async dispatch => {
 export const readFoods = () => async dispatch => {
   setLoading()(dispatch)
   try {
-    const res = await axios.get('/api/food/all')
+    const res = await axios.get('/api/foods')
     dispatch({ type: READ_ALL, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)
@@ -64,7 +64,7 @@ export const readFoods = () => async dispatch => {
 export const updateFood = (food, loading = true) => async dispatch => {
   if (loading) setLoading()(dispatch)
   try {
-    const res = await axios.put(`/api/food/${food._id}`, food, config)
+    const res = await axios.put(`/api/foods/${food._id}`, food, config)
     dispatch({ type: UPDATE, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)
@@ -78,7 +78,7 @@ export const softUpdateFood = food => dispatch => {
 export const deleteFood = food => async dispatch => {
   setLoading()(dispatch)
   try {
-    const res = await axios.delete(`/api/food/${food._id}`)
+    const res = await axios.delete(`/api/foods/${food._id}`)
     dispatch({ type: DELETE, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)
@@ -88,7 +88,7 @@ export const deleteFood = food => async dispatch => {
 export const deleteAllFoods = food => async dispatch => {
   setLoading()(dispatch)
   try {
-    const res = await axios.delete(`/api/food/`)
+    const res = await axios.delete(`/api/foods/`)
     dispatch({ type: DELETE_ALL, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)
