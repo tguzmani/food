@@ -1,4 +1,4 @@
-const User = require('../models/User')
+const User = require('../server/models/User')
 
 exports.readUser = async (req, res) => {
   User.findById(req.userId)
