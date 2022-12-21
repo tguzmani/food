@@ -1,4 +1,5 @@
-const User = require('../server/models/User')
+// const User = require('../models/User')
+const User = require('../users/users.model')
 const { genSalt, hash, compare } = require('bcryptjs')
 const { validationResult } = require('express-validator')
 const jwt = require('jsonwebtoken') // generates signed token
@@ -29,7 +30,7 @@ exports.signup = async (req, res) => {
     return res.json({ message: 'Signin successfull' })
     // res.json({ user })
   } catch (error) {
-    res.status(400).json({ error: errorHandler(error) })
+    res.status(400).json({ error: error.message })
   }
 }
 

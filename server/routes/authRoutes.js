@@ -5,10 +5,14 @@ const { auth } = require('../middleware/auth')
 
 const { signup, signin, signout } = require('../controllers/authController')
 
-const { userSignUpValidator, userSignInValidator } = require('../validator')
+const authController = require('../auth/auth.controller')
 
-router.post('/signup', userSignUpValidator, signup)
-router.post('/signin', userSignInValidator, signin)
-router.get('/signout', auth, signout)
+const { validate } = require('../middleware/validate')
+
+const { signInValidator, signUpValidator } = require('../auth/auth.validators')
+
+router.post('/sign-up', signUpValidator, authController.signUp)
+router.post('/sign-in', signInValidator, authController.signIn)
+router.get('/sign-out', auth, authController.signOut)
 
 module.exports = router

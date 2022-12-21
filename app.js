@@ -1,5 +1,5 @@
 const express = require('express')
-const connectDB = require('./database')
+const connectDB = require('./server/config/mongo.config')
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
 const path = require('path')
@@ -7,7 +7,7 @@ const cors = require('cors')
 require('dotenv').config()
 
 const useRoute = route => {
-  app.use(`/api/${route}`, require(`./routes/${route}Routes`))
+  app.use(`/api/${route}`, require(`./server/routes/${route}Routes`))
 }
 
 // App initialization
@@ -21,7 +21,7 @@ app.use(cookieParser())
 app.use(cors())
 
 // Routes Middleware
-routes = ['auth', 'food', 'measure', 'reference', 'user', 'recipe']
+routes = ['auth', 'food', 'measure', 'reference', 'users', 'recipe']
 routes.forEach(route => useRoute(route))
 
 // Serve static assets in production

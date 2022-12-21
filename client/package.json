@@ -14,8 +14,8 @@
     "@testing-library/user-event": "^7.1.2",
     "animated-number-react": "^0.0.2",
     "axios": "^0.21.1",
-    "bootstrap": "^4.4.1",
     "date-fns": "^2.21.1",
+    "node-sass": "^8.0.0",
     "react": "^16.13.1",
     "react-datepicker": "^3.0.0",
     "react-dom": "^16.13.1",
@@ -31,8 +31,8 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

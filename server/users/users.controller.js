@@ -1,13 +1,14 @@
-const User = require('../users/users.model')
+const usersServices = require('./users.services')
 
-exports.readUser = async (req, res) => {
-  User.findById(req.userId)
-    .select('-password')
-    .then(user => {
-      if (!user) res.status(400).send({ message: 'User not found' })
-      res.json(user)
-    })
-    .catch(error => res.status(400).send({ error: error.message }))
+exports.readUserById = async (req, res) => {
+  try {
+    const user = await usersServices.readUserById(req.userId)
+    console.log(req.userId)
+
+    return res.json(user)
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
 }
 
 exports.updateUser = async (req, res) => {

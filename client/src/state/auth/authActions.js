@@ -26,7 +26,7 @@ export const signin = credentials => async dispatch => {
   setLoading()(dispatch)
 
   try {
-    const res = await axios.post('/api/auth/signin', credentials, config)
+    const res = await axios.post('/api/auth/sign-in', credentials, config)
     dispatch({ type: SIGN_IN, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)
@@ -37,7 +37,7 @@ export const readUser = () => async dispatch => {
   setLoading()(dispatch)
 
   try {
-    const res = await axios.get(`/api/user/`)
+    const res = await axios.get(`/api/users/`)
     dispatch({ type: READ_USER, payload: res.data })
   } catch (error) {
     dispatch({ type: ERROR, payload: error.response.data.message })
@@ -48,7 +48,7 @@ export const updateUser = user => async dispatch => {
   setLoading()(dispatch)
 
   try {
-    const res = await axios.put(`/api/user/`, user, config)
+    const res = await axios.put(`/api/users/`, user, config)
     dispatch({ type: UPDATE_USER, payload: res.data })
   } catch (error) {
     dispatch({ type: ERROR, payload: error.response.data.message })
@@ -59,7 +59,7 @@ export const signout = () => async dispatch => {
   setLoading()(dispatch)
 
   try {
-    await axios.get(`/api/auth/signout`)
+    await axios.get(`/api/auth/sign-out`)
     dispatch({ type: SIGN_OUT })
   } catch (error) {
     dispatch({ type: ERROR, payload: error.response.data.message })
