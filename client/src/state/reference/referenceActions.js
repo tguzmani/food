@@ -29,7 +29,7 @@ export const setLoading = () => dispatch => {
 export const createReference = reference => async dispatch => {
   setLoading()(dispatch)
   try {
-    const res = await axios.post(`/api/reference`, reference, config)
+    const res = await axios.post(`/api/references`, reference, config)
     dispatch({ type: CREATE, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)
@@ -39,7 +39,7 @@ export const createReference = reference => async dispatch => {
 export const readReferences = () => async dispatch => {
   setLoading()(dispatch)
   try {
-    const res = await axios.get('/api/reference/all')
+    const res = await axios.get('/api/references')
     dispatch({ type: READ_ALL, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)
@@ -50,7 +50,7 @@ export const updateReference = reference => async dispatch => {
   setLoading()(dispatch)
   try {
     const res = await axios.put(
-      `/api/reference/${reference._id}`,
+      `/api/references/${reference._id}`,
       reference,
       config
     )
@@ -63,7 +63,7 @@ export const updateReference = reference => async dispatch => {
 export const deleteReference = reference => async dispatch => {
   setLoading()(dispatch)
   try {
-    const res = await axios.delete(`/api/reference/${reference._id}`)
+    const res = await axios.delete(`/api/references/${reference._id}`)
     dispatch({ type: DELETE, payload: res.data })
     dispatch({ type: CLEAR_FILTER })
   } catch (error) {
