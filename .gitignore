@@ -6,3 +6,6 @@ framework
 dev.*
 .env
 yarn.lock
+
+.vscode
+.idea
