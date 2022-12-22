@@ -1,5 +1,5 @@
-import { createMuiTheme } from '@material-ui/core/styles'
-import { blue, grey, green } from '@material-ui/core/colors'
+import { createTheme, adaptV4Theme } from '@mui/material/styles';
+import { blue } from '@mui/material/colors'
 
 const typography = {
   fontFamily: ['Lato', 'sans-serif'].join(','),
@@ -52,11 +52,11 @@ const palette = {
   // background: { default: '#F5F7FA' },
 }
 
-const theme = createMuiTheme({
+const theme = createTheme(adaptV4Theme({
   typography,
   shape,
   palette,
   overrides,
-})
+}))
 
 export default theme

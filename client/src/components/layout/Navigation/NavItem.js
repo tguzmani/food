@@ -1,5 +1,5 @@
-import MuiListItem from '@material-ui/core/ListItem'
-import { withStyles } from '@material-ui/core'
+import MuiListItem from '@mui/material/ListItem'
+import withStyles from '@mui/styles/withStyles';
 
 const NavItem = withStyles(theme => ({
   root: {

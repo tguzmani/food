@@ -1,4 +1,4 @@
-import { Card, CardContent, Grid, Box, Divider } from '@material-ui/core'
+import { Grid, Box } from '@mui/material'
 import React from 'react'
 import Calories from './Calories'
 import Cleanliness from './Cleanliness'
@@ -46,7 +46,7 @@ const Macros = () => {
         </Grid>
       </Box>
 
-      <Grid container justify={justify} spacing={spacing}>
+      <Grid container justifyContent={justify} spacing={spacing}>
         <Grid item>
           <Macro macro='protein' />
         </Grid>
@@ -62,7 +62,7 @@ const Macros = () => {
       {/* </CardContent>
     </Card> */}
     </Box>
-  )
+  );
 }
 
 export default Macros

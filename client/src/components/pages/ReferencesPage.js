@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import SearchReference from '../reference/SearchReference'
 import References from '../reference/References'
 import { readReferences } from '../../state/reference/referenceActions'
-import { Container } from '@material-ui/core'
+import { Container } from '@mui/material'
 
 const ReferencesPage = ({
   readReferences,
@@ -14,6 +14,7 @@ const ReferencesPage = ({
 }) => {
   React.useEffect(() => {
     if (references.length === 0) readReferences()
+    // eslint-disable-next-line
   }, [])
 
   if (references.length === 0 && loading) return <div>Loading...</div>

@@ -7,7 +7,7 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
-} from '@material-ui/core'
+} from '@mui/material'
 
 import {
   getAlcoholUnits,
@@ -15,7 +15,7 @@ import {
   getCleanliness,
 } from './../../util/food'
 
-import AddIcon from '@material-ui/icons/Add'
+import AddIcon from '@mui/icons-material/Add'
 import useDialog from '../../hooks/useDialog'
 import useFoods from './../../hooks/useFoods'
 
@@ -40,6 +40,7 @@ const AddMeasureDialog = () => {
 
   useEffect(() => {
     dispatch(readFoods())
+    // eslint-disable-next-line
   }, [])
 
   const [measure, setMeasure] = React.useState({

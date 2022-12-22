@@ -1,15 +1,14 @@
 import React from 'react'
-import { Box, Divider, Typography, Grid } from '@material-ui/core'
+import { Box, Divider, Typography, Grid } from '@mui/material'
 import { useSelector } from 'react-redux'
 
 import dayjs from 'dayjs'
 
-import EventIcon from '@material-ui/icons/Event'
-import EmailIcon from '@material-ui/icons/Email'
+import EventIcon from '@mui/icons-material/Event'
+import EmailIcon from '@mui/icons-material/Email'
 import PersonalInformation from './PersonalInformation'
 import MacroInformation from './MacroInformation'
 import BMRs from './BMRs'
-import MacroDistribution from './MacroDistribution'
 
 const UserInformation = () => {
   const user = useSelector(state => state.auth.user)

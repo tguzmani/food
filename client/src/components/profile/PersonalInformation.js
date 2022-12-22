@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Button, TextField } from '@material-ui/core'
+import { TextField } from '@mui/material'
 import { useSelector, useDispatch } from 'react-redux'
 import { setFields, setState } from './../../state/profile/profileActions'
 
@@ -11,6 +11,7 @@ const PersonalInformation = () => {
   useEffect(() => {
     if (user)
       dispatch(setState({ age: user.age, height: user.height, sex: user.sex }))
+      // eslint-disable-next-line
   }, [])
 
   if (!user) return <div>Loading...</div>

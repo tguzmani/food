@@ -8,12 +8,12 @@ import {
   Avatar,
   IconButton,
   Tooltip,
-} from '@material-ui/core'
+} from '@mui/material'
 import React from 'react'
 import { getTotalCalories } from '../../util/food'
 import Foods from '../food/Foods'
 import Total from '../food/Total'
-import DeleteIcon from '@material-ui/icons/Delete'
+import DeleteIcon from '@mui/icons-material/Delete'
 import RecipeDialog from './RecipeDialog'
 import useFoods from './../../hooks/useFoods'
 import { capitalize } from './../../util/index'
@@ -26,10 +26,6 @@ const RecipeItem = ({ recipe, deleteRecipe }) => {
 
   const [open, setOpen] = React.useState(false)
 
-  const handleOpen = () => {
-    setOpen(true)
-  }
-
   return (
     <Box mt={3}>
       <Card>
@@ -37,7 +33,7 @@ const RecipeItem = ({ recipe, deleteRecipe }) => {
           avatar={<Avatar>{capitalize(recipe.name).substring(0, 1)}</Avatar>}
           action={
             <Tooltip title='Delete Recipe' placement='left'>
-              <IconButton onClick={() => deleteRecipe(recipe)}>
+              <IconButton onClick={() => deleteRecipe(recipe)} size="large">
                 <DeleteIcon />
               </IconButton>
             </Tooltip>
@@ -56,7 +52,7 @@ const RecipeItem = ({ recipe, deleteRecipe }) => {
 
       <RecipeDialog foods={thisRecipeFoods} open={open} setOpen={setOpen} />
     </Box>
-  )
+  );
 }
 
 const mapActionsToProps = { deleteRecipe }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect, useSelector } from 'react-redux'
+import { connect } from 'react-redux'
 
 import { readFoods } from '../../state/food/foodActions'
 import Meals from './../meal/Meals'
@@ -8,7 +8,7 @@ import PreviewMeal from '../meal/PreviewMeal'
 import Macros from '../macro/Macros'
 import useFoods from './../../hooks/useFoods'
 import useMealNumbers from './../../hooks/useMealNumbers'
-import { Container, Grid } from '@material-ui/core'
+import { Container } from '@mui/material'
 
 const Day = ({ readFoods, foodState }) => {
   const { loading: loadingFood } = foodState
@@ -22,6 +22,7 @@ const Day = ({ readFoods, foodState }) => {
       readFoods()
       setOnce(false)
     }
+    // eslint-disable-next-line
   }, [foods])
 
   // if (foods.length === 0 && loadingFood)

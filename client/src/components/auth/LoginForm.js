@@ -11,10 +11,10 @@ import {
   Typography,
   Grid,
   Avatar,
-} from '@material-ui/core'
+} from '@mui/material'
 
-import { makeStyles } from '@material-ui/core/styles'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import makeStyles from '@mui/styles/makeStyles';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 
 const useStyles = makeStyles(theme => ({
   submit: {

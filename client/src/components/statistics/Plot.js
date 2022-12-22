@@ -1,12 +1,10 @@
-import { Box, Paper, useTheme } from '@material-ui/core'
+import { Box, Paper, useTheme } from '@mui/material'
 import React from 'react'
-import { useSelector } from 'react-redux'
 import CanvasJSReact from '../../lib/canvasjs.react'
 import { capitalize } from '../../util/index'
 
-import { red, green, blue } from '@material-ui/core/colors'
+import { red, green, blue } from '@mui/material/colors'
 
-const CanvasJS = CanvasJSReact.CanvasJS
 const CanvasJSChart = CanvasJSReact.CanvasJSChart
 
 const Plot = ({ data, property }) => {

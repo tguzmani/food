@@ -1,6 +1,6 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Fab, Tooltip, Zoom } from '@material-ui/core'
+import makeStyles from '@mui/styles/makeStyles';
+import { Fab, Tooltip, Zoom } from '@mui/material'
 
 const useStyles = makeStyles(theme => ({
   fab: {

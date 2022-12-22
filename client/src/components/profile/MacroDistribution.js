@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Grid, Box, Typography } from '@material-ui/core'
+import { Grid, Box, Typography } from '@mui/material'
 
 const MacroDistribution = () => {
   const user = useSelector(state => state.auth.user)

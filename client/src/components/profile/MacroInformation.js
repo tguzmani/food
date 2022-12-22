@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Slider, TextField, Typography, Box } from '@material-ui/core'
+import React, { useState, useEffect } from 'react'
+import { Slider, TextField, Typography, Box } from '@mui/material'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { activityOptions, activityMarks } from './activity'
@@ -22,6 +22,7 @@ const MacroInformation = () => {
           proteinPref: user.proteinPref,
         })
       )
+      // eslint-disable-next-line
   }, [])
 
   const [activity, setActivity] = useState(user.activity || 1.2)
@@ -30,14 +31,17 @@ const MacroInformation = () => {
 
   useEffect(() => {
     dispatch(setFields('activity', activity))
+    // eslint-disable-next-line
   }, [activity])
 
   useEffect(() => {
     dispatch(setFields('proteinPref', proteinPref))
+    // eslint-disable-next-line
   }, [proteinPref])
 
   useEffect(() => {
     dispatch(setFields('fatPref', fatPref))
+    // eslint-disable-next-line
   }, [fatPref])
 
   if (!user) return <div>Loading...</div>

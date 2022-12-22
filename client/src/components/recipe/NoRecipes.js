@@ -1,7 +1,7 @@
 import React from 'react'
-import MoreVertIcon from '@material-ui/icons/MoreVert'
-import MenuBookIcon from '@material-ui/icons/MenuBook'
-import { Box, Typography } from '@material-ui/core'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
+import MenuBookIcon from '@mui/icons-material/MenuBook'
+import { Box, Typography } from '@mui/material'
 
 const NoRecipes = () => {
   return (

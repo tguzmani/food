@@ -1,6 +1,6 @@
 import React from 'react'
 import StatPanel from './../statistics/StatPanel'
-import { Box, Grid } from '@material-ui/core'
+import { Grid } from '@mui/material'
 
 const StatisticsPage = () => {
   const panelIds = [1]

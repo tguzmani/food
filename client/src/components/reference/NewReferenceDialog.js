@@ -9,12 +9,12 @@ import {
   TextField,
   Switch,
   Typography,
-} from '@material-ui/core'
+} from '@mui/material'
 import { connect } from 'react-redux'
 import { createReference } from './../../state/reference/referenceActions'
 import ReferenceItem from './ReferenceItem'
 import FAB from '../layout/FAB'
-import AddIcon from '@material-ui/icons/Add'
+import AddIcon from '@mui/icons-material/Add'
 
 const NewReferenceDialog = ({ createReference }) => {
   const [open, setOpen] = React.useState(false)
@@ -60,118 +60,116 @@ const NewReferenceDialog = ({ createReference }) => {
     fat: fat / portion,
   }
 
-  return (
-    <>
-      <FAB
-        show
-        Icon={AddIcon}
-        onClick={handleClickOpen}
-        tooltipTitle='Add Reference'
-      />
+  return <>
+    <FAB
+      show
+      Icon={AddIcon}
+      onClick={handleClickOpen}
+      tooltipTitle='Add Reference'
+    />
 
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='form-dialog-title'
-      >
-        <DialogTitle id='form-dialog-title'>Add Reference</DialogTitle>
-        <DialogContent>
-          <TextField
-            error={name.match(/\s+/)}
-            helperText={name.match(/\s+/) && 'Name cannot contain spaces'}
-            autoFocus
-            margin='dense'
-            label='Name'
-            type='text'
-            name='name'
-            value={name}
-            onChange={onChange}
-            fullWidth
-          />
+    <Dialog
+      open={open}
+      onClose={handleClose}
+      aria-labelledby='form-dialog-title'
+    >
+      <DialogTitle id='form-dialog-title'>Add Reference</DialogTitle>
+      <DialogContent>
+        <TextField
+          error={name.match(/\s+/)}
+          helperText={name.match(/\s+/) && 'Name cannot contain spaces'}
+          autoFocus
+          margin='dense'
+          label='Name'
+          type='text'
+          name='name'
+          value={name}
+          onChange={onChange}
+          fullWidth
+        />
 
-          <TextField
-            margin='dense'
-            label='Portion Size'
-            type='number'
-            name='portion'
-            value={portion}
-            onChange={onChange}
-            fullWidth
-          />
+        <TextField
+          margin='dense'
+          label='Portion Size'
+          type='number'
+          name='portion'
+          value={portion}
+          onChange={onChange}
+          fullWidth
+        />
 
-          <TextField
-            margin='dense'
-            label='Protein'
-            type='number'
-            name='protein'
-            value={protein}
-            onChange={onChange}
-            fullWidth
-          />
+        <TextField
+          margin='dense'
+          label='Protein'
+          type='number'
+          name='protein'
+          value={protein}
+          onChange={onChange}
+          fullWidth
+        />
 
-          <TextField
-            margin='dense'
-            label='Carbs'
-            type='number'
-            name='carbs'
-            value={carbs}
-            onChange={onChange}
-            fullWidth
-          />
+        <TextField
+          margin='dense'
+          label='Carbs'
+          type='number'
+          name='carbs'
+          value={carbs}
+          onChange={onChange}
+          fullWidth
+        />
 
-          <TextField
-            margin='dense'
-            label='Fat'
-            type='number'
-            name='fat'
-            value={fat}
-            onChange={onChange}
-            fullWidth
-          />
+        <TextField
+          margin='dense'
+          label='Fat'
+          type='number'
+          name='fat'
+          value={fat}
+          onChange={onChange}
+          fullWidth
+        />
 
-          <FormControlLabel
-            control={
-              <Switch
-                checked={isDirty}
-                onChange={onChangeSwitch}
-                name='isDirty'
-                color='primary'
-              />
-            }
-            label='Dirty'
-          />
+        <FormControlLabel
+          control={
+            <Switch
+              checked={isDirty}
+              onChange={onChangeSwitch}
+              name='isDirty'
+              color='primary'
+            />
+          }
+          label='Dirty'
+        />
 
-          <FormControlLabel
-            control={
-              <Switch
-                checked={isAlcohol}
-                onChange={onChangeSwitch}
-                name='isAlcohol'
-                color='primary'
-              />
-            }
-            label='Alcohol'
-          />
+        <FormControlLabel
+          control={
+            <Switch
+              checked={isAlcohol}
+              onChange={onChangeSwitch}
+              name='isAlcohol'
+              color='primary'
+            />
+          }
+          label='Alcohol'
+        />
 
-          <Typography variant='body1'>Preview</Typography>
-          <ReferenceItem reference={computedReference} preview />
-        </DialogContent>
+        <Typography variant='body1'>Preview</Typography>
+        <ReferenceItem reference={computedReference} preview />
+      </DialogContent>
 
-        <DialogActions>
-          <Button onClick={handleClose} color='primary'>
-            Cancel
-          </Button>
-          <Button
-            onClick={handleCreate}
-            color='primary'
-            disabled={portion == 0 || name === '' || name.match(/\s+/)}
-          >
-            Add
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </>
-  )
+      <DialogActions>
+        <Button onClick={handleClose} color='primary'>
+          Cancel
+        </Button>
+        <Button
+          onClick={handleCreate}
+          color='primary'
+          disabled={portion === 0 || name === '' || name.match(/\s+/)}
+        >
+          Add
+        </Button>
+      </DialogActions>
+    </Dialog>
+  </>;
 }
 
 const mapActionsToProps = { createReference }

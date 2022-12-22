@@ -1,7 +1,6 @@
 import React from 'react'
-import Detail from './Detail'
 import { useSelector } from 'react-redux'
-import { Box, Typography } from '@material-ui/core'
+import { Box, Typography } from '@mui/material'
 import MacroDistribution from './MacroDistribution'
 
 const BMRs = () => {

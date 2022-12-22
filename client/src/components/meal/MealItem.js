@@ -6,16 +6,15 @@ import {
   CardHeader,
   Avatar,
   IconButton,
-  Tooltip,
-  makeStyles,
   MenuItem,
   Divider,
-} from '@material-ui/core'
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import React from 'react'
 import { getCleanliness, getTotalCalories } from '../../util/food'
 import Foods from '../food/Foods'
 import Total from '../food/Total'
-import MoreVertIcon from '@material-ui/icons/MoreVert'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
 import RecipeDialog from '../recipe/RecipeDialog'
 import Menu from '../layout/Menu'
 import useMenu from './../../hooks/useMenu'
@@ -55,7 +54,7 @@ const MealItem = ({ foods, number }) => {
         <CardHeader
           avatar={<Avatar className={classes.avatar}>{number}</Avatar>}
           action={
-            <IconButton onClick={handleOpenMenu}>
+            <IconButton onClick={handleOpenMenu} size="large">
               <MoreVertIcon />
             </IconButton>
           }
@@ -79,7 +78,7 @@ const MealItem = ({ foods, number }) => {
 
       <RecipeDialog foods={thisMealFoods} open={open} setOpen={setOpen} />
     </Box>
-  )
+  );
 }
 
 export default MealItem

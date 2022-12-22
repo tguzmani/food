@@ -1,13 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {
-  ListItem,
-  Grid,
-  Divider,
-  makeStyles,
-  Input,
-  Box,
-} from '@material-ui/core'
+import { ListItem, Grid, Input, Box } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { capitalize } from './../../util/index'
 import {
   updateFood,
@@ -16,7 +10,7 @@ import {
 } from './../../state/food/foodActions'
 import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
 import '@sandstreamdev/react-swipeable-list/dist/styles.css'
-import DeleteIcon from '@material-ui/icons/Delete'
+import DeleteIcon from '@mui/icons-material/Delete'
 
 const useStyles = makeStyles(theme => ({
   root: { paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1) },
@@ -79,6 +73,7 @@ const FoodItem = ({ food, softUpdateFood, updateFood, deleteFood }) => {
         carbs: isNaN(carbs * quantity) ? 0 : carbs * quantity,
         fat: isNaN(fat * quantity) ? 0 : fat * quantity,
       })
+      // eslint-disable-next-line
   }, [quantity])
 
   return (
@@ -97,7 +92,7 @@ const FoodItem = ({ food, softUpdateFood, updateFood, deleteFood }) => {
           <Grid item xs={7}>
             <Grid
               container
-              justify='space-around'
+              justifyContent='space-around'
               spacing={2}
               alignItems='center'
             >
@@ -119,7 +114,7 @@ const FoodItem = ({ food, softUpdateFood, updateFood, deleteFood }) => {
         </Grid>
       </ListItem>
     </SwipeableListItem>
-  )
+  );
 }
 
 const mapActionsToProps = { softUpdateFood, updateFood, deleteFood }

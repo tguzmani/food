@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { ListItem, Grid, makeStyles, Box } from '@material-ui/core'
+import { ListItem, Grid, Box } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { capitalize } from './../../util/index'
 import { deleteReference } from './../../state/reference/referenceActions'
 
 import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
 import '@sandstreamdev/react-swipeable-list/dist/styles.css'
-import DeleteIcon from '@material-ui/icons/Delete'
+import DeleteIcon from '@mui/icons-material/Delete'
 import UpdateReferenceDialog from './UpdateReferenceDialog'
 
 const useStyles = makeStyles(theme => ({
@@ -54,57 +55,55 @@ const ReferenceItem = ({ reference, deleteReference, preview, divider }) => {
     return Math.round(value)
   }
 
-  return (
-    <>
-      <SwipeableListItem
-        swipeLeft={
-          !preview && {
-            content: <Delete />,
-            action: () => deleteReference(reference),
-          }
+  return <>
+    <SwipeableListItem
+      swipeLeft={
+        !preview && {
+          content: <Delete />,
+          action: () => deleteReference(reference),
         }
-        threshold={0.9}
+      }
+      threshold={0.9}
+    >
+      <ListItem
+        className={classes.root}
+        divider={divider}
+        onClick={handleOpen}
+        button
       >
-        <ListItem
-          className={classes.root}
-          divider={divider}
-          onClick={handleOpen}
-          button
-        >
-          <Grid container spacing={2} alignItems='center'>
-            <Grid item xs={6}>
-              {capitalize(reference.name)}
-            </Grid>
+        <Grid container spacing={2} alignItems='center'>
+          <Grid item xs={6}>
+            {capitalize(reference.name)}
+          </Grid>
 
-            <Grid item xs={6}>
-              <Grid
-                container
-                justify='space-around'
-                spacing={2}
-                alignItems='center'
-              >
-                <Value color='red'>{displayMacro(reference.protein)}</Value>
-                <Value color='blue'>{displayMacro(reference.carbs)}</Value>
-                <Value color='green'>{displayMacro(reference.fat)}</Value>
-                <Grid item xs={3} style={{ textAlign: 'right' }}>
-                  <div>
-                    {reference.isDirty && reference.isAlcohol
-                      ? 'A'
-                      : reference.isDirty && 'D'}
-                  </div>
-                </Grid>
+          <Grid item xs={6}>
+            <Grid
+              container
+              justifyContent='space-around'
+              spacing={2}
+              alignItems='center'
+            >
+              <Value color='red'>{displayMacro(reference.protein)}</Value>
+              <Value color='blue'>{displayMacro(reference.carbs)}</Value>
+              <Value color='green'>{displayMacro(reference.fat)}</Value>
+              <Grid item xs={3} style={{ textAlign: 'right' }}>
+                <div>
+                  {reference.isDirty && reference.isAlcohol
+                    ? 'A'
+                    : reference.isDirty && 'D'}
+                </div>
               </Grid>
             </Grid>
           </Grid>
-        </ListItem>
-      </SwipeableListItem>
-      <UpdateReferenceDialog
-        open={open}
-        setOpen={setOpen}
-        initalReference={reference}
-      />
-    </>
-  )
+        </Grid>
+      </ListItem>
+    </SwipeableListItem>
+    <UpdateReferenceDialog
+      open={open}
+      setOpen={setOpen}
+      initalReference={reference}
+    />
+  </>;
 }
 
 const mapActionsToProps = { deleteReference }

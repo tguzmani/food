@@ -7,7 +7,7 @@ const Cleanliness = () => {
 
   return (
     <div>
-      <span role='img'>🥃</span> {getAlcoholUnits(foods).toFixed(0)}
+      <span role='img' aria-label='drinks'>🥃</span> {getAlcoholUnits(foods).toFixed(0)}
     </div>
   )
 }

@@ -8,7 +8,7 @@ const Cleanliness = () => {
 
   return (
     <div>
-      <span role='img'>💎</span>{' '}
+      <span role='img' aria-label='cleanliness'>💎</span>{' '}
       {!isNaN(cleanliness) && Math.round(cleanliness)}%
     </div>
   )

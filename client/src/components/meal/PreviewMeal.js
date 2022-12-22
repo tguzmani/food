@@ -5,12 +5,12 @@ import {
   Box,
   CardActions,
   Button,
-  makeStyles,
   Menu,
   MenuItem,
   CardHeader,
   Avatar,
-} from '@material-ui/core'
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { connect } from 'react-redux'
 import React from 'react'
 import { getTotalCalories } from '../../util/food'

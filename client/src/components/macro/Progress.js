@@ -1,14 +1,14 @@
 import React from 'react'
 
-import { Box, CircularProgress, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Box, CircularProgress, Typography } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles';
 
-import { red, green, blue, amber } from '@material-ui/core/colors'
+import { red, green, blue, amber } from '@mui/material/colors'
 import useResponsive from './../../hooks/useResponsive'
 
 const useStyles = makeStyles(theme => ({
   bottom: {
-    color: theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
+    color: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 700],
   },
 
   top: {

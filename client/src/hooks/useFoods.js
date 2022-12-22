@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { readFoods } from './../state/food/foodActions'
+import { useSelector } from 'react-redux'
 
 const useFoods = which => {
   let foods = useSelector(state => state.food.foods)

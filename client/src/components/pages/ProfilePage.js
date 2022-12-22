@@ -2,7 +2,7 @@ import React from 'react'
 
 import UserInformation from '../profile/UserInformation'
 import FAB from './../layout/FAB'
-import SaveIcon from '@material-ui/icons/Save'
+import SaveIcon from '@mui/icons-material/Save'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateUser } from './../../state/auth/authActions'
 

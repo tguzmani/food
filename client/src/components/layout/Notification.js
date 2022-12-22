@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { Snackbar } from '@material-ui/core'
+import { Snackbar } from '@mui/material'
 
-import MuiAlert from '@material-ui/lab/Alert'
+import MuiAlert from '@mui/material/Alert'
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant='filled' {...props} />

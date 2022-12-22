@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { readMeasures } from '../../state/measure/measureActions'
-import { Grid, makeStyles } from '@material-ui/core'
+import { Grid } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import Measures from './../measure/Measures'
 import AddMeasureDialog from '../measure/AddMeasureDialog'
 
@@ -14,6 +15,7 @@ const MeasuresPage = ({ readMeasures, measures, loading }) => {
 
   React.useEffect(() => {
     if (measures.length === 0) readMeasures()
+    // eslint-disable-next-line
   }, [])
 
   if (measures.length === 0 && loading) return <div>Loading...</div>

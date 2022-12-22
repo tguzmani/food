@@ -9,7 +9,7 @@ import {
   FormControlLabel,
   TextField,
   Switch,
-} from '@material-ui/core'
+} from '@mui/material'
 import { connect } from 'react-redux'
 import { updateReference } from './../../state/reference/referenceActions'
 
@@ -117,7 +117,7 @@ const UpdateReferenceDialog = ({
         <Button
           onClick={handleUpdate}
           color='primary'
-          disabled={portion == 0 || name === ''}
+          disabled={Number(portion) === 0 || name === ''}
         >
           Update
         </Button>

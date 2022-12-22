@@ -1,34 +1,12 @@
 import React from 'react'
-import {
-  Box,
-  Grid,
-  ListItem,
-  ListItemText,
-  makeStyles,
-  Typography,
-} from '@material-ui/core'
+import { Box, Grid, ListItem, Typography } from '@mui/material';
 
 import relativeTime from 'dayjs/plugin/relativeTime'
 import dayjs from 'dayjs'
-import { red, blue, green } from '@material-ui/core/colors'
+
 dayjs.extend(relativeTime)
 
-const useStyles = makeStyles(theme => ({
-  circle: {
-    borderRadius: '50%',
-    width: '0.5rem',
-    height: '0.5rem',
-  },
-}))
-
 const MeasureItem = ({ measure }) => {
-  const colors = {
-    protein: red[700],
-    carbs: blue[700],
-    fat: green[700],
-  }
-
-  const classes = useStyles()
 
   const {
     weight,
@@ -43,7 +21,7 @@ const MeasureItem = ({ measure }) => {
   const Indicator = ({ emoji, value, symbol }) => (
     <>
       {value > 0 && (
-        <Grid container justify='space-between'>
+        <Grid container justifyContent='space-between'>
           <Grid item>
             <span role='img'>{emoji}</span>
           </Grid>
@@ -58,7 +36,7 @@ const MeasureItem = ({ measure }) => {
 
   return (
     <ListItem divider>
-      <Grid container alignItems='center' justify='space-between'>
+      <Grid container alignItems='center' justifyContent='space-between'>
         <Grid item xs={6}>
           <Box>
             <Typography variant='caption'>
@@ -82,7 +60,7 @@ const MeasureItem = ({ measure }) => {
         </Grid>
       </Grid>
     </ListItem>
-  )
+  );
 }
 
 export default MeasureItem

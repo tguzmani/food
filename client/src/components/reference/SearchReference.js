@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  TextField,
-} from '@material-ui/core'
+import { Box, TextField } from '@mui/material'
 import { connect } from 'react-redux'
 import React from 'react'
 import {
@@ -29,6 +22,7 @@ const SearchReference = ({
   React.useEffect(() => {
     if (input === '') clearFilterReferences()
     else filterReferences(input)
+    // eslint-disable-next-line
   }, [input])
 
   return (

@@ -3,14 +3,13 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import theme from './theme'
-import { ThemeProvider } from '@material-ui/styles'
+import { ThemeProvider } from '@mui/styles'
 
 import { Provider } from 'react-redux'
 import store from './store'
 
 import PrivateRoute from './components/routing/PrivateRoute'
 
-import Dashboard from './components/pages/Dashboard'
 import NotFound from './components/pages/NotFound'
 import Login from './components/pages/Login'
 import Day from './components/pages/Day'

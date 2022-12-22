@@ -1,4 +1,4 @@
-import BaseMenu from '@material-ui/core/Menu'
+import BaseMenu from '@mui/material/Menu'
 import React from 'react'
 
 const Menu = ({ anchorEl, handleClose, children }) => {

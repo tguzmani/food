@@ -7,7 +7,7 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
-} from '@material-ui/core'
+} from '@mui/material'
 
 import { connect } from 'react-redux'
 import { createRecipe } from './../../state/recipe/recipeActions'
@@ -56,7 +56,6 @@ const RecipeDialog = ({
           Cancel
         </Button>
         <Button
-          onClick={handleClose}
           color='primary'
           disabled={name === ''}
           onClick={handleCreateRecipe}

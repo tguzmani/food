@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Grid, Typography } from '@material-ui/core'
+import { Grid, Typography } from '@mui/material'
 import { getTotalMacro } from './../../util/food'
 import Progress from './Progress'
 import useFoods from './../../hooks/useFoods'
-import { capitalize } from './../../util/index'
 
 const Macro = ({ macro, user }) => {
   const foods = useFoods('meals')

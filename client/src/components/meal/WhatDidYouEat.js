@@ -1,4 +1,4 @@
-import { Box, TextField } from '@material-ui/core'
+import { TextField } from '@mui/material'
 import { connect } from 'react-redux'
 import React from 'react'
 import { createFood, createFoodsByRecipe } from './../../state/food/foodActions'
@@ -63,6 +63,7 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
     if (foodAndCalc.test(query)) {
       createFood({
         name: queryArray[0].toLowerCase(),
+        // eslint-disable-next-line
         quantity: eval(queryArray[1]).toFixed(0),
         meal: 0,
       })

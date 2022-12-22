@@ -3,7 +3,6 @@ import {
   LOADING,
   CLEAR_MESSAGE,
   CREATE,
-  READ,
   READ_ALL,
   READ_BY_QUERY,
   UPDATE,

@@ -1,12 +1,6 @@
 import React from 'react'
-import {
-  ListItem,
-  Grid,
-  Divider,
-  Typography,
-  makeStyles,
-} from '@material-ui/core'
-import { capitalize } from './../../util/index'
+import { ListItem, Grid } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { getTotalMacro } from './../../util/food'
 
 const useStyles = makeStyles(theme => ({
@@ -38,7 +32,7 @@ const Total = ({ foods }) => {
         <Grid item xs={7}>
           <Grid
             container
-            justify='space-around'
+            justifyContent='space-around'
             spacing={2}
             alignItems='center'
           >
@@ -50,7 +44,7 @@ const Total = ({ foods }) => {
         </Grid>
       </Grid>
     </ListItem>
-  )
+  );
 }
 
 export default Total

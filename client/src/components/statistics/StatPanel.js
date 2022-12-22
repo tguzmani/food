@@ -1,4 +1,4 @@
-import { Box, Button, MenuItem, Typography } from '@material-ui/core'
+import { Box, Button, MenuItem } from '@mui/material'
 import React from 'react'
 import { capitalize } from '../../util'
 import useMenu from './../../hooks/useMenu'
@@ -7,7 +7,6 @@ import Menu from './../layout/Menu'
 import DateFnsUtils from '@date-io/date-fns'
 import {
   MuiPickersUtilsProvider,
-  KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers'
 
@@ -27,7 +26,6 @@ const StatPanel = () => {
     'fat',
     'calories',
     'cleanliness',
-    // 'macros',
     'alcohol',
   ]
 
