@@ -1,5 +1,3 @@
-const Reference = require('../models/Reference')
-
 const referencesServices = require('./references.services')
 
 exports.createReference = async (req, res) => {

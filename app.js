@@ -26,7 +26,7 @@ app.use(cors())
 
 // Old Routes Middleware
 // oldRoutes = ['measure', 'users', 'recipe']
-oldRoutes = ['measure', 'users']
+oldRoutes = ['users']
 oldRoutes.forEach(route => useOldRoute(route))
 
 // Routes Middleware

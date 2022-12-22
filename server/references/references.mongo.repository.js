@@ -1,4 +1,4 @@
-const Reference = require('../models/Reference')
+const Reference = require('./references.model')
 const referencesMapper = require('./references.mapper')
 
 exports.createReference = async (reference, userId) => {
