@@ -18,7 +18,12 @@ connectDB()
 app.use(express.json({ extended: false }))
 app.use(morgan('dev'))
 app.use(cookieParser())
-app.use(cors())
+app.use(
+  cors({
+    origin: ['http://localhost:3001', 'http://localhost:3000'],
+    credentials: true,
+  })
+)
 
 // Routes Middleware
 routes = ['auth', 'references', 'foods', 'measurements', 'users']
