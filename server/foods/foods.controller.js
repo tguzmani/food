@@ -1,5 +1,3 @@
-const Food = require('../models/Food')
-
 const foodsServices = require('./foods.services')
 
 exports.createFood = async (req, res) => {

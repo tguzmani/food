@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { ObjectId } = mongoose.Schema
 
-const measureSchema = new mongoose.Schema(
+const measurementSchema = new mongoose.Schema(
   {
     user: {
       type: ObjectId,
@@ -34,23 +34,6 @@ const measureSchema = new mongoose.Schema(
       default: 0,
     },
 
-    macros: {
-      protein: {
-        type: Number,
-        default: 0,
-      },
-
-      carbs: {
-        type: Number,
-        default: 0,
-      },
-
-      fat: {
-        type: Number,
-        default: 0,
-      },
-    },
-
     cleanliness: {
       type: Number,
       min: 0,
@@ -60,4 +43,4 @@ const measureSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-module.exports = mongoose.model('Measure', measureSchema)
+module.exports = mongoose.model('Measurement', measurementSchema)

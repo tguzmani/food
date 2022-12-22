@@ -1,8 +1,6 @@
 const foodsRepository = require('./foods.mongo.repository')
 const referencesServices = require('../references/references.services')
 
-const Food = require('../models/Food')
-
 exports.createFood = async (referenceName, quantity, meal, userId) => {
   const reference = await referencesServices.readReferenceByName(
     referenceName,

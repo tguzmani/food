@@ -1,4 +1,4 @@
-const Food = require('../models/Food')
+const Food = require('./foods.model')
 const foodsMapper = require('./foods.mapper')
 
 exports.createFood = async (food, userId) => {
