@@ -1,7 +1,7 @@
 import { useStoreState } from "easy-peasy"
 
 const useUser = () => {
-  const { user } = useStoreState(state => state.user)
+  const { user } = useStoreState(state => state.auth)
 
   return user
 }

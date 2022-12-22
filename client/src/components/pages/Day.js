@@ -11,41 +11,34 @@ import useMealNumbers from './../../hooks/useMealNumbers'
 import { Container } from '@mui/material'
 
 const Day = ({ readFoods, foodState }) => {
-  const { loading: loadingFood } = foodState
+  return <div>Day</div>
+  // const { loading: loadingFood } = foodState
 
-  const foods = useFoods('meals')
-  const mealNumbers = useMealNumbers()
-  const [once, setOnce] = React.useState(true)
+  // const foods = useFoods('meals')
+  // const mealNumbers = useMealNumbers()
+  // const [once, setOnce] = React.useState(true)
 
-  React.useEffect(() => {
-    if (foods.length === 0 && once) {
-      readFoods()
-      setOnce(false)
-    }
-    // eslint-disable-next-line
-  }, [foods])
+  // React.useEffect(() => {
+  //   if (foods.length === 0 && once) {
+  //     readFoods()
+  //     setOnce(false)
+  //   }
+  //   // eslint-disable-next-line
+  // }, [foods])
 
-  // if (foods.length === 0 && loadingFood)
-  //   return <BackdropLoading open={loadingFood} />
 
-  return (
-    <Container disableGutters maxWidth='md'>
-      <Macros />
-      <PreviewMeal />
-      <Meals
-        foods={foods.filter(food => food.meal !== 0)}
-        mealNumbers={mealNumbers}
-      />
+  // return (
+  //   <Container disableGutters maxWidth='md'>
+  //     <Macros />
+  //     <PreviewMeal />
+  //     <Meals
+  //       foods={foods.filter(food => food.meal !== 0)}
+  //       mealNumbers={mealNumbers}
+  //     />
 
-      <BackdropLoading open={loadingFood} />
-    </Container>
-  )
+  //     <BackdropLoading open={loadingFood} />
+  //   </Container>
+  // )
 }
 
-const mapActionsToProps = { readFoods }
-
-const mapStateToProps = state => ({
-  foodState: state.food,
-})
-
-export default connect(mapStateToProps, mapActionsToProps)(Day)
+export default Day

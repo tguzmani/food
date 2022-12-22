@@ -1,9 +1,9 @@
 import React from 'react'
-// import './App.scss'
+import './App.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import theme from './config/theme'
-import { ThemeProvider } from '@mui/styles'
+import { ThemeProvider } from '@mui/material/styles'
 
 import { Provider } from 'react-redux'
 import reduxStore from './store'
@@ -20,11 +20,13 @@ import StatisticsPage from './components/pages/StatisticsPage'
 
 import { StoreProvider } from 'easy-peasy'
 import store from './config/easy-peasy.store'
+import { CssBaseline } from '@mui/material'
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <StoreProvider store={store}>
+        <CssBaseline />
         <Router>
           <>
             <Switch>

@@ -1,8 +1,6 @@
 import React from 'react'
 import AppBar from '@mui/material/AppBar'
-import CssBaseline from '@mui/material/CssBaseline'
 import Drawer from '@mui/material/Drawer'
-import Hidden from '@mui/material/Hidden'
 import IconButton from '@mui/material/IconButton'
 import List from '@mui/material/List'
 import ListItemIcon from '@mui/material/ListItemIcon'
@@ -20,25 +18,27 @@ import NavItem from './NavItem'
 import PersonIcon from '@mui/icons-material/Person'
 
 import { Link, useLocation } from 'react-router-dom'
-import { Box, Divider, MenuItem } from '@mui/material';
+import { Box, Divider, MenuItem } from '@mui/material'
 
 import useStyles from './styles'
 import Menu from '../Menu'
-import { useDispatch, useSelector } from 'react-redux'
 import useMenu from './../../../hooks/useMenu'
-import { signout } from '../../../state/auth/authActions'
+import useUser from 'hooks/useUser'
+import { useStoreActions } from 'easy-peasy'
+import useResponsive from '../../../hooks/useResponsive';
 
 const Navigation = ({ window, children }) => {
   const location = useLocation().pathname
-  const user = useSelector(state => state.auth.user)
-  const dispatch = useDispatch()
+  const user = useUser()
+  const isMobile = useResponsive('sm')
+
+  const { signOut } = useStoreActions(actions => actions.auth)
 
   const [title, setTitle] = React.useState('Food')
 
   const titles = {
     '/': 'Day',
     '/measures': 'Measures',
-    '/recipes': 'Recipes',
     '/references': 'References',
     '/profile': 'Profile',
     '/statistics': 'Statistics',
@@ -57,7 +57,7 @@ const Navigation = ({ window, children }) => {
 
   const handleLogout = () => {
     handleCloseMenu()
-    dispatch(signout())
+    signOut()
   }
 
   const [anchorEl, handleOpenMenu, handleCloseMenu] = useMenu()
@@ -66,11 +66,6 @@ const Navigation = ({ window, children }) => {
     { to: '/', text: 'Day', icon: <TodayIcon /> },
     { to: '/measures', text: 'Measures', icon: <AssessmentIcon /> },
     { to: '/references', text: 'References', icon: <InfoIcon /> },
-    // {
-    //   to: '/recipes',
-    //   text: 'Recipes',
-    //   icon: <MenuBookIcon />,
-    // },
     { to: '/statistics', text: 'Statistics', icon: <TimelineIcon /> },
     { to: '/profile', text: 'Profile', icon: <PersonIcon /> },
   ]
@@ -92,18 +87,24 @@ const Navigation = ({ window, children }) => {
           edge='start'
           onClick={handleDrawerToggle}
           className={classes.menuButton}
-          size="large">
+          size='large'
+        >
           <MenuIcon />
         </IconButton>
-        <Typography variant='h6' noWrap>
+        <Typography variant='h6'>
           {title}
         </Typography>
-        <div className={classes.grow}></div>
 
         <Typography>{user && user.firstName}</Typography>
-        <IconButton edge='end' color='inherit' onClick={handleOpenMenu} size="large">
+        <IconButton
+          edge='end'
+          color='inherit'
+          onClick={handleOpenMenu}
+          size='large'
+        >
           <AccountCircle />
         </IconButton>
+
         <Menu anchorEl={anchorEl} handleClose={handleCloseMenu}>
           <MenuItem component={Link} to='/profile' onClick={handleCloseMenu}>
             Profile
@@ -146,9 +147,6 @@ const Navigation = ({ window, children }) => {
       anchor={theme.direction === 'rtl' ? 'right' : 'left'}
       open={mobileOpen}
       onClose={handleDrawerToggle}
-      classes={{
-        paper: classes.drawerPaper,
-      }}
       ModalProps={{
         keepMounted: true,
       }}
@@ -171,17 +169,10 @@ const Navigation = ({ window, children }) => {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
-
       {applicationBar}
 
       <nav className={classes.drawer}>
-        <Hidden smUp implementation='css'>
-          {mobileDrawer}
-        </Hidden>
-        <Hidden smDown implementation='css'>
-          {desktopDrawer}
-        </Hidden>
+        {isMobile ? mobileDrawer : desktopDrawer}
       </nav>
 
       <main className={classes.content}>
@@ -189,7 +180,7 @@ const Navigation = ({ window, children }) => {
         {children}
       </main>
     </div>
-  );
+  )
 }
 
 export default Navigation

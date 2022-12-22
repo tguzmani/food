@@ -1,65 +1,68 @@
 import React from 'react'
-import { Container, Grid, Typography } from '@mui/material'
+import { Box, Container, Grid, Typography } from '@mui/material'
 
-import Background from '../../img/bg-1.jpg'
+import bg1 from '../../img/bg-0.jpg'
+import bg2 from '../../img/bg-1.jpg'
+import bg3 from '../../img/bg-2.jpg'
+import bg4 from '../../img/bg-3.jpg'
+
 import LoginForm from '../auth/LoginForm'
 
-import makeStyles from '@mui/styles/makeStyles';
+const backgrounds = [bg1, bg2, bg3, bg4]
+const random = Math.floor(Math.random() * backgrounds.length);
 
-const useStyles = makeStyles(theme => ({
-  header: {
-    margin: theme.spacing(3),
-    color: '#ffffff',
-    display: 'flex',
-    justifyContent: 'flex-start',
-  },
-
-  form: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-
-  footer: {
-    margin: theme.spacing(3),
-    color: '#ffffff',
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-}))
+const background = backgrounds[random]
 
 const Login = () => {
-  const classes = useStyles()
   document.title = 'Food | Login'
 
-  return <>
-    <div
-      style={{
-        background: `url(${Background}) no-repeat center center fixed`,
-      }}
-      className='background'
-    ></div>
-    <Container>
-      <Grid
-        container
-        spacing={0}
-        justifyContent='space-between'
-        direction='column'
-        style={{ minHeight: '100vh' }}
-      >
-        <Grid item>
-          <Typography component='h1' variant='h5' className={classes.header}>
-            Food
-          </Typography>
+  return (
+    <>
+      <Box
+        sx={{
+          background: `url(${background}) no-repeat center center fixed`,
+          backgroundSize: 'cover',
+        }}
+        className='background'
+      ></Box>
+      <Container>
+        <Grid
+          container
+          spacing={0}
+          justifyContent='space-between'
+          sx={{ height: '100vh', padding: '32px 0' }}
+        >
+          <Grid item xs={12} lg={4}>
+            <Typography variant='h4' sx={{ color: 'white'  }}>
+              Food
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            lg={4}
+            sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+          >
+            <LoginForm />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            lg={4}
+            sx={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'flex-end',
+            }}
+          >
+            <Typography variant='caption' sx={{ color: 'white' }}>
+              &copy; 2023. By Tomás Guzmán
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item className={classes.form}>
-          <LoginForm />
-        </Grid>
-        <Grid item className={classes.footer}>
-          <Typography>&copy; by Tomás Guzmán</Typography>
-        </Grid>
-      </Grid>
-    </Container>
-  </>;
+      </Container>
+    </>
+  )
 }
 
 export default Login

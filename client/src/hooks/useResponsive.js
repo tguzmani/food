@@ -1,11 +1,12 @@
-import { useMediaQuery } from 'react-responsive'
+import { useTheme } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
-const useResponsive = which => {
-  const isMobile = useMediaQuery({
-    query: '(max-device-width: 1224px)',
-  })
+const useResponsive = breakpoint => {
+  const theme = useTheme()
 
-  return isMobile
+  const matches = useMediaQuery(theme.breakpoints.down(breakpoint))
+
+  return matches
 }
 
 export default useResponsive

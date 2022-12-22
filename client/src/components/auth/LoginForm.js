@@ -6,111 +6,95 @@ import {
   TextField,
   Button,
   Typography,
-  Grid,
   Avatar,
+  Stack,
 } from '@mui/material'
 
-import makeStyles from '@mui/styles/makeStyles'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import {
-  useStoreActions,
-  useStoreState,
-} from 'easy-peasy'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 import { withRouter } from 'react-router-dom'
-
-const useStyles = makeStyles(theme => ({
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main,
-  },
-
-  card: {
-    margin: theme.spacing(0, 2),
-  },
-}))
+import { useTheme, Box } from '@mui/material'
+import useResponsive from 'hooks/useResponsive'
+import useForm from 'hooks/useForm'
 
 const LoginForm = ({ history }) => {
-  const classes = useStyles()
+  const isMobile = useResponsive('sm')
+  const theme = useTheme()
 
-  const { signIn } = useStoreActions(state => state.auth)
+  const { signIn, setLoading } = useStoreActions(state => state.auth)
   const { isAuthenticated, loading } = useStoreState(state => state.auth)
 
-  const [credentials, setCredentials] = useState({
+  const [credentials, bindCredentials, areCredentialsEmpty] = useForm({
     email: '',
     password: '',
   })
 
   useEffect(() => {
+    setLoading(false)
+  }, [])
+
+  useEffect(() => {
     if (isAuthenticated) history.push('/')
   }, [isAuthenticated, history])
-
-  const onChange = e =>
-    setCredentials({ ...credentials, [e.target.name]: e.target.value })
 
   const onClick = e => {
     e.preventDefault()
     signIn(credentials)
   }
 
-  const { email, password } = credentials
-
-  const areAnyFieldsEmpty = email === '' || password === ''
-
   return (
-    <Card className={classes.card}>
-      <CardContent>
-        <Grid align='center'>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component='h1' variant='h5'>
-            Login
-          </Typography>
-        </Grid>
-        <form>
-          <TextField
-            variant='outlined'
-            margin='normal'
-            required
-            fullWidth
-            label='Email Address'
-            name='email'
-            type='email'
-            value={email}
-            onChange={onChange}
-            autoComplete='email'
-            autoFocus
-          />
-          <TextField
-            variant='outlined'
-            margin='normal'
-            required
-            fullWidth
-            label='Password'
-            name='password'
-            onChange={onChange}
-            value={password}
-            type='password'
-            autoComplete='password'
-          />
+    <Card sx={{ paddingTop: '4px', width: isMobile ? '100%' : '85%' }}>
+      <CardContent sx={{ height: isMobile ? '50vh' : '40vh' }}>
+        <Stack
+          sx={{ height: '100%' }}
+          direction='column'
+          justifyContent='space-between'
+        >
+          <Box mt={2}>
+            <Stack alignItems='center' spacing={1}>
+              <Avatar sx={{ bgcolor: theme.palette.primary.main }}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography variant='h5' sx={{ fontWeight: 'bold' }}>
+                Login
+              </Typography>
+            </Stack>
+          </Box>
+
+          <Stack>
+            <TextField
+              variant='outlined'
+              margin='normal'
+              required
+              fullWidth
+              label='Email Address'
+              type='email'
+              autoComplete='email'
+              autoFocus
+              {...bindCredentials('email')}
+            />
+            <TextField
+              variant='outlined'
+              margin='normal'
+              required
+              fullWidth
+              label='Password'
+              type='password'
+              autoComplete='password'
+              {...bindCredentials('password')}
+            />
+          </Stack>
 
           <Button
-            type='submit'
             onClick={onClick}
             color='primary'
             variant='contained'
             fullWidth
-            pending={loading}
-            disabled={areAnyFieldsEmpty || loading}
-            className={classes.submit}
+            disabled={areCredentialsEmpty || loading}
           >
-            {loading ? "Loading..." : "Sign in"}
+            {loading ? 'Loading...' : 'Sign in'}
           </Button>
-        </form>
+        </Stack>
       </CardContent>
     </Card>
   )
