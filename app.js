@@ -6,10 +6,6 @@ const path = require('path')
 const cors = require('cors')
 require('dotenv').config()
 
-const useOldRoute = route => {
-  app.use(`/api/${route}`, require(`./server/routes/${route}Routes`))
-}
-
 const useRoute = route => {
   app.use(`/api/${route}`, require(`./server/${route}/${route}.routes`))
 }
@@ -24,13 +20,8 @@ app.use(morgan('dev'))
 app.use(cookieParser())
 app.use(cors())
 
-// Old Routes Middleware
-// oldRoutes = ['measure', 'users', 'recipe']
-oldRoutes = ['users']
-oldRoutes.forEach(route => useOldRoute(route))
-
 // Routes Middleware
-routes = ['auth', 'references', 'foods', 'measurements']
+routes = ['auth', 'references', 'foods', 'measurements', 'users']
 routes.forEach(route => useRoute(route))
 
 // Serve static assets in production

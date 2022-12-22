@@ -9,3 +9,7 @@ exports.readUserById = async (userId) => {
 
   return user
 }
+
+exports.updateUser = async (userId, user) => {
+  return await usersRepository.updateUser(userId, user)
+}

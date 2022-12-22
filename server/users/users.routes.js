@@ -2,14 +2,9 @@ const express = require('express')
 const router = express.Router()
 const { auth } = require('../middleware/auth')
 
-const {
-  readUser,
-  updateUser,
-  readGoals,
-} = require('../controllers/userController')
+const usersController = require('./users.controller')
 
-router.get('/', auth, readUser)
-router.put('/', auth, updateUser)
-router.get('/goals', auth, readGoals)
+router.get('/', auth, usersController.readUserById)
+router.put('/', auth, usersController.updateUser)
 
 module.exports = router

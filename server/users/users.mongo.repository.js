@@ -15,6 +15,20 @@ exports.createUser = async user => {
 
     name: `${user.firstName} ${user.lastName}`,
     sex: user.gender,
-    age: dayjs().diff(user.birthdate, 'year')
+    age: dayjs().diff(user.birthdate, 'year'),
   })
+}
+
+exports.updateUser = async (userId, userData) => {
+  let user = await User.findByIdAndUpdate(userId, userData, {
+    new: true,
+  })
+
+  user = await User.findByIdAndUpdate(
+    userId,
+    { goals: user.macroGoals },
+    { new: true }
+  )
+
+  return user
 }
