@@ -7,8 +7,7 @@ export default class AxiosRepository {
     this.resource = resource
 
     this.instance = axios.create({
-      baseURL: 'http://localhost:5000/api',
-      withCredentials: true,
+      baseURL: 'http://localhost:8000/api',
       headers: { 'Content-Type': 'application/json' },
     })
   }

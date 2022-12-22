@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import { signin } from '../../state/auth/authActions'
-import { withRouter } from 'react-router-dom'
 
 import {
   Card,
@@ -13,8 +10,13 @@ import {
   Avatar,
 } from '@mui/material'
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import {
+  useStoreActions,
+  useStoreState,
+} from 'easy-peasy'
+import { withRouter } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   submit: {
@@ -31,8 +33,11 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const LoginForm = ({ signin, isAuthenticated, history, loading }) => {
+const LoginForm = ({ history }) => {
   const classes = useStyles()
+
+  const { signIn } = useStoreActions(state => state.auth)
+  const { isAuthenticated, loading } = useStoreState(state => state.auth)
 
   const [credentials, setCredentials] = useState({
     email: '',
@@ -48,7 +53,7 @@ const LoginForm = ({ signin, isAuthenticated, history, loading }) => {
 
   const onClick = e => {
     e.preventDefault()
-    signin(credentials)
+    signIn(credentials)
   }
 
   const { email, password } = credentials
@@ -100,10 +105,10 @@ const LoginForm = ({ signin, isAuthenticated, history, loading }) => {
             variant='contained'
             fullWidth
             pending={loading}
-            disabled={areAnyFieldsEmpty}
+            disabled={areAnyFieldsEmpty || loading}
             className={classes.submit}
           >
-            Sign in
+            {loading ? "Loading..." : "Sign in"}
           </Button>
         </form>
       </CardContent>
@@ -111,13 +116,4 @@ const LoginForm = ({ signin, isAuthenticated, history, loading }) => {
   )
 }
 
-const mapActionsToProps = { signin }
-
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
-  loading: state.auth.loading,
-})
-
-export default withRouter(
-  connect(mapStateToProps, mapActionsToProps)(LoginForm)
-)
+export default withRouter(LoginForm)

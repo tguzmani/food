@@ -24,31 +24,29 @@ import store from './config/easy-peasy.store'
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Provider store={reduxStore}>
-        <StoreProvider store={store}>
-          <Router>
-            <>
-              <Switch>
-                <Route exact path='/login' component={Login} />
-                <PrivateRoute exact path='/' component={Day} />
-                <PrivateRoute exact path='/measures' component={MeasuresPage} />
-                <PrivateRoute
-                  exact
-                  path='/references'
-                  component={ReferencesPage}
-                />
-                <PrivateRoute
-                  exact
-                  path='/statistics'
-                  component={StatisticsPage}
-                />
-                <PrivateRoute exact path='/profile' component={ProfilePage} />
-                <Route path='*' component={NotFound} />
-              </Switch>
-            </>
-          </Router>
-        </StoreProvider>
-      </Provider>
+      <StoreProvider store={store}>
+        <Router>
+          <>
+            <Switch>
+              <Route exact path='/login' component={Login} />
+              <PrivateRoute exact path='/' component={Day} />
+              <PrivateRoute exact path='/measures' component={MeasuresPage} />
+              <PrivateRoute
+                exact
+                path='/references'
+                component={ReferencesPage}
+              />
+              <PrivateRoute
+                exact
+                path='/statistics'
+                component={StatisticsPage}
+              />
+              <PrivateRoute exact path='/profile' component={ProfilePage} />
+              <Route path='*' component={NotFound} />
+            </Switch>
+          </>
+        </Router>
+      </StoreProvider>
     </ThemeProvider>
   )
 }

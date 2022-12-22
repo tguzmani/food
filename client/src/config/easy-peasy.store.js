@@ -1,9 +1,9 @@
 import { createStore } from 'easy-peasy'
 
-// import auth from 'modules/users/users.auth.store'
+import auth from '../modules/auth/state/auth.store'
 
 const store = createStore({
-  // auth,
+  auth,
 })
 
 export default store

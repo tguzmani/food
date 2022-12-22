@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { readUser } from '../../state/auth/authActions'
 import Navigation from '../layout/Navigation/Navigation'
+import useAuth from 'hooks/useAuth'
 
 const PrivateRoute = ({
   readUser,
@@ -11,29 +10,19 @@ const PrivateRoute = ({
   component: Component,
   ...rest
 }) => {
-  useEffect(() => {
-    readUser()
-  }, [readUser])
-
-  const condition = !isAuthenticated && !loading
+  const isAuth = useAuth()
 
   return (
     <Navigation>
       <Route
         {...rest}
         render={props =>
-          condition ? <Redirect to='/login' /> : <Component {...props} />
+          // condition ? <Redirect to='/login' /> : <Component {...props} />
+          isAuth ? <Component {...props} /> : <Redirect to='/login' />
         }
       />
     </Navigation>
   )
 }
 
-const mapActionsToProps = { readUser }
-
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
-  loading: state.auth.loading,
-})
-
-export default connect(mapStateToProps, mapActionsToProps)(PrivateRoute)
+export default PrivateRoute
