@@ -1,11 +1,5 @@
 node_modules
-misc
-testing.js
+yarnlock
 .env
-framework
-dev.*
-.env
-yarn.lock
-
 .vscode
 .idea
