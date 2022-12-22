@@ -10,7 +10,6 @@ import {
 } from '@material-ui/core'
 
 import {
-  getTotalMacro,
   getAlcoholUnits,
   getTotalCalories,
   getCleanliness,
@@ -62,11 +61,6 @@ const AddMeasureDialog = () => {
         _id: lastMeasure._id,
         calories: getTotalCalories(foods),
         cleanliness: getCleanliness(foods),
-        macros: {
-          protein: getTotalMacro(foods, 'protein'),
-          carbs: getTotalMacro(foods, 'carbs'),
-          fat: getTotalMacro(foods, 'fat'),
-        },
         alcohol: getAlcoholUnits(foods),
       }
 

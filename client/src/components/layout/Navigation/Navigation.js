@@ -66,11 +66,11 @@ const Navigation = ({ window, children }) => {
     { to: '/', text: 'Day', icon: <TodayIcon /> },
     { to: '/measures', text: 'Measures', icon: <AssessmentIcon /> },
     { to: '/references', text: 'References', icon: <InfoIcon /> },
-    {
-      to: '/recipes',
-      text: 'Recipes',
-      icon: <MenuBookIcon />,
-    },
+    // {
+    //   to: '/recipes',
+    //   text: 'Recipes',
+    //   icon: <MenuBookIcon />,
+    // },
     { to: '/statistics', text: 'Statistics', icon: <TimelineIcon /> },
     { to: '/profile', text: 'Profile', icon: <PersonIcon /> },
   ]
@@ -100,7 +100,7 @@ const Navigation = ({ window, children }) => {
         </Typography>
         <div className={classes.grow}></div>
 
-        <Typography>{user && user.name.split(' ')[0]}</Typography>
+        <Typography>{user && user.firstName}</Typography>
         <IconButton edge='end' color='inherit' onClick={handleOpenMenu}>
           <AccountCircle />
         </IconButton>

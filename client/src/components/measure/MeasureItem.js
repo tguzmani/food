@@ -37,29 +37,8 @@ const MeasureItem = ({ measure }) => {
     cleanliness,
     calories,
     createdAt,
-    macros,
     alcohol,
   } = measure
-
-  const Macro = ({ macro }) => (
-    <>
-      {macros[macro] > 0 && (
-        <Box
-          display='flex'
-          alignItems='center'
-          style={{ marginRight: '0.25rem' }}
-        >
-          <div
-            className={classes.circle}
-            style={{ backgroundColor: colors[macro] }}
-          ></div>
-          <Typography style={{ margin: '0 0.25rem' }} variant='body2'>
-            {Math.round(macros[macro])}{' '}
-          </Typography>
-        </Box>
-      )}
-    </>
-  )
 
   const Indicator = ({ emoji, value, symbol }) => (
     <>
@@ -86,18 +65,13 @@ const MeasureItem = ({ measure }) => {
               {dayjs(createdAt).fromNow()}
             </Typography>
             <Typography gutterBottom variant='body1'>
-              {weight} lb
+              {weight} lb {fat > 0 && `· ${fat}%`}
             </Typography>
             {calories > 0 && (
               <Typography variant='body1'>
-                {Math.round(calories)} cal
+                {Math.round(calories)} cal 
               </Typography>
             )}
-            <Box display='flex'>
-              <Macro macro='protein' />
-              <Macro macro='carbs' />
-              <Macro macro='fat' />
-            </Box>
           </Box>
         </Grid>
 
