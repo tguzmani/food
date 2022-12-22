@@ -88,7 +88,7 @@ export const deleteFood = food => async dispatch => {
 export const deleteAllFoods = food => async dispatch => {
   setLoading()(dispatch)
   try {
-    const res = await axios.delete(`/api/foods/`)
+    const res = await axios.delete(`/api/foods/all`)
     dispatch({ type: DELETE_ALL, payload: res.data })
   } catch (error) {
     handleError(dispatch, error)

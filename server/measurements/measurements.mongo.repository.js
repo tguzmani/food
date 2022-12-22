@@ -2,8 +2,8 @@ const Measurement = require('./measurements.model')
 const measurementsMapper = require('./measurements.mapper')
 const dayjs = require('dayjs')
 
-exports.createMeasurement = async (weight, userId) => {
-  return await Measurement.create({ weight, user: userId })
+exports.createMeasurement = async (measurement, userId) => {
+  return await Measurement.create({ ...measurement, user: userId })
 }
 
 exports.readMeasurementById = async measurementId => {

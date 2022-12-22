@@ -1,11 +1,9 @@
 const measurementsServices = require('./measurements.services')
 
 exports.createMeasurement = async (req, res) => {
-  const { weight } = req.body
-
   try {
     const measurement = await measurementsServices.createMeasurement(
-      weight,
+      req.body,
       req.userId
     )
 

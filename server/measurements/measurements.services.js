@@ -1,8 +1,8 @@
 const measurementsRepository = require('./measurements.mongo.repository')
 const referencesServices = require('../references/references.services')
 
-exports.createMeasurement = async (weight, userId) => {
-  return await measurementsRepository.createMeasurement(weight, userId)
+exports.createMeasurement = async (measurement, userId) => {
+  return await measurementsRepository.createMeasurement(measurement, userId)
 }
 
 exports.readMeasurementsByUserId = async userId => {
