@@ -25,11 +25,12 @@ app.use(cookieParser())
 app.use(cors())
 
 // Old Routes Middleware
-oldRoutes = ['measure', 'users', 'recipe']
+// oldRoutes = ['measure', 'users', 'recipe']
+oldRoutes = ['measure', 'users']
 oldRoutes.forEach(route => useOldRoute(route))
 
 // Routes Middleware
-routes = ['auth', 'references', 'foods']
+routes = ['auth', 'references', 'foods', 'measurements']
 routes.forEach(route => useRoute(route))
 
 // Serve static assets in production

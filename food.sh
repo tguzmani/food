@@ -44,7 +44,7 @@ function open-directory
 
 function browse-jira
 {
-  $browser https://tom-fitness.atlassian.net/browse/$1 &
+  $browser https://tom-fitness.atlassian.net/browse/FIT-$1 &
 }
 
 while getopts "j:lc:e:r:hd:t:n" option; do
