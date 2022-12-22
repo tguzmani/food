@@ -7,7 +7,6 @@ import {
   Avatar,
   IconButton,
   MenuItem,
-  Divider,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import React from 'react'
@@ -15,7 +14,6 @@ import { getCleanliness, getTotalCalories } from '../../util/food'
 import Foods from '../food/Foods'
 import Total from '../food/Total'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
-import RecipeDialog from '../recipe/RecipeDialog'
 import Menu from '../layout/Menu'
 import useMenu from './../../hooks/useMenu'
 import { useDispatch } from 'react-redux'
@@ -30,14 +28,7 @@ const MealItem = ({ foods, number }) => {
   const thisMealFoods = foods.filter(food => food.meal === number)
   const dispatch = useDispatch()
 
-  const [open, setOpen] = React.useState(false)
-
   const [anchorEl, handleOpenMenu, handleCloseMenu] = useMenu()
-
-  const handleCreateRecipe = () => {
-    setOpen(true)
-    handleCloseMenu()
-  }
 
   const handleDeleteMeal = () => {
     thisMealFoods.forEach(food => {
@@ -71,12 +62,9 @@ const MealItem = ({ foods, number }) => {
       </Card>
 
       <Menu anchorEl={anchorEl} handleClose={handleCloseMenu}>
-        <MenuItem onClick={handleCreateRecipe}>Create Recipe</MenuItem>
-        <Divider />
         <MenuItem onClick={handleDeleteMeal}>Delete Meal</MenuItem>
       </Menu>
 
-      <RecipeDialog foods={thisMealFoods} open={open} setOpen={setOpen} />
     </Box>
   );
 }

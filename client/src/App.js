@@ -14,7 +14,6 @@ import NotFound from './components/pages/NotFound'
 import Login from './components/pages/Login'
 import Day from './components/pages/Day'
 import MeasuresPage from './components/pages/MeasuresPage'
-import RecipesPage from './components/pages/RecipesPage'
 import ReferencesPage from './components/pages/ReferencesPage'
 import ProfilePage from './components/pages/ProfilePage'
 import StatisticsPage from './components/pages/StatisticsPage'
@@ -34,7 +33,6 @@ const App = () => {
                 path='/references'
                 component={ReferencesPage}
               />
-              <PrivateRoute exact path='/recipes' component={RecipesPage} />
               <PrivateRoute
                 exact
                 path='/statistics'
