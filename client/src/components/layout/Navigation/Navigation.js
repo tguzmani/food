@@ -30,7 +30,7 @@ import useResponsive from '../../../hooks/useResponsive';
 const Navigation = ({ window, children }) => {
   const location = useLocation().pathname
   const user = useUser()
-  const isMobile = useResponsive('sm')
+  const isMobile = useResponsive('md')
 
   const { signOut } = useStoreActions(actions => actions.auth)
 

@@ -18,7 +18,7 @@ import useResponsive from 'hooks/useResponsive'
 import useForm from 'hooks/useForm'
 
 const LoginForm = ({ history }) => {
-  const isMobile = useResponsive('sm')
+  const isMobile = useResponsive('md')
   const theme = useTheme()
 
   const { signIn, setLoading } = useStoreActions(state => state.auth)

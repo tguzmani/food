@@ -9,16 +9,17 @@ import {
   MenuItem,
   CardHeader,
   Avatar,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+  Stack,
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
 import { connect } from 'react-redux'
 import React from 'react'
 import { getTotalCalories } from '../../util/food'
 import Foods from '../food/Foods'
 import Total from '../food/Total'
 import WhatDidYouEat from './WhatDidYouEat'
-import { deleteFood, updateFood } from '../../state/food/foodActions'
 import useMealNumbers from '../../hooks/useMealNumbers'
+import { useStoreState, useStoreActions } from 'easy-peasy'
 
 const useStyles = makeStyles(theme => ({
   cardActions: {
@@ -30,9 +31,12 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const PreviewMeal = ({ foods, updateFood, deleteFood }) => {
+const PreviewMeal = ({ foods }) => {
   const classes = useStyles()
   const mealNumbers = useMealNumbers()
+
+  const { previewMealFoods } = useStoreState(state => state.foods)
+  const { deleteFood, updateFood } = useStoreActions(actions => actions.foods)
 
   const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -49,47 +53,33 @@ const PreviewMeal = ({ foods, updateFood, deleteFood }) => {
     const maxMealNumber =
       mealNumbers.length === 0 ? 0 : Math.max(...mealNumbers)
 
-    previewMealFoods.forEach(food => {
+    previewMealFoods.forEach(food =>
       updateFood({ ...food, meal: maxMealNumber + 1 })
-    })
+    )
   }
 
   // deletes foods with meal = 0
   const handleClear = () => {
-    previewMealFoods.forEach(food => {
-      deleteFood(food)
-    })
+    previewMealFoods.forEach(food => deleteFood(food))
   }
 
   // updates foods to meal = n
   const handleAddToFood = e => {
-    previewMealFoods.forEach(food => {
+    previewMealFoods.forEach(food =>
       updateFood({ ...food, meal: e.target.value })
-    })
+    )
 
     handleClose()
   }
 
-  const previewMealFoods = foods.filter(food => food.meal === 0)
-
   return (
-    <Box mt={4} >
+    <Box mt={4}>
       <WhatDidYouEat />
 
       {previewMealFoods.length > 0 && (
         <Box mt={2}>
           <Card>
-            <CardHeader
-              avatar={<Avatar>P</Avatar>}
-              // action={
-              //   <Tooltip title='Create Recipe' placement='left'>
-              //     <IconButton onClick={handleOpen}>
-              //       <MenuBookIcon />
-              //     </IconButton>
-              //   </Tooltip>
-              // }
-              title='Preview'
-            />
+            <CardHeader avatar={<Avatar>P</Avatar>} title='Preview' />
 
             <CardContent>
               <Typography variant='body1' gutterBottom align='right'>
@@ -98,39 +88,53 @@ const PreviewMeal = ({ foods, updateFood, deleteFood }) => {
               <Foods foods={previewMealFoods} />
               <Total foods={previewMealFoods} />
             </CardContent>
+
             {previewMealFoods.length > 0 && (
               <CardActions className={classes.cardActions}>
-                <Button size='small' onClick={handleClear}>
-                  Clear
-                </Button>
-                <div className={classes.grow}></div>
-                {mealNumbers.length > 0 && (
-                  <Button size='small' color='primary' onClick={handleClick}>
-                    Add To Meal
+                <Stack
+                  direction='row'
+                  justifyContent='space-between'
+                  alignItems='center'
+                  width={1}
+                >
+                  <Button size='small' onClick={handleClear}>
+                    Clear
                   </Button>
-                )}
-                <Menu
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                >
-                  {mealNumbers
-                    .filter(number => number !== 0)
-                    .map(number => (
-                      <MenuItem value={number} onClick={handleAddToFood}>
-                        {number}
-                      </MenuItem>
-                    ))}
-                </Menu>
-                <Button
-                  size='small'
-                  color='primary'
-                  variant='contained'
-                  onClick={handleCreate}
-                >
-                  Create
-                </Button>
+
+                  <Stack direction='row' alignItems='center' spacing={2}>
+                    {mealNumbers.length > 0 && (
+                      <Button
+                        size='small'
+                        color='primary'
+                        onClick={handleClick}
+                      >
+                        Add To Meal
+                      </Button>
+                    )}
+                    <Menu
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={Boolean(anchorEl)}
+                      onClose={handleClose}
+                    >
+                      {mealNumbers
+                        .filter(number => number !== 0)
+                        .map(number => (
+                          <MenuItem value={number} onClick={handleAddToFood}>
+                            {number}
+                          </MenuItem>
+                        ))}
+                    </Menu>
+                    <Button
+                      size='small'
+                      color='primary'
+                      variant='contained'
+                      onClick={handleCreate}
+                    >
+                      Create
+                    </Button>
+                  </Stack>
+                </Stack>
               </CardActions>
             )}
           </Card>
@@ -140,11 +144,4 @@ const PreviewMeal = ({ foods, updateFood, deleteFood }) => {
   )
 }
 
-const mapActionsToProps = { updateFood, deleteFood }
-
-const mapStateToProps = state => ({
-  foods: state.food.foods,
-  mealNumbers: state.food.mealNumbers,
-})
-
-export default connect(mapStateToProps, mapActionsToProps)(PreviewMeal)
+export default PreviewMeal

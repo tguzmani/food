@@ -33,8 +33,8 @@ const foodThunks = {
 
   deleteFood: thunk(async (actions, food, { fail }) => {
     try {
-      const removedFood = await foodsRepository.filterFoods(food)
-      actions.appendFood(removedFood)
+      const removedFood = await foodsRepository.deleteFood(food)
+      actions.filterFoods(removedFood)
     } catch (error) {
       fail(error)
     }

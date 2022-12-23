@@ -7,17 +7,17 @@ import Macro from './Macro'
 import { getAlcoholUnits } from './../../util/food'
 import useFoods from './../../hooks/useFoods'
 import useResponsive from './../../hooks/useResponsive'
+import { useStoreActions } from 'easy-peasy'
 
 const Macros = () => {
-  const isMobile = useResponsive()
-  const foods = useFoods('meals')
+  const isMobile = useResponsive('md')
+  const { foods } = useStoreActions(state => state.foods)
+
   const spacing = isMobile ? 0 : 10
   const justify = isMobile ? 'space-around' : 'center'
 
   return (
     <Box>
-      {/* <Card>
-      <CardContent> */}
       <Box mb={2}>
         <Grid
           container
@@ -62,7 +62,7 @@ const Macros = () => {
       {/* </CardContent>
     </Card> */}
     </Box>
-  );
+  )
 }
 
 export default Macros

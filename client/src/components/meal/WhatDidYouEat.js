@@ -1,9 +1,10 @@
 import { TextField } from '@mui/material'
-import { connect } from 'react-redux'
 import React from 'react'
-import { createFood, createFoodsByRecipe } from './../../state/food/foodActions'
+import { useStoreActions } from 'easy-peasy'
 
-const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
+const WhatDidYouEat = () => {
+  const { createFood } = useStoreActions(actions => actions.foods)
+
   const [query, setQuery] = React.useState('')
 
   const onChangeQuery = e => {
@@ -20,7 +21,6 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
     const onlyFood = /^([a-zá-ú]+\s{0,1})+$/i
     const foodAndNumbers = /^([a-zá-ú]+\s[0-9]+\s{0,1})+$/i
     const foodAndCalc = /^[a-zá-ú]+\s[0-9]+\*[0-9]+(\/[0-9]+)?$/i
-    const recipe = /^r:[a-zá-ú]+$/i
 
     if (onlyFood.test(query)) {
       const foodArray = queryArray.map(queryItem => ({
@@ -55,11 +55,6 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
       clearQuery()
     }
 
-    if (recipe.test(query)) {
-      createFoodsByRecipe({ recipeName: query.substring(2), meal: 0 })
-      clearQuery()
-    }
-
     if (foodAndCalc.test(query)) {
       createFood({
         name: queryArray[0].toLowerCase(),
@@ -91,8 +86,4 @@ const WhatDidYouEat = ({ createFood, createFoodsByRecipe }) => {
   )
 }
 
-const mapActionsToProps = { createFood, createFoodsByRecipe }
-
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapActionsToProps)(WhatDidYouEat)
+export default WhatDidYouEat

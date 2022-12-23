@@ -1,11 +1,12 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
-import { connect } from 'react-redux'
 import { getTotalCalories } from '../../util/food'
-import useFoods from '../../hooks/useFoods'
+import { useStoreState } from 'easy-peasy'
+import useUser from 'hooks/useUser'
 
-const Calories = ({ user }) => {
-  const foods = useFoods('meals')
+const Calories = () => {
+  const { foods } = useStoreState(state => state.foods)
+  const user = useUser()
 
   if (!user) return <div>Loading...</div>
 
@@ -35,10 +36,4 @@ const Calories = ({ user }) => {
   )
 }
 
-const mapActionsToProps = {}
-
-const mapStateToProps = state => ({
-  user: state.auth.user,
-})
-
-export default connect(mapStateToProps, mapActionsToProps)(Calories)
+export default Calories

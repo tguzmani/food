@@ -18,6 +18,6 @@ export default class FoodsRepository extends AxiosRepository {
   }
 
   async deleteFood(food) {
-    return await super.delete(`${food._id}`)
+    return await super.delete(`/${food._id}`)
   }
 }

@@ -19,24 +19,10 @@ const Day = () => {
 
   useConditionalRead({ name: readFoods, condition: foods.length === 0 })
 
-  // const { loading: loadingFood } = foodState
-
-  // const foods = useFoods('meals')
-  // const mealNumbers = useMealNumbers()
-  // const [once, setOnce] = React.useState(true)
-
-  // React.useEffect(() => {
-  //   if (foods.length === 0 && once) {
-  //     readFoods()
-  //     setOnce(false)
-  //   }
-  //   // eslint-disable-next-line
-  // }, [foods])
-
   return (
     <Container disableGutters maxWidth='md'>
-      {/* <Macros /> */}
-      {/* <PreviewMeal /> */}
+      <Macros />
+      <PreviewMeal />
       <Meals
         foods={mealsFoods}
         mealNumbers={mealNumbers}

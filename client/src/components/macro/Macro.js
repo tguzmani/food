@@ -4,9 +4,12 @@ import { Grid, Typography } from '@mui/material'
 import { getTotalMacro } from './../../util/food'
 import Progress from './Progress'
 import useFoods from './../../hooks/useFoods'
+import { useStoreState } from 'easy-peasy'
+import useUser from 'hooks/useUser'
 
-const Macro = ({ macro, user }) => {
-  const foods = useFoods('meals')
+const Macro = ({ macro }) => {
+  const { foods } = useStoreState(state => state.foods)
+  const user = useUser()
 
   if (!user) return <div>Loading...</div>
 
@@ -16,8 +19,6 @@ const Macro = ({ macro, user }) => {
 
   return (
     <Grid container display='flex' direction='column' alignItems='center'>
-      {/* <Grid item>{capitalize(macro.charAt(0))}</Grid> */}
-
       <Grid item>
         <Progress progress={progress} macro={macro} />
       </Grid>
@@ -32,10 +33,4 @@ const Macro = ({ macro, user }) => {
   )
 }
 
-const mapActionsToProps = {}
-
-const mapStateToProps = state => ({
-  user: state.auth.user,
-})
-
-export default connect(mapStateToProps, mapActionsToProps)(Macro)
+export default Macro
