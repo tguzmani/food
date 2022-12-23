@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux'
+import { useStoreState } from 'easy-peasy'
 
 const useMealNumbers = () => {
-  const foods = useSelector(state => state.food.foods)
+  const { foods } = useStoreState(state => state.foods)
 
   const mealNumbers = foods
     .filter(food => !isNaN(food.meal))

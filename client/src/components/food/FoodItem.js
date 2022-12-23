@@ -1,16 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { ListItem, Grid, Input, Box } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { ListItem, Grid, Input, Box } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
 import { capitalize } from './../../util/index'
-import {
-  updateFood,
-  deleteFood,
-  softUpdateFood,
-} from './../../state/food/foodActions'
 import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
 import '@sandstreamdev/react-swipeable-list/dist/styles.css'
 import DeleteIcon from '@mui/icons-material/Delete'
+import { useStoreActions } from 'easy-peasy'
 
 const useStyles = makeStyles(theme => ({
   root: { paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1) },
@@ -40,7 +36,13 @@ const Delete = () => (
   </Box>
 )
 
-const FoodItem = ({ food, softUpdateFood, updateFood, deleteFood }) => {
+const FoodItem = ({ food }) => {
+  const {
+    replaceFood: softUpdateFood,
+    updateFood,
+    deleteFood,
+  } = useStoreActions(actions => actions.foods)
+
   const [quantity, setQuantity] = React.useState(food.quantity)
   const classes = useStyles()
   const { protein, carbs, fat } = food.reference ? food.reference : food.ref
@@ -49,31 +51,23 @@ const FoodItem = ({ food, softUpdateFood, updateFood, deleteFood }) => {
     setQuantity(parseFloat(e.target.value))
   }
 
+  const updatedFood = {
+    ...food,
+    quantity: isNaN(quantity) ? 0 : quantity,
+    protein: isNaN(protein * quantity) ? 0 : protein * quantity,
+    carbs: isNaN(carbs * quantity) ? 0 : carbs * quantity,
+    fat: isNaN(fat * quantity) ? 0 : fat * quantity,
+  }
+
   const onBlurUpdate = e => {
-    updateFood(
-      {
-        ...food,
-        quantity: isNaN(quantity) ? 0 : quantity,
-        protein: isNaN(protein * quantity) ? 0 : protein * quantity,
-        carbs: isNaN(carbs * quantity) ? 0 : carbs * quantity,
-        fat: isNaN(fat * quantity) ? 0 : fat * quantity,
-      },
-      false
-    )
+    updateFood(updatedFood)
 
     if (isNaN(quantity)) setQuantity(0)
   }
 
   React.useEffect(() => {
-    if (quantity !== food.quantity)
-      softUpdateFood({
-        ...food,
-        quantity: isNaN(quantity) ? 0 : quantity,
-        protein: isNaN(protein * quantity) ? 0 : protein * quantity,
-        carbs: isNaN(carbs * quantity) ? 0 : carbs * quantity,
-        fat: isNaN(fat * quantity) ? 0 : fat * quantity,
-      })
-      // eslint-disable-next-line
+    if (quantity !== food.quantity) softUpdateFood(updatedFood)
+    // eslint-disable-next-line
   }, [quantity])
 
   return (
@@ -89,6 +83,7 @@ const FoodItem = ({ food, softUpdateFood, updateFood, deleteFood }) => {
           <Grid item xs={5}>
             {capitalize(food.name)} {food.isDirty && '*'}
           </Grid>
+          
           <Grid item xs={7}>
             <Grid
               container
@@ -106,6 +101,7 @@ const FoodItem = ({ food, softUpdateFood, updateFood, deleteFood }) => {
                   onBlur={onBlurUpdate}
                 ></Input>
               </Grid>
+
               <Value color='red'>{Math.round(food.protein)}</Value>
               <Value color='blue'>{Math.round(food.carbs)}</Value>
               <Value color='green'>{Math.round(food.fat)}</Value>
@@ -114,11 +110,7 @@ const FoodItem = ({ food, softUpdateFood, updateFood, deleteFood }) => {
         </Grid>
       </ListItem>
     </SwipeableListItem>
-  );
+  )
 }
 
-const mapActionsToProps = { softUpdateFood, updateFood, deleteFood }
-
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapActionsToProps)(FoodItem)
+export default FoodItem

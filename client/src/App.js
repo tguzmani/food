@@ -5,8 +5,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import theme from './config/theme'
 import { ThemeProvider } from '@mui/material/styles'
 
-import { Provider } from 'react-redux'
-import reduxStore from './store'
 
 import PrivateRoute from './components/routing/PrivateRoute'
 

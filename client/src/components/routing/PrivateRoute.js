@@ -18,7 +18,6 @@ const PrivateRoute = ({
   }, [])
 
   if (loading && !user) return <BackdropLoading open={loading} />
-  console.log('isAuth', isAuth)
 
   return (
     <Navigation>

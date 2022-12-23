@@ -15,7 +15,6 @@ const initialState = {
   loading: false,
   message: null,
   foods: [],
-  previewMealFoods: [],
 }
 
 let newFoods = []

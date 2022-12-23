@@ -7,8 +7,8 @@ import {
   Avatar,
   IconButton,
   MenuItem,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
 import React from 'react'
 import { getCleanliness, getTotalCalories } from '../../util/food'
 import Foods from '../food/Foods'
@@ -16,8 +16,7 @@ import Total from '../food/Total'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import Menu from '../layout/Menu'
 import useMenu from './../../hooks/useMenu'
-import { useDispatch } from 'react-redux'
-import { deleteFood } from '../../state/food/foodActions'
+import { useStoreActions } from 'easy-peasy'
 
 const useStyles = makeStyles(theme => ({
   avatar: { backgroundColor: theme.palette.primary.light },
@@ -26,13 +25,13 @@ const useStyles = makeStyles(theme => ({
 const MealItem = ({ foods, number }) => {
   const classes = useStyles()
   const thisMealFoods = foods.filter(food => food.meal === number)
-  const dispatch = useDispatch()
+  const { deleteFood } = useStoreActions(actions => actions.foods)
 
   const [anchorEl, handleOpenMenu, handleCloseMenu] = useMenu()
 
   const handleDeleteMeal = () => {
     thisMealFoods.forEach(food => {
-      dispatch(deleteFood(food))
+      deleteFood(food)
     })
   }
 
@@ -45,7 +44,7 @@ const MealItem = ({ foods, number }) => {
         <CardHeader
           avatar={<Avatar className={classes.avatar}>{number}</Avatar>}
           action={
-            <IconButton onClick={handleOpenMenu} size="large">
+            <IconButton onClick={handleOpenMenu} size='large'>
               <MoreVertIcon />
             </IconButton>
           }
@@ -64,9 +63,8 @@ const MealItem = ({ foods, number }) => {
       <Menu anchorEl={anchorEl} handleClose={handleCloseMenu}>
         <MenuItem onClick={handleDeleteMeal}>Delete Meal</MenuItem>
       </Menu>
-
     </Box>
-  );
+  )
 }
 
 export default MealItem

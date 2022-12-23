@@ -1,10 +1,11 @@
-import { useSelector } from 'react-redux'
+import { useStoreActions } from 'easy-peasy'
 
-const useFoods = which => {
-  let foods = useSelector(state => state.food.foods)
+const useFoods = () => {
+  const { foods } = useStoreActions(state => state.foods)
 
-  if (which === 'meals') return foods.filter(food => !food.recipe)
-  if (which === 'recipes') return foods.filter(food => food.recipe !== '')
+  console.log('foods', foods)
+
+  return foods
 }
 
 export default useFoods

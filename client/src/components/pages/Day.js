@@ -9,9 +9,16 @@ import Macros from '../macro/Macros'
 import useFoods from './../../hooks/useFoods'
 import useMealNumbers from './../../hooks/useMealNumbers'
 import { Container } from '@mui/material'
+import { useStoreActions, useStoreState } from 'easy-peasy'
+import useConditionalRead from 'hooks/useConditionalRead'
 
-const Day = ({ readFoods, foodState }) => {
-  return <div>Day</div>
+const Day = () => {
+  const { foods, mealsFoods, loading } = useStoreState(state => state.foods)
+  const { readFoods } = useStoreActions(actions => actions.foods)
+  const mealNumbers = useMealNumbers()
+
+  useConditionalRead({ name: readFoods, condition: foods.length === 0 })
+
   // const { loading: loadingFood } = foodState
 
   // const foods = useFoods('meals')
@@ -26,19 +33,18 @@ const Day = ({ readFoods, foodState }) => {
   //   // eslint-disable-next-line
   // }, [foods])
 
+  return (
+    <Container disableGutters maxWidth='md'>
+      {/* <Macros /> */}
+      {/* <PreviewMeal /> */}
+      <Meals
+        foods={mealsFoods}
+        mealNumbers={mealNumbers}
+      />
 
-  // return (
-  //   <Container disableGutters maxWidth='md'>
-  //     <Macros />
-  //     <PreviewMeal />
-  //     <Meals
-  //       foods={foods.filter(food => food.meal !== 0)}
-  //       mealNumbers={mealNumbers}
-  //     />
-
-  //     <BackdropLoading open={loadingFood} />
-  //   </Container>
-  // )
+      {/* <BackdropLoading open={loading && foods.length === 0} /> */}
+    </Container>
+  )
 }
 
 export default Day
