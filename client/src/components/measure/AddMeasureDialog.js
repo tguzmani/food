@@ -28,20 +28,25 @@ import {
 } from './../../state/measure/measureActions'
 
 import dayjs from 'dayjs'
+import { useStoreActions, useStoreState } from 'easy-peasy'
+import useRead from '../../hooks/useRead'
 var isToday = require('dayjs/plugin/isToday')
 dayjs.extend(isToday)
 
 const AddMeasureDialog = () => {
-  const [open, handleOpen, handleClose] = useDialog()
-  const foods = useFoods('meals')
-  const measures = useSelector(state => state.measure.measures)
-  const lastMeasure = measures[0]
-  const dispatch = useDispatch()
+  const { foods } = useStoreState(state => state.foods)
+  const { measurements: measures } = useStoreState(state => state.measurements)
 
-  useEffect(() => {
-    dispatch(readFoods())
-    // eslint-disable-next-line
-  }, [])
+  const { readFoods, deleteAllFoodsFromDay } = useStoreActions(state => state.foods)
+  const { updateMeasurement, createMeasurement } = useStoreActions(
+    actions => actions.measurements
+  )
+
+  useRead(readFoods)
+
+  const [open, handleOpen, handleClose] = useDialog()
+
+  const lastMeasure = measures[0]
 
   const [measure, setMeasure] = React.useState({
     weight: '',
@@ -65,26 +70,26 @@ const AddMeasureDialog = () => {
         alcohol: getAlcoholUnits(foods),
       }
 
-      dispatch(updateMeasure(measure))
+      updateMeasurement(measure)
     }
 
     // 2/3 -- create measure
-    dispatch(createMeasure({ weight, fat, sleep }))
+    createMeasurement({ weight, fat, sleep })
 
     // 3/3 -- delete all food
-    dispatch(deleteAllFoods())
+    deleteAllFoodsFromDay()
 
     handleClose()
   }
+
+  const lastMeasureIsFromToday =
+    lastMeasure && !dayjs(lastMeasure.createdAt).isToday()
 
   return (
     <>
       <FAB
         Icon={AddIcon}
-        show={
-          (lastMeasure && !dayjs(lastMeasure.createdAt).isToday()) ||
-          measures.length === 0
-        }
+        show={lastMeasureIsFromToday || measures.length === 0}
         onClick={handleOpen}
         tooltipTitle='Weight In!'
       />

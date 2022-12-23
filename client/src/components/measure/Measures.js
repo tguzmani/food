@@ -8,7 +8,7 @@ const Measures = ({ measures, current }) => {
   let thisMeasures = []
 
   if (current && dayjs().get('date') > 15) {
-    console.log('current && > 15')
+    // console.log('current && > 15')
 
     thisMeasures = measures.filter(
       measure =>
@@ -18,7 +18,7 @@ const Measures = ({ measures, current }) => {
   }
 
   if (current && dayjs().get('date') <= 15) {
-    console.log('current && <= 15')
+    // console.log('current && <= 15')
 
     thisMeasures = measures.filter(
       measure =>
@@ -28,7 +28,7 @@ const Measures = ({ measures, current }) => {
   }
 
   if (!current && dayjs().get('date') > 15) {
-    console.log('last && > 15')
+    // console.log('last && > 15')
 
     thisMeasures = measures.filter(
       measure =>
@@ -38,8 +38,8 @@ const Measures = ({ measures, current }) => {
   }
 
   if (!current && dayjs().get('date') <= 15) {
-    console.log('last && <= 15')
-    console.log('end', dayjs().subtract(1, 'month').endOf('month'))
+    // console.log('last && <= 15')
+    // console.log('end', dayjs().subtract(1, 'month').endOf('month'))
 
     thisMeasures = measures.filter(
       measure =>

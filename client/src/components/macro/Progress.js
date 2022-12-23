@@ -40,7 +40,7 @@ const Progress = ({ progress, macro }) => {
       <CircularProgress
         className={classes.bottom}
         variant='determinate'
-        value='100'
+        value={100}
         size={SIZE}
         thickness={THICKNESS}
       />

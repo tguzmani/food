@@ -39,6 +39,15 @@ const foodThunks = {
       fail(error)
     }
   }),
+
+  deleteAllFoodsFromDay: thunk(async (actions, food, { fail }) => {
+    try {
+      const removedFood = await foodsRepository.deleteAllFoodsFromDay(food)
+      actions.clearFoods()
+    } catch (error) {
+      fail(error)
+    }
+  }),
 }
 
 export const foodsThunksNames = Object.keys(foodThunks).map(key => key)

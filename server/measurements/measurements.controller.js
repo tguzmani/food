@@ -50,7 +50,7 @@ exports.updateMeasurement = async (req, res) => {
 
   try {
     const measurement = await measurementsServices.updateMeasurement(
-      req.measurementId,
+      measurementId,
       req.body
     )
 

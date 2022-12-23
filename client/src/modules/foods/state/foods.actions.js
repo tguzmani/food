@@ -9,6 +9,10 @@ const foodActions = {
     state.foods = foods
   }),
 
+  clearFoods: action(state => {
+    state.foods = []
+  }),
+
   filterFoods: action((state, food) => {
     state.foods = state.foods.filter(stateFood => stateFood._id !== food._id)
   }),

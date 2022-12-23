@@ -8,7 +8,7 @@ import { red, green, blue } from '@mui/material/colors'
 const CanvasJSChart = CanvasJSReact.CanvasJSChart
 
 const Plot = ({ data, property }) => {
-  console.log({ data, property })
+  // console.log({ data, property })
   const theme = useTheme()
 
   let dataPoints = data.map(element => ({

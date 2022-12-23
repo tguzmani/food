@@ -35,6 +35,8 @@ exports.readMeasurementsByDate = async (initialDate, finalDate, userId) => {
 }
 
 exports.updateMeasurement = async (measurementId, measurement) => {
+  console.log('measurement', measurement)
+  console.log('measurementId', measurementId)
   return await Measurement.findByIdAndUpdate(measurementId, measurement, {
     new: true,
   })

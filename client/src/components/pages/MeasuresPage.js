@@ -1,22 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { readMeasures } from '../../state/measure/measureActions'
-import { Grid } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { Grid } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
 import Measures from './../measure/Measures'
 import AddMeasureDialog from '../measure/AddMeasureDialog'
+import { useStoreActions, useStoreState } from 'easy-peasy'
+import useConditionalRead from 'hooks/useConditionalRead'
 
 const useStyles = makeStyles(theme => ({
   fabFix: theme.mixins.toolbar,
 }))
 
-const MeasuresPage = ({ readMeasures, measures, loading }) => {
+const MeasuresPage = ({ loading }) => {
   const classes = useStyles()
 
-  React.useEffect(() => {
-    if (measures.length === 0) readMeasures()
-    // eslint-disable-next-line
-  }, [])
+  const { readMeasurements } = useStoreActions(actions => actions.measurements)
+  const { measurements: measures } = useStoreState(state => state.measurements)
+
+  useConditionalRead({ name: readMeasurements, condition: measures.length === 0 })
 
   if (measures.length === 0 && loading) return <div>Loading...</div>
 
@@ -38,11 +40,4 @@ const MeasuresPage = ({ readMeasures, measures, loading }) => {
   )
 }
 
-const mapActionsToProps = { readMeasures }
-
-const mapStateToProps = state => ({
-  measures: state.measure.measures,
-  loading: state.measure.loading,
-})
-
-export default connect(mapStateToProps, mapActionsToProps)(MeasuresPage)
+export default MeasuresPage
