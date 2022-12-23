@@ -23,10 +23,7 @@ const Day = () => {
     <Container disableGutters maxWidth='md'>
       <Macros />
       <PreviewMeal />
-      <Meals
-        foods={mealsFoods}
-        mealNumbers={mealNumbers}
-      />
+      <Meals foods={mealsFoods} mealNumbers={mealNumbers} />
 
       {/* <BackdropLoading open={loading && foods.length === 0} /> */}
     </Container>
