@@ -24,6 +24,18 @@ const measurementThunks = {
     }
   }),
 
+  readMeasurementsByDate: thunk(async (actions, { from, to }, { fail }) => {
+    try {
+      
+      const measurementsByQuery =
+        await measurementsRepository.readMeasurementsByDate(from, to)
+
+      actions.setMeasurementsByQuery(measurementsByQuery)
+    } catch (error) {
+      fail(error)
+    }
+  }),
+
   updateMeasurement: thunk(async (actions, measurement, { fail }) => {
     try {
       const updatedMeasurement = await measurementsRepository.updateMeasurement(

@@ -6,7 +6,7 @@ import referencesComputeds from './references.computeds'
 const referenceStore = {
   references: [],
   filterReferencesQuery: '',
-  loading: true,
+  loading: false,
   error: undefined,
 
   ...referencesActions,

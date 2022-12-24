@@ -10,15 +10,17 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { readMeasuresByQuery } from './../../state/measure/measureActions'
 import Plot from './Plot'
 import StatisticsTable from './StatisticsTable'
 import BackdropLoading from './../layout/BackdropLoading'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 
 const StatPanel = () => {
-  const { loading, measuresByQuery } = useSelector(state => state.measure)
-  const dispatch = useDispatch()
+  const { loading, measurementsByQuery } = useStoreState(state => state.measurements)
+
+  const { readMeasurementsByDate } = useStoreActions(
+    actions => actions.measurements
+  )
 
   const properties = [
     'weight',
@@ -48,7 +50,7 @@ const StatPanel = () => {
   }
 
   const handleSendQuery = () => {
-    dispatch(readMeasuresByQuery({ from: fromDate, to: toDate }))
+    readMeasurementsByDate({ from: fromDate, to: toDate })
   }
 
   return (
@@ -98,10 +100,10 @@ const StatPanel = () => {
 
       <Button onClick={handleSendQuery}>Send Query</Button>
 
-      {measuresByQuery.length > 0 && (
+      {measurementsByQuery.length > 0 && (
         <>
-          <StatisticsTable data={measuresByQuery} property={property} />
-          <Plot data={measuresByQuery} property={property} />
+          <StatisticsTable data={measurementsByQuery} property={property} />
+          <Plot data={measurementsByQuery} property={property} />
         </>
       )}
     </>

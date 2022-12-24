@@ -5,7 +5,8 @@ import measurementsComputeds from './measurements.computeds'
 
 const measurementStore = {
   measurements: [],
-  loading: true,
+  measurementsByQuery: [],
+  loading: false,
   error: undefined,
 
   ...measurementsActions,

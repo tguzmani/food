@@ -5,7 +5,7 @@ import foodsComputeds from './foods.computeds'
 
 const foodStore = {
   foods: [],
-  loading: true,
+  loading: false,
   error: undefined,
 
   ...foodsActions,

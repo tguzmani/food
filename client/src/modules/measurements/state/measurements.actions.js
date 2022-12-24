@@ -7,6 +7,10 @@ const measurementActions = {
 
   setMeasurements: action((state, measurements) => {
     state.measurements = measurements
+  }),  
+  
+  setMeasurementsByQuery: action((state, measurementsByQuery) => {
+    state.measurementsByQuery = measurementsByQuery
   }),
 
   filterMeasurements: action((state, measurement) => {
