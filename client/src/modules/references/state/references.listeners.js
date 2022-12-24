@@ -1,10 +1,10 @@
 import { startLoading, stopLoading, setError } from 'common/listeners'
-import { measurementsThunksNames } from './measurements.thunks'
+import { referencesThunksNames } from './references.thunks'
 
-const measurementListeners = {
-  ...startLoading(...measurementsThunksNames),
-  ...stopLoading(...measurementsThunksNames),
-  ...setError(...measurementsThunksNames),
+const referenceListeners = {
+  ...startLoading(...referencesThunksNames),
+  ...stopLoading(...referencesThunksNames),
+  ...setError(...referencesThunksNames),
 }
 
-export default measurementListeners
+export default referenceListeners

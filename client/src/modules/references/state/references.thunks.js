@@ -1,54 +1,54 @@
 import { thunk } from 'easy-peasy'
-import MeasurementsRepository from './measurements.repository'
+import ReferencesRepository from './references.repository'
 
-const measurementsRepository = new MeasurementsRepository()
+const referencesRepository = new ReferencesRepository()
 
-const measurementThunks = {
-  createMeasurement: thunk(async (actions, measurement, { fail }) => {
+const referenceThunks = {
+  createReference: thunk(async (actions, reference, { fail }) => {
     try {
-      const createdMeasurement = await measurementsRepository.createMeasurement(
-        measurement
+      const createdReference = await referencesRepository.createReference(
+        reference
       )
-      actions.appendMeasurement(createdMeasurement)
+      actions.appendReference(createdReference)
     } catch (error) {
       fail(error)
     }
   }),
 
-  readMeasurements: thunk(async (actions, _, { fail }) => {
+  readReferences: thunk(async (actions, _, { fail }) => {
     try {
-      const measurements = await measurementsRepository.readMeasurements()
-      actions.setMeasurements(measurements)
+      const references = await referencesRepository.readReferences()
+      actions.setReferences(references)
     } catch (error) {
       fail(error)
     }
   }),
 
-  updateMeasurement: thunk(async (actions, measurement, { fail }) => {
+  updateReference: thunk(async (actions, reference, { fail }) => {
     try {
-      const updatedMeasurement = await measurementsRepository.updateMeasurement(
-        measurement
+      const updatedReference = await referencesRepository.updateReference(
+        reference
       )
-      actions.replaceMeasurement(updatedMeasurement)
+      actions.replaceReference(updatedReference)
     } catch (error) {
       fail(error)
     }
   }),
 
-  deleteMeasurement: thunk(async (actions, measurement, { fail }) => {
+  deleteReference: thunk(async (actions, reference, { fail }) => {
     try {
-      const removedMeasurement = await measurementsRepository.deleteMeasurement(
-        measurement
+      const removedReference = await referencesRepository.deleteReference(
+        reference
       )
-      actions.filterMeasurements(removedMeasurement)
+      actions.filterReferences(removedReference)
     } catch (error) {
       fail(error)
     }
   }),
 }
 
-export const measurementsThunksNames = Object.keys(measurementThunks).map(
+export const referencesThunksNames = Object.keys(referenceThunks).map(
   key => key
 )
 
-export default measurementThunks
+export default referenceThunks

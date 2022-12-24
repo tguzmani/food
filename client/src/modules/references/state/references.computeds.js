@@ -1,13 +1,13 @@
 import { computed } from 'easy-peasy'
 
-const measurementsComputeds = {
-  mealsMeasurements: computed(state =>
-    state.measurements.filter(measurement => measurement.meal !== 0)
+const referencesComputeds = {
+  mealsReferences: computed(state =>
+    state.references.filter(reference => reference.meal !== 0)
   ),
 
-  previewMealMeasurements: computed(state =>
-    state.measurements.filter(measurement => measurement.meal === 0)
+  previewMealReferences: computed(state =>
+    state.references.filter(reference => reference.meal === 0)
   ),
 }
 
-export default measurementsComputeds
+export default referencesComputeds

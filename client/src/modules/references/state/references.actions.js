@@ -1,23 +1,23 @@
 import { action } from 'easy-peasy'
 
-const measurementActions = {
-  appendMeasurement: action((state, measurement) => {
-    state.measurements.push(measurement)
+const referenceActions = {
+  appendReference: action((state, reference) => {
+    state.references.push(reference)
   }),
 
-  setMeasurements: action((state, measurements) => {
-    state.measurements = measurements
+  setReferences: action((state, references) => {
+    state.references = references
   }),
 
-  filterMeasurements: action((state, measurement) => {
-    state.measurements = state.measurements.filter(
-      stateMeasurement => stateMeasurement._id !== measurement._id
+  filterReferences: action((state, reference) => {
+    state.references = state.references.filter(
+      stateReference => stateReference._id !== reference._id
     )
   }),
 
-  replaceMeasurement: action((state, measurement) => {
-    state.measurements = state.measurements.map(stateMeasurement =>
-      stateMeasurement._id === measurement._id ? measurement : stateMeasurement
+  replaceReference: action((state, reference) => {
+    state.references = state.references.map(stateReference =>
+      stateReference._id === reference._id ? reference : stateReference
     )
   }),
 
@@ -26,4 +26,4 @@ const measurementActions = {
   }),
 }
 
-export default measurementActions
+export default referenceActions

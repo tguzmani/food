@@ -1,23 +1,23 @@
 import AxiosRepository from 'common/axios.repository'
 
-export default class MeasurementsRepository extends AxiosRepository {
+export default class ReferencesRepository extends AxiosRepository {
   constructor() {
-    super('measurements')
+    super('references')
   }
 
-  async createMeasurement(measurement) {
-    return await super.post('/', measurement)
+  async createReference(reference) {
+    return await super.post('/', reference)
   }
 
-  async readMeasurements() {
+  async readReferences() {
     return await super.get('/')
   }
 
-  async updateMeasurement(measurement) {
-    return await super.put(`/${measurement._id}`, measurement)
+  async updateReference(reference) {
+    return await super.put(`/${reference._id}`, reference)
   }
 
-  async deleteMeasurement(measurement) {
-    return await super.delete(`/${measurement._id}`)
+  async deleteReference(reference) {
+    return await super.delete(`/${reference._id}`)
   }
 }
