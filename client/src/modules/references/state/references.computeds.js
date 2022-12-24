@@ -1,13 +1,14 @@
 import { computed } from 'easy-peasy'
 
 const referencesComputeds = {
-  mealsReferences: computed(state =>
-    state.references.filter(reference => reference.meal !== 0)
+  filteredReferences: computed(state =>
+    state.references.filter(reference => {
+      const regex = new RegExp(state.filterReferencesQuery, 'gi')
+      return reference.name.match(regex)
+    })
   ),
 
-  previewMealReferences: computed(state =>
-    state.references.filter(reference => reference.meal === 0)
-  ),
+  isFiltering: computed(state => state.filterReferencesQuery.length !== ''),
 }
 
 export default referencesComputeds

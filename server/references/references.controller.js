@@ -9,7 +9,7 @@ exports.createReference = async (req, res) => {
 
     res.send(reference)
   } catch (error) {
-    return res.status(400).send({ error: error.message })
+    return res.status(400).send({ error: error.stack })
   }
 }
 

@@ -2,13 +2,15 @@ import { Box, Card, CardContent, List } from '@mui/material'
 import { connect } from 'react-redux'
 import React from 'react'
 import ReferenceItem from './ReferenceItem'
+import { useStoreState } from 'easy-peasy';
 
-const References = ({ references, filtering }) => {
+const References = ({ references, isFiltering }) => {
+
   return (
     <Box mt={3}>
       <Card>
         <CardContent>
-          {filtering && references.length === 0 ? (
+          {isFiltering && references.length === 0 ? (
             <div>Reference not found</div>
           ) : (
             <List>
@@ -27,10 +29,4 @@ const References = ({ references, filtering }) => {
   )
 }
 
-const mapActionsToProps = {}
-
-const mapStateToProps = state => ({
-  filtering: state.reference.filtering,
-})
-
-export default connect(mapStateToProps, mapActionsToProps)(References)
+export default References

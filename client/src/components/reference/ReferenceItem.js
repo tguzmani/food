@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { ListItem, Grid, Box } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { ListItem, Grid, Box } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
 import { capitalize } from './../../util/index'
 import { deleteReference } from './../../state/reference/referenceActions'
 
@@ -9,6 +9,7 @@ import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
 import '@sandstreamdev/react-swipeable-list/dist/styles.css'
 import DeleteIcon from '@mui/icons-material/Delete'
 import UpdateReferenceDialog from './UpdateReferenceDialog'
+import { useStoreActions } from 'easy-peasy'
 
 const useStyles = makeStyles(theme => ({
   root: { paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1) },
@@ -38,8 +39,9 @@ const Delete = () => (
   </Box>
 )
 
-const ReferenceItem = ({ reference, deleteReference, preview, divider }) => {
+const ReferenceItem = ({ reference, preview, divider }) => {
   const classes = useStyles()
+  const { deleteReference } = useStoreActions(actions => actions.references)
 
   const [open, setOpen] = React.useState(false)
 
@@ -55,59 +57,60 @@ const ReferenceItem = ({ reference, deleteReference, preview, divider }) => {
     return Math.round(value)
   }
 
-  return <>
-    <SwipeableListItem
-      swipeLeft={
-        !preview && {
-          content: <Delete />,
-          action: () => deleteReference(reference),
-        }
-      }
-      threshold={0.9}
-    >
-      <ListItem
-        className={classes.root}
-        divider={divider}
-        onClick={handleOpen}
-        button
-      >
-        <Grid container spacing={2} alignItems='center'>
-          <Grid item xs={6}>
-            {capitalize(reference.name)}
-          </Grid>
+  const handleDeleteReference = () => deleteReference(reference)
 
-          <Grid item xs={6}>
-            <Grid
-              container
-              justifyContent='space-around'
-              spacing={2}
-              alignItems='center'
-            >
-              <Value color='red'>{displayMacro(reference.protein)}</Value>
-              <Value color='blue'>{displayMacro(reference.carbs)}</Value>
-              <Value color='green'>{displayMacro(reference.fat)}</Value>
-              <Grid item xs={3} style={{ textAlign: 'right' }}>
-                <div>
-                  {reference.isDirty && reference.isAlcohol
-                    ? 'A'
-                    : reference.isDirty && 'D'}
-                </div>
+  return (
+    <>
+      <SwipeableListItem
+        swipeLeft={
+          !preview && {
+            content: <Delete />,
+            action: handleDeleteReference,
+          }
+        }
+        threshold={0.9}
+      >
+        <ListItem
+          className={classes.root}
+          divider={divider}
+          onClick={handleOpen}
+          button
+        >
+          <Grid container spacing={2} alignItems='center'>
+            <Grid item xs={6}>
+              {capitalize(reference.name)}
+            </Grid>
+
+            <Grid item xs={6}>
+              <Grid
+                container
+                justifyContent='space-around'
+                spacing={2}
+                alignItems='center'
+              >
+                <Value color='red'>{displayMacro(reference.protein)}</Value>
+                <Value color='blue'>{displayMacro(reference.carbs)}</Value>
+                <Value color='green'>{displayMacro(reference.fat)}</Value>
+                <Grid item xs={3} style={{ textAlign: 'right' }}>
+                  <div>
+                    {reference.isDirty && reference.isAlcohol
+                      ? 'A'
+                      : reference.isDirty && 'D'}
+                  </div>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </ListItem>
-    </SwipeableListItem>
-    <UpdateReferenceDialog
-      open={open}
-      setOpen={setOpen}
-      initalReference={reference}
-    />
-  </>;
+        </ListItem>
+      </SwipeableListItem>
+
+      <UpdateReferenceDialog
+        open={open}
+        setOpen={setOpen}
+        initalReference={reference}
+      />
+    </>
+  )
 }
 
-const mapActionsToProps = { deleteReference }
-
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapActionsToProps)(ReferenceItem)
+export default ReferenceItem

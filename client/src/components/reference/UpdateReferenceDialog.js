@@ -12,14 +12,16 @@ import {
 } from '@mui/material'
 import { connect } from 'react-redux'
 import { updateReference } from './../../state/reference/referenceActions'
+import { useStoreActions } from 'easy-peasy';
 
 const UpdateReferenceDialog = ({
   initalReference,
   open,
   setOpen,
-  updateReference,
 }) => {
   const [reference, setReference] = React.useState(initalReference)
+  
+  const { updateReference } = useStoreActions(actions => actions.references)
 
   const onChange = e => {
     setReference({ ...reference, [e.target.name]: e.target.value })
@@ -126,11 +128,4 @@ const UpdateReferenceDialog = ({
   )
 }
 
-const mapActionsToProps = { updateReference }
-
-const mapStateToProps = state => ({})
-
-export default connect(
-  mapStateToProps,
-  mapActionsToProps
-)(UpdateReferenceDialog)
+export default UpdateReferenceDialog

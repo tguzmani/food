@@ -4,36 +4,27 @@ import SearchReference from '../reference/SearchReference'
 import References from '../reference/References'
 import { readReferences } from '../../state/reference/referenceActions'
 import { Container } from '@mui/material'
+import { useStoreActions, useStoreState } from 'easy-peasy'
+import useConditionalRead from 'hooks/useConditionalRead'
 
-const ReferencesPage = ({
-  readReferences,
-  references,
-  loading,
-  filtering,
-  filteredReferences,
-}) => {
-  React.useEffect(() => {
-    if (references.length === 0) readReferences()
-    // eslint-disable-next-line
-  }, [])
+const ReferencesPage = () => {
+  const { readReferences } = useStoreActions(actions => actions.references)
+  const { references, isFiltering, filteredReferences, loading } = useStoreState(state => state.references)
+
+  useConditionalRead({
+    name: readReferences,
+    condition: references.length === 0,
+  })
 
   if (references.length === 0 && loading) return <div>Loading...</div>
 
   return (
     <Container disableGutters maxWidth='md'>
       <SearchReference />
-      <References references={filtering ? filteredReferences : references} />
+      <References references={isFiltering ? filteredReferences : references} isFiltering={isFiltering}/>
+      {/* <References references={references} /> */}
     </Container>
   )
 }
 
-const mapActionsToProps = { readReferences }
-
-const mapStateToProps = state => ({
-  references: state.reference.references,
-  filteredReferences: state.reference.filteredReferences,
-  filtering: state.reference.filtering,
-  loading: state.reference.loading,
-})
-
-export default connect(mapStateToProps, mapActionsToProps)(ReferencesPage)
+export default ReferencesPage

@@ -2,7 +2,7 @@ import { action } from 'easy-peasy'
 
 const referenceActions = {
   appendReference: action((state, reference) => {
-    state.references.push(reference)
+    state.references = [reference, ...state.references]
   }),
 
   setReferences: action((state, references) => {
@@ -13,6 +13,10 @@ const referenceActions = {
     state.references = state.references.filter(
       stateReference => stateReference._id !== reference._id
     )
+  }),
+
+  setFilterReferencesQuery: action((state, query) => {
+    state.filterReferencesQuery = query
   }),
 
   replaceReference: action((state, reference) => {

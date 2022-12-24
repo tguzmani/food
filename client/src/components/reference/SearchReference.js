@@ -6,24 +6,19 @@ import {
   filterReferences,
 } from '../../state/reference/referenceActions'
 import NewReferenceDialog from './NewReferenceDialog'
+import { useStoreState, useStoreActions } from 'easy-peasy'
 
 const SearchReference = ({
-  clearFilterReferences,
-  filterReferences,
-  filtering,
-  filteredReferences,
 }) => {
-  const [input, setInput] = React.useState('')
+  const { filterReferencesQuery } = useStoreState(state => state.references)
+
+  const { setFilterReferencesQuery } = useStoreActions(
+    actions => actions.references
+  )
 
   const onChangeInput = e => {
-    setInput(e.target.value)
+    setFilterReferencesQuery(e.target.value)
   }
-
-  React.useEffect(() => {
-    if (input === '') clearFilterReferences()
-    else filterReferences(input)
-    // eslint-disable-next-line
-  }, [input])
 
   return (
     <>
@@ -31,22 +26,14 @@ const SearchReference = ({
         <TextField
           fullWidth
           label='Search Reference'
-          value={input}
+          value={filterReferencesQuery}
           onChange={onChangeInput}
           variant='outlined'
-          className='bg-white'
         />
       </Box>
-      <NewReferenceDialog referenceName={input} />
+      <NewReferenceDialog referenceName={filterReferencesQuery} />
     </>
   )
 }
 
-const mapActionsToProps = { clearFilterReferences, filterReferences }
-
-const mapStateToProps = state => ({
-  filtering: state.reference.filtering,
-  filteredReferences: state.reference.filteredReferences,
-})
-
-export default connect(mapStateToProps, mapActionsToProps)(SearchReference)
+export default SearchReference
