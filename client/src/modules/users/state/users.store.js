@@ -1,7 +1,7 @@
 import usersActions from './users.actions'
-import usersAuthActions from './users.auth.actions'
 import usersThunks from './users.thunks'
-import usersAuthThunks from './users.auth.thunks'
+import usersAuthThunks from './auth/users.auth.thunks'
+import usersAuthActions from './auth/users.auth.actions'
 import usersListeners from './users.listeners'
 import usersComputeds from './users.computeds'
 
@@ -12,8 +12,8 @@ const usersStore = {
   error: undefined,
 
   ...usersActions,
-  ...usersAuthActions,
   ...usersThunks,
+  ...usersAuthActions,
   ...usersAuthThunks,
   ...usersListeners,
   ...usersComputeds,
