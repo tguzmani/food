@@ -10,11 +10,11 @@ const PrivateRoute = ({
   ...rest
 }) => {
   const isAuth = useAuth()
-  const { loading, user } = useStoreState(state => state.auth)
-  const { readProfile } = useStoreActions(state => state.auth)
+  const { loading, user } = useStoreState(state => state.users)
+  const { readUser } = useStoreActions(state => state.users)
 
   useEffect(() => {
-    readProfile()
+    readUser()
   }, [])
 
   if (loading && !user) return <BackdropLoading open={loading} />

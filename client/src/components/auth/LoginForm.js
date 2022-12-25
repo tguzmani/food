@@ -16,13 +16,15 @@ import { withRouter } from 'react-router-dom'
 import { useTheme, Box } from '@mui/material'
 import useResponsive from 'hooks/useResponsive'
 import useForm from 'hooks/useForm'
+import useAuth from 'hooks/useAuth'
 
 const LoginForm = ({ history }) => {
   const isMobile = useResponsive('md')
   const theme = useTheme()
+  const isAuth = useAuth()
 
-  const { signIn, setLoading } = useStoreActions(state => state.auth)
-  const { isAuthenticated, loading } = useStoreState(state => state.auth)
+  const { signIn, setLoading } = useStoreActions(actions => actions.users)
+  const { loading } = useStoreState(state => state.users)
 
   const [credentials, bindCredentials, areCredentialsEmpty] = useForm({
     email: '',
@@ -34,8 +36,8 @@ const LoginForm = ({ history }) => {
   }, [])
 
   useEffect(() => {
-    if (isAuthenticated) history.push('/')
-  }, [isAuthenticated, history])
+    if (isAuth) history.push('/')
+  }, [isAuth, history])
 
   const onClick = e => {
     e.preventDefault()

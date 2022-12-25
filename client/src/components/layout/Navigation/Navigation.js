@@ -32,7 +32,7 @@ const Navigation = ({ window, children }) => {
   const user = useUser()
   const isMobile = useResponsive('md')
 
-  const { signOut } = useStoreActions(actions => actions.auth)
+  const { signOut } = useStoreActions(actions => actions.users)
 
   const [title, setTitle] = React.useState('Food')
 

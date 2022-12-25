@@ -2,17 +2,10 @@ import { useStoreActions, useStoreState } from 'easy-peasy'
 import { useEffect } from 'react'
 
 const useAuth = () => {
-  const { readProfile } = useStoreActions(actions => actions.auth)
-  const { user, isAuthenticated } = useStoreState(state => state.auth)
-  
-  const isAuth = user && isAuthenticated
+  const { readUser } = useStoreActions(actions => actions.users)
+  const { user, isAuthenticated } = useStoreState(state => state.users)
 
-  // useEffect(() => {
-  //   if (user) readProfile()
-  // }, [])
-
-
-  return isAuth
+  return user && isAuthenticated
 }
 
 export default useAuth

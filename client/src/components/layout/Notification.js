@@ -50,7 +50,7 @@ const Notification = ({ authMessage }) => {
 const mapActionsToProps = {}
 
 const mapStateToProps = state => ({
-  authMessage: state.auth.message,
+  authMessage: state.users.message,
 })
 
 export default connect(mapStateToProps, mapActionsToProps)(Notification)

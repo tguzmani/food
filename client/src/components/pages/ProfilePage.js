@@ -11,8 +11,8 @@ const ProfilePage = () => {
 
   const profile = {}
 
-  const { user, loading } = useStoreState(state => state.auth)
-  const { updateUser } = useStoreActions(state => state.auth)
+  const { user, loading } = useStoreState(state => state.users)
+  const { updateUser } = useStoreActions(state => state.users)
 
   const handleSaveChanges = () => {
     updateUser(profile)
