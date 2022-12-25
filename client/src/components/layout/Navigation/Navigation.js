@@ -94,6 +94,7 @@ const Navigation = ({ window, children }) => {
         <Typography variant='h6'>
           {title}
         </Typography>
+        <div className={classes.grow}></div>
 
         <Typography>{user && user.firstName}</Typography>
         <IconButton
@@ -147,6 +148,9 @@ const Navigation = ({ window, children }) => {
       anchor={theme.direction === 'rtl' ? 'right' : 'left'}
       open={mobileOpen}
       onClose={handleDrawerToggle}
+      classes={{
+        paper: classes.drawerPaper,
+      }}
       ModalProps={{
         keepMounted: true,
       }}
