@@ -20,7 +20,7 @@ const Calories = () => {
       <Box display='flex' alignItems='flex-end' justifyContent='center'>
         <Typography
           variant='h4'
-          style={{ marginRight: '4px', fontWeight: 500 }}
+          sx={{ marginRight: '4px', fontWeight: 500 }}
         >
           {Math.round(caloriesConsumed)}
         </Typography>

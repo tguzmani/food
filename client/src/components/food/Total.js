@@ -1,7 +1,7 @@
 import React from 'react'
 import { ListItem, Grid } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import { getTotalMacro } from './../../util/food'
+import { getTotalMacro } from 'util/food'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Value = ({ children, color }) => (
-  <Grid item xs={3} style={{ textAlign: 'right', color }}>
+  <Grid item xs={3} sx={{ textAlign: 'right', color }}>
     {children}
   </Grid>
 )
@@ -36,7 +36,7 @@ const Total = ({ foods }) => {
             spacing={2}
             alignItems='center'
           >
-            <Value></Value>
+            <Value /> 
             <Value color='red'>{Math.round(totalProtein)}</Value>
             <Value color='blue'>{Math.round(totalCarbs)}</Value>
             <Value color='green'>{Math.round(totalFat)}</Value>

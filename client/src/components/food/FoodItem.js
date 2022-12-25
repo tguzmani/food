@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Value = ({ children, color }) => (
-  <Grid item xs={3} style={{ textAlign: 'right', color }}>
+  <Grid item xs={3} sx={{ textAlign: 'right', color }}>
     {children}
   </Grid>
 )

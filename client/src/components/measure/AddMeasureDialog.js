@@ -20,7 +20,7 @@ import useDialog from 'hooks/useDialog'
 
 import dayjs from 'dayjs'
 import { useStoreActions, useStoreState } from 'easy-peasy'
-import useRead from '../../hooks/useRead'
+import useConditionalRead from 'hooks/useConditionalRead';
 
 var isToday = require('dayjs/plugin/isToday')
 dayjs.extend(isToday)
@@ -34,7 +34,7 @@ const AddMeasureDialog = () => {
     actions => actions.measurements
   )
 
-  useRead(readFoods)
+  useConditionalRead({name: readFoods, value: foods.length === 0})
 
   const [open, handleOpen, handleClose] = useDialog()
 
@@ -91,7 +91,7 @@ const AddMeasureDialog = () => {
 
         <DialogContent>
           <TextField
-            style={{ marginBottom: '1rem' }}
+            sx={{ marginBottom: '1rem' }}
             fullWidth
             name='weight'
             value={weight}
@@ -101,7 +101,7 @@ const AddMeasureDialog = () => {
           ></TextField>
 
           <TextField
-            style={{ marginBottom: '1rem' }}
+            sx={{ marginBottom: '1rem' }}
             fullWidth
             name='fat'
             value={fat}
@@ -111,7 +111,7 @@ const AddMeasureDialog = () => {
           ></TextField>
 
           <TextField
-            style={{ marginBottom: '1rem' }}
+            sx={{ marginBottom: '1rem' }}
             fullWidth
             name='sleep'
             value={sleep}

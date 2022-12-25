@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Value = ({ children, color }) => (
-  <Grid item xs={3} style={{ textAlign: 'right', color }}>
+  <Grid item xs={3} sx={{ textAlign: 'right', color }}>
     {children}
   </Grid>
 )
@@ -89,7 +89,7 @@ const ReferenceItem = ({ reference, preview, divider }) => {
                 <Value color='red'>{displayMacro(reference.protein)}</Value>
                 <Value color='blue'>{displayMacro(reference.carbs)}</Value>
                 <Value color='green'>{displayMacro(reference.fat)}</Value>
-                <Grid item xs={3} style={{ textAlign: 'right' }}>
+                <Grid item xs={3} sx={{ textAlign: 'right' }}>
                   <div>
                     {reference.isDirty && reference.isAlcohol
                       ? 'A'

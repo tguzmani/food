@@ -101,7 +101,7 @@ const MacroInformation = () => {
           max={1.9}
           step={null}
         />
-        <Box style={{ height: '2em' }}>
+        <Box sx={{ height: '2em' }}>
           <Typography>{activityOptions[activity]}</Typography>
         </Box>
       </Box>

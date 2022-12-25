@@ -17,7 +17,7 @@ const UserInformation = () => {
 
   const Detail = ({ Icon, children }) => (
     <Box display='flex' alignItems='center' mb={1}>
-      <Icon fontSize='small' style={{ marginRight: '0.25em' }} />
+      <Icon fontSize='small' sx={{ marginRight: '0.25em' }} />
       <Typography variant='body'>{children}</Typography>
     </Box>
   )

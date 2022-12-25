@@ -15,7 +15,7 @@ const Detail = ({ title, children }) => {
         <Typography variant='h6'>{title}</Typography>{' '}
         {children && (
           <IconButton onClick={() => setShow(!show)} size="large">
-            <Icon style={{ fontSize: 16 }} />
+            <Icon sx={{ fontSize: 16 }} />
           </IconButton>
         )}
       </Box>
