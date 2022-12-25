@@ -5,6 +5,10 @@ const foodsActions = {
     state.foods.push(food)
   }),
 
+  appendFoods: action((state, foods) => {
+    state.foods = [...foods, ...state.foods]
+  }),
+
   setFoods: action((state, foods) => {
     state.foods = foods
   }),

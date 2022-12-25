@@ -3,7 +3,7 @@ import React from 'react'
 import { useStoreActions } from 'easy-peasy'
 
 const WhatDidYouEat = () => {
-  const { createFood } = useStoreActions(actions => actions.foods)
+  const { createFood, createManyFoods } = useStoreActions(actions => actions.foods)
 
   const [query, setQuery] = React.useState('')
 
@@ -29,9 +29,11 @@ const WhatDidYouEat = () => {
         meal: 0,
       }))
 
-      foodArray.forEach(food => {
-        createFood(food)
-      })
+      createManyFoods(foodArray)
+
+      // foodArray.forEach(food => {
+      //   createFood(food)
+      // })
 
       clearQuery()
     }
@@ -48,9 +50,11 @@ const WhatDidYouEat = () => {
         })
       }
 
-      foodArray.forEach(food => {
-        createFood(food)
-      })
+      createManyFoods(foodArray)
+
+      // foodArray.forEach(food => {
+      //   createFood(food)
+      // })
 
       clearQuery()
     }

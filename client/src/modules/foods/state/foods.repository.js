@@ -9,6 +9,11 @@ export default class FoodsRepository extends AxiosRepository {
     return await super.post('/', food)
   }
 
+  async createManyFoods(foods) {
+    return await super.post('/many', foods)
+  }
+
+
   async readFoods() {
     return await super.get('/')
   }

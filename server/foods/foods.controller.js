@@ -19,6 +19,19 @@ exports.createFood = async (req, res) => {
   }
 }
 
+exports.createManyFoods = async (req, res) => {
+  try {
+    const foods = await foodsServices.createManyFoods(
+      req.body,
+      req.userId
+    )
+
+    res.send(foods)
+  } catch (error) {
+    return res.status(400).send({ error: error.stack })
+  }
+}
+
 exports.readFoodsByUserId = async (req, res) => {
   try {
     const foods = await foodsServices.readFoodsByUserId(req.userId)

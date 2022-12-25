@@ -13,6 +13,15 @@ const foodsThunks = {
     }
   }),
 
+  createManyFoods: thunk(async (actions, foods, { fail }) => {
+    try {
+      const createdFoods = await foodsRepository.createManyFoods(foods)
+      actions.appendFoods(createdFoods)
+    } catch (error) {
+      fail(error)
+    }
+  }),
+
   readFoods: thunk(async (actions, _, { fail }) => {
     try {
       const foods = await foodsRepository.readFoods()

@@ -4,7 +4,9 @@ const { auth } = require('../middleware/auth')
 
 const foodsController = require('../foods/foods.controller')
 
-router.post('/', auth, foodsController.createFood)
+// router.post('/', auth, foodsController.createFood)
+
+router.post('/many', auth, foodsController.createManyFoods)
 
 router.get('/', auth, foodsController.readFoodsByUserId)
 

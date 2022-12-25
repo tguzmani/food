@@ -5,6 +5,10 @@ exports.createFood = async (food, userId) => {
   return await Food.create({ ...food, user: userId })
 }
 
+exports.createManyFoods = async (foods, userId) => {
+  return await Food.create(foods)
+}
+
 exports.readFoodById = async foodId => {
   return await Food.findOne({ _id: foodId })
     .populate({ path: 'reference', select: 'protein carbs fat -_id' })
