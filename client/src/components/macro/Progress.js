@@ -15,6 +15,9 @@ const Progress = ({ progress, macro }) => {
     fat: green[700],
   }
 
+  const overFlowProgressValue =
+    progress >= 200 ? 100 : progress - 100 > 0 ? progress - 100 : 0
+
   return (
     <Box position='relative' display='inline-flex' my={1}>
       <CircularProgress
@@ -29,7 +32,7 @@ const Progress = ({ progress, macro }) => {
         sx={{ color: colors[macro] }}
         className='macronutrient-circle-top'
         variant='determinate'
-        value={progress}
+        value={progress >= 100 ? 100 : progress}
         size={SIZE}
         thickness={THICKNESS}
       />
@@ -38,7 +41,7 @@ const Progress = ({ progress, macro }) => {
         sx={{ color: amber[500] }}
         className='macronutrient-circle-top'
         variant='determinate'
-        value={progress - 100 > 0 ? progress - 100 : 0}
+        value={overFlowProgressValue}
         size={SIZE}
         thickness={THICKNESS}
       />

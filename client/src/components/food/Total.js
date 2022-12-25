@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
 
 const Value = ({ children, color }) => (
   <Grid item xs={3} sx={{ textAlign: 'right', color }}>
-    {children}
+    {children && Math.round(children)}
   </Grid>
 )
 
@@ -37,9 +37,9 @@ const Total = ({ foods }) => {
             alignItems='center'
           >
             <Value /> 
-            <Value color='red'>{Math.round(totalProtein)}</Value>
-            <Value color='blue'>{Math.round(totalCarbs)}</Value>
-            <Value color='green'>{Math.round(totalFat)}</Value>
+            <Value color='red'>{totalProtein}</Value>
+            <Value color='blue'>{totalCarbs}</Value>
+            <Value color='green'>{totalFat}</Value>
           </Grid>
         </Grid>
       </Grid>

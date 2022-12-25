@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 
 const Value = ({ children, color }) => (
   <Grid item xs={3} sx={{ textAlign: 'right', color }}>
-    {children}
+    {children && Math.round(children)}
   </Grid>
 )
 
@@ -92,7 +92,7 @@ const FoodItem = ({ food }) => {
             >
               <Grid item xs={3}>
                 <Input
-                  value={quantity}
+                  value={quantity ? quantity : quantity.toString()}
                   onChange={onChangeQuantity}
                   className={classes.input}
                   disableUnderline
@@ -101,9 +101,9 @@ const FoodItem = ({ food }) => {
                 ></Input>
               </Grid>
 
-              <Value color='red'>{Math.round(food.protein)}</Value>
-              <Value color='blue'>{Math.round(food.carbs)}</Value>
-              <Value color='green'>{Math.round(food.fat)}</Value>
+              <Value color='red'>{food.protein}</Value>
+              <Value color='blue'>{food.carbs}</Value>
+              <Value color='green'>{food.fat}</Value>
             </Grid>
           </Grid>
         </Grid>
