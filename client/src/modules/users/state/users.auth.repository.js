@@ -1,6 +1,6 @@
 import AxiosRepository from 'common/axios.repository'
 
-export default class AuthRepository extends AxiosRepository {
+export default class UsersAuthRepository extends AxiosRepository {
   constructor() {
     super('auth')
   }

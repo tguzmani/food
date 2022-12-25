@@ -3,7 +3,7 @@ import measurementsThunks from './measurements.thunks'
 import measurementsListeners from './measurements.listeners'
 import measurementsComputeds from './measurements.computeds'
 
-const measurementStore = {
+const measurementsStore = {
   measurements: [],
   measurementsByQuery: [],
   loading: false,
@@ -15,4 +15,4 @@ const measurementStore = {
   ...measurementsComputeds,
 }
 
-export default measurementStore
+export default measurementsStore

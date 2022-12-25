@@ -3,7 +3,7 @@ import foodsThunks from './foods.thunks'
 import foodsListeners from './foods.listeners'
 import foodsComputeds from './foods.computeds'
 
-const foodStore = {
+const foodsStore = {
   foods: [],
   loading: false,
   error: undefined,
@@ -14,4 +14,4 @@ const foodStore = {
   ...foodsComputeds,
 }
 
-export default foodStore
+export default foodsStore
