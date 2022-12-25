@@ -1,7 +1,5 @@
 import { ListItem as MuiListItem, styled } from '@mui/material'
 
-import withStyles from '@mui/styles/withStyles'
-
 const NavItem = styled(MuiListItem)(({ theme }) => ({
   borderRadius: theme.spacing(1),
   marginBottom: theme.spacing(1),

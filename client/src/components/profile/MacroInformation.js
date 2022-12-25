@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Slider, TextField, Typography, Box } from '@mui/material'
 
-import { useSelector, useDispatch } from 'react-redux'
 import { activityOptions, activityMarks } from './activity'
 
 import Detail from './Detail'
@@ -20,7 +19,7 @@ const MacroInformation = () => {
         offset: user.offset,
         proteinPref: user.proteinPref,
       })
-  }, [])
+  }, [setProfile, user])
 
   const [activity, setActivity] = useState(user.activity || 1.2)
   const [fatPref, setFatPref] = useState(user.fatPref || 20)
@@ -28,15 +27,15 @@ const MacroInformation = () => {
 
   useEffect(() => {
     setProfileFields({ name: 'activity', value: activity })
-  }, [activity])
+  }, [activity, setProfileFields])
 
   useEffect(() => {
     setProfileFields({ name: 'proteinPref', value: proteinPref })
-  }, [proteinPref])
+  }, [proteinPref, setProfileFields])
 
   useEffect(() => {
     setProfileFields({ name: 'fatPref', value: fatPref })
-  }, [fatPref])
+  }, [fatPref, setProfileFields])
 
   if (!user) return <div>Loading...</div>
 
@@ -51,9 +50,9 @@ const MacroInformation = () => {
     <>
       <Box mb={1}>
         <Detail title='Base Weight'>
-          Reference weight for calculating macros. It should be only if your
-          current weight is very differente than this base weight. For example,
-          you lost or gained about 10 lb (4.54 kg).
+          Reference weight for calculating macros. Update this field if your
+          weight have changed by a significant amount. For example you lost or
+          gained about 10 lb (about 4 to 5 kg).
         </Detail>
 
         <TextField

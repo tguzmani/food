@@ -1,35 +1,13 @@
 import React from 'react'
 
-import { Box, CircularProgress, Typography, useTheme } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
+import { Box, CircularProgress, Typography } from '@mui/material'
 
 import { red, green, blue, amber } from '@mui/material/colors'
 import useResponsive from './../../hooks/useResponsive'
 
-const useStyles = makeStyles(theme => ({
-  bottom: {
-    color: theme.palette.grey[600],
-  },
-
-  top: {
-    color: theme.palette.primary.main,
-    left: 0,
-    position: 'absolute',
-  },
-
-  overflow: {
-    color: amber[500],
-    left: 0,
-    position: 'absolute',
-  },
-}))
-
 const Progress = ({ progress, macro }) => {
-  const classes = useStyles()
   const SIZE = useResponsive('md') ? 55 : 70
   const THICKNESS = useResponsive('md') ? 5 : 4
-
-  const theme = useTheme();
 
   const colors = {
     protein: red[700],

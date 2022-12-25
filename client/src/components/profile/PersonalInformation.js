@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { TextField } from '@mui/material'
-import { useSelector, useDispatch } from 'react-redux'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 
 const PersonalInformation = () => {

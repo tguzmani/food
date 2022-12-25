@@ -1,30 +1,12 @@
 import React, { useState } from 'react'
-// import AppBar from '@mui/material/AppBar'
-import Drawer from '@mui/material/Drawer'
-import IconButton from '@mui/material/IconButton'
-import List from '@mui/material/List'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
-import MenuIcon from '@mui/icons-material/Menu'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import { useTheme } from '@mui/material/styles'
-import AccountCircle from '@mui/icons-material/AccountCircle'
-import NavItem from './Navigation/NavItem'
+import { useTheme } from '@mui/material'
 
-import { Link, useLocation } from 'react-router-dom'
-import { Box, Divider, MenuItem, Stack, styled } from '@mui/material'
-
-// import useStyles from './Navigation/styles'
-import Menu from './Menu'
-import useMenu from '../../hooks/useMenu'
-import useUser from 'hooks/useUser'
-import { useStoreActions } from 'easy-peasy'
-import useResponsive from '../../hooks/useResponsive'
+import { Stack, Box, styled } from '@mui/material'
 
 import AppBar from './Navigation/AppBar'
 import DesktopDrawer from './Navigation/DesktopDrawer'
 import MobileDrawer from './Navigation/MobileDrawer'
+import useResponsive from '../../hooks/useResponsive'
 
 import useTitle from 'hooks/useTitle'
 
@@ -36,15 +18,14 @@ const Nav = styled(Box)(({ theme }) => ({
 }))
 
 const Main = styled(Box)(({ theme }) => ({
-  flexGrow: 1,
   padding: theme.spacing(3),
+  flexGrow: 1,
 }))
 
 const Layout = ({ window, children }) => {
   const isMobile = useResponsive('md')
   const title = useTitle()
   const theme = useTheme()
-
 
   const [mobileOpen, setMobileOpen] = useState(false)
 

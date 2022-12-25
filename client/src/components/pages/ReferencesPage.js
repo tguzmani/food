@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import SearchReference from '../reference/SearchReference'
 import References from '../reference/References'
 import { Container } from '@mui/material'

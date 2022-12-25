@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import {
   Card,
@@ -33,7 +33,7 @@ const LoginForm = ({ history }) => {
 
   useEffect(() => {
     setLoading(false)
-  }, [])
+  }, [setLoading])
 
   useEffect(() => {
     if (isAuth) history.push('/')

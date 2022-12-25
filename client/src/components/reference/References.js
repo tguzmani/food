@@ -1,8 +1,6 @@
 import { Box, Card, CardContent, List } from '@mui/material'
-import { connect } from 'react-redux'
 import React from 'react'
 import ReferenceItem from './ReferenceItem'
-import { useStoreState } from 'easy-peasy';
 
 const References = ({ references, isFiltering }) => {
 

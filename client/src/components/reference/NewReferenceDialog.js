@@ -10,7 +10,6 @@ import {
   Switch,
   Typography,
 } from '@mui/material'
-import { connect } from 'react-redux'
 import ReferenceItem from './ReferenceItem'
 import FAB from '../layout/FAB'
 import AddIcon from '@mui/icons-material/Add'

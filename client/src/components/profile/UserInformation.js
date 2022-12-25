@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box, Divider, Typography, Grid } from '@mui/material'
-import { useSelector } from 'react-redux'
 
 import dayjs from 'dayjs'
 

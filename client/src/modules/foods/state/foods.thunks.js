@@ -42,7 +42,7 @@ const foodsThunks = {
 
   deleteAllFoodsFromDay: thunk(async (actions, food, { fail }) => {
     try {
-      const removedFood = await foodsRepository.deleteAllFoodsFromDay(food)
+      await foodsRepository.deleteAllFoodsFromDay(food)
       actions.clearFoods()
     } catch (error) {
       fail(error)

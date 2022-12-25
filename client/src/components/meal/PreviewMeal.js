@@ -12,7 +12,6 @@ import {
   Stack,
 } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
-import { connect } from 'react-redux'
 import React from 'react'
 import { getTotalCalories } from '../../util/food'
 import Foods from '../food/Foods'

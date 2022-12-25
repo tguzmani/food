@@ -5,7 +5,6 @@ import Cleanliness from './Cleanliness'
 import Drinks from './Drinks'
 import Macro from './Macro'
 import { getAlcoholUnits } from './../../util/food'
-import useFoods from './../../hooks/useFoods'
 import useResponsive from './../../hooks/useResponsive'
 import { useStoreActions } from 'easy-peasy'
 

@@ -1,7 +1,6 @@
 import React from 'react'
 
 import {
-  Drawer as MuiDrawer,
   Box,
   Typography,
   List,

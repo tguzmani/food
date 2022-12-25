@@ -2,7 +2,6 @@ import React from 'react'
 import { useStoreActions } from 'easy-peasy'
 
 import {
-  Stack,
   Toolbar,
   Typography,
   IconButton,
@@ -20,8 +19,6 @@ import AccountCircle from '@mui/icons-material/AccountCircle'
 import useMenu from 'hooks/useMenu'
 import useUser from 'hooks/useUser'
 import useResponsive from 'hooks/useResponsive'
-
-import { DRAWER_WIDTH } from '../../../constants/index'
 
 const AppBar = ({ title, openDrawer }) => {
   const user = useUser()

@@ -1,11 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { Grid, Box, Typography } from '@mui/material'
-import { useStoreState } from 'easy-peasy';
+import { useStoreState } from 'easy-peasy'
 
 const MacroDistribution = () => {
-
-  const { profile, user, profileBaseWeight, offsetBMR } = useStoreState(state => state.users)
+  const { profile, user, profileBaseWeight, offsetBMR } = useStoreState(
+    state => state.users
+  )
 
   if (!user) return <div>Loading...</div>
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { ListItem, Grid, Input, Box } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import { capitalize } from './../../util/index'

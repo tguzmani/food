@@ -1,11 +1,9 @@
 import { Box, TextField } from '@mui/material'
-import { connect } from 'react-redux'
 import React from 'react'
 import NewReferenceDialog from './NewReferenceDialog'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 
-const SearchReference = ({
-}) => {
+const SearchReference = () => {
   const { filterReferencesQuery } = useStoreState(state => state.references)
 
   const { setFilterReferencesQuery } = useStoreActions(

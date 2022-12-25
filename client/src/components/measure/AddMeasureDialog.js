@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import FAB from '../layout/FAB'
 import {
   Button,
@@ -13,17 +13,15 @@ import {
   getAlcoholUnits,
   getTotalCalories,
   getCleanliness,
-} from './../../util/food'
+} from 'util/food'
 
 import AddIcon from '@mui/icons-material/Add'
-import useDialog from '../../hooks/useDialog'
-import useFoods from './../../hooks/useFoods'
-
-import { useDispatch, useSelector } from 'react-redux'
+import useDialog from 'hooks/useDialog'
 
 import dayjs from 'dayjs'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import useRead from '../../hooks/useRead'
+
 var isToday = require('dayjs/plugin/isToday')
 dayjs.extend(isToday)
 

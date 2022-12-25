@@ -10,7 +10,6 @@ import {
   TextField,
   Switch,
 } from '@mui/material'
-import { connect } from 'react-redux'
 import { useStoreActions } from 'easy-peasy';
 
 const UpdateReferenceDialog = ({

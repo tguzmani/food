@@ -1,9 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Grid, Typography } from '@mui/material'
 import { getTotalMacro } from './../../util/food'
 import Progress from './Progress'
-import useFoods from './../../hooks/useFoods'
 import { useStoreState } from 'easy-peasy'
 import useUser from 'hooks/useUser'
 

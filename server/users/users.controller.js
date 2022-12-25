@@ -4,7 +4,6 @@ const usersServices = require('./users.services')
 exports.readUserById = async (req, res) => {
   try {
     const user = await usersServices.readUserById(req.userId)
-    console.log(req.userId)
 
     return res.json(user)
   } catch (error) {

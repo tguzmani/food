@@ -1,18 +1,17 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 import Meals from './../meal/Meals'
-import BackdropLoading from '../layout/BackdropLoading'
 import PreviewMeal from '../meal/PreviewMeal'
 import Macros from '../macro/Macros'
-import useFoods from './../../hooks/useFoods'
 import useMealNumbers from './../../hooks/useMealNumbers'
 import { Container } from '@mui/material'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import useConditionalRead from 'hooks/useConditionalRead'
 
+// import BackdropLoading from '../layout/BackdropLoading'
+
 const Day = () => {
-  const { foods, mealsFoods, loading } = useStoreState(state => state.foods)
+  const { foods, mealsFoods } = useStoreState(state => state.foods)
   const { readFoods } = useStoreActions(actions => actions.foods)
   const mealNumbers = useMealNumbers()
 
