@@ -3,7 +3,6 @@ import React from 'react'
 import UserInformation from '../profile/UserInformation'
 import FAB from './../layout/FAB'
 import SaveIcon from '@mui/icons-material/Save'
-import { updateUser } from './../../state/auth/authActions'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 
 const ProfilePage = () => {

@@ -1,6 +1,6 @@
 import { action } from 'easy-peasy'
 
-const foodActions = {
+const foodsActions = {
   appendFood: action((state, food) => {
     state.foods.push(food)
   }),
@@ -28,4 +28,4 @@ const foodActions = {
   }),
 }
 
-export default foodActions
+export default foodsActions

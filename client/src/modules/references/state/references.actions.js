@@ -1,6 +1,6 @@
 import { action } from 'easy-peasy'
 
-const referenceActions = {
+const referencesActions = {
   appendReference: action((state, reference) => {
     state.references = [reference, ...state.references]
   }),
@@ -30,4 +30,4 @@ const referenceActions = {
   }),
 }
 
-export default referenceActions
+export default referencesActions

@@ -3,7 +3,7 @@ import UsersRepository from './users.repository'
 
 const usersRepository = new UsersRepository()
 
-const userThunks = {
+const usersThunks = {
   readUser: thunk(async (actions, _, { fail }) => {
     try {
       const user = await usersRepository.readUser()
@@ -24,6 +24,6 @@ const userThunks = {
   }),
 }
 
-export const usersThunksNames = Object.keys(userThunks).map(key => key)
+export const usersThunksNames = Object.keys(usersThunks).map(key => key)
 
-export default userThunks
+export default usersThunks

@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { readMeasures } from '../../state/measure/measureActions'
 import { Grid } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import Measures from './../measure/Measures'

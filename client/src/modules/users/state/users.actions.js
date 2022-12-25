@@ -1,6 +1,6 @@
 import { action } from 'easy-peasy'
 
-const userActions = {
+const usersActions = {
   setUser: action((state, user) => {
     state.user = user
   }),
@@ -18,4 +18,4 @@ const userActions = {
   }),
 }
 
-export default userActions
+export default usersActions

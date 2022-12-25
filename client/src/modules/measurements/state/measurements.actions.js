@@ -1,6 +1,6 @@
 import { action } from 'easy-peasy'
 
-const measurementActions = {
+const measurementsActions = {
   appendMeasurement: action((state, measurement) => {
     state.measurements.push(measurement)
   }),
@@ -30,4 +30,4 @@ const measurementActions = {
   }),
 }
 
-export default measurementActions
+export default measurementsActions

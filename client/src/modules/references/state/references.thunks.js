@@ -3,7 +3,7 @@ import ReferencesRepository from './references.repository'
 
 const referencesRepository = new ReferencesRepository()
 
-const referenceThunks = {
+const referencesThunks = {
   createReference: thunk(async (actions, reference, { fail }) => {
     try {
       const createdReference = await referencesRepository.createReference(
@@ -47,8 +47,8 @@ const referenceThunks = {
   }),
 }
 
-export const referencesThunksNames = Object.keys(referenceThunks).map(
+export const referencesThunksNames = Object.keys(referencesThunks).map(
   key => key
 )
 
-export default referenceThunks
+export default referencesThunks

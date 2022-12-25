@@ -3,7 +3,7 @@ import FoodsRepository from './foods.repository'
 
 const foodsRepository = new FoodsRepository()
 
-const foodThunks = {
+const foodsThunks = {
   createFood: thunk(async (actions, food, { fail }) => {
     try {
       const createdFood = await foodsRepository.createFood(food)
@@ -50,7 +50,7 @@ const foodThunks = {
   }),
 }
 
-export const foodsThunksNames = Object.keys(foodThunks).map(key => key)
+export const foodsThunksNames = Object.keys(foodsThunks).map(key => key)
 
-export default foodThunks
+export default foodsThunks
 

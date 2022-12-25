@@ -3,7 +3,7 @@ import referencesThunks from './references.thunks'
 import referencesListeners from './references.listeners'
 import referencesComputeds from './references.computeds'
 
-const referenceStore = {
+const referencesStore = {
   references: [],
   filterReferencesQuery: '',
   loading: false,
@@ -15,4 +15,4 @@ const referenceStore = {
   ...referencesComputeds,
 }
 
-export default referenceStore
+export default referencesStore

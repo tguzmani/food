@@ -11,7 +11,6 @@ import {
   Switch,
 } from '@mui/material'
 import { connect } from 'react-redux'
-import { updateReference } from './../../state/reference/referenceActions'
 import { useStoreActions } from 'easy-peasy';
 
 const UpdateReferenceDialog = ({

@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { readFoods } from '../../state/food/foodActions'
 import Meals from './../meal/Meals'
 import BackdropLoading from '../layout/BackdropLoading'
 import PreviewMeal from '../meal/PreviewMeal'

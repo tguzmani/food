@@ -4,8 +4,6 @@ import { Slider, TextField, Typography, Box } from '@mui/material'
 import { useSelector, useDispatch } from 'react-redux'
 import { activityOptions, activityMarks } from './activity'
 
-import { setFields, setState } from './../../state/profile/profileActions'
-
 import Detail from './Detail'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 

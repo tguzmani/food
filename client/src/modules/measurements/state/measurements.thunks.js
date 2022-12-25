@@ -3,7 +3,7 @@ import MeasurementsRepository from './measurements.repository'
 
 const measurementsRepository = new MeasurementsRepository()
 
-const measurementThunks = {
+const measurementsThunks = {
   createMeasurement: thunk(async (actions, measurement, { fail }) => {
     try {
       const createdMeasurement = await measurementsRepository.createMeasurement(
@@ -59,8 +59,8 @@ const measurementThunks = {
   }),
 }
 
-export const measurementsThunksNames = Object.keys(measurementThunks).map(
+export const measurementsThunksNames = Object.keys(measurementsThunks).map(
   key => key
 )
 
-export default measurementThunks
+export default measurementsThunks

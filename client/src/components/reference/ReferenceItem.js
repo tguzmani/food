@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { ListItem, Grid, Box } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import { capitalize } from './../../util/index'
-import { deleteReference } from './../../state/reference/referenceActions'
 
 import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
 import '@sandstreamdev/react-swipeable-list/dist/styles.css'
