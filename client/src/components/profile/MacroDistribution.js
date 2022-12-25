@@ -1,10 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Grid, Box, Typography } from '@mui/material'
+import useUser from 'hooks/useUser'
 
 const MacroDistribution = () => {
-  const user = useSelector(state => state.auth.user)
-  const profile = useSelector(state => state.profile)
+  const user = useUser()
+  const profile = {}
 
   if (!user) return <div>Loading...</div>
 

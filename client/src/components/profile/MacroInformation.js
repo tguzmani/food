@@ -7,48 +7,48 @@ import { activityOptions, activityMarks } from './activity'
 import { setFields, setState } from './../../state/profile/profileActions'
 
 import Detail from './Detail'
+import useUser from 'hooks/useUser'
 
 const MacroInformation = () => {
-  const user = useSelector(state => state.auth.user)
-  const profile = useSelector(state => state.profile)
-  const dispatch = useDispatch()
+  const user = useUser()
+  const profile = {}
 
-  useEffect(() => {
-    if (user)
-      dispatch(
-        setState({
-          baseWeight: user.baseWeight,
-          offset: user.offset,
-          proteinPref: user.proteinPref,
-        })
-      )
-      // eslint-disable-next-line
-  }, [])
+  // useEffect(() => {
+  //   if (user)
+  //     dispatch(
+  //       setState({
+  //         baseWeight: user.baseWeight,
+  //         offset: user.offset,
+  //         proteinPref: user.proteinPref,
+  //       })
+  //     )
+  //     // eslint-disable-next-line
+  // }, [])
 
   const [activity, setActivity] = useState(user.activity || 1.2)
   const [fatPref, setFatPref] = useState(user.fatPref || 20)
   const [proteinPref, setProteinPref] = useState(user.proteinPref || 0.8)
 
-  useEffect(() => {
-    dispatch(setFields('activity', activity))
-    // eslint-disable-next-line
-  }, [activity])
+  // useEffect(() => {
+  //   dispatch(setFields('activity', activity))
+  //   // eslint-disable-next-line
+  // }, [activity])
 
-  useEffect(() => {
-    dispatch(setFields('proteinPref', proteinPref))
-    // eslint-disable-next-line
-  }, [proteinPref])
+  // useEffect(() => {
+  //   dispatch(setFields('proteinPref', proteinPref))
+  //   // eslint-disable-next-line
+  // }, [proteinPref])
 
-  useEffect(() => {
-    dispatch(setFields('fatPref', fatPref))
-    // eslint-disable-next-line
-  }, [fatPref])
+  // useEffect(() => {
+  //   dispatch(setFields('fatPref', fatPref))
+  //   // eslint-disable-next-line
+  // }, [fatPref])
 
   if (!user) return <div>Loading...</div>
 
   const onChange = e => {
     const { name, value } = e.target
-    dispatch(setFields(name, value))
+    // dispatch(setFields(name, value))
   }
 
   const { baseWeight, offset } = profile

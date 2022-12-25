@@ -3,16 +3,19 @@ import React from 'react'
 import UserInformation from '../profile/UserInformation'
 import FAB from './../layout/FAB'
 import SaveIcon from '@mui/icons-material/Save'
-import { useSelector, useDispatch } from 'react-redux'
 import { updateUser } from './../../state/auth/authActions'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 
 const ProfilePage = () => {
-  const profile = useSelector(state => state.profile)
-  const { user, loading } = useSelector(state => state.auth)
-  const dispatch = useDispatch()
+  // const profile = useSelector(state => state.profile)
+
+  const profile = {}
+
+  const { user, loading } = useStoreState(state => state.auth)
+  const { updateUser } = useStoreActions(state => state.auth)
 
   const handleSaveChanges = () => {
-    dispatch(updateUser(profile))
+    updateUser(profile)
   }
 
   if (!user) return <div>Loading...</div>

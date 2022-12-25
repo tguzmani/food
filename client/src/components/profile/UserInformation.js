@@ -9,9 +9,10 @@ import EmailIcon from '@mui/icons-material/Email'
 import PersonalInformation from './PersonalInformation'
 import MacroInformation from './MacroInformation'
 import BMRs from './BMRs'
+import useUser from 'hooks/useUser'
 
 const UserInformation = () => {
-  const user = useSelector(state => state.auth.user)
+  const user = useUser()
 
   if (!user) return <div>Loading...</div>
 
