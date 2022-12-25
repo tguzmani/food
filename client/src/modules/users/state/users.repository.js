@@ -10,6 +10,6 @@ export default class UsersRepository extends AxiosRepository {
   }
 
   async updateUser(user) {
-    return await super.put(`/${user._id}`, user)
+    return await super.put('/', user)
   }
 }

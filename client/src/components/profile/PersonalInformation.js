@@ -2,24 +2,24 @@ import React, { useEffect } from 'react'
 import { TextField } from '@mui/material'
 import { useSelector, useDispatch } from 'react-redux'
 import { setFields, setState } from './../../state/profile/profileActions'
-import useUser from 'hooks/useUser'
+import { useStoreState, useStoreActions } from 'easy-peasy'
 
 const PersonalInformation = () => {
-  const user = useUser()
-  // const profile = useSelector(state => state.profile)
-  const profile = {}
+  const { profile, user } = useStoreState(state => state.users)
+  const { setProfile, setProfileFields } = useStoreActions(
+    actions => actions.users
+  )
 
-  // useEffect(() => {
-  //   if (user)
-  //     dispatch(setState({ age: user.age, height: user.height, sex: user.sex }))
-  //     // eslint-disable-next-line
-  // }, [])
+  useEffect(() => {
+    if (user) setProfile({ age: user.age, height: user.height, sex: user.sex })
+    // eslint-disable-next-line
+  }, [])
 
   if (!user) return <div>Loading...</div>
 
   const onChange = e => {
     const { name, value } = e.target
-    // dispatch(setFields(name, value))
+    setProfileFields({ name, value })
   }
 
   const { age, height } = profile

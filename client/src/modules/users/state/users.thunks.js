@@ -17,7 +17,7 @@ const userThunks = {
   updateUser: thunk(async (actions, user, { fail }) => {
     try {
       const updatedUser = await usersRepository.updateUser(user)
-      actions.replaceUser(updatedUser)
+      actions.setUser(updatedUser)
     } catch (error) {
       fail(error)
     }

@@ -7,48 +7,44 @@ import { activityOptions, activityMarks } from './activity'
 import { setFields, setState } from './../../state/profile/profileActions'
 
 import Detail from './Detail'
-import useUser from 'hooks/useUser'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 
 const MacroInformation = () => {
-  const user = useUser()
-  const profile = {}
+  const { profile, user } = useStoreState(state => state.users)
+  const { setProfile, setProfileFields } = useStoreActions(
+    actions => actions.users
+  )
 
-  // useEffect(() => {
-  //   if (user)
-  //     dispatch(
-  //       setState({
-  //         baseWeight: user.baseWeight,
-  //         offset: user.offset,
-  //         proteinPref: user.proteinPref,
-  //       })
-  //     )
-  //     // eslint-disable-next-line
-  // }, [])
+  useEffect(() => {
+    if (user)
+      setProfile({
+        baseWeight: user.baseWeight,
+        offset: user.offset,
+        proteinPref: user.proteinPref,
+      })
+  }, [])
 
   const [activity, setActivity] = useState(user.activity || 1.2)
   const [fatPref, setFatPref] = useState(user.fatPref || 20)
   const [proteinPref, setProteinPref] = useState(user.proteinPref || 0.8)
 
-  // useEffect(() => {
-  //   dispatch(setFields('activity', activity))
-  //   // eslint-disable-next-line
-  // }, [activity])
+  useEffect(() => {
+    setProfileFields({ name: 'activity', value: activity })
+  }, [activity])
 
-  // useEffect(() => {
-  //   dispatch(setFields('proteinPref', proteinPref))
-  //   // eslint-disable-next-line
-  // }, [proteinPref])
+  useEffect(() => {
+    setProfileFields({ name: 'proteinPref', value: proteinPref })
+  }, [proteinPref])
 
-  // useEffect(() => {
-  //   dispatch(setFields('fatPref', fatPref))
-  //   // eslint-disable-next-line
-  // }, [fatPref])
+  useEffect(() => {
+    setProfileFields({ name: 'fatPref', value: fatPref })
+  }, [fatPref])
 
   if (!user) return <div>Loading...</div>
 
   const onChange = e => {
     const { name, value } = e.target
-    // dispatch(setFields(name, value))
+    setProfileFields({ name, value })
   }
 
   const { baseWeight, offset } = profile

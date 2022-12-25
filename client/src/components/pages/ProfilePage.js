@@ -7,11 +7,7 @@ import { updateUser } from './../../state/auth/authActions'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 
 const ProfilePage = () => {
-  // const profile = useSelector(state => state.profile)
-
-  const profile = {}
-
-  const { user, loading } = useStoreState(state => state.users)
+  const { user, loading, profile } = useStoreState(state => state.users)
   const { updateUser } = useStoreActions(state => state.users)
 
   const handleSaveChanges = () => {

@@ -1,29 +1,17 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Grid, Box, Typography } from '@mui/material'
-import useUser from 'hooks/useUser'
+import { useStoreState } from 'easy-peasy';
 
 const MacroDistribution = () => {
-  const user = useUser()
-  const profile = {}
+
+  const { profile, user, profileBaseWeight, offsetBMR } = useStoreState(state => state.users)
 
   if (!user) return <div>Loading...</div>
 
-  const weight =
-    user.units === 'kg' ? profile.baseWeight : profile.baseWeight / 2.2
-
-  const bmr =
-    66.5 + 13.75 * weight + 5.003 * profile.height - 6.755 * profile.age
-
-  console.log(bmr)
-
-  const bmra = bmr * profile.activity
-
-  const bmro = bmra + profile.offset
-
-  const proteinCalories = weight * 2.2 * profile.proteinPref * 4
-  const fatCalories = (bmro * profile.fatPref) / 100
-  const carbsCalories = bmro - proteinCalories - fatCalories
+  const proteinCalories = profileBaseWeight * 2.2 * profile.proteinPref * 4
+  const fatCalories = (offsetBMR * profile.fatPref) / 100
+  const carbsCalories = offsetBMR - proteinCalories - fatCalories
 
   const proteinGrams = proteinCalories / 4
   const fatGrams = fatCalories / 9

@@ -1,6 +1,8 @@
 import { createTheme } from '@mui/material'
 import { blue } from '@mui/material/colors'
 
+const baseTheme = createTheme({})
+
 const typography = {
   fontFamily: 'Lato, sans-serif',
 }
@@ -35,6 +37,23 @@ const theme = createTheme({
   typography,
   palette,
   shape: { borderRadius: 8 },
+  components: {
+    MuiCircularProgress: {
+      styleOverrides: {
+        root: {
+          '&.macronutrient-circle': {
+            '&-bottom': {
+              color: baseTheme.palette.grey[300],
+            },
+            '&-top': {
+              position: 'absolute',
+              left: 0,
+            }
+          }
+        },
+      },
+    },
+  },
 })
 
 export default theme
