@@ -16,6 +16,7 @@ exports.createFood = async (referenceName, quantity, meal, userId) => {
   const food = {
     ...reference,
     reference: reference._id,
+    name: reference.name,
     _id: undefined,
     meal,
     quantity,
