@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import Navigation from '../layout/Navigation/Navigation'
+import Layout from '../layout/Layout'
 import useAuth from 'hooks/useAuth'
 import { useStoreState, useStoreActions } from 'easy-peasy';
 import BackdropLoading from '../layout/BackdropLoading';
@@ -20,14 +20,14 @@ const PrivateRoute = ({
   if (loading && !user) return <BackdropLoading open={loading} />
 
   return (
-    <Navigation>
+    <Layout>
       <Route
         {...rest}
         render={props =>
           isAuth ? <Component {...props} /> : <Redirect to='/login' />
         }
       />
-    </Navigation>
+    </Layout>
   )
 }
 

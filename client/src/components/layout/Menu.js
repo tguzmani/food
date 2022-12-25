@@ -1,16 +1,16 @@
-import BaseMenu from '@mui/material/Menu'
+import {Menu as MuiMenu} from '@mui/material'
 import React from 'react'
 
 const Menu = ({ anchorEl, handleClose, children }) => {
   return (
-    <BaseMenu
+    <MuiMenu
       anchorEl={anchorEl}
       keepMounted
       open={Boolean(anchorEl)}
       onClose={handleClose}
     >
       {children}
-    </BaseMenu>
+    </MuiMenu>
   )
 }
 

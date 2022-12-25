@@ -3,6 +3,8 @@ import { blue } from '@mui/material/colors'
 
 const baseTheme = createTheme({})
 
+const drawerWidth = 260
+
 const typography = {
   fontFamily: 'Lato, sans-serif',
 }
@@ -28,15 +30,22 @@ const palette = {
     contrastText: '#fff',
   },
 
-  light: {
-    main: '#F5F7FA',
-  },
+  // light: {
+  //   main: '#F5F7FA',
+  // },
 }
 
 const theme = createTheme({
   typography,
   palette,
   shape: { borderRadius: 8 },
+
+  mixins: {
+    drawer: {
+      width: drawerWidth,
+    }
+  },
+
   components: {
     MuiCircularProgress: {
       styleOverrides: {
@@ -48,8 +57,33 @@ const theme = createTheme({
             '&-top': {
               position: 'absolute',
               left: 0,
-            }
-          }
+            },
+          },
+        },
+      },
+    },
+
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          width: `calc(100% - ${drawerWidth}px)`,
+          boxShadow: 'none',
+          backgroundColor: baseTheme.palette.background.default,
+          color: baseTheme.palette.text.primary,
+          [baseTheme.breakpoints.down('sm')]: {
+            width: '100%',
+          },
+        },
+      },
+    },
+
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          width: drawerWidth,
+          backgroundColor: baseTheme.palette.grey[900],
+          color: baseTheme.palette.grey[100],
+          padding: baseTheme.spacing(2),
         },
       },
     },

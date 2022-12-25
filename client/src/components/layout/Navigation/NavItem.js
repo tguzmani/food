@@ -1,17 +1,16 @@
-import MuiListItem from '@mui/material/ListItem'
-import withStyles from '@mui/styles/withStyles';
+import { ListItem as MuiListItem, styled } from '@mui/material'
 
-const NavItem = withStyles(theme => ({
-  root: {
-    borderRadius: theme.spacing(1),
-    marginBottom: theme.spacing(1),
+import withStyles from '@mui/styles/withStyles'
 
-    '&.Mui-selected': {
-      backgroundColor: theme.palette.primary.main,
+const NavItem = styled(MuiListItem)(({ theme }) => ({
+  borderRadius: theme.spacing(1),
+  marginBottom: theme.spacing(1),
 
-      '&:hover': {
-        backgroundColor: theme.palette.primary.light,
-      },
+  '&.Mui-selected': {
+    backgroundColor: theme.palette.primary.main,
+
+    '&:hover': {
+      backgroundColor: theme.palette.primary.light,
     },
   },
 
@@ -20,6 +19,6 @@ const NavItem = withStyles(theme => ({
       backgroundColor: theme.palette.dark.light,
     },
   },
-}))(MuiListItem)
+}))
 
 export default NavItem
