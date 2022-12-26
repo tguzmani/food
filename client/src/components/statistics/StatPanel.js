@@ -4,11 +4,9 @@ import { capitalize } from '../../util'
 import useMenu from './../../hooks/useMenu'
 import Menu from './../layout/Menu'
 
-import DateFnsUtils from '@date-io/date-fns'
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from '@material-ui/pickers'
+// import DateFnsUtils from '@date-io/date-fns'
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
+// import { Unstable_DesktopNextDatePicker as DesktopNextDatePicker } from '@mui/x-date-pickers'
 
 import Plot from './Plot'
 import StatisticsTable from './StatisticsTable'
@@ -16,7 +14,9 @@ import BackdropLoading from './../layout/BackdropLoading'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 
 const StatPanel = () => {
-  const { loading, measurementsByQuery } = useStoreState(state => state.measurements)
+  const { loading, measurementsByQuery } = useStoreState(
+    state => state.measurements
+  )
 
   const { readMeasurementsByDate } = useStoreActions(
     actions => actions.measurements
@@ -57,32 +57,31 @@ const StatPanel = () => {
     <>
       <BackdropLoading open={loading} />
 
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Box>
-          <KeyboardDatePicker
-            margin='normal'
-            label='From'
-            format='dd/MM/yyyy'
-            maxDate={new Date()}
-            inputVariant='outlined'
-            value={fromDate}
-            onChange={handleFromDateChange}
-          />
-        </Box>
+      <Box>
+        <MobileDatePicker
+          margin='normal'
+          label='From'
+          format='dd/MM/yyyy'
+          maxDate={new Date()}
+          inputVariant='outlined'
+          value={fromDate}
+          onChange={handleFromDateChange}
+        />
+      </Box>
 
-        <Box mb={2}>
-          <KeyboardDatePicker
-            margin='normal'
-            minDate={fromDate}
-            maxDate={new Date()}
-            inputVariant='outlined'
-            label='To'
-            format='dd/MM/yyyy'
-            value={toDate}
-            onChange={handleToDateChange}
-          />
-        </Box>
-      </MuiPickersUtilsProvider>
+      <Box mb={2}>
+        <MobileDatePicker
+          margin='normal'
+          minDate={fromDate}
+          maxDate={new Date()}
+          inputVariant='outlined'
+          label='To'
+          format='dd/MM/yyyy'
+          value={toDate}
+          onChange={handleToDateChange}
+        />
+      </Box>
+      {/* </MuiPickersUtilsProvider> */}
 
       <Button onClick={handleOpenMenu}>{capitalize(property)}</Button>
 

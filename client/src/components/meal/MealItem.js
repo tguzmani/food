@@ -7,6 +7,7 @@ import {
   Avatar,
   IconButton,
   MenuItem,
+  useTheme
 } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import React from 'react'
@@ -15,18 +16,14 @@ import Foods from '../food/Foods'
 import Total from '../food/Total'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import Menu from '../layout/Menu'
-import useMenu from './../../hooks/useMenu'
+import useMenu from 'hooks/useMenu'
 import { useStoreActions } from 'easy-peasy'
 
-const useStyles = makeStyles(theme => ({
-  avatar: { backgroundColor: theme.palette.primary.light },
-}))
-
 const MealItem = ({ foods, number }) => {
-  const classes = useStyles()
-  const thisMealFoods = foods.filter(food => food.meal === number)
   const { deleteFood } = useStoreActions(actions => actions.foods)
-
+  const theme = useTheme()
+  const thisMealFoods = foods.filter(food => food.meal === number)
+  
   const [anchorEl, handleOpenMenu, handleCloseMenu] = useMenu()
 
   const handleDeleteMeal = () => {
@@ -42,7 +39,7 @@ const MealItem = ({ foods, number }) => {
     <Box mt={3}>
       <Card>
         <CardHeader
-          avatar={<Avatar className={classes.avatar}>{number}</Avatar>}
+          avatar={<Avatar sx={{backgroundColor: theme.palette.primary.light}}>{number}</Avatar>}
           action={
             <IconButton onClick={handleOpenMenu} size='large'>
               <MoreVertIcon />

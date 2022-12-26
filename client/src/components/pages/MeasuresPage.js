@@ -1,18 +1,13 @@
 import React from 'react'
-import { Grid } from '@mui/material'
+import { Box, Grid, useTheme} from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import Measures from './../measure/Measures'
 import AddMeasureDialog from '../measure/AddMeasureDialog'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import useConditionalRead from 'hooks/useConditionalRead'
 
-const useStyles = makeStyles(theme => ({
-  fabFix: theme.mixins.toolbar,
-}))
-
 const MeasuresPage = ({ loading }) => {
-  const classes = useStyles()
-
+  const theme = useTheme()
   const { readMeasurements } = useStoreActions(actions => actions.measurements)
   const { measurements: measures } = useStoreState(state => state.measurements)
 
@@ -33,7 +28,7 @@ const MeasuresPage = ({ loading }) => {
       </Grid>
 
       <AddMeasureDialog />
-      <div className={classes.fabFix} />
+      <Box sx={{...theme.mixins.toolbar}} />
     </>
   )
 }

@@ -20,18 +20,7 @@ import WhatDidYouEat from './WhatDidYouEat'
 import useMealNumbers from '../../hooks/useMealNumbers'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 
-const useStyles = makeStyles(theme => ({
-  cardActions: {
-    display: 'flex',
-  },
-
-  grow: {
-    flexGrow: 1,
-  },
-}))
-
 const PreviewMeal = ({ foods }) => {
-  const classes = useStyles()
   const mealNumbers = useMealNumbers()
 
   const { previewMealFoods } = useStoreState(state => state.foods)
@@ -89,7 +78,7 @@ const PreviewMeal = ({ foods }) => {
             </CardContent>
 
             {previewMealFoods.length > 0 && (
-              <CardActions className={classes.cardActions}>
+              <CardActions>
                 <Stack
                   direction='row'
                   justifyContent='space-between'
@@ -119,7 +108,7 @@ const PreviewMeal = ({ foods }) => {
                       {mealNumbers
                         .filter(number => number !== 0)
                         .map(number => (
-                          <MenuItem value={number} onClick={handleAddToFood}>
+                          <MenuItem key={number} value={number} onClick={handleAddToFood}>
                             {number}
                           </MenuItem>
                         ))}

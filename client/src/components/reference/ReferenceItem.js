@@ -4,17 +4,9 @@ import makeStyles from '@mui/styles/makeStyles'
 import { capitalize } from './../../util/index'
 
 import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
-import '@sandstreamdev/react-swipeable-list/dist/styles.css'
 import DeleteIcon from '@mui/icons-material/Delete'
 import UpdateReferenceDialog from './UpdateReferenceDialog'
 import { useStoreActions } from 'easy-peasy'
-
-const useStyles = makeStyles(theme => ({
-  root: { paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1) },
-  input: {
-    fontSize: '14px',
-  },
-}))
 
 const Value = ({ children, color }) => (
   <Grid item xs={3} sx={{ textAlign: 'right', color }}>
@@ -38,7 +30,6 @@ const Delete = () => (
 )
 
 const ReferenceItem = ({ reference, preview, divider }) => {
-  const classes = useStyles()
   const { deleteReference } = useStoreActions(actions => actions.references)
 
   const [open, setOpen] = React.useState(false)
@@ -69,7 +60,6 @@ const ReferenceItem = ({ reference, preview, divider }) => {
         threshold={0.9}
       >
         <ListItem
-          className={classes.root}
           divider={divider}
           onClick={handleOpen}
           button

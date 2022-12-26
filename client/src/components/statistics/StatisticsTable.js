@@ -3,13 +3,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import React from 'react'
 import { mean, stdev, sum } from '../../util/index'
 
-const useStyles = makeStyles(theme => ({
-  root: { padding: theme.spacing(1) },
-}))
-
 const StatisticsTable = ({ data, property }) => {
-  const classes = useStyles()
-
   const tableData = data.map(element => element[property])
 
   const row = {
@@ -26,17 +20,17 @@ const StatisticsTable = ({ data, property }) => {
         <Table size='small'>
           <TableHead>
             <TableRow>
-              <TableCell className={classes.root} align='center'>
+              <TableCell align='center'>
                 Mean
               </TableCell>
-              <TableCell className={classes.root} align='center'>
+              <TableCell align='center'>
                 Stdev
               </TableCell>
 
-              <TableCell className={classes.root} align='center'>
+              <TableCell align='center'>
                 Min
               </TableCell>
-              <TableCell className={classes.root} align='center'>
+              <TableCell align='center'>
                 Max
               </TableCell>
             </TableRow>
@@ -44,16 +38,16 @@ const StatisticsTable = ({ data, property }) => {
 
           <TableBody>
             <TableRow>
-              <TableCell className={classes.root} align='center'>
+              <TableCell align='center'>
                 {row.mean}
               </TableCell>
-              <TableCell className={classes.root} align='center'>
+              <TableCell align='center'>
                 {row.stdev}
               </TableCell>
-              <TableCell className={classes.root} align='center'>
+              <TableCell align='center'>
                 {row.min}
               </TableCell>
-              <TableCell className={classes.root} align='center'>
+              <TableCell align='center'>
                 {row.max}
               </TableCell>
             </TableRow>

@@ -7,13 +7,6 @@ import '@sandstreamdev/react-swipeable-list/dist/styles.css'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useStoreActions } from 'easy-peasy'
 
-const useStyles = makeStyles(theme => ({
-  root: { paddingLeft: theme.spacing(1), paddingRight: theme.spacing(1) },
-  input: {
-    fontSize: '14px',
-  },
-}))
-
 const Value = ({ children, color }) => (
   <Grid item xs={3} sx={{ textAlign: 'right', color }}>
     {children && Math.round(children)}
@@ -43,7 +36,6 @@ const FoodItem = ({ food }) => {
   } = useStoreActions(actions => actions.foods)
 
   const [quantity, setQuantity] = React.useState(food.quantity)
-  const classes = useStyles()
   const { protein, carbs, fat } = food.reference ? food.reference : food.ref
 
   const onChangeQuantity = e => {
@@ -77,7 +69,7 @@ const FoodItem = ({ food }) => {
       }}
       threshold={0.9}
     >
-      <ListItem className={classes.root} divider>
+      <ListItem divider>
         <Grid container spacing={2} alignItems='center'>
           <Grid item xs={5}>
             {capitalize(food.name)} {food.isDirty && '*'}
@@ -94,7 +86,6 @@ const FoodItem = ({ food }) => {
                 <Input
                   value={quantity ? quantity : quantity.toString()}
                   onChange={onChangeQuantity}
-                  className={classes.input}
                   disableUnderline
                   type='number'
                   onBlur={onBlurUpdate}
