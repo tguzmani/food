@@ -1,7 +1,8 @@
 import React from 'react'
-import { useStoreActions } from 'easy-peasy'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 
 import {
+  Box,
   Toolbar,
   Typography,
   IconButton,
@@ -9,21 +10,31 @@ import {
   MenuItem,
   Divider,
   AppBar as MuiAppBar,
+  LinearProgress,
 } from '@mui/material'
 
 import { Link } from 'react-router-dom'
 
-import MenuIcon from '@material-ui/icons/Menu'
+import MenuIcon from '@mui/icons-material/Menu'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 
 import useMenu from 'hooks/useMenu'
 import useUser from 'hooks/useUser'
 import useResponsive from 'hooks/useResponsive'
 
+import Fade from '@mui/material/Fade'
+
 const AppBar = ({ title, openDrawer }) => {
   const user = useUser()
-  const isMobile = useResponsive('md')
+
+  const isMobile = useResponsive('sm')
   const { signOut } = useStoreActions(actions => actions.users)
+
+  const state = useStoreState(state => state)
+
+  const loadings = Object.keys(state).some(key => state[key].loading)
+
+  console.log(loadings)
 
   const handleLogout = () => {
     handleCloseMenu()
@@ -34,22 +45,25 @@ const AppBar = ({ title, openDrawer }) => {
 
   return (
     <MuiAppBar position='fixed'>
-      <Toolbar >
+      <Fade in={loadings}>
+        <LinearProgress  />
+      </Fade>
+      <Toolbar>
         {isMobile && (
           <IconButton
-            sx={{ positin: 'relative', top: '1px' }}
+            sx={{ position: 'relative', top: '1px', paddingLeft: 0 }}
             color='inherit'
-            aria-label='open drawer'
-            edge='start'
             onClick={openDrawer}
-            // className={classes.menuButton}
+            edg='start'
             size='large'
           >
             <MenuIcon />
           </IconButton>
         )}
 
-        <Typography variant='h6' component='div' sx={{flexGrow: 1}}>{title}</Typography>
+        <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+          {title}
+        </Typography>
 
         <Typography>{user && user.name.split(' ')[0]}</Typography>
         <IconButton edge='end' color='inherit' onClick={handleOpenMenu}>

@@ -1,18 +1,16 @@
 import React from 'react'
-import { Backdrop, CircularProgress } from '@mui/material';
+import { Backdrop, CircularProgress, useTheme } from '@mui/material'
 
-import makeStyles from '@mui/styles/makeStyles';
-
-
-//   backdrop: {
-//     zIndex: theme.zIndex.drawer + 1,
-//     color: '#fff',
-//   },
+import makeStyles from '@mui/styles/makeStyles'
 
 const BackdropLoading = ({ open }) => {
+  const theme = useTheme()
 
   return (
-    <Backdrop open={open} sx={{color: 'white'}}>
+    <Backdrop
+      open={open}
+      sx={{ color: 'white', zIndex: theme.zIndex.drawer + 1 }}
+    >
       <CircularProgress color='inherit' />
     </Backdrop>
   )

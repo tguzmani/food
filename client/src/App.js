@@ -21,7 +21,7 @@ import { StoreProvider } from 'easy-peasy'
 import store from './config/easy-peasy.store'
 import { CssBaseline } from '@mui/material'
 
-import { LocalizationProvider } from '@mui/x-date-pickers'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 const App = () => {

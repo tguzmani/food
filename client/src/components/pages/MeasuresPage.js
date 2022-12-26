@@ -5,15 +5,16 @@ import Measures from './../measure/Measures'
 import AddMeasureDialog from '../measure/AddMeasureDialog'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import useConditionalRead from 'hooks/useConditionalRead'
+import Loading from 'components/layout/Loading'
 
-const MeasuresPage = ({ loading }) => {
+const MeasuresPage = () => {
   const theme = useTheme()
   const { readMeasurements } = useStoreActions(actions => actions.measurements)
-  const { measurements: measures } = useStoreState(state => state.measurements)
+  const { measurements: measures, loading } = useStoreState(state => state.measurements)
 
   useConditionalRead({ name: readMeasurements, condition: measures.length === 0 })
 
-  if (measures.length === 0 && loading) return <div>Loading...</div>
+  if (measures.length === 0 || loading) return <Loading />
 
   return (
     <>
