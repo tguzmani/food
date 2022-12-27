@@ -9,6 +9,8 @@ import PersonalInformation from './PersonalInformation'
 import MacroInformation from './MacroInformation'
 import BMRs from './BMRs'
 import useUser from 'hooks/useUser'
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import PersonIcon from '@mui/icons-material/Person';
 
 const UserInformation = () => {
   const user = useUser()
@@ -22,6 +24,8 @@ const UserInformation = () => {
     </Box>
   )
 
+  const MembershipIcon = user.isPremium ? WorkspacePremiumIcon : PersonIcon
+
   return (
     <Grid container spacing={4}>
       <Grid item xs={12} lg={3}>
@@ -31,7 +35,10 @@ const UserInformation = () => {
           </Typography>
           <Detail Icon={EmailIcon}>{user.email}</Detail>
           <Detail Icon={EventIcon}>
-            Since {dayjs(user.createdAt).format('MMMM 11, YYYY')}
+            Since {dayjs(user.createdAt).format('MMMM DD, YYYY')}
+          </Detail>
+          <Detail Icon={MembershipIcon}>
+            {user.isPremium ? 'Premium' : 'Free'} Membership
           </Detail>
         </Box>
         <Divider />

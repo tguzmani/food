@@ -9,6 +9,8 @@ const referencesComputeds = {
   ),
 
   isFiltering: computed(state => state.filterReferencesQuery.length !== ''),
+
+  referenceCount: computed(state => state.references.length)
 }
 
 export default referencesComputeds

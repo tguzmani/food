@@ -25,7 +25,6 @@ const ReferencesPage = () => {
         references={isFiltering ? filteredReferences : references}
         isFiltering={isFiltering}
       />
-      {/* <References references={references} /> */}
     </Container>
   )
 }

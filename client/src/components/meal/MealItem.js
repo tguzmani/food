@@ -17,10 +17,12 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
 import Menu from '../layout/Menu'
 import useMenu from 'hooks/useMenu'
 import { useStoreActions } from 'easy-peasy'
+import useUser from 'hooks/useUser'
 
 const MealItem = ({ foods, number }) => {
   const { deleteFood } = useStoreActions(actions => actions.foods)
   const theme = useTheme()
+  const user = useUser()
   const thisMealFoods = foods.filter(food => food.meal === number)
   
   const [anchorEl, handleOpenMenu, handleCloseMenu] = useMenu()
@@ -52,7 +54,7 @@ const MealItem = ({ foods, number }) => {
           <Typography variant='body1' gutterBottom align='right'></Typography>
 
           <Foods foods={thisMealFoods} />
-          <Total foods={thisMealFoods} />
+          {user.isPremium && <Total foods={thisMealFoods} />}
         </CardContent>
       </Card>
 

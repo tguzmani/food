@@ -5,12 +5,25 @@ import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
 import '@sandstreamdev/react-swipeable-list/dist/styles.css'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useStoreActions } from 'easy-peasy'
+import useUser from 'hooks/useUser'
 
-const Value = ({ children, color }) => (
-  <Grid item xs={3} sx={{ textAlign: 'right', color }}>
-    {children && Math.round(children)}
-  </Grid>
-)
+const Value = ({ children, color }) => {
+  const user = useUser()
+
+  return (
+    <Grid
+      item
+      xs={3}
+      sx={{
+        textAlign: 'right',
+        color,
+        visibility: user.isPremium ? 'visible' : 'hidden',
+      }}
+    >
+      {children && Math.round(children)}
+    </Grid>
+  )
+}
 
 const Delete = () => (
   <Box
@@ -73,7 +86,7 @@ const FoodItem = ({ food }) => {
           <Grid item xs={5}>
             {capitalize(food.name)} {food.isDirty && '*'}
           </Grid>
-          
+
           <Grid item xs={7}>
             <Grid
               container

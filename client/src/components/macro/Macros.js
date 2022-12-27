@@ -1,4 +1,4 @@
-import { Grid, Box } from '@mui/material'
+import { Grid, Box, Stack } from '@mui/material'
 import React from 'react'
 import Calories from './Calories'
 import Cleanliness from './Cleanliness'
@@ -7,9 +7,11 @@ import Macro from './Macro'
 import { getAlcoholUnits } from './../../util/food'
 import useResponsive from './../../hooks/useResponsive'
 import { useStoreActions } from 'easy-peasy'
+import useUser from 'hooks/useUser'
 
 const Macros = () => {
-  const isMobile = useResponsive('md')
+  const isMobile = useResponsive('sm')
+  const user = useUser()
   const { foods } = useStoreActions(state => state.foods)
 
   const spacing = isMobile ? 0 : 10
@@ -30,36 +32,29 @@ const Macros = () => {
           </Grid>
 
           <Grid item>
-            <Grid container spacing={4}>
-              <Grid item>
+            {user.isPremium && (
+              <Stack direction='row' alignItems='center' spacing={4}>
                 <Cleanliness />
-              </Grid>
 
-              {getAlcoholUnits(foods) > 0 && (
-                <Grid item>
-                  <Drinks />
-                </Grid>
-              )}
-            </Grid>
+                {getAlcoholUnits(foods) > 0 && <Drinks />}
+              </Stack>
+            )}
           </Grid>
         </Grid>
       </Box>
 
-      <Grid container justifyContent={justify} spacing={spacing}>
-        <Grid item>
+      {user.isPremium && (
+        <Stack
+          direction='row'
+          alignItems='center'
+          justifyContent={justify}
+          spacing={spacing}
+        >
           <Macro macro='protein' />
-        </Grid>
-
-        <Grid item>
           <Macro macro='carbs' />
-        </Grid>
-
-        <Grid item>
           <Macro macro='fat' />
-        </Grid>
-      </Grid>
-      {/* </CardContent>
-    </Card> */}
+        </Stack>
+      )}
     </Box>
   )
 }

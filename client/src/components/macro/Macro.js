@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Typography } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import { getTotalMacro } from './../../util/food'
 import Progress from './Progress'
 import { useStoreState } from 'easy-peasy'
@@ -16,18 +16,15 @@ const Macro = ({ macro }) => {
   const progress = (consumed / goal) * 100
 
   return (
-    <Grid container display='flex' direction='column' alignItems='center'>
-      <Grid item>
-        <Progress progress={progress} macro={macro} />
-      </Grid>
+    <Stack alignItems='center'>
+      <Progress progress={progress} macro={macro} />
 
-      <Grid item>
+      <Typography variant='body1'>
         {consumed}/{goal}
-      </Grid>
-      <Grid item>
-        <Typography variant='caption'>{goal - consumed}</Typography>
-      </Grid>
-    </Grid>
+      </Typography>
+
+      <Typography variant='caption'>{goal - consumed}</Typography>
+    </Stack>
   )
 }
 

@@ -16,16 +16,23 @@ import InfoIcon from '@mui/icons-material/Info'
 import TimelineIcon from '@mui/icons-material/Timeline'
 import PersonIcon from '@mui/icons-material/Person'
 import { Link, useLocation } from 'react-router-dom'
+import useUser from 'hooks/useUser'
 
 const Drawer = ({ onClose }) => {
   const location = useLocation().pathname
   const theme = useTheme()
+  const user = useUser()
 
   const links = [
     { to: '/', text: 'Day', icon: <TodayIcon /> },
     { to: '/measures', text: 'Measures', icon: <AssessmentIcon /> },
     { to: '/references', text: 'References', icon: <InfoIcon /> },
-    { to: '/statistics', text: 'Statistics', icon: <TimelineIcon /> },
+    {
+      to: '/statistics',
+      text: 'Statistics',
+      icon: <TimelineIcon />,
+      isPremium: true,
+    },
     { to: '/profile', text: 'Profile', icon: <PersonIcon /> },
   ]
 
@@ -36,19 +43,24 @@ const Drawer = ({ onClose }) => {
       </Box>
 
       <List>
-        {links.map(link => (
-          <NavItem
-            button
-            selected={location.match(/\/[a-z]*/)[0] === link.to}
-            key={link.text}
-            component={Link}
-            to={link.to}
-            onClick={onClose}
-          >
-            <ListItemIcon sx={{color: theme.palette.grey[100]}}>{link.icon}</ListItemIcon>
-            <ListItemText primary={link.text} />
-          </NavItem>
-        ))}
+        {links.map(
+          link =>
+            (!link.isPremium || user.isPremium) && (
+              <NavItem
+                button
+                selected={location.match(/\/[a-z]*/)[0] === link.to}
+                key={link.text}
+                component={Link}
+                to={link.to}
+                onClick={onClose}
+              >
+                <ListItemIcon sx={{ color: theme.palette.grey[100] }}>
+                  {link.icon}
+                </ListItemIcon>
+                <ListItemText primary={link.text} />
+              </NavItem>
+            )
+        )}
       </List>
     </>
   )

@@ -9,16 +9,20 @@ import {
   TextField,
   Switch,
   Typography,
+  Tooltip,
 } from '@mui/material'
 import ReferenceItem from './ReferenceItem'
 import FAB from '../layout/FAB'
 import AddIcon from '@mui/icons-material/Add'
-import { useStoreActions } from 'easy-peasy'
+import { useStoreActions, useStoreState } from 'easy-peasy'
+import useUser from 'hooks/useUser'
 
 const NewReferenceDialog = () => {
   const [open, setOpen] = React.useState(false)
 
+  const user = useUser()
   const { createReference } = useStoreActions(actions => actions.references)
+  const { referenceCount } = useStoreState(state => state.references)
 
   const [reference, setReference] = React.useState({
     name: '',
@@ -61,6 +65,8 @@ const NewReferenceDialog = () => {
     fat: fat / portion,
   }
 
+  const cantAddMoreReferences = referenceCount >= 20 && !user.isPremium
+
   return (
     <>
       <FAB
@@ -68,6 +74,7 @@ const NewReferenceDialog = () => {
         Icon={AddIcon}
         onClick={handleClickOpen}
         tooltipTitle='Add Reference'
+        disabled={cantAddMoreReferences}
       />
 
       <Dialog

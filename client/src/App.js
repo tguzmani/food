@@ -23,6 +23,7 @@ import { CssBaseline } from '@mui/material'
 
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import PremiumRoute from 'components/routing/PremiumRoute'
 
 const App = () => {
   return (
@@ -41,7 +42,7 @@ const App = () => {
                   path='/references'
                   component={ReferencesPage}
                 />
-                <PrivateRoute
+                <PremiumRoute
                   exact
                   path='/statistics'
                   component={StatisticsPage}
