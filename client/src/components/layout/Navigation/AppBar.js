@@ -34,8 +34,6 @@ const AppBar = ({ title, openDrawer }) => {
 
   const loadings = Object.keys(state).some(key => state[key].loading)
 
-  console.log(loadings)
-
   const handleLogout = () => {
     handleCloseMenu()
     signOut()

@@ -45,7 +45,7 @@ const Drawer = ({ onClose }) => {
       <List>
         {links.map(
           link =>
-            (!link.isPremium || user.isPremium) && (
+            (!link.isPremium || user?.isPremium) && (
               <NavItem
                 button
                 selected={location.match(/\/[a-z]*/)[0] === link.to}
