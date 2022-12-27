@@ -17,19 +17,23 @@ import { useTheme, Box } from '@mui/material'
 import useResponsive from 'hooks/useResponsive'
 import useForm from 'hooks/useForm'
 import useAuth from 'hooks/useAuth'
+import Alert from 'components/layout/Alert'
 
 const LoginForm = ({ history }) => {
-  const isMobile = useResponsive('md')
+  const isMobile = useResponsive('sm')
   const theme = useTheme()
   const isAuth = useAuth()
 
   const { signIn, setLoading } = useStoreActions(actions => actions.users)
+  const { error } = useStoreState(state => state.users)
   const { loading } = useStoreState(state => state.users)
 
   const [credentials, bindCredentials, areCredentialsEmpty] = useForm({
     email: '',
     password: '',
   })
+
+  console.log('error', error)
 
   useEffect(() => {
     setLoading(false)
@@ -52,6 +56,7 @@ const LoginForm = ({ history }) => {
           direction='column'
           justifyContent='space-between'
         >
+          {error && <Alert>{error}</Alert>}
           <Box mt={2}>
             <Stack alignItems='center' spacing={1}>
               <Avatar sx={{ bgcolor: theme.palette.primary.main }}>

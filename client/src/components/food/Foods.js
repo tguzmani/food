@@ -7,7 +7,7 @@ const Foods = ({ foods }) => {
   return (
     <List>
       {foods.map(food => (
-        <FoodItem food={food} />
+        <FoodItem key={food._id} food={food} />
       ))}
     </List>
   )
