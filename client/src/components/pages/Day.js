@@ -11,7 +11,7 @@ import useConditionalRead from 'hooks/useConditionalRead'
 // import BackdropLoading from '../layout/BackdropLoading'
 
 const Day = () => {
-  const { foods, mealsFoods } = useStoreState(state => state.foods)
+  const { foods, mealsFoods, loading } = useStoreState(state => state.foods)
   const { readFoods } = useStoreActions(actions => actions.foods)
   const mealNumbers = useMealNumbers()
 

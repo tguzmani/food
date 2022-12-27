@@ -6,13 +6,9 @@ import FoodItem from './FoodItem'
 const Foods = ({ foods }) => {
   return (
     <List>
-      <TransitionGroup>
-        {foods.map(food => (
-          <Collapse key={food._id}>
-            <FoodItem food={food} />
-          </Collapse>
-        ))}
-      </TransitionGroup>
+      {foods.map(food => (
+        <FoodItem food={food} />
+      ))}
     </List>
   )
 }

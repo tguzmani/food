@@ -6,7 +6,7 @@ const useConditionalRead = (...functions) => {
       if (fn.condition) fn.name()
     })
     
-  }, [functions])
+  }, [])
 }
 
 export default useConditionalRead
