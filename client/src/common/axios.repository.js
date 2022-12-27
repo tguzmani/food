@@ -1,13 +1,12 @@
 import axios from 'axios'
 
-// export const config = { headers: { 'Content-Type': 'application/json' } }
 
 export default class AxiosRepository {
   constructor(resource) {
     this.resource = resource
 
     this.instance = axios.create({
-      baseURL: 'http://localhost:8000/api',
+      baseURL: '/api',
       withCredentials: true,
       headers: { 'Content-Type': 'application/json' },
     })

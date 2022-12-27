@@ -33,8 +33,6 @@ const LoginForm = ({ history }) => {
     password: '',
   })
 
-  console.log('error', error)
-
   useEffect(() => {
     setLoading(false)
   }, [setLoading])
