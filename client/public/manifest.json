@@ -20,6 +20,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
+  "description": "Easy to use calories and weight tracker",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
