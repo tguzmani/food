@@ -9,7 +9,6 @@ import {
   MenuItem,
   useTheme
 } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
 import React from 'react'
 import { getCleanliness, getTotalCalories } from '../../util/food'
 import Foods from '../food/Foods'

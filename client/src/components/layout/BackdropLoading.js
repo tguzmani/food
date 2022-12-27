@@ -1,8 +1,6 @@
 import React from 'react'
 import { Backdrop, CircularProgress, useTheme } from '@mui/material'
 
-import makeStyles from '@mui/styles/makeStyles'
-
 const BackdropLoading = ({ open }) => {
   const theme = useTheme()
 
