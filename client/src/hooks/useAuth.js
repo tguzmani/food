@@ -1,9 +1,9 @@
 import { useStoreState } from 'easy-peasy'
 
 const useAuth = () => {
-  const { user, isAuthenticated } = useStoreState(state => state.users)
+  const { user, isAuthenticated, loading } = useStoreState(state => state.users)
 
-  return user && isAuthenticated
+  return user && isAuthenticated && !loading
 }
 
 export default useAuth
