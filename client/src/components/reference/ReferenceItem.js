@@ -9,7 +9,7 @@ import { useStoreActions } from 'easy-peasy'
 
 const Value = ({ children, color }) => (
   <Grid item xs={3} sx={{ textAlign: 'right', color }}>
-    {children}
+    <Typography variant='body2'>{children}</Typography>
   </Grid>
 )
 
