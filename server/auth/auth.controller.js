@@ -2,13 +2,16 @@ const authServices = require('./auth.services')
 const usersServices = require('../users/users.services')
 const signToken = require('../common/signToken')
 
+const ONE_YEAR = 365 * 24 * 60 * 60 * 1000
+// days * hours * minutes * seconds * milliseconds
+
 exports.signUp = async (req, res) => {
   try {
     const newUser = await authServices.signUp(req.body)
 
     const token = signToken({ _id: newUser._id })
 
-    res.cookie('t', token)
+    res.cookie('t', token, { maxAge: ONE_YEAR, httpOnly: true })
 
     res.send(newUser)
   } catch (error) {
