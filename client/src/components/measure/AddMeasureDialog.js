@@ -27,7 +27,7 @@ dayjs.extend(isToday)
 
 const AddMeasureDialog = () => {
   const { foods } = useStoreState(state => state.foods)
-  const { measurements: measures } = useStoreState(state => state.measurements)
+  const { measurements } = useStoreState(state => state.measurements)
 
   const { readFoods, deleteAllFoodsFromDay } = useStoreActions(state => state.foods)
   const { updateMeasurement, createMeasurement } = useStoreActions(
@@ -38,7 +38,7 @@ const AddMeasureDialog = () => {
 
   const [open, handleOpen, handleClose] = useDialog()
 
-  const lastMeasure = measures[0]
+  const lastMeasure = measurements[0]
 
   const [measure, setMeasure] = React.useState({
     weight: '',
@@ -81,7 +81,7 @@ const AddMeasureDialog = () => {
     <>
       <FAB
         Icon={AddIcon}
-        show={lastMeasureIsFromToday || measures.length === 0}
+        show={lastMeasureIsFromToday || measurements.length === 0}
         onClick={handleOpen}
         tooltipTitle='Weight In!'
       />

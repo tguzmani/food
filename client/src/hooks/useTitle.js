@@ -7,7 +7,7 @@ const useTitle = () => {
 
   const titles = {
     '/': 'Day',
-    '/measures': 'Measures',
+    '/measurements': 'Measurements',
     '/references': 'References',
     '/profile': 'Profile',
     '/statistics': 'Statistics',

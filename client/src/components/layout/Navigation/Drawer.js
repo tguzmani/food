@@ -25,7 +25,7 @@ const Drawer = ({ onClose }) => {
 
   const links = [
     { to: '/', text: 'Day', icon: <TodayIcon /> },
-    { to: '/measures', text: 'Measures', icon: <AssessmentIcon /> },
+    { to: '/measurements', text: 'Measurements', icon: <AssessmentIcon /> },
     { to: '/references', text: 'References', icon: <InfoIcon /> },
     {
       to: '/statistics',

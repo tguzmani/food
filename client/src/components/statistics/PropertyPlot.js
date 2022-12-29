@@ -7,19 +7,20 @@ import { red, green, blue } from '@mui/material/colors'
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart
 
-const Plot = ({ data, title }) => {
+const PropertyPlot = ({ data, property }) => {
+  // console.log({ data, property })
   const theme = useTheme()
 
   let dataPoints = data.map(element => ({
     x: new Date(element.createdAt),
-    y: element.value,
+    y: element[property],
   }))
 
   let chartData = [
     {
       color: theme.palette.primary.main,
       type: 'spline',
-      name: title,
+      name: capitalize(property),
       connectNullData: true,
       yValueFormatString: '#0.##',
       dataPoints,
@@ -30,7 +31,7 @@ const Plot = ({ data, title }) => {
     animationEnabled: true,
     theme: 'light2',
     title: {
-      text: title,
+      text: capitalize(property),
       fontFamily: 'Lato',
       fontSize: 16,
     },
@@ -51,12 +52,12 @@ const Plot = ({ data, title }) => {
   }
 
   return (
-    <Paper>
-      <Box p={4}>
-        <CanvasJSChart options={options} />
-      </Box>
-    </Paper>
+      <Paper>
+        <Box p={4}>
+          <CanvasJSChart options={options} />
+        </Box>
+      </Paper>
   )
 }
 
-export default Plot
+export default PropertyPlot

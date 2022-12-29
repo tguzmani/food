@@ -1,16 +1,17 @@
 import React from 'react'
 import dayjs from 'dayjs'
-import Plot from '../statistics/Plot'
+import PropertyPlot from '../statistics/PropertyPlot'
 import StatisticsTable from '../statistics/StatisticsTable'
-import MeasureList from './MeasureList'
+import MeasureList from './MeasurementList'
+import { Stack } from '@mui/material';
 
-const Measures = ({ measures, current }) => {
-  let thisMeasures = []
+const Measurements = ({ measurements, current }) => {
+  let thisMeasurements = []
 
   if (current && dayjs().get('date') > 15) {
     // console.log('current && > 15')
 
-    thisMeasures = measures.filter(
+    thisMeasurements = measurements.filter(
       measure =>
         dayjs().startOf('month').add(15, 'day') < dayjs(measure.createdAt) &&
         dayjs(measure.createdAt) < dayjs().endOf('month')
@@ -20,7 +21,7 @@ const Measures = ({ measures, current }) => {
   if (current && dayjs().get('date') <= 15) {
     // console.log('current && <= 15')
 
-    thisMeasures = measures.filter(
+    thisMeasurements = measurements.filter(
       measure =>
         dayjs().startOf('month') < dayjs(measure.createdAt) &&
         dayjs(measure.createdAt) < dayjs().endOf('month').subtract(15, 'day')
@@ -30,7 +31,7 @@ const Measures = ({ measures, current }) => {
   if (!current && dayjs().get('date') > 15) {
     // console.log('last && > 15')
 
-    thisMeasures = measures.filter(
+    thisMeasurements = measurements.filter(
       measure =>
         dayjs().startOf('month') < dayjs(measure.createdAt) &&
         dayjs(measure.createdAt) < dayjs().startOf('month').add(15, 'day')
@@ -41,7 +42,7 @@ const Measures = ({ measures, current }) => {
     // console.log('last && <= 15')
     // console.log('end', dayjs().subtract(1, 'month').endOf('month'))
 
-    thisMeasures = measures.filter(
+    thisMeasurements = measurements.filter(
       measure =>
         dayjs().subtract(1, 'month').startOf('month').add(15, 'day') <
           dayjs(measure.createdAt) &&
@@ -50,12 +51,12 @@ const Measures = ({ measures, current }) => {
   }
 
   return (
-    <>
-      <Plot data={thisMeasures} property='weight' />
-      <StatisticsTable data={thisMeasures} property='weight' />
-      <MeasureList measures={thisMeasures} />
-    </>
+    <Stack spacing={2}>
+      <PropertyPlot data={thisMeasurements} property='weight' />
+      <StatisticsTable data={thisMeasurements} property='weight' />
+      <MeasureList measurements={thisMeasurements} />
+    </Stack>
   )
 }
 
-export default Measures
+export default Measurements

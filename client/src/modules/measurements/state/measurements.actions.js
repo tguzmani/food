@@ -9,6 +9,10 @@ const measurementsActions = {
     state.measurements = measurements
   }),
 
+  clearMeasurementsByQuery: action((state, measurements) => {
+    state.measurementsByQuery = []
+  }),
+
   setMeasurementsByQuery: action((state, measurementsByQuery) => {
     state.measurementsByQuery = measurementsByQuery
   }),

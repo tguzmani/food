@@ -9,7 +9,7 @@ import useDialog from 'hooks/useDialog';
 
 dayjs.extend(relativeTime)
 
-const MeasureItem = ({ measure }) => {
+const MeasurementItem = ({ measure }) => {
   const [open, handleOpen, handleClose] = useDialog()
   const user = useUser()
 
@@ -77,4 +77,4 @@ const MeasureItem = ({ measure }) => {
   )
 }
 
-export default MeasureItem
+export default MeasurementItem

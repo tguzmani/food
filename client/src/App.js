@@ -36,7 +36,7 @@ const App = () => {
               <Switch>
                 <Route exact path='/login' component={Login} />
                 <PrivateRoute exact path='/' component={Day} />
-                <PrivateRoute exact path='/measures' component={MeasuresPage} />
+                <PrivateRoute exact path='/measurements' component={MeasuresPage} />
                 <PrivateRoute
                   exact
                   path='/references'

@@ -1,4 +1,12 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@mui/material'
 import React from 'react'
 import { mean, stdev, sum } from '../../util/index'
 
@@ -14,46 +22,28 @@ const StatisticsTable = ({ data, property }) => {
   }
 
   return (
-    <div>
-      <TableContainer component={Paper}>
-        <Table size='small'>
-          <TableHead>
-            <TableRow>
-              <TableCell align='center'>
-                Mean
-              </TableCell>
-              <TableCell align='center'>
-                Stdev
-              </TableCell>
+    <TableContainer component={Paper}>
+      <Table size='small'>
+        <TableHead>
+          <TableRow>
+            <TableCell align='center'>Mean</TableCell>
+            <TableCell align='center'>Stdev</TableCell>
 
-              <TableCell align='center'>
-                Min
-              </TableCell>
-              <TableCell align='center'>
-                Max
-              </TableCell>
-            </TableRow>
-          </TableHead>
+            <TableCell align='center'>Min</TableCell>
+            <TableCell align='center'>Max</TableCell>
+          </TableRow>
+        </TableHead>
 
-          <TableBody>
-            <TableRow>
-              <TableCell align='center'>
-                {row.mean}
-              </TableCell>
-              <TableCell align='center'>
-                {row.stdev}
-              </TableCell>
-              <TableCell align='center'>
-                {row.min}
-              </TableCell>
-              <TableCell align='center'>
-                {row.max}
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
+        <TableBody>
+          <TableRow>
+            <TableCell align='center'>{row.mean}</TableCell>
+            <TableCell align='center'>{row.stdev}</TableCell>
+            <TableCell align='center'>{row.min}</TableCell>
+            <TableCell align='center'>{row.max}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }
 
