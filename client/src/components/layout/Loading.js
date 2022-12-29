@@ -1,5 +1,5 @@
 import React from 'react'
-import { CircularProgress, Typography, Stack } from '@mui/material'
+import { CircularProgress, Stack } from '@mui/material'
 
 const Loading = () => {
   return (
@@ -10,7 +10,6 @@ const Loading = () => {
       justifyContent='center'
     >
       <CircularProgress />
-      {/* <Typography variant='h6'>Loading...</Typography> */}
     </Stack>
   )
 }

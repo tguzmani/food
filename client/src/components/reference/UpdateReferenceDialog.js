@@ -42,7 +42,7 @@ const UpdateReferenceDialog = ({ initalReference, open, setOpen }) => {
       <DialogContent>
         <TextField
           autoFocus
-          margin='dense'
+          margin='normal'
           label='Name'
           type='text'
           name='name'
@@ -52,7 +52,7 @@ const UpdateReferenceDialog = ({ initalReference, open, setOpen }) => {
         />
 
         <TextField
-          margin='dense'
+          margin='normal'
           label='Protein'
           type='number'
           name='protein'
@@ -62,7 +62,7 @@ const UpdateReferenceDialog = ({ initalReference, open, setOpen }) => {
         />
 
         <TextField
-          margin='dense'
+          margin='normal'
           label='Carbs'
           type='number'
           name='carbs'
@@ -72,7 +72,7 @@ const UpdateReferenceDialog = ({ initalReference, open, setOpen }) => {
         />
 
         <TextField
-          margin='dense'
+          margin='normal'
           label='Fat'
           type='number'
           name='fat'

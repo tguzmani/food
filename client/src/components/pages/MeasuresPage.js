@@ -13,7 +13,7 @@ const MeasuresPage = () => {
 
   useConditionalRead({ name: readMeasurements, condition: measures.length === 0 })
 
-  if (measures.length === 0 || loading) return <Loading />
+  if (measures.length === 0 && loading) return <Loading />
 
   return (
     <>

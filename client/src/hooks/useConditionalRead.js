@@ -5,7 +5,7 @@ const useConditionalRead = (...functions) => {
     functions.forEach(fn => {
       if (fn.condition) fn.name()
     })
-    
+    // eslint-disable-next-line
   }, [])
 }
 

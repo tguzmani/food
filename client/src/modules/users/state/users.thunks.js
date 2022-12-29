@@ -1,5 +1,4 @@
 import { thunk } from 'easy-peasy'
-import cookies from 'js-cookies'
 import UsersRepository from './users.repository'
 
 const usersRepository = new UsersRepository()

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Button,
   Dialog,
@@ -9,7 +9,7 @@ import {
   TextField,
   Switch,
   Typography,
-  Tooltip,
+  Divider,
 } from '@mui/material'
 import ReferenceItem from './ReferenceItem'
 import FAB from '../layout/FAB'
@@ -24,7 +24,7 @@ const NewReferenceDialog = () => {
   const { createReference } = useStoreActions(actions => actions.references)
   const { referenceCount } = useStoreState(state => state.references)
 
-  const [reference, setReference] = React.useState({
+  const [reference, setReference] = useState({
     name: '',
     protein: 0,
     carbs: 0,
@@ -86,7 +86,7 @@ const NewReferenceDialog = () => {
             error={referenceNameHasSpaces}
             helperText={referenceNameHasSpaces && 'Name cannot contain spaces'}
             autoFocus
-            margin='dense'
+            margin='normal'
             label='Name'
             type='text'
             name='name'
@@ -96,7 +96,7 @@ const NewReferenceDialog = () => {
           />
 
           <TextField
-            margin='dense'
+            margin='normal'
             label='Portion Size'
             type='number'
             name='portion'
@@ -106,7 +106,7 @@ const NewReferenceDialog = () => {
           />
 
           <TextField
-            margin='dense'
+            margin='normal'
             label='Protein'
             type='number'
             name='protein'
@@ -116,7 +116,7 @@ const NewReferenceDialog = () => {
           />
 
           <TextField
-            margin='dense'
+            margin='normal'
             label='Carbs'
             type='number'
             name='carbs'
@@ -126,7 +126,7 @@ const NewReferenceDialog = () => {
           />
 
           <TextField
-            margin='dense'
+            margin='normal'
             label='Fat'
             type='number'
             name='fat'
@@ -159,7 +159,9 @@ const NewReferenceDialog = () => {
             label='Alcohol'
           />
 
-          <Typography variant='body1'>Preview</Typography>
+          <Divider sx={{my: 2}} />
+
+          <Typography variant='body1' gutterBottom >Preview</Typography>
           <ReferenceItem reference={computedReference} preview />
         </DialogContent>
 

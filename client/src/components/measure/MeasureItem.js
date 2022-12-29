@@ -3,10 +3,15 @@ import { Box, Grid, ListItem, Typography } from '@mui/material';
 
 import relativeTime from 'dayjs/plugin/relativeTime'
 import dayjs from 'dayjs'
+import useUser from 'hooks/useUser';
+import UpdateMeasureDialog from './UpdateMeasureDialog';
+import useDialog from 'hooks/useDialog';
 
 dayjs.extend(relativeTime)
 
 const MeasureItem = ({ measure }) => {
+  const [open, handleOpen, handleClose] = useDialog()
+  const user = useUser()
 
   const {
     weight,
@@ -35,32 +40,41 @@ const MeasureItem = ({ measure }) => {
   )
 
   return (
-    <ListItem divider>
-      <Grid container alignItems='center' justifyContent='space-between'>
-        <Grid item xs={6}>
-          <Box>
-            <Typography variant='caption'>
-              {dayjs(createdAt).fromNow()}
-            </Typography>
-            <Typography gutterBottom variant='body1'>
-              {weight} lb {fat > 0 && `· ${fat}%`}
-            </Typography>
-            {calories > 0 && (
-              <Typography variant='body1'>
-                {Math.round(calories)} cal 
+    <>
+      <ListItem divider button onClick={handleOpen}>
+        <Grid container alignItems='center' justifyContent='space-between'>
+          <Grid item xs={6}>
+            <Box> 
+              <Typography variant='caption'>
+                {dayjs(createdAt).fromNow()}
               </Typography>
-            )}
-          </Box>
-        </Grid>
+              <Typography gutterBottom variant='body1'>
+                {weight} {user?.units} {fat > 0 && `· ${fat}%`}
+              </Typography>
+              {calories > 0 && (
+                <Typography variant='body1'>
+                  {Math.round(calories)} cal
+                </Typography>
+              )}
+            </Box>
+          </Grid>
 
-        <Grid item xs={3} md={1}>
-          <Indicator emoji='🛏️' value={sleep} />
-          <Indicator emoji='💎' value={cleanliness} symbol='%' />
-          <Indicator emoji='🥃' value={alcohol} />
+          <Grid item xs={3} md={1}>
+            <Indicator emoji='🛏️' value={sleep} />
+            <Indicator emoji='💎' value={cleanliness} symbol='%' />
+            <Indicator emoji='🥃' value={alcohol} />
+          </Grid>
         </Grid>
-      </Grid>
-    </ListItem>
-  );
+      </ListItem>
+
+      <UpdateMeasureDialog
+        initialMeasure={measure}
+        open={open}
+        handleClose={handleClose}
+
+      />
+    </>
+  )
 }
 
 export default MeasureItem

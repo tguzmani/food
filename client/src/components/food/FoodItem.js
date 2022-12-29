@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListItem, Grid, Input, Box, Typography } from '@mui/material'
+import { ListItem, Grid, Input, Box } from '@mui/material'
 import { capitalize } from './../../util/index'
 import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
 import '@sandstreamdev/react-swipeable-list/dist/styles.css'

@@ -2,7 +2,6 @@ import React from 'react'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 
 import {
-  Box,
   Toolbar,
   Typography,
   IconButton,
