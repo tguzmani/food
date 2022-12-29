@@ -28,7 +28,7 @@ exports.signIn = async (req, res) => {
 
     const token = signToken({ _id: userId })
 
-    res.cookie('t', token)
+    res.cookie('t', token, { maxAge: ONE_YEAR, httpOnly: true })
 
     res.send(user)
   } catch (error) {
