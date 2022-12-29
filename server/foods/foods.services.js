@@ -18,6 +18,8 @@ exports.createFood = async (referenceName, quantity, meal, userId) => {
     reference: reference._id,
     name: reference.name,
     _id: undefined,
+    isDirty: reference.isDirty,
+    isAlcohol: reference.isAlcohol,
     meal,
     quantity,
     protein,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListItem, Grid, Box } from '@mui/material'
+import { ListItem, Grid, Box, Typography, Avatar } from '@mui/material'
 import { capitalize } from './../../util/index'
 
 import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
@@ -64,11 +64,11 @@ const ReferenceItem = ({ reference, preview, divider }) => {
           button
         >
           <Grid container spacing={2} alignItems='center'>
-            <Grid item xs={6}>
-              {capitalize(reference.name)}
+            <Grid item xs={5}>
+              <Typography variant='body2'>{capitalize(reference.name)}</Typography>
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={7}>
               <Grid
                 container
                 justifyContent='space-around'
@@ -79,11 +79,11 @@ const ReferenceItem = ({ reference, preview, divider }) => {
                 <Value color='blue'>{displayMacro(reference.carbs)}</Value>
                 <Value color='green'>{displayMacro(reference.fat)}</Value>
                 <Grid item xs={3} sx={{ textAlign: 'right' }}>
-                  <div>
+                  <Typography variant='body2' >
                     {reference.isDirty && reference.isAlcohol
                       ? 'A'
                       : reference.isDirty && 'D'}
-                  </div>
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>

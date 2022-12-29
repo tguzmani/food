@@ -9,7 +9,7 @@ import useConditionalRead from 'hooks/useConditionalRead'
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const isAuth = useAuth()
   const { loading, user } = useStoreState(state => state.users)
-  const { readUser } = useStoreActions(state => state.users)
+  const { readUser } = useStoreActions(actions => actions.users)
 
   useConditionalRead({ name: readUser, condition: !user })
 

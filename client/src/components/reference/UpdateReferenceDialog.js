@@ -10,15 +10,11 @@ import {
   TextField,
   Switch,
 } from '@mui/material'
-import { useStoreActions } from 'easy-peasy';
+import { useStoreActions } from 'easy-peasy'
 
-const UpdateReferenceDialog = ({
-  initalReference,
-  open,
-  setOpen,
-}) => {
+const UpdateReferenceDialog = ({ initalReference, open, setOpen }) => {
   const [reference, setReference] = React.useState(initalReference)
-  
+
   const { updateReference } = useStoreActions(actions => actions.references)
 
   const onChange = e => {
@@ -41,7 +37,7 @@ const UpdateReferenceDialog = ({
   const { name, protein, carbs, fat, portion, isDirty, isAlcohol } = reference
 
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog open={open} onClose={handleClose} maxWidth='xs'>
       <DialogTitle>Update Reference</DialogTitle>
       <DialogContent>
         <TextField
@@ -115,6 +111,7 @@ const UpdateReferenceDialog = ({
           Cancel
         </Button>
         <Button
+          variant='contained'
           onClick={handleUpdate}
           color='primary'
           disabled={Number(portion) === 0 || name === ''}

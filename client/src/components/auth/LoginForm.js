@@ -18,13 +18,14 @@ import useResponsive from 'hooks/useResponsive'
 import useForm from 'hooks/useForm'
 import useAuth from 'hooks/useAuth'
 import Alert from 'components/layout/Alert'
+import useRead from 'hooks/useRead'
 
 const LoginForm = ({ history }) => {
   const isMobile = useResponsive('sm')
   const theme = useTheme()
   const isAuth = useAuth()
 
-  const { signIn, setLoading } = useStoreActions(actions => actions.users)
+  const { signIn, readUser } = useStoreActions(actions => actions.users)
   const { error } = useStoreState(state => state.users)
   const { loading } = useStoreState(state => state.users)
 
@@ -32,10 +33,8 @@ const LoginForm = ({ history }) => {
     email: '',
     password: '',
   })
-
-  useEffect(() => {
-    setLoading(false)
-  }, [setLoading])
+  
+  useRead(readUser)
 
   useEffect(() => {
     if (isAuth) history.push('/')

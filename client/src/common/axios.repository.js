@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-
 export default class AxiosRepository {
   constructor(resource) {
     this.resource = resource

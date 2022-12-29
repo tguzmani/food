@@ -67,6 +67,8 @@ const NewReferenceDialog = () => {
 
   const cantAddMoreReferences = referenceCount >= 20 && !user.isPremium
 
+  const referenceNameHasSpaces = name.match(/\s+/)
+
   return (
     <>
       <FAB
@@ -77,16 +79,12 @@ const NewReferenceDialog = () => {
         disabled={cantAddMoreReferences}
       />
 
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='form-dialog-title'
-      >
-        <DialogTitle id='form-dialog-title'>Add Reference</DialogTitle>
+      <Dialog open={open} onClose={handleClose} maxWidth='xs'>
+        <DialogTitle>Add Reference</DialogTitle>
         <DialogContent>
           <TextField
-            error={name.match(/\s+/)}
-            helperText={name.match(/\s+/) && 'Name cannot contain spaces'}
+            error={referenceNameHasSpaces}
+            helperText={referenceNameHasSpaces && 'Name cannot contain spaces'}
             autoFocus
             margin='dense'
             label='Name'
@@ -170,9 +168,10 @@ const NewReferenceDialog = () => {
             Cancel
           </Button>
           <Button
+            variant='contained'
             onClick={handleCreate}
             color='primary'
-            disabled={portion === 0 || name === '' || name.match(/\s+/)}
+            disabled={portion === 0 || name === '' || referenceNameHasSpaces}
           >
             Add
           </Button>

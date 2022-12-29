@@ -86,7 +86,7 @@ const AddMeasureDialog = () => {
         tooltipTitle='Weight In!'
       />
 
-      <Dialog fullWidth open={open} onClose={handleClose}>
+      <Dialog maxWidth='xs' open={open} onClose={handleClose}>
         <DialogTitle>Add Measure</DialogTitle>
 
         <DialogContent>
@@ -96,7 +96,7 @@ const AddMeasureDialog = () => {
             name='weight'
             value={weight}
             onChange={onChange}
-            type='text'
+            type='number'
             label='Weight'
           ></TextField>
 
@@ -127,7 +127,6 @@ const AddMeasureDialog = () => {
           </Button>
           <Button
             variant='contained'
-            disableElevation
             onClick={handleAddMeasure}
             color='primary'
             disabled={weight === ''}
