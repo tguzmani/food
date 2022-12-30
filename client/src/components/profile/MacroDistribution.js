@@ -1,11 +1,14 @@
 import React from 'react'
 import { Grid, Box, Typography } from '@mui/material'
 import { useStoreState } from 'easy-peasy'
+import useResponsive from 'hooks/useResponsive';
 
 const MacroDistribution = () => {
   const { profile, user, profileBaseWeight, offsetBMR } = useStoreState(
     state => state.users
   )
+
+  const isMobile = useResponsive('sm')
 
   if (!user) return <div>Loading...</div>
 
@@ -18,7 +21,7 @@ const MacroDistribution = () => {
   const carbsGrams = carbsCalories / 4
 
   return (
-    <Grid container spacing={3} justifyContent='space-between'>
+    <Grid container spacing={3} justifyContent='space-between' mb={isMobile ? 10 : 0}>
       <Grid item xs={4}>
         <Box>
           <Typography align='center'>Protein</Typography>

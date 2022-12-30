@@ -17,6 +17,6 @@ exports.updateUser = async (req, res) => {
 
     res.send(user)
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    res.status(500).json({ error: error.stack })
   }
 }

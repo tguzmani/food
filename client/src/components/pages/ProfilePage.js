@@ -16,13 +16,8 @@ const ProfilePage = () => {
   if (!user) return <div>Loading...</div>
 
   const showFAB =
-    user.age !== profile.age ||
-    user.height !== profile.height ||
-    user.baseWeight !== profile.baseWeight ||
-    user.offset !== profile.offset ||
-    user.activity !== profile.activity ||
-    user.proteinPref !== profile.proteinPref ||
-    user.fatPref !== profile.fatPref
+    Object.keys(profile).some(key => profile[key] !== user[key]) &&
+    Object.keys(profile).every(key => profile[key] !== '')
 
   return (
     <div>

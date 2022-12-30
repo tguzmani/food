@@ -34,7 +34,7 @@ const AddMeasureDialog = () => {
     actions => actions.measurements
   )
 
-  useConditionalRead({name: readFoods, value: foods.length === 0})
+  useConditionalRead([{name: readFoods, value: foods.length === 0}])
 
   const [open, handleOpen, handleClose] = useDialog()
 

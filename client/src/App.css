@@ -26,3 +26,12 @@ input[type=number]::-webkit-outer-spin-button {
   position: absolute;
   z-index: -1;
 }
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

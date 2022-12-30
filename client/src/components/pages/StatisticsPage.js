@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
 import StatPanel from './../statistics/StatPanel'
 import { Grid } from '@mui/material'
-import { useStoreActions } from 'easy-peasy'
+import { useStoreActions, useStoreState } from 'easy-peasy'
+import NoMeasurementsStats from '../measure/NoMeasurementsStats'
 
 const StatisticsPage = () => {
   const panelIds = [1]
+
+  const { measurements, loading } = useStoreState(state => state.measurements)
 
   const { clearMeasurementsByQuery } = useStoreActions(
     actions => actions.measurements
@@ -12,7 +15,9 @@ const StatisticsPage = () => {
 
   useEffect(() => {
     clearMeasurementsByQuery()
-  })
+  }, [])
+
+  if (measurements.length === 0 && !loading) return <NoMeasurementsStats />
 
   return (
     <Grid container spacing={2}>

@@ -100,7 +100,7 @@ const StatPanel = () => {
 
       <Stack spacing={2}>
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={2}>
+          <Grid item xs={12} sm={2} md={4}>
             <DatePicker
               sx={{ width: 1 }}
               label='From'
@@ -109,7 +109,7 @@ const StatPanel = () => {
               onChange={handleFromDateChange}
             />
           </Grid>
-          <Grid item xs={12} sm={2}>
+          <Grid item xs={12} sm={2} md={4}>
             <DatePicker
               sx={{ width: 1 }}
               minDate={fromDate}
@@ -120,7 +120,7 @@ const StatPanel = () => {
             />
           </Grid>
 
-          <Grid item xs={12} sm={2}>
+          <Grid item xs={12} sm={2} md={4}>
             <FormControl fullWidth>
               <InputLabel id='select-category-label'>Category</InputLabel>
               <Select

@@ -10,9 +10,9 @@ const Detail = ({ title, children }) => {
   const Icon = show ? CancelIcon : HelpIcon
 
   return (
-    <Box>
+    <>
       <Box display='flex' alignItems='center'>
-        <Typography variant='h6'>{title}</Typography>{' '}
+        <Typography variant='h6'>{title}</Typography>
         {children && (
           <IconButton onClick={() => setShow(!show)} size="large">
             <Icon sx={{ fontSize: 16 }} />
@@ -20,8 +20,8 @@ const Detail = ({ title, children }) => {
         )}
       </Box>
 
-      {show && <Typography variant='body'>{children}</Typography>}
-    </Box>
+      {show && <Typography variant='body2'>{children}</Typography>}
+    </>
   );
 }
 

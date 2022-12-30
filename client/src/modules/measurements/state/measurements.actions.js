@@ -1,4 +1,5 @@
 import { action } from 'easy-peasy'
+import measurementsInitialState from './measurements.initialState';
 
 const measurementsActions = {
   appendMeasurement: action((state, measurement) => {
@@ -32,6 +33,8 @@ const measurementsActions = {
   setLoading: action((state, loading) => {
     state.loading = loading
   }),
+
+  resetStore: action(state => measurementsInitialState)
 }
 
 export default measurementsActions

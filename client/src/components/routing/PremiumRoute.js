@@ -5,28 +5,20 @@ import useAuth from 'hooks/useAuth'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 import BackdropLoading from '../layout/BackdropLoading'
 import useConditionalRead from 'hooks/useConditionalRead'
+import PrivateRoute from './PrivateRoute'
 
 const PremiumRoute = ({ component: Component, ...rest }) => {
   const isAuth = useAuth()
   const { loading, user } = useStoreState(state => state.users)
   const { readUser } = useStoreActions(state => state.users)
 
-  useConditionalRead({ name: readUser, condition: !user })
+  useConditionalRead([{ name: readUser, condition: !user }])
 
   if (loading && !user) return <BackdropLoading open={loading} />
 
   const condition = isAuth && user.isPremium
 
-  return (
-    <Layout>
-      <Route
-        {...rest}
-        render={props =>
-          condition ? <Component {...props} /> : <Redirect to='/' />
-        }
-      />
-    </Layout>
-  )
+  return condition ? <PrivateRoute component={Component} /> : <Redirect to='/' />
 }
 
 export default PremiumRoute

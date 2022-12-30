@@ -1,4 +1,5 @@
 import { action } from 'easy-peasy'
+import foodsInitalState from './foods.initialState'
 
 const foodsActions = {
   appendFood: action((state, food) => {
@@ -26,6 +27,8 @@ const foodsActions = {
   setLoading: action((state, loading) => {
     state.loading = loading
   }),
+
+  resetStore: action(state => foodsInitalState),
 }
 
 export default foodsActions

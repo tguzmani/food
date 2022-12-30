@@ -33,7 +33,7 @@ const SearchReference = () => {
           }}
         />
       </Box>
-      <NewReferenceDialog referenceName={filterReferencesQuery} />
+      
     </>
   )
 }

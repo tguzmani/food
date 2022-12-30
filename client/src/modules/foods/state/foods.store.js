@@ -2,12 +2,10 @@ import foodsActions from './foods.actions'
 import foodsThunks from './foods.thunks'
 import foodsListeners from './foods.listeners'
 import foodsComputeds from './foods.computeds'
+import foodsInitialState from './foods.initialState'
 
 const foodsStore = {
-  foods: [],
-  loading: false,
-  error: undefined,
-
+  ...foodsInitialState,
   ...foodsActions,
   ...foodsThunks,
   ...foodsListeners,

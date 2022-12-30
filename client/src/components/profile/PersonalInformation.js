@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { TextField } from '@mui/material'
+import { InputAdornment, TextField } from '@mui/material'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 
 const PersonalInformation = () => {
@@ -9,7 +9,8 @@ const PersonalInformation = () => {
   )
 
   useEffect(() => {
-    if (user) setProfile({ age: user.age, height: user.height, sex: user.sex })
+    if (user)
+      setProfile({ age: user.age, height: user.height || '', sex: user.sex })
     // eslint-disable-next-line
   }, [])
 
@@ -24,7 +25,8 @@ const PersonalInformation = () => {
 
   return (
     <form>
-      <TextField
+      {/* <TextField
+      fullWidth
         variant='outlined'
         margin='normal'
         required
@@ -33,17 +35,23 @@ const PersonalInformation = () => {
         type='number'
         value={age}
         onChange={onChange}
-      />
+      /> */}
 
       <TextField
+      fullWidth
         variant='outlined'
         margin='normal'
         required
-        label='Height (cm)'
+        label='Height'
         name='height'
         onChange={onChange}
         value={height}
         type='number'
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position='end'>cm</InputAdornment>
+          ),
+        }}
       />
     </form>
   )

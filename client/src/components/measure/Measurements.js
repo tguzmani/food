@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import PropertyPlot from '../statistics/PropertyPlot'
 import StatisticsTable from '../statistics/StatisticsTable'
 import MeasureList from './MeasurementList'
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material'
 
 const Measurements = ({ measurements, current }) => {
   let thisMeasurements = []
@@ -50,7 +50,9 @@ const Measurements = ({ measurements, current }) => {
     )
   }
 
-  return (
+  return thisMeasurements.length === 0 ? (
+    <Typography variant='body1'>No measurements available</Typography>
+  ) : (
     <Stack spacing={2}>
       <PropertyPlot data={thisMeasurements} property='weight' />
       <StatisticsTable data={thisMeasurements} property='weight' />

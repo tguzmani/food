@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { Slider, TextField, Typography, Box } from '@mui/material'
+import {
+  Slider,
+  TextField,
+  Typography,
+  Box,
+  InputAdornment,
+  Collapse,
+} from '@mui/material'
 
 import { activityOptions, activityMarks } from './activity'
 
 import Detail from './Detail'
 import { useStoreActions, useStoreState } from 'easy-peasy'
+import OffsetMode from './OffsetMode'
 
 const MacroInformation = () => {
   const { profile, user } = useStoreState(state => state.users)
@@ -12,12 +20,14 @@ const MacroInformation = () => {
     actions => actions.users
   )
 
+  const [offsetMode, setOffsetMode] = useState(user.offsetMode || 'maintenance')
+
   useEffect(() => {
     if (user)
       setProfile({
-        baseWeight: user.baseWeight,
-        offset: user.offset,
-        proteinPref: user.proteinPref,
+        baseWeight: user.baseWeight || '',
+        offset: user.offset || 0,
+        proteinPref: user.proteinPref || 0.8,
       })
   }, [setProfile, user])
 
@@ -44,6 +54,13 @@ const MacroInformation = () => {
     setProfileFields({ name, value })
   }
 
+  const handleChangeOffsetMode = (_, mode) => {
+    if (mode !== null) {
+      setOffsetMode(mode)
+      setProfile({ offsetMode: mode })
+    }
+  }
+
   const { baseWeight, offset } = profile
 
   return (
@@ -56,6 +73,7 @@ const MacroInformation = () => {
         </Detail>
 
         <TextField
+          fullWidth
           variant='outlined'
           margin='normal'
           required
@@ -64,28 +82,52 @@ const MacroInformation = () => {
           type='number'
           value={baseWeight}
           onChange={onChange}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position='end'>{user?.units}</InputAdornment>
+            ),
+          }}
         />
       </Box>
 
       <Box mb={1}>
-        <Detail title='Offset'>
-          If you're aiming for weight loss, use values between -1000 to -300. If
-          you're aiming for muscle gains, use values between 300 to 500. This
-          are general guidelines. Everyone is different, therefore your values
-          could be different.
+        <Detail title='Offset Mode'>
+          Select deficit, maintenance or surplus mode. If you're aiming for
+          weight loss, select deficit. If you're aiming for muscle gains, select
+          surplus. If you're maintaining your weight, select maintenance.
         </Detail>
 
-        <TextField
-          variant='outlined'
-          margin='normal'
-          required
-          label='Offset'
-          name='offset'
-          onChange={onChange}
-          value={offset}
-          type='number'
+        <OffsetMode
+          offsetMode={offsetMode}
+          onChangeOffsetMode={handleChangeOffsetMode}
         />
       </Box>
+
+      <Collapse in={profile.offsetMode !== 'maintenance'}>
+        <Box mb={1}>
+          <Detail title='Offset'>
+            If you're aiming for weight loss, use values between -1000 to -300.
+            If you're aiming for muscle gains, use values between 300 to 500.
+            These are general guidelines. Everyone is different, therefore your
+            values could be different.
+          </Detail>
+
+          <TextField
+            fullWidth
+            variant='outlined'
+            margin='dense'
+            required
+            label='Offset'
+            name='offset'
+            type='number'
+            onChange={onChange}
+            value={offset}
+            InputProps={{
+              endAdornment: <InputAdornment position='end'>cal</InputAdornment>,
+            }}
+          />
+        </Box>
+      </Collapse>
 
       <Box mb={3}>
         <Detail title='Activity'>

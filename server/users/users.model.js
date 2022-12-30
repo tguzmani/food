@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const dayjs = require('dayjs')
 
 const userSchema = new mongoose.Schema(
   {
@@ -68,8 +69,8 @@ const userSchema = new mongoose.Schema(
       type: Number,
     },
 
-    age: {
-      type: Number,
+    birthdate: {
+      type: Date,
     },
 
     height: {
@@ -78,6 +79,11 @@ const userSchema = new mongoose.Schema(
 
     offset: {
       type: Number,
+      default: 0,
+    },
+
+    offsetMode: {
+      type: String,
     },
 
     gender: {
@@ -108,10 +114,14 @@ const userSchema = new mongoose.Schema(
 
     isPremiumUntil: {
       type: Date,
-    }
+    },
   },
   { timestamps: true }
 )
+
+userSchema.virtual('age').get(function () {
+  return dayjs().diff(dayjs(this.birthdate), 'year')
+})
 
 userSchema.virtual('baseWeightInKg').get(function () {
   return this.units === 'lb' ? this.baseWeight / 2.2 : this.baseWeight
@@ -141,7 +151,16 @@ userSchema.virtual('bmrActivity').get(function () {
 })
 
 userSchema.virtual('bmrGoal').get(function () {
-  return this.bmrActivity + this.offset
+  const offsetMultiplier =
+    this.offsetMode === 'deficit'
+      ? -1
+      : this.offsetMode === 'maintenance'
+      ? 0
+      : 1
+
+  const offset = this.offset * offsetMultiplier
+
+  return this.bmrActivity + offset
 })
 
 userSchema.virtual('macroGoals').get(function () {

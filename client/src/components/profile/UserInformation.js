@@ -9,8 +9,8 @@ import PersonalInformation from './PersonalInformation'
 import MacroInformation from './MacroInformation'
 import BMRs from './BMRs'
 import useUser from 'hooks/useUser'
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
-import PersonIcon from '@mui/icons-material/Person';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
+import PersonIcon from '@mui/icons-material/Person'
 
 const UserInformation = () => {
   const user = useUser()
@@ -28,10 +28,11 @@ const UserInformation = () => {
 
   return (
     <Grid container spacing={4}>
+      {/* User Details */}
       <Grid item xs={12} lg={3}>
         <Box mb={3}>
           <Typography variant='h4' gutterBottom>
-            {user.name}
+            {user.firstName} {user.lastName}
           </Typography>
           <Detail Icon={EmailIcon}>{user.email}</Detail>
           <Detail Icon={EventIcon}>
@@ -42,6 +43,8 @@ const UserInformation = () => {
           </Detail>
         </Box>
         <Divider />
+
+        {/* Personal Information */}
         <Box mt={3}>
           <Typography variant='h5' gutterBottom>
             Personal Information
@@ -50,11 +53,13 @@ const UserInformation = () => {
         </Box>
       </Grid>
 
+      {/* Macronutrient Information */}
       <Grid item xs={12} lg={6}>
         <Typography variant='h5'>Macronutrient Information</Typography>
         <MacroInformation />
       </Grid>
 
+      {/* Caloric Intake */}
       <Grid item xs={12} lg={3}>
         <Typography variant='h5' gutterBottom>
           Caloric Intake

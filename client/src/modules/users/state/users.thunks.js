@@ -15,8 +15,13 @@ const usersThunks = {
   }),
 
   updateUser: thunk(async (actions, user, { fail }) => {
+    const isSetupComplete = user.isSetupComplete || true
+
     try {
-      const updatedUser = await usersRepository.updateUser(user)
+      const updatedUser = await usersRepository.updateUser({
+        ...user,
+        isSetupComplete,
+      })
       actions.setUser(updatedUser)
     } catch (error) {
       fail(error)

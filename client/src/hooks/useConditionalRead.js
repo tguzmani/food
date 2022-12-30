@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const useConditionalRead = (...functions) => {
+const useConditionalRead = (functions) => {
   useEffect(() => {
     functions.forEach(fn => {
       if (fn.condition) fn.name()

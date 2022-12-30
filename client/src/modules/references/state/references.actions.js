@@ -1,4 +1,5 @@
 import { action } from 'easy-peasy'
+import referencesInitialState from './references.initialState'
 
 const referencesActions = {
   appendReference: action((state, reference) => {
@@ -28,6 +29,8 @@ const referencesActions = {
   setLoading: action((state, loading) => {
     state.loading = loading
   }),
+
+  resetStore: action(state => referencesInitialState)
 }
 
 export default referencesActions

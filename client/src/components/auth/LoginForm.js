@@ -25,7 +25,7 @@ const LoginForm = ({ history }) => {
   const theme = useTheme()
   const isAuth = useAuth()
 
-  const { signIn, readUser } = useStoreActions(actions => actions.users)
+  const { signIn, setLoading } = useStoreActions(actions => actions.users)
   const { error } = useStoreState(state => state.users)
   const { loading } = useStoreState(state => state.users)
 
@@ -34,7 +34,9 @@ const LoginForm = ({ history }) => {
     password: '',
   })
   
-  useRead(readUser)
+  useEffect(() => {
+    setLoading(false)
+  }, [isAuth, history])
 
   useEffect(() => {
     if (isAuth) history.push('/')

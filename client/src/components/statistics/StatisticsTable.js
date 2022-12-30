@@ -13,6 +13,8 @@ import { mean, stdev, sum } from '../../util/index'
 const StatisticsTable = ({ data, property }) => {
   const tableData = data.map(element => element[property])
 
+  const cellContent = value => (isNaN(value) || !isFinite(value) ? '--' : value)
+
   const row = {
     min: Math.min(...tableData).toFixed(2),
     max: Math.max(...tableData).toFixed(2),
@@ -36,10 +38,10 @@ const StatisticsTable = ({ data, property }) => {
 
         <TableBody>
           <TableRow>
-            <TableCell align='center'>{row.mean}</TableCell>
-            <TableCell align='center'>{row.stdev}</TableCell>
-            <TableCell align='center'>{row.min}</TableCell>
-            <TableCell align='center'>{row.max}</TableCell>
+            <TableCell align='center'>{cellContent(row.mean)}</TableCell>
+            <TableCell align='center'>{cellContent(row.stdev)}</TableCell>
+            <TableCell align='center'>{cellContent(row.min)}</TableCell>
+            <TableCell align='center'>{cellContent(row.max)}</TableCell>
           </TableRow>
         </TableBody>
       </Table>

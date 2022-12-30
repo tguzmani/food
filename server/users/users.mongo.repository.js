@@ -15,7 +15,6 @@ exports.createUser = async user => {
 
     name: `${user.firstName} ${user.lastName}`,
     sex: user.gender,
-    age: dayjs().diff(user.birthdate, 'year'),
   })
 }
 

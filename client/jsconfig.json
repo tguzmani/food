@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "paths": {
-      "@layout/*": ["./components/layout/*"]
-    }
   },
-  "include": ["src/**/*"]
+  "include": ["src"]
 }
