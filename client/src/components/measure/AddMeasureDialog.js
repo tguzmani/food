@@ -6,6 +6,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  InputAdornment,
   TextField,
 } from '@mui/material'
 
@@ -21,11 +22,13 @@ import useDialog from 'hooks/useDialog'
 import dayjs from 'dayjs'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import useConditionalRead from 'hooks/useConditionalRead';
+import useUser from 'hooks/useUser'
 
 var isToday = require('dayjs/plugin/isToday')
 dayjs.extend(isToday)
 
 const AddMeasureDialog = () => {
+  const user = useUser()
   const { foods } = useStoreState(state => state.foods)
   const { measurements } = useStoreState(state => state.measurements)
 
@@ -87,37 +90,48 @@ const AddMeasureDialog = () => {
       />
 
       <Dialog maxWidth='xs' open={open} onClose={handleClose}>
-        <DialogTitle>Add Measure</DialogTitle>
+        <DialogTitle>Add Measurement</DialogTitle>
 
         <DialogContent>
           <TextField
-            sx={{ marginBottom: '1rem' }}
+            margin='normal'
             fullWidth
             name='weight'
             value={weight}
             onChange={onChange}
             type='number'
             label='Weight'
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position='end'>{user?.units}</InputAdornment>
+              ),
+            }}
           ></TextField>
 
           <TextField
-            sx={{ marginBottom: '1rem' }}
+            margin='normal'
             fullWidth
             name='fat'
             value={fat}
             onChange={onChange}
             type='number'
             label='Fat %'
+            InputProps={{
+              endAdornment: <InputAdornment position='end'>%</InputAdornment>,
+            }}
           ></TextField>
 
           <TextField
-            sx={{ marginBottom: '1rem' }}
+            margin='normal'
             fullWidth
             name='sleep'
             value={sleep}
             onChange={onChange}
             type='number'
             label='Sleep'
+            InputProps={{
+              endAdornment: <InputAdornment position='end'>h</InputAdornment>,
+            }}
           ></TextField>
         </DialogContent>
 

@@ -52,7 +52,7 @@ const UpdateMeasureDialog = ({ initialMeasure, open, handleClose }) => {
   return (
     <>
       <Dialog maxWidth='xs' open={open} onClose={handleClose}>
-        <DialogTitle>Update Measure</DialogTitle>
+        <DialogTitle>Update Measurement</DialogTitle>
 
         <DialogContent>
           <TextField
