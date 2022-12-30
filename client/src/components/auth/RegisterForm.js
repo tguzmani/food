@@ -40,16 +40,16 @@ const RegisterForm = ({ history }) => {
   const { error } = useStoreState(state => state.users)
   const { loading } = useStoreState(state => state.users)
 
-  const [birthdate, setBirthdate] = React.useState(dayjs('1992-01-01'))
+  const [birthdate, setBirthdate] = React.useState(null)
   const [gender, setGender] = React.useState('m')
   const [units, setUnits] = React.useState('kg')
 
   const [credentials, bindCredentials, areCredentialsEmpty] = useForm({
-    firstName: 'john',
-    lastName: 'doe',
-    email: 'johndoe@gmail.com',
-    password: 'perros',
-    passwordConfirm: 'perros',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    passwordConfirm: '',
   })
 
   useEffect(() => {
@@ -170,12 +170,12 @@ const RegisterForm = ({ history }) => {
             <FormControl sx={{ mt: 1 }}>
               <FormLabel>Metric system</FormLabel>
               <RadioGroup value={units} onChange={handleChangeUnits} row>
-                <FormControlLabel
+                <FormControlLabel sx={{ label: {fontSize: '14px'}}}
                   value='kg'
                   control={<Radio />}
                   label='Metric (kg)'
                 />
-                <FormControlLabel
+                <FormControlLabel sx={{ label: {fontSize: '14px'}}}
                   value='lb'
                   control={<Radio />}
                   label='Imperial (lb)'
