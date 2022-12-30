@@ -7,7 +7,7 @@ exports.signUp = async userData => {
   if (user) throw new Error('User with this email already exists')
 
   if (userData.password !== userData.passwordConfirm)
-    throw new Error('Passwords do not match')
+    throw new Error("Passwords don't match")
 
   const hashedPassword = await encrypt.hash(userData.password)
 

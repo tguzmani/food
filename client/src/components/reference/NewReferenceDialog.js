@@ -20,7 +20,7 @@ import useUser from 'hooks/useUser'
 const NewReferenceDialog = () => {
   const [open, setOpen] = React.useState(false)
 
-  const user = useUser()
+  const { userIsPremium } = useStoreState(state => state.users)
   const { createReference } = useStoreActions(actions => actions.references)
   const { referenceCount } = useStoreState(state => state.references)
 
@@ -65,7 +65,7 @@ const NewReferenceDialog = () => {
     fat: fat / portion,
   }
 
-  const cantAddMoreReferences = referenceCount >= 20 && !user.isPremium
+  const cantAddMoreReferences = referenceCount >= 20 && !userIsPremium
 
   const referenceNameHasSpaces = name.match(/\s+/)
 
@@ -159,9 +159,11 @@ const NewReferenceDialog = () => {
             label='Alcohol'
           />
 
-          <Divider sx={{my: 2}} />
+          <Divider sx={{ my: 2 }} />
 
-          <Typography variant='body1' gutterBottom >Preview</Typography>
+          <Typography variant='body1' gutterBottom>
+            Preview
+          </Typography>
           <ReferenceItem reference={computedReference} preview />
         </DialogContent>
 

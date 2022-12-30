@@ -17,11 +17,12 @@ import TimelineIcon from '@mui/icons-material/Timeline'
 import PersonIcon from '@mui/icons-material/Person'
 import { Link, useLocation } from 'react-router-dom'
 import useUser from 'hooks/useUser'
+import { useStoreState } from 'easy-peasy'
 
 const Drawer = ({ onClose }) => {
   const location = useLocation().pathname
   const theme = useTheme()
-  const user = useUser()
+  const {userIsPremium} = useStoreState(state => state.users)
 
   const links = [
     { to: '/', text: 'Day', icon: <TodayIcon /> },
@@ -45,7 +46,7 @@ const Drawer = ({ onClose }) => {
       <List>
         {links.map(
           link =>
-            (!link.isPremium || user?.isPremium) && (
+            (!link.isPremium || userIsPremium) && (
               <NavItem
                 button
                 selected={location.match(/\/[a-z]*/)[0] === link.to}

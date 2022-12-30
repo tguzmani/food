@@ -16,6 +16,7 @@ import MeasuresPage from './components/pages/MeasuresPage'
 import ReferencesPage from './components/pages/ReferencesPage'
 import ProfilePage from './components/pages/ProfilePage'
 import StatisticsPage from './components/pages/StatisticsPage'
+import Register from './components/pages/Register'
 
 import { StoreProvider } from 'easy-peasy'
 import store from './config/easy-peasy.store'
@@ -35,8 +36,13 @@ const App = () => {
             <>
               <Switch>
                 <Route exact path='/login' component={Login} />
+                <Route exact path='/register' component={Register} />
                 <PrivateRoute exact path='/' component={Day} />
-                <PrivateRoute exact path='/measurements' component={MeasuresPage} />
+                <PrivateRoute
+                  exact
+                  path='/measurements'
+                  component={MeasuresPage}
+                />
                 <PrivateRoute
                   exact
                   path='/references'

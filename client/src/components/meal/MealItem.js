@@ -7,7 +7,7 @@ import {
   Avatar,
   IconButton,
   MenuItem,
-  useTheme
+  useTheme,
 } from '@mui/material'
 import React from 'react'
 import { getCleanliness, getTotalCalories } from '../../util/food'
@@ -16,15 +16,15 @@ import Total from '../food/Total'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import Menu from '../layout/Menu'
 import useMenu from 'hooks/useMenu'
-import { useStoreActions } from 'easy-peasy'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 import useUser from 'hooks/useUser'
 
 const MealItem = ({ foods, number }) => {
   const { deleteFood } = useStoreActions(actions => actions.foods)
   const theme = useTheme()
-  const user = useUser()
+  const { userIsPremium } = useStoreState(state => state.users)
   const thisMealFoods = foods.filter(food => food.meal === number)
-  
+
   const [anchorEl, handleOpenMenu, handleCloseMenu] = useMenu()
 
   const handleDeleteMeal = () => {
@@ -40,7 +40,11 @@ const MealItem = ({ foods, number }) => {
     <Box mt={3}>
       <Card>
         <CardHeader
-          avatar={<Avatar sx={{backgroundColor: theme.palette.primary.light}}>{number}</Avatar>}
+          avatar={
+            <Avatar sx={{ backgroundColor: theme.palette.primary.light }}>
+              {number}
+            </Avatar>
+          }
           action={
             <IconButton onClick={handleOpenMenu} size='large'>
               <MoreVertIcon />
@@ -54,7 +58,7 @@ const MealItem = ({ foods, number }) => {
           <Typography variant='body1' gutterBottom align='right'></Typography>
 
           <Foods foods={thisMealFoods} />
-          {user.isPremium && <Total foods={thisMealFoods} />}
+          {userIsPremium && <Total foods={thisMealFoods} />}
         </CardContent>
       </Card>
 

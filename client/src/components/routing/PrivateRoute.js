@@ -18,8 +18,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
   if (loading && !user) return <BackdropLoading open={loading} />
 
-  console.log('location', location)
-
   const showCompleteSetup =
     user && !user.isSetupComplete && location !== '/profile'
 

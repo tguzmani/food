@@ -9,14 +9,14 @@ import PrivateRoute from './PrivateRoute'
 
 const PremiumRoute = ({ component: Component, ...rest }) => {
   const isAuth = useAuth()
-  const { loading, user } = useStoreState(state => state.users)
+  const { loading, user, userIsPremium } = useStoreState(state => state.users)
   const { readUser } = useStoreActions(state => state.users)
 
   useConditionalRead([{ name: readUser, condition: !user }])
 
   if (loading && !user) return <BackdropLoading open={loading} />
 
-  const condition = isAuth && user.isPremium
+  const condition = isAuth && userIsPremium
 
   return condition ? <PrivateRoute component={Component} /> : <Redirect to='/' />
 }

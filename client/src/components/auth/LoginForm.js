@@ -12,7 +12,7 @@ import {
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { useStoreActions, useStoreState } from 'easy-peasy'
-import { withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { useTheme, Box } from '@mui/material'
 import useResponsive from 'hooks/useResponsive'
 import useForm from 'hooks/useForm'
@@ -49,7 +49,7 @@ const LoginForm = ({ history }) => {
 
   return (
     <Card sx={{ paddingTop: '4px', width: isMobile ? '100%' : '85%' }}>
-      <CardContent sx={{ height: isMobile ? '50vh' : '40vh' }}>
+      <CardContent sx={{ height: isMobile ? '50vh' : '45vh' }}>
         <Stack
           sx={{ height: '100%' }}
           direction='column'
@@ -61,7 +61,7 @@ const LoginForm = ({ history }) => {
               <Avatar sx={{ bgcolor: theme.palette.primary.main }}>
                 <LockOutlinedIcon />
               </Avatar>
-              <Typography variant='h5' sx={{ fontWeight: 'bold' }}>
+              <Typography variant='h6' sx={{ fontWeight: 'bold' }}>
                 Login
               </Typography>
             </Stack>
@@ -70,7 +70,7 @@ const LoginForm = ({ history }) => {
           <Stack>
             <TextField
               variant='outlined'
-              margin='normal'
+              margin='dense'
               required
               fullWidth
               label='Email Address'
@@ -81,7 +81,7 @@ const LoginForm = ({ history }) => {
             />
             <TextField
               variant='outlined'
-              margin='normal'
+              margin='dense'
               required
               fullWidth
               label='Password'
@@ -100,6 +100,10 @@ const LoginForm = ({ history }) => {
           >
             {loading ? 'Loading...' : 'Sign in'}
           </Button>
+
+          <Typography variant='caption' align='center'>
+            Don't have an account? <Link to='/register'>Register</Link>
+          </Typography>
         </Stack>
       </CardContent>
     </Card>

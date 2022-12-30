@@ -4,6 +4,7 @@ const profile = {
   sex: '',
   baseWeight: '',
   offset: 0,
+  offsetMode: 'maintenance',
 
   activity: 1.2,
   proteinPref: 0.8,

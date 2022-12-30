@@ -4,11 +4,11 @@ import { capitalize } from './../../util/index'
 import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
 import '@sandstreamdev/react-swipeable-list/dist/styles.css'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { useStoreActions } from 'easy-peasy'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 import useUser from 'hooks/useUser'
 
 const Value = ({ children, color }) => {
-  const user = useUser()
+  const {userIsPremium} = useStoreState(state => state.users)
 
   return (
     <Grid
@@ -17,7 +17,7 @@ const Value = ({ children, color }) => {
       sx={{
         textAlign: 'right',
         color,
-        visibility: user.isPremium ? 'visible' : 'hidden',
+        visibility: userIsPremium ? 'visible' : 'hidden',
       }}
     >
       {children && Math.round(children)}

@@ -11,8 +11,8 @@ import useUser from 'hooks/useUser'
 
 const Macros = () => {
   const isMobile = useResponsive('sm')
-  const user = useUser()
   const { foods } = useStoreActions(state => state.foods)
+  const { userIsPremium } = useStoreActions(state => state.users)
 
   const spacing = isMobile ? 0 : 10
   const justify = isMobile ? 'space-around' : 'center'
@@ -32,7 +32,7 @@ const Macros = () => {
           </Grid>
 
           <Grid item>
-            {user.isPremium && (
+            {userIsPremium && (
               <Stack direction='row' alignItems='center' spacing={4}>
                 <Cleanliness />
 
@@ -43,7 +43,7 @@ const Macros = () => {
         </Grid>
       </Box>
 
-      {user.isPremium && (
+      {userIsPremium && (
         <Stack
           direction='row'
           alignItems='center'

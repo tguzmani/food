@@ -2,6 +2,8 @@ import dayjs from 'dayjs'
 import { computed } from 'easy-peasy'
 
 const usersComputeds = {
+  userIsPremium: computed(state => dayjs().isBefore(state.user?.isPremiumUntil)),
+
   userAge: computed(state =>
     dayjs().diff(state.user?.birthdate, 'year')
   ),

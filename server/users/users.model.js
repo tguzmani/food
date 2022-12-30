@@ -59,6 +59,7 @@ const userSchema = new mongoose.Schema(
       fat: {
         type: Number,
       },
+      
     },
 
     baseWeight: {

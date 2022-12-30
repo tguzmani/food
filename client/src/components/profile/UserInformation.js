@@ -11,9 +11,10 @@ import BMRs from './BMRs'
 import useUser from 'hooks/useUser'
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
 import PersonIcon from '@mui/icons-material/Person'
+import { useStoreState } from 'easy-peasy'
 
 const UserInformation = () => {
-  const user = useUser()
+  const { userIsPremium, user } = useStoreState(state => state.users)
 
   if (!user) return <div>Loading...</div>
 
@@ -24,7 +25,7 @@ const UserInformation = () => {
     </Box>
   )
 
-  const MembershipIcon = user.isPremium ? WorkspacePremiumIcon : PersonIcon
+  const MembershipIcon = userIsPremium ? WorkspacePremiumIcon : PersonIcon
 
   return (
     <Grid container spacing={4}>
@@ -39,7 +40,7 @@ const UserInformation = () => {
             Since {dayjs(user.createdAt).format('MMMM DD, YYYY')}
           </Detail>
           <Detail Icon={MembershipIcon}>
-            {user.isPremium ? 'Premium' : 'Free'} Membership
+            {userIsPremium ? 'Premium' : 'Free'} Membership
           </Detail>
         </Box>
         <Divider />

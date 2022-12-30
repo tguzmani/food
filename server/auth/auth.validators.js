@@ -6,8 +6,6 @@ exports.signUpValidator = [
 
   check('lastName', 'Please insert a last name').notEmpty(),
 
-  check('name', 'Please insert a name').notEmpty(),
-
   check('email', 'Please insert a valid email').isEmail(),
 
   check(
