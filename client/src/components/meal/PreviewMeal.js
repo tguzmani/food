@@ -18,9 +18,11 @@ import Total from '../food/Total'
 import WhatDidYouEat from './WhatDidYouEat'
 import useMealNumbers from '../../hooks/useMealNumbers'
 import { useStoreState, useStoreActions } from 'easy-peasy'
+import useUser from 'hooks/useUser';
 
 const PreviewMeal = ({ foods }) => {
   const mealNumbers = useMealNumbers()
+  const user = useUser()
 
   const { previewMealFoods } = useStoreState(state => state.foods)
   const { deleteFood, updateFood } = useStoreActions(actions => actions.foods)
@@ -73,7 +75,7 @@ const PreviewMeal = ({ foods }) => {
                 {Math.round(getTotalCalories(previewMealFoods))} cal
               </Typography>
               <Foods foods={previewMealFoods} />
-              <Total foods={previewMealFoods} />
+              {user.isPremium && <Total foods={previewMealFoods} />}
             </CardContent>
 
             {previewMealFoods.length > 0 && (

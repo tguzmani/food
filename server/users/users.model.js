@@ -114,6 +114,7 @@ const userSchema = new mongoose.Schema(
 
     isPremiumUntil: {
       type: Date,
+      default: new Date()
     },
   },
   { timestamps: true }

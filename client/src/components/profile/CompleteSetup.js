@@ -13,7 +13,7 @@ const CompleteSetup = () => {
         Let's setup your profile first
       </Typography>
       <Typography variant='body1' align='center'>
-        <Link to='profile'>Press here</Link> to setup your profile in order to
+        Go to <Link to='/profile'>profile</Link> and setup your profile in order to
         use the app
       </Typography>
     </Stack>
