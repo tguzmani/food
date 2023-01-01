@@ -1,13 +1,16 @@
+import { useStoreState } from 'easy-peasy'
 import React from 'react'
 import useFoods from '../../hooks/useFoods'
-import { getAlcoholUnits } from './../../util/food'
 
 const Cleanliness = () => {
-  const foods = useFoods('meals')
+  const { alcoholUnits } = useStoreState(state => state.foods)
 
   return (
     <div>
-      <span role='img' aria-label='drinks'>🥃</span> {getAlcoholUnits(foods).toFixed(0)}
+      <span role='img' aria-label='drinks'>
+        🥃
+      </span>{' '}
+      {alcoholUnits.toFixed(2)}
     </div>
   )
 }

@@ -4,15 +4,14 @@ import Calories from './Calories'
 import Cleanliness from './Cleanliness'
 import Drinks from './Drinks'
 import Macro from './Macro'
-import { getAlcoholUnits } from './../../util/food'
 import useResponsive from './../../hooks/useResponsive'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import useUser from 'hooks/useUser'
 
 const Macros = () => {
   const isMobile = useResponsive('sm')
-  const { foods } = useStoreActions(state => state.foods)
   const { userIsPremium } = useStoreState(state => state.users)
+  const { alcoholUnits } = useStoreState(state => state.foods)
 
   const spacing = isMobile ? 0 : 10
   const justify = isMobile ? 'space-around' : 'center'
@@ -36,7 +35,7 @@ const Macros = () => {
               <Stack direction='row' alignItems='center' spacing={4}>
                 <Cleanliness />
 
-                {getAlcoholUnits(foods) > 0 && <Drinks />}
+                {alcoholUnits > 0 && <Drinks />}
               </Stack>
             )}
           </Grid>

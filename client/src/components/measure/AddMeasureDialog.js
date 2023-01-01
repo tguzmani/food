@@ -10,18 +10,14 @@ import {
   TextField,
 } from '@mui/material'
 
-import {
-  getAlcoholUnits,
-  getTotalCalories,
-  getCleanliness,
-} from 'util/food'
+import { getTotalCalories, getCleanliness } from 'util/food'
 
 import AddIcon from '@mui/icons-material/Add'
 import useDialog from 'hooks/useDialog'
 
 import dayjs from 'dayjs'
 import { useStoreActions, useStoreState } from 'easy-peasy'
-import useConditionalRead from 'hooks/useConditionalRead';
+import useConditionalRead from 'hooks/useConditionalRead'
 import useUser from 'hooks/useUser'
 
 var isToday = require('dayjs/plugin/isToday')
@@ -29,15 +25,17 @@ dayjs.extend(isToday)
 
 const AddMeasureDialog = () => {
   const user = useUser()
-  const { foods } = useStoreState(state => state.foods)
+  const { foods, alcoholUnits } = useStoreState(state => state.foods)
   const { measurements } = useStoreState(state => state.measurements)
 
-  const { readFoods, deleteAllFoodsFromDay } = useStoreActions(state => state.foods)
+  const { readFoods, deleteAllFoodsFromDay } = useStoreActions(
+    state => state.foods
+  )
   const { updateMeasurement, createMeasurement } = useStoreActions(
     actions => actions.measurements
   )
 
-  useConditionalRead([{name: readFoods, value: foods.length === 0}])
+  useConditionalRead([{ name: readFoods, value: foods.length === 0 }])
 
   const [open, handleOpen, handleClose] = useDialog()
 
@@ -62,7 +60,7 @@ const AddMeasureDialog = () => {
         _id: lastMeasure._id,
         calories: getTotalCalories(foods),
         cleanliness: getCleanliness(foods),
-        alcohol: getAlcoholUnits(foods),
+        alcohol: alcoholUnits,
       }
 
       updateMeasurement(measure)
