@@ -6,13 +6,13 @@ import Drinks from './Drinks'
 import Macro from './Macro'
 import { getAlcoholUnits } from './../../util/food'
 import useResponsive from './../../hooks/useResponsive'
-import { useStoreActions } from 'easy-peasy'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 import useUser from 'hooks/useUser'
 
 const Macros = () => {
   const isMobile = useResponsive('sm')
   const { foods } = useStoreActions(state => state.foods)
-  const { userIsPremium } = useStoreActions(state => state.users)
+  const { userIsPremium } = useStoreState(state => state.users)
 
   const spacing = isMobile ? 0 : 10
   const justify = isMobile ? 'space-around' : 'center'
