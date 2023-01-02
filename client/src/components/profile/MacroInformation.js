@@ -28,6 +28,7 @@ const MacroInformation = () => {
         baseWeight: user.baseWeight || '',
         offset: user.offset || 0,
         proteinPref: user.proteinPref || 0.8,
+        offsetMode: user.offsetMode || 'maintenance',
       })
   }, [setProfile, user])
 

@@ -3,15 +3,20 @@ import StatPanel from './../statistics/StatPanel'
 import { Grid } from '@mui/material'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import NoMeasurementsStats from '../measure/NoMeasurementsStats'
+import useConditionalRead from 'hooks/useConditionalRead'
 
 const StatisticsPage = () => {
   const panelIds = [1]
 
   const { measurements, loading } = useStoreState(state => state.measurements)
 
-  const { clearMeasurementsByQuery } = useStoreActions(
+  const { readMeasurements, clearMeasurementsByQuery } = useStoreActions(
     actions => actions.measurements
   )
+
+  useConditionalRead([
+    { name: readMeasurements, condition: measurements.length === 0 },
+  ])
 
   useEffect(() => {
     clearMeasurementsByQuery()

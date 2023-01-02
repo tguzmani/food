@@ -1,6 +1,6 @@
 import { computed } from 'easy-peasy'
 
-const ALCOHOL_UNIT = 16
+const ALCOHOL_UNIT = 14
 
 const foodsComputeds = {
   alcoholUnits: computed(
