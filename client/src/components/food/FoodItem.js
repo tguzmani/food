@@ -48,7 +48,7 @@ const FoodItem = ({ food }) => {
   } = useStoreActions(actions => actions.foods)
 
   const [quantity, setQuantity] = React.useState(food.quantity)
-  const { protein, carbs, fat } = food.reference ? food.reference : food.ref
+  const { protein, carbs, fat } = food.reference
 
   const onChangeQuantity = e => {
     setQuantity(parseFloat(e.target.value))
