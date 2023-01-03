@@ -37,29 +37,32 @@ const MealItem = ({ foods, number }) => {
   const totalCalories = Math.round(getTotalCalories(thisMealFoods))
   const cleanliness = Math.round(getCleanliness(thisMealFoods))
 
-  const handleDropUpdateFood = (food) => {
-    if (food.meal !== number) updateFood({...food, meal: number})
+  const handleDropUpdateFood = food => {
+    if (food.meal !== number) updateFood({ ...food, meal: number })
   }
 
   const [{ isOver }, drop] = useDrop(
     () => ({
       accept: 'food',
       drop: handleDropUpdateFood,
-      collect: (monitor) => ({
-        isOver: !!monitor.isOver()
-      })
+      collect: monitor => ({
+        isOver: !!monitor.isOver(),
+      }),
     }),
     []
   )
 
   return (
     <Box mt={3}>
-      <Card ref={drop}>
+      <Card
+        ref={drop}
+        sx={{
+          backgroundColor: isOver ? 'primary.lighter' : 'inherit',
+        }}
+      >
         <CardHeader
           avatar={
-            <Avatar sx={{ backgroundColor: 'primary.light' }}>
-              {number}
-            </Avatar>
+            <Avatar sx={{ backgroundColor: 'primary.light' }}>{number}</Avatar>
           }
           action={
             <IconButton onClick={handleOpenMenu} size='large'>

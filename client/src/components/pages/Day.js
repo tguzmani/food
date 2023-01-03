@@ -57,7 +57,7 @@ const Day = () => {
   const Backend = isMobile ? TouchBackend : HTML5Backend
 
   const dndOptions = {
-    delayTouchStart: 100,
+    delayTouchStart: 50,
   }
 
   return (

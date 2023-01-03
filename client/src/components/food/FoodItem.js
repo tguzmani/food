@@ -103,7 +103,10 @@ const FoodItem = ({ food }) => {
       <ListItem
         divider
         ref={drag}
-        sx={{ backgroundColor: isDragging && isMobile ? 'primary.lighter' : 'inherit' }}
+        sx={{
+          backgroundColor:
+            isDragging && isMobile ? 'primary.lighter' : 'inherit',
+        }}
       >
         <Grid container spacing={2} alignItems='center'>
           <Grid item xs={5}>
