@@ -15,27 +15,31 @@ import AssessmentIcon from '@mui/icons-material/Assessment'
 import InfoIcon from '@mui/icons-material/Info'
 import TimelineIcon from '@mui/icons-material/Timeline'
 import PersonIcon from '@mui/icons-material/Person'
-import { Link, useLocation } from 'react-router-dom'
+import PeopleIcon from '@mui/icons-material/People'
 import useUser from 'hooks/useUser'
 import { useStoreState } from 'easy-peasy'
 
 const Drawer = ({ onClose }) => {
-  const location = useLocation().pathname
   const theme = useTheme()
-  const {userIsPremium} = useStoreState(state => state.users)
+  const { userIsPremium, userIsAdmin } = useStoreState(state => state.users)
 
-  const links = [
+  let links = [
     { to: '/', text: 'Day', icon: <TodayIcon /> },
     { to: '/measurements', text: 'Measurements', icon: <AssessmentIcon /> },
     { to: '/references', text: 'References', icon: <InfoIcon /> },
+    { to: '/profile', text: 'Profile', icon: <PersonIcon /> },
     {
       to: '/statistics',
       text: 'Statistics',
       icon: <TimelineIcon />,
       isPremium: true,
     },
-    { to: '/profile', text: 'Profile', icon: <PersonIcon /> },
+    { to: '/users', text: 'Users', icon: <PeopleIcon />, isAdmin: true },
   ]
+
+  if (!userIsPremium) links = links.filter(link => !link.isPremium)
+
+  if (!userIsAdmin) links = links.filter(link => !link.isAdmin)
 
   return (
     <>
@@ -44,24 +48,9 @@ const Drawer = ({ onClose }) => {
       </Box>
 
       <List>
-        {links.map(
-          link =>
-            (!link.isPremium || userIsPremium) && (
-              <NavItem
-                button
-                selected={location.match(/\/[a-z]*/)[0] === link.to}
-                key={link.text}
-                component={Link}
-                to={link.to}
-                onClick={onClose}
-              >
-                <ListItemIcon sx={{ color: theme.palette.grey[100] }}>
-                  {link.icon}
-                </ListItemIcon>
-                <ListItemText primary={link.text} />
-              </NavItem>
-            )
-        )}
+        {links.map(link => (
+          <NavItem link={link} onClose={onClose} key={link.to} />
+        ))}
       </List>
     </>
   )

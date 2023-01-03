@@ -4,6 +4,8 @@ import { computed } from 'easy-peasy'
 const usersComputeds = {
   userIsPremium: computed(state => dayjs().isBefore(state.user?.isPremiumUntil)),
 
+  userIsAdmin: computed(state => state.user?.role === 'admin'),
+
   userAge: computed(state =>
     dayjs().diff(state.user?.birthdate, 'year')
   ),

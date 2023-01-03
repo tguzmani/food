@@ -1,19 +1,19 @@
 const express = require('express')
 const router = express.Router()
-const { auth } = require('../middleware/auth')
+const isAuth = require('../middleware/isAuth')
 
 const measurementsController = require('../measurements/measurements.controller')
 
 const {createMeasurementValidator, readMeasurementsByDateValidator} = require('../measurements/measurements.validators')
 
-router.post('/', [auth, ...createMeasurementValidator], measurementsController.createMeasurement)
+router.post('/', [isAuth, ...createMeasurementValidator], measurementsController.createMeasurement)
 
-router.get('/', auth, measurementsController.readMeasurementsByUserId)
+router.get('/', isAuth, measurementsController.readMeasurementsByUserId)
 
-router.get('/by-date', [auth, ...readMeasurementsByDateValidator], measurementsController.readMeasurementsByDate)
+router.get('/by-date', [isAuth, ...readMeasurementsByDateValidator], measurementsController.readMeasurementsByDate)
 
-router.put('/:measurementId', auth, measurementsController.updateMeasurement)
+router.put('/:measurementId', isAuth, measurementsController.updateMeasurement)
 
-router.delete('/:measurementId', auth, measurementsController.deleteMeasurement)
+router.delete('/:measurementId', isAuth, measurementsController.deleteMeasurement)
 
 module.exports = router

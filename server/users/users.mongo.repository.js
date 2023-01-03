@@ -5,6 +5,10 @@ exports.readUserById = async userId => {
   return await User.findById(userId).select('-password')
 }
 
+exports.readUsers = async () => {
+  return await User.find()
+}
+
 exports.readUserByEmail = async email => {
   return await User.findOne({ email })
 }

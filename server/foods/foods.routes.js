@@ -1,17 +1,17 @@
 const express = require('express')
 const router = express.Router()
-const { auth } = require('../middleware/auth')
+const isAuth = require('../middleware/isAuth')
 
 const foodsController = require('../foods/foods.controller')
 
-router.post('/', auth, foodsController.createFood)
+router.post('/', isAuth, foodsController.createFood)
 
-router.get('/', auth, foodsController.readFoodsByUserId)
+router.get('/', isAuth, foodsController.readFoodsByUserId)
 
-router.put('/:foodId', auth, foodsController.updateFood)
+router.put('/:foodId', isAuth, foodsController.updateFood)
 
-router.delete('/all', auth, foodsController.deleteAllFoodsFromDay)
+router.delete('/all', isAuth, foodsController.deleteAllFoodsFromDay)
 
-router.delete('/:foodId', auth, foodsController.deleteFood)
+router.delete('/:foodId', isAuth, foodsController.deleteFood)
 
 module.exports = router

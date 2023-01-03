@@ -11,6 +11,7 @@ const useTitle = () => {
     '/references': 'References',
     '/profile': 'Profile',
     '/statistics': 'Statistics',
+    '/users': 'Users',
   }
 
   useEffect(() => {

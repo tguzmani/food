@@ -13,6 +13,7 @@ const profile = {
 
 const usersInitialState = {
   user: undefined,
+  users: [], 
   isAuthenticated: false,
   loading: true,
   error: undefined,

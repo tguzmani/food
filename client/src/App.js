@@ -16,6 +16,7 @@ import MeasuresPage from './components/pages/MeasuresPage'
 import ReferencesPage from './components/pages/ReferencesPage'
 import ProfilePage from './components/pages/ProfilePage'
 import StatisticsPage from './components/pages/StatisticsPage'
+import UsersPage from './components/pages/UsersPage'
 import Register from './components/pages/Register'
 
 import { StoreProvider } from 'easy-peasy'
@@ -25,6 +26,7 @@ import { CssBaseline } from '@mui/material'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import PremiumRoute from 'components/routing/PremiumRoute'
+import AdminRoute from 'components/routing/AdminRoute'
 
 const App = () => {
   return (
@@ -54,6 +56,7 @@ const App = () => {
                   component={StatisticsPage}
                 />
                 <PrivateRoute exact path='/profile' component={ProfilePage} />
+                <AdminRoute exact path='/users' component={UsersPage} />
                 <Route path='*' component={NotFound} />
               </Switch>
             </>

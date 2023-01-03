@@ -14,6 +14,15 @@ const usersThunks = {
     }
   }),
 
+  readUsers: thunk(async (actions, _, { fail }) => {
+    try {
+      const users = await usersRepository.readUsers()
+      actions.setUsers(users)
+    } catch (error) {
+      fail(error)
+    }
+  }),
+
   updateUser: thunk(async (actions, user, { fail }) => {
     const isSetupComplete = user.isSetupComplete || true
 
@@ -23,6 +32,15 @@ const usersThunks = {
         isSetupComplete,
       })
       actions.setUser(updatedUser)
+    } catch (error) {
+      fail(error)
+    }
+  }),
+
+  updateUserByAdmin: thunk(async (actions, user, { fail }) => {
+    try {
+      const updatedUser = await usersRepository.updateUserByAdmin(user)
+      actions.replaceUser(updatedUser)
     } catch (error) {
       fail(error)
     }

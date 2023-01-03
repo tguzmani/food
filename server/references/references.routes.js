@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { auth } = require('../middleware/auth')
+const isAuth = require('../middleware/isAuth')
 
 const {
   createReferenceValidator,
@@ -11,20 +11,20 @@ const referencesController = require('../references/references.controller')
 
 router.post(
   '/',
-  [auth, ...createReferenceValidator],
+  [isAuth, ...createReferenceValidator],
   referencesController.createReference
 )
 
-router.post('/copy-to-user', auth, referencesController.copyReferencesToUser)
+router.post('/copy-to-user', isAuth, referencesController.copyReferencesToUser)
 
-router.get('/', auth, referencesController.readReferencesByUserId)
+router.get('/', isAuth, referencesController.readReferencesByUserId)
 
 router.put(
   '/:referenceId',
-  [auth, ...updateReferenceValidator],
+  [isAuth, ...updateReferenceValidator],
   referencesController.updateReference
 )
 
-router.delete('/:referenceId', auth, referencesController.deleteReference)
+router.delete('/:referenceId', isAuth, referencesController.deleteReference)
 
 module.exports = router

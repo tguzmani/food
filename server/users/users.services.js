@@ -11,6 +11,11 @@ exports.readUserById = async userId => {
   return user
 }
 
+
+exports.readUsers = async () => {
+  return await usersRepository.readUsers()
+}
+
 exports.updateUser = async (userId, user) => {
   return await usersRepository.updateUser(userId, user)
 }

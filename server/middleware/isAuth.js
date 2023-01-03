@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken')
 
-exports.auth = (req, res, next) => {
+const isAuth = (req, res, next) => {
   let token = req.cookies.t
 
   if (!token) {
     return res.status(401).json({
-      message: 'No token, authorization denied',
+      message: 'No token, isAuthorization denied',
     })
   }
 
@@ -19,3 +19,5 @@ exports.auth = (req, res, next) => {
 
   next()
 }
+
+module.exports = isAuth
