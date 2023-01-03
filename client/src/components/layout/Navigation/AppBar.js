@@ -14,7 +14,7 @@ import {
   Chip,
 } from '@mui/material'
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import MenuIcon from '@mui/icons-material/Menu'
 import AccountCircle from '@mui/icons-material/AccountCircle'
@@ -28,6 +28,7 @@ import Fade from '@mui/material/Fade'
 
 const AppBar = ({ title, openDrawer }) => {
   const user = useUser()
+  const {pathname} = useLocation()
 
   const isMobile = useResponsive('sm')
   const { signOut } = useStoreActions(actions => actions.users)
@@ -78,16 +79,20 @@ const AppBar = ({ title, openDrawer }) => {
           justifyContent='center'
           alignItems='center'
         >
-          <IconButton
-            id='dnd-toggle-button'
-            edge='end'
-            sx={{ color: canDragFoods ? 'primary.main' : 'inherit' }}
-            onClick={handleToggleDrag}
-          >
-            <OpenWithIcon />
-          </IconButton>
+          {pathname === '/' && (
+            <>
+              <IconButton
+                id='dnd-toggle-button'
+                edge='end'
+                sx={{ color: canDragFoods ? 'primary.main' : 'inherit' }}
+                onClick={handleToggleDrag}
+              >
+                <OpenWithIcon />
+              </IconButton>
 
-          <Divider orientation='vertical' flexItem />
+              <Divider orientation='vertical' flexItem />
+            </>
+          )}
 
           <Stack
             direction='row'
