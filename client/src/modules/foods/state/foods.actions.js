@@ -28,6 +28,10 @@ const foodsActions = {
     state.loading = loading
   }),
 
+  toggleCanDragFoods: action((state, value) => {
+    state.canDragFoods = !state.canDragFoods
+  }),
+
   resetStore: action(state => foodsInitalState),
 }
 

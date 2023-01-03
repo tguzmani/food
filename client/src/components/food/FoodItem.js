@@ -6,9 +6,10 @@ import '@sandstreamdev/react-swipeable-list/dist/styles.css'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import useUser from 'hooks/useUser'
+import { useDrag } from 'react-dnd'
 
 const Value = ({ children, color }) => {
-  const {userIsPremium} = useStoreState(state => state.users)
+  const { userIsPremium } = useStoreState(state => state.users)
 
   return (
     <Grid
@@ -47,8 +48,19 @@ const FoodItem = ({ food }) => {
     deleteFood,
   } = useStoreActions(actions => actions.foods)
 
+  const { canDragFoods } = useStoreState(state => state.foods)
+
   const [quantity, setQuantity] = React.useState(food.quantity)
   const { protein, carbs, fat } = food.reference
+
+  const [{ isDragging }, drag, preview] = useDrag(() => ({
+    type: 'food',
+    item: food,
+    canDrag: (monitor) => canDragFoods,
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging()
+    })
+  }), [canDragFoods])
 
   const onChangeQuantity = e => {
     setQuantity(parseFloat(e.target.value))
@@ -75,13 +87,15 @@ const FoodItem = ({ food }) => {
 
   return (
     <SwipeableListItem
+      blockSwipe={canDragFoods}
       swipeLeft={{
         content: <Delete />,
         action: () => deleteFood(food),
       }}
       threshold={0.9}
     >
-      <ListItem divider>
+      <ListItem divider ref={drag}>
+
         <Grid container spacing={2} alignItems='center'>
           <Grid item xs={5}>
             {capitalize(food.name)} {food.isDirty && '*'}
