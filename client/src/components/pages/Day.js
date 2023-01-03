@@ -12,8 +12,15 @@ import Loading from 'components/layout/Loading'
 import NoMeasurementsFoods from '../measure/NoMeasurementsFoods'
 import NoReferencesFoods from 'components/reference/NoReferencesFoods'
 
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { TouchBackend } from 'react-dnd-touch-backend'
+import useResponsive from 'hooks/useResponsive'
+
 const Day = () => {
   const user = useUser()
+  const isMobile = useResponsive('sm')
+
   const { foods, mealsFoods, loading } = useStoreState(state => state.foods)
   const { measurements, loading: loadingMeasurements } = useStoreState(
     state => state.measurements
@@ -47,11 +54,15 @@ const Day = () => {
   if (references.length === 0 && !loadingReferences)
     return <NoReferencesFoods />
 
+  const Backend = isMobile ? TouchBackend : HTML5Backend
+
   return (
     <Container disableGutters maxWidth='md'>
       <Macros />
-      <PreviewMeal />
-      <Meals foods={mealsFoods} mealNumbers={mealNumbers} />
+      <DndProvider backend={Backend}>
+        <PreviewMeal />
+        <Meals foods={mealsFoods} mealNumbers={mealNumbers} />
+      </DndProvider>
     </Container>
   )
 }

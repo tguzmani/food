@@ -18,9 +18,10 @@ import Menu from '../layout/Menu'
 import useMenu from 'hooks/useMenu'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import useUser from 'hooks/useUser'
+import { useDrop } from 'react-dnd'
 
 const MealItem = ({ foods, number }) => {
-  const { deleteFood } = useStoreActions(actions => actions.foods)
+  const { deleteFood, updateFood } = useStoreActions(actions => actions.foods)
   const theme = useTheme()
   const { userIsPremium } = useStoreState(state => state.users)
   const thisMealFoods = foods.filter(food => food.meal === number)
@@ -36,12 +37,27 @@ const MealItem = ({ foods, number }) => {
   const totalCalories = Math.round(getTotalCalories(thisMealFoods))
   const cleanliness = Math.round(getCleanliness(thisMealFoods))
 
+  const handleDropUpdateFood = (food) => {
+    if (food.meal !== number) updateFood({...food, meal: number})
+  }
+
+  const [{ isOver }, drop] = useDrop(
+    () => ({
+      accept: 'food',
+      drop: handleDropUpdateFood,
+      collect: (monitor) => ({
+        isOver: !!monitor.isOver()
+      })
+    }),
+    []
+  )
+
   return (
     <Box mt={3}>
-      <Card>
+      <Card ref={drop}>
         <CardHeader
           avatar={
-            <Avatar sx={{ backgroundColor: theme.palette.primary.light }}>
+            <Avatar sx={{ backgroundColor: 'primary.light' }}>
               {number}
             </Avatar>
           }

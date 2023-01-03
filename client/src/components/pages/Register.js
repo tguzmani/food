@@ -1,10 +1,10 @@
 import React from 'react'
 import { Box, Container, Grid, Typography } from '@mui/material'
 
-import bg1 from '../../img/bg-0.jpg'
-import bg2 from '../../img/bg-1.jpg'
-import bg3 from '../../img/bg-2.jpg'
-import bg4 from '../../img/bg-3.jpg'
+import bg1 from 'img/bg-0.jpg'
+import bg2 from 'img/bg-1.jpg'
+import bg3 from 'img/bg-2.jpg'
+import bg4 from 'img/bg-3.jpg'
 
 import RegisterForm from '../auth/RegisterForm'
 import useResponsive from 'hooks/useResponsive'

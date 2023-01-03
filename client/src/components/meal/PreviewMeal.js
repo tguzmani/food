@@ -19,6 +19,7 @@ import WhatDidYouEat from './WhatDidYouEat'
 import useMealNumbers from '../../hooks/useMealNumbers'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 import useUser from 'hooks/useUser'
+import { useDrop, useDrag } from 'react-dnd'
 
 const PreviewMeal = ({ foods }) => {
   const mealNumbers = useMealNumbers()
@@ -61,9 +62,42 @@ const PreviewMeal = ({ foods }) => {
     handleClose()
   }
 
+  const handleDropUpdateFood = food => {
+    if (food.meal !== 0) updateFood({ ...food, meal: 0 })
+  }
+
+  const [{ isOver }, drop] = useDrop(
+    () => ({
+      accept: 'food',
+      drop: handleDropUpdateFood,
+      collect: monitor => ({
+        isOver: !!monitor.isOver(),
+      }),
+    }),
+    []
+  )
+
   return (
-    <Box mt={4}>
+    <Box mt={4} ref={drop}>
       <WhatDidYouEat />
+
+      {isOver && previewMealFoods.length === 0 && (
+        <Box
+          sx={{
+            width: 1,
+            backgroundColor: 'primary.lighter',
+            border: '3px dashed',
+            borderColor: 'primary.main',
+            borderRadius: 2,
+            padding: 4,
+            marginTop: 2
+          }}
+        >
+          <Typography variant='h6' align='center' color='primary.main'>
+            Drop here to create preview meal
+          </Typography>
+        </Box>
+      )}
 
       {previewMealFoods.length > 0 && (
         <Box mt={2}>

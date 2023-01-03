@@ -10,12 +10,15 @@ import {
   Divider,
   AppBar as MuiAppBar,
   LinearProgress,
+  Stack,
+  Chip,
 } from '@mui/material'
 
 import { Link } from 'react-router-dom'
 
 import MenuIcon from '@mui/icons-material/Menu'
 import AccountCircle from '@mui/icons-material/AccountCircle'
+import OpenWithIcon from '@mui/icons-material/OpenWith'
 
 import useMenu from 'hooks/useMenu'
 import useUser from 'hooks/useUser'
@@ -28,6 +31,9 @@ const AppBar = ({ title, openDrawer }) => {
 
   const isMobile = useResponsive('sm')
   const { signOut } = useStoreActions(actions => actions.users)
+  const { toggleCanDragFoods } = useStoreActions(actions => actions.foods)
+
+  const { canDragFoods } = useStoreState(state => state.foods)
 
   const state = useStoreState(state => state)
 
@@ -38,12 +44,16 @@ const AppBar = ({ title, openDrawer }) => {
     signOut()
   }
 
+  const handleToggleDrag = () => {
+    toggleCanDragFoods()
+  }
+
   const [anchorEl, handleOpenMenu, handleCloseMenu] = useMenu()
 
   return (
     <MuiAppBar position='fixed'>
       <Fade in={loadings}>
-        <LinearProgress  />
+        <LinearProgress />
       </Fade>
       <Toolbar>
         {isMobile && (
@@ -62,10 +72,36 @@ const AppBar = ({ title, openDrawer }) => {
           {title}
         </Typography>
 
-        <Typography>{user && user.name.split(' ')[0]}</Typography>
-        <IconButton edge='end' color='inherit' onClick={handleOpenMenu}>
-          <AccountCircle />
-        </IconButton>
+        <Stack
+          direction='row'
+          spacing={3}
+          justifyContent='center'
+          alignItems='center'
+        >
+          <IconButton
+            id='dnd-toggle-button'
+            edge='end'
+            sx={{ color: canDragFoods ? 'primary.main' : 'inherit' }}
+            onClick={handleToggleDrag}
+          >
+            <OpenWithIcon />
+          </IconButton>
+
+          <Divider orientation='vertical' flexItem />
+
+          <Stack
+            direction='row'
+            spacing={0}
+            justifyContent='center'
+            alignItems='center'
+          >
+            <Typography>{user && user.name.split(' ')[0]}</Typography>
+            <IconButton edge='end' color='inherit' onClick={handleOpenMenu}>
+              <AccountCircle />
+            </IconButton>
+          </Stack>
+        </Stack>
+
         <Menu
           open={Boolean(anchorEl)}
           onClose={handleCloseMenu}

@@ -11,7 +11,8 @@ const typography = {
 
 const palette = {
   primary: {
-    light: blue[400],
+    lighter: blue[100],
+    light: blue[300],
     main: blue[500],
     dark: '#002884',
     contrastText: '#fff',
