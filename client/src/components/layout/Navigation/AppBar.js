@@ -27,7 +27,7 @@ import useResponsive from 'hooks/useResponsive'
 import Fade from '@mui/material/Fade'
 
 const AppBar = ({ title, openDrawer }) => {
-  const user = useUser()
+  const { user, userIsPremium } = useStoreState(state => state.users)
   const { pathname } = useLocation()
 
   const isMobile = useResponsive('sm')
@@ -79,7 +79,7 @@ const AppBar = ({ title, openDrawer }) => {
           justifyContent='center'
           alignItems='center'
         >
-          {pathname === '/' && (
+          {pathname === '/' && userIsPremium && (
             <>
               <IconButton
                 id='dnd-toggle-button'
