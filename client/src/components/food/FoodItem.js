@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import useUser from 'hooks/useUser'
 import { useDrag } from 'react-dnd'
+import useResponsive from 'hooks/useResponsive'
 
 const Value = ({ children, color }) => {
   const { userIsPremium } = useStoreState(state => state.users)
@@ -48,19 +49,24 @@ const FoodItem = ({ food }) => {
     deleteFood,
   } = useStoreActions(actions => actions.foods)
 
+  const isMobile = useResponsive('sm')
+
   const { canDragFoods } = useStoreState(state => state.foods)
 
   const [quantity, setQuantity] = React.useState(food.quantity)
   const { protein, carbs, fat } = food.reference
 
-  const [{ isDragging }, drag, preview] = useDrag(() => ({
-    type: 'food',
-    item: food,
-    canDrag: (monitor) => canDragFoods,
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging()
-    })
-  }), [canDragFoods])
+  const [{ isDragging }, drag, preview] = useDrag(
+    () => ({
+      type: 'food',
+      item: food,
+      canDrag: monitor => canDragFoods,
+      collect: monitor => ({
+        isDragging: !!monitor.isDragging(),
+      }),
+    }),
+    [canDragFoods]
+  )
 
   const onChangeQuantity = e => {
     setQuantity(parseFloat(e.target.value))
@@ -94,8 +100,11 @@ const FoodItem = ({ food }) => {
       }}
       threshold={0.9}
     >
-      <ListItem divider ref={drag}>
-
+      <ListItem
+        divider
+        ref={drag}
+        sx={{ backgroundColor: isDragging && isMobile ? 'primary.lighter' : 'inherit' }}
+      >
         <Grid container spacing={2} alignItems='center'>
           <Grid item xs={5}>
             {capitalize(food.name)} {food.isDirty && '*'}

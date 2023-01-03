@@ -28,7 +28,7 @@ import Fade from '@mui/material/Fade'
 
 const AppBar = ({ title, openDrawer }) => {
   const user = useUser()
-  const {pathname} = useLocation()
+  const { pathname } = useLocation()
 
   const isMobile = useResponsive('sm')
   const { signOut } = useStoreActions(actions => actions.users)
@@ -75,7 +75,7 @@ const AppBar = ({ title, openDrawer }) => {
 
         <Stack
           direction='row'
-          spacing={3}
+          spacing={2}
           justifyContent='center'
           alignItems='center'
         >

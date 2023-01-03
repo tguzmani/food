@@ -56,12 +56,16 @@ const Day = () => {
 
   const Backend = isMobile ? TouchBackend : HTML5Backend
 
+  const dndOptions = {
+    delayTouchStart: 100,
+  }
+
   return (
     <Container disableGutters maxWidth='md'>
       <Macros />
-      <DndProvider backend={Backend}>
-        <PreviewMeal />
-        <Meals foods={mealsFoods} mealNumbers={mealNumbers} />
+      <DndProvider backend={Backend} options={dndOptions}>
+          <PreviewMeal />
+          <Meals foods={mealsFoods} mealNumbers={mealNumbers} />
       </DndProvider>
     </Container>
   )
