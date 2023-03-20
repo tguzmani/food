@@ -85,7 +85,7 @@ const MealItem = ({ foods, number }) => {
 
           {userIsPremium && thisMealFoods.length > 0 && (
             <>
-              <Divider />
+              <Divider sx={{mb: 1}} />
               <Total foods={thisMealFoods} />
             </>
           )}

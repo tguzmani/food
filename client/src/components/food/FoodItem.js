@@ -21,6 +21,7 @@ const Value = ({ children, color }) => {
         textAlign: 'right',
         color,
         visibility: userIsPremium ? 'visible' : 'hidden',
+        opacity: Math.round(children) === 0 ? 0.3 : 1,
       }}
     >
       {children && Math.round(children)}
