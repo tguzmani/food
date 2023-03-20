@@ -25,6 +25,8 @@ const Day = () => {
   const isMobile = useResponsive('sm')
 
   const [value, setValue] = useState(0)
+  const [viewMode, setViewMode] = useState('numeric')
+
   const { foods, mealsFoods, loading } = useStoreState(state => state.foods)
   const { measurements, loading: loadingMeasurements } = useStoreState(
     state => state.measurements
@@ -68,15 +70,21 @@ const Day = () => {
     setValue(newValue)
   }
 
+  const handleChangeViewMode = (_, mode) => {
+    if (mode !== null) {
+      setViewMode(mode)
+    }
+  }
+
   return (
     <Container disableGutters maxWidth='md'>
       <Macros />
       <DndProvider backend={Backend} options={dndOptions}>
         <Tabs
-          sx={{mt: 2, mb: 3}}
+          sx={{ mt: 2, mb: 3 }}
           value={value}
           onChange={handleChange}
-          variant="fullWidth"
+          variant='fullWidth'
         >
           <Tab label='Foods' />
           <Tab label='Meals' />
@@ -89,7 +97,10 @@ const Day = () => {
         </TabPanel>
 
         <TabPanel value={value} index={1}>
-          <MealsResume/>
+          <MealsResume
+            viewMode={viewMode}
+            handleChangeViewMode={handleChangeViewMode}
+          />
         </TabPanel>
       </DndProvider>
     </Container>

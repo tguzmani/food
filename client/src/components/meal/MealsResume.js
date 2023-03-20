@@ -6,17 +6,10 @@ import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
 import { Typography } from '@mui/material'
 import MealViewType from './MealViewType'
 
-const MealsResume = () => {
+const MealsResume = ({ viewMode, handleChangeViewMode}) => {
   const userIsPremium = useStoreState(state => state.users.userIsPremium)
   const { foods } = useStoreState(state => state.foods)
 
-  const [viewMode, setViewMode] = useState('numeric')
-
-  const handleChangeViewMode = (_, mode) => {
-    if (mode !== null) {
-      setViewMode(mode)
-    }
-  }
 
   return (
     <>
