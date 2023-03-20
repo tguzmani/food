@@ -102,7 +102,11 @@ const PreviewMeal = ({ foods }) => {
 
       {previewMealFoods.length > 0 && (
         <Box mt={2}>
-          <Card>
+          <Card
+            sx={{
+              backgroundColor: isOver ? 'primary.lighter' : 'inherit',
+            }}
+          >
             <CardHeader avatar={<Avatar>P</Avatar>} title='Preview' />
 
             <CardContent>
