@@ -94,8 +94,6 @@ const FoodItem = ({ food }) => {
     // eslint-disable-next-line
   }, [quantity])
 
-
-
   return (
     <SwipeableListItem
       blockSwipe={canDragFoods}
@@ -109,10 +107,9 @@ const FoodItem = ({ food }) => {
         divider
         ref={drag}
         sx={{
-          backgroundColor:
-          isDarkMode ? 'grey.950' : 'inherit',
+          backgroundColor: isDarkMode ? 'grey.950' : 'inherit',
           borderBottomColor: isDarkMode ? 'grey.800' : 'grey.300',
-          fontSize: '14px'
+          fontSize: '14px',
         }}
       >
         <Grid container spacing={2} alignItems='center'>
@@ -141,8 +138,8 @@ const FoodItem = ({ food }) => {
                   onBlur={onBlurUpdate}
                   inputProps={{
                     style: {
-                      fontSize: '14px'
-                    }
+                      fontSize: '14px',
+                    },
                   }}
                 ></Input>
               </Grid>

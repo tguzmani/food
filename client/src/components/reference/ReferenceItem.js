@@ -70,7 +70,7 @@ const ReferenceItem = ({ reference, preview, divider }) => {
               borderColor: 'grey.300',
               borderRadius: 1,
             }),
-            backgroundColor: 'grey.950',
+            backgroundColor: isDarkMode ? 'grey.950' : 'inherit',
             borderBottomColor: isDarkMode ? 'grey.800' : 'grey.300',
             '&:hover': {
               backgroundColor: isDarkMode ? 'grey.700' : 'grey.300',

@@ -59,8 +59,9 @@ const AppBar = ({ title, openDrawer }) => {
     <MuiAppBar
       position='fixed'
       sx={{
-        boxShadow: 2,
-        backgroundColor: isDarkMode ? 'grey.950' : 'white',
+
+        backgroundColor: 'transparent',
+        backdropFilter: 'blur(8px)',
         color: isDarkMode ? 'white' : 'inherit',
       }}
     >

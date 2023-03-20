@@ -65,7 +65,6 @@ const AppBarActions = ({ handleOpenMenu, handleToggleDrag }) => {
             <OpenWithIcon />
           </IconButton>
 
-          <Divider orientation='vertical' flexItem />
         </>
       )}
     </>
