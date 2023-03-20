@@ -4,7 +4,7 @@ import { getTotalMacro } from 'util/food'
 
 const Value = ({ children, color }) => (
   <Grid item xs={3} sx={{ textAlign: 'right', color, fontWeight: 'bold' }}>
-    {children && Math.round(children)}
+    <Typography variant='body2' className='text-bold'>{children && Math.round(children)}</Typography>
   </Grid>
 )
 
@@ -14,10 +14,10 @@ const Total = ({ foods }) => {
   const totalFat = getTotalMacro(foods, 'fat')
 
   return (
-    <ListItem>
+    <ListItem >
       <Grid container spacing={2} alignItems='center'>
         <Grid item xs={5}>
-          <Typography variant='body1' sx={{ fontWeight: 'bold' }}>
+          <Typography variant='body2' className='text-bold'>
             Total
           </Typography>
         </Grid>

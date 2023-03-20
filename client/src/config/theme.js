@@ -7,6 +7,10 @@ const drawerWidth = 260
 
 const typography = {
   fontFamily: 'Poppins, sans-serif',
+
+  body2: {
+    fontSize: '14px',
+  }
 }
 
 export const palette = mode => ({
@@ -99,6 +103,16 @@ const theme = createTheme({
         },
       },
     },
+
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          '&.text-bold': {
+            fontWeight: 'bold',
+          }
+        }
+      }
+    }
   },
 })
 

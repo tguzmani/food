@@ -60,7 +60,7 @@ const AppBar = ({ title, openDrawer }) => {
       position='fixed'
       sx={{
         boxShadow: 2,
-        backgroundColor: isDarkMode ? 'background.default' : 'white',
+        backgroundColor: isDarkMode ? 'grey.950' : 'white',
         color: isDarkMode ? 'white' : 'inherit',
       }}
     >
