@@ -109,6 +109,9 @@ const theme = createTheme({
         root: {
           '&.text-bold': {
             fontWeight: 'bold',
+          },
+          '&.text-muted': {
+            color: baseTheme.palette.grey['400']
           }
         }
       }

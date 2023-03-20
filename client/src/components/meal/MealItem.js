@@ -66,20 +66,24 @@ const MealItem = ({ foods, number }) => {
             <Avatar sx={{ backgroundColor: 'primary.light' }}>{number}</Avatar>
           }
           action={
-            <IconButton onClick={handleOpenMenu} size='large'>
+            thisMealFoods.length > 0 && <IconButton onClick={handleOpenMenu} size='large'>
               <MoreVertIcon />
             </IconButton>
           }
           title={`${totalCalories} cal`}
-          subheader={`${cleanliness}% clean`}
+          subheader={thisMealFoods.length > 0 && `${cleanliness}% clean`}
         />
 
         <CardContent>
-          <Typography variant='body1' gutterBottom align='right'></Typography>
+          {thisMealFoods.length === 0 ? (
+            <Typography variant='body2' align='center' className='text-muted'>
+              No foods in this meal
+            </Typography>
+          ) : (
+            <Foods foods={thisMealFoods} />
+          )}
 
-          <Foods foods={thisMealFoods} />
-
-          {userIsPremium && (
+          {userIsPremium && thisMealFoods.length > 0 && (
             <>
               <Divider />
               <Total foods={thisMealFoods} />

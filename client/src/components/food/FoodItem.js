@@ -116,7 +116,7 @@ const FoodItem = ({ food }) => {
           <Grid item xs={5}>
             {capitalize(food.name)}{' '}
             {food.isDirty && (
-              <Typography variant='caption' color='error'>
+              <Typography variant='caption' color='error' sx={{fontSize: '14px'}}>
                 •
               </Typography>
             )}
