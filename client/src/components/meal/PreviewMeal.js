@@ -10,6 +10,7 @@ import {
   CardHeader,
   Avatar,
   Stack,
+  Divider,
 } from '@mui/material'
 import React from 'react'
 import { getTotalCalories } from '../../util/food'
@@ -90,7 +91,7 @@ const PreviewMeal = ({ foods }) => {
             borderColor: 'primary.main',
             borderRadius: 2,
             padding: 4,
-            marginTop: 2
+            marginTop: 2,
           }}
         >
           <Typography variant='h6' align='center' color='primary.main'>
@@ -109,7 +110,12 @@ const PreviewMeal = ({ foods }) => {
                 {Math.round(getTotalCalories(previewMealFoods))} cal
               </Typography>
               <Foods foods={previewMealFoods} />
-              {userIsPremium && <Total foods={previewMealFoods} />}
+              {userIsPremium && (
+                <>
+                  <Divider />
+                  <Total foods={previewMealFoods} />
+                </>
+              )}
             </CardContent>
 
             {previewMealFoods.length > 0 && (

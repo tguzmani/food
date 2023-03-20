@@ -4,11 +4,12 @@ import { Box, CircularProgress, Typography } from '@mui/material'
 
 import { red, green, blue, amber } from '@mui/material/colors'
 import useResponsive from './../../hooks/useResponsive'
+import useIsDarkMode from 'hooks/useIsDarkMode'
 
 const Progress = ({ progress, macro }) => {
   const SIZE = useResponsive('md') ? 55 : 70
   const THICKNESS = useResponsive('md') ? 5 : 4
-
+const isDarkMode = useIsDarkMode()
   const colors = {
     protein: red[700],
     carbs: blue[700],
@@ -21,6 +22,7 @@ const Progress = ({ progress, macro }) => {
   return (
     <Box position='relative' display='inline-flex' my={1}>
       <CircularProgress
+        sx={{ color: isDarkMode ? 'grey.800' : 'grey.300' }}
         className='macronutrient-circle-bottom'
         variant='determinate'
         value={100}

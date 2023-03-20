@@ -6,10 +6,11 @@ const baseTheme = createTheme({})
 const drawerWidth = 260
 
 const typography = {
-  fontFamily: 'Lato, sans-serif',
+  fontFamily: 'Poppins, sans-serif',
 }
 
-const palette = {
+export const palette = mode => ({
+  mode,
   primary: {
     lighter: blue[100],
     light: blue[300],
@@ -31,20 +32,19 @@ const palette = {
     contrastText: '#fff',
   },
 
-  // light: {
-  //   main: '#F5F7FA',
-  // },
-}
+  grey: {
+    950: '#1e1e1e',
+  }
+})
 
 const theme = createTheme({
   typography,
-  palette,
   shape: { borderRadius: 8 },
 
   mixins: {
     drawer: {
       width: drawerWidth,
-    }
+    },
   },
 
   components: {
@@ -52,9 +52,9 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '&.macronutrient-circle': {
-            '&-bottom': {
-              color: baseTheme.palette.grey[300],
-            },
+            // '&-bottom': {
+            //   color: baseTheme.palette.grey[300],
+            // },
             '&-top': {
               position: 'absolute',
               left: 0,
@@ -64,13 +64,24 @@ const theme = createTheme({
       },
     },
 
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          '&:last-child': {
+            borderBottom: 'none'
+          }
+        },
+      },
+    },
+
     MuiAppBar: {
       styleOverrides: {
         root: {
           width: `calc(100% - ${drawerWidth}px)`,
+          paddingBottom: '6px',
           boxShadow: 'none',
-          backgroundColor: baseTheme.palette.background.default,
-          color: baseTheme.palette.text.primary,
+          // backgroundColor: baseTheme.palette.background.default,
+          // color: baseTheme.palette.text.primary,
           [baseTheme.breakpoints.down('sm')]: {
             width: '100%',
           },

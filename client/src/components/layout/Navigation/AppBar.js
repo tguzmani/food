@@ -12,6 +12,7 @@ import {
   LinearProgress,
   Stack,
   Chip,
+  useTheme,
 } from '@mui/material'
 
 import { Link, useLocation } from 'react-router-dom'
@@ -25,10 +26,13 @@ import useUser from 'hooks/useUser'
 import useResponsive from 'hooks/useResponsive'
 
 import Fade from '@mui/material/Fade'
+import useIsDarkMode from 'hooks/useIsDarkMode'
+import AppBarActions from './AppBarActions'
 
 const AppBar = ({ title, openDrawer }) => {
   const { user, userIsPremium } = useStoreState(state => state.users)
   const { pathname } = useLocation()
+  const isDarkMode = useIsDarkMode()
 
   const isMobile = useResponsive('sm')
   const { signOut } = useStoreActions(actions => actions.users)
@@ -52,11 +56,18 @@ const AppBar = ({ title, openDrawer }) => {
   const [anchorEl, handleOpenMenu, handleCloseMenu] = useMenu()
 
   return (
-    <MuiAppBar position='fixed'>
+    <MuiAppBar
+      position='fixed'
+      sx={{
+        boxShadow: 2,
+        backgroundColor: isDarkMode ? 'background.default' : 'white',
+        color: isDarkMode ? 'white' : 'inherit',
+      }}
+    >
       <Fade in={loadings}>
         <LinearProgress />
       </Fade>
-      <Toolbar>
+      <Toolbar sx={{ minHeight: '48px !important' }}>
         {isMobile && (
           <IconButton
             sx={{ position: 'relative', top: '1px', paddingLeft: 0 }}
@@ -79,20 +90,10 @@ const AppBar = ({ title, openDrawer }) => {
           justifyContent='center'
           alignItems='center'
         >
-          {pathname === '/' && userIsPremium && (
-            <>
-              <IconButton
-                id='dnd-toggle-button'
-                edge='end'
-                sx={{ color: canDragFoods ? 'primary.main' : 'inherit' }}
-                onClick={handleToggleDrag}
-              >
-                <OpenWithIcon />
-              </IconButton>
-
-              <Divider orientation='vertical' flexItem />
-            </>
-          )}
+          <AppBarActions
+            handleOpenMenu={handleOpenMenu}
+            handleToggleDrag={handleToggleDrag}
+          />
 
           <Stack
             direction='row'

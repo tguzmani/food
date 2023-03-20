@@ -1,9 +1,7 @@
 import { Box, Paper, useTheme } from '@mui/material'
-import React from 'react'
 import CanvasJSReact from '../../lib/canvasjs.react'
-import { capitalize } from '../../util/index'
-
-import { red, green, blue } from '@mui/material/colors'
+import React from 'react'
+import useIsDarkMode from 'hooks/useIsDarkMode'
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart
 
@@ -15,6 +13,8 @@ const Plot = ({ data, title }) => {
     y: element.value,
   }))
 
+  const isDarkMode = useIsDarkMode()
+  
   let chartData = [
     {
       color: theme.palette.primary.main,
@@ -28,10 +28,10 @@ const Plot = ({ data, title }) => {
 
   const options = {
     animationEnabled: true,
-    theme: 'light2',
+    theme: isDarkMode ? 'dark2' : 'light2',
     title: {
       text: title,
-      fontFamily: 'Lato',
+      fontFamily: 'Poppins',
       fontSize: 16,
     },
 

@@ -37,7 +37,7 @@ const StatisticsTable = ({ data, property }) => {
         </TableHead>
 
         <TableBody>
-          <TableRow>
+          <TableRow sx={{ '.MuiTableCell-root': { borderBottom: 'none' } }}>
             <TableCell align='center'>{cellContent(row.mean)}</TableCell>
             <TableCell align='center'>{cellContent(row.stdev)}</TableCell>
             <TableCell align='center'>{cellContent(row.min)}</TableCell>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListItem, Grid, Typography } from '@mui/material'
+import { ListItem, Grid, Typography, Divider } from '@mui/material'
 import { getTotalMacro } from 'util/food'
 
 const Value = ({ children, color }) => (
@@ -29,9 +29,9 @@ const Total = ({ foods }) => {
             alignItems='center'
           >
             <Value />
-            <Value color='red'>{totalProtein}</Value>
-            <Value color='blue'>{totalCarbs}</Value>
-            <Value color='green'>{totalFat}</Value>
+            <Value color='error.main'>{totalProtein}</Value>
+            <Value color='primary.main'>{totalCarbs}</Value>
+            <Value color='success.main'>{totalFat}</Value>
           </Grid>
         </Grid>
       </Grid>

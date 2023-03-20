@@ -8,6 +8,7 @@ import {
   IconButton,
   MenuItem,
   useTheme,
+  Divider,
 } from '@mui/material'
 import React from 'react'
 import { getCleanliness, getTotalCalories } from '../../util/food'
@@ -77,7 +78,13 @@ const MealItem = ({ foods, number }) => {
           <Typography variant='body1' gutterBottom align='right'></Typography>
 
           <Foods foods={thisMealFoods} />
-          {userIsPremium && <Total foods={thisMealFoods} />}
+
+          {userIsPremium && (
+            <>
+              <Divider />
+              <Total foods={thisMealFoods} />
+            </>
+          )}
         </CardContent>
       </Card>
 

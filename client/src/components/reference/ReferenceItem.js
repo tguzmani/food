@@ -6,6 +6,7 @@ import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
 import DeleteIcon from '@mui/icons-material/Delete'
 import UpdateReferenceDialog from './UpdateReferenceDialog'
 import { useStoreActions } from 'easy-peasy'
+import useIsDarkMode from 'hooks/useIsDarkMode'
 
 const Value = ({ children, color }) => (
   <Grid item xs={3} sx={{ textAlign: 'right', color }}>
@@ -16,9 +17,9 @@ const Value = ({ children, color }) => (
 const Delete = () => (
   <Box
     width={1}
+    p={2}
     color='secondary.contrastText'
     bgcolor='secondary.main'
-    p={2}
     display='flex'
     alignItems='center'
     flexDirection='row-reverse'
@@ -30,6 +31,7 @@ const Delete = () => (
 
 const ReferenceItem = ({ reference, preview, divider }) => {
   const { deleteReference } = useStoreActions(actions => actions.references)
+  const isDarkMode = useIsDarkMode()
 
   const [open, setOpen] = React.useState(false)
 
@@ -62,9 +64,18 @@ const ReferenceItem = ({ reference, preview, divider }) => {
           divider={divider}
           onClick={handleOpen}
           button={!preview}
-          sx={
-            preview && { border: 1, borderColor: 'grey.300', borderRadius: 1 }
-          }
+          sx={{
+            ...(preview && {
+              border: 1,
+              borderColor: 'grey.300',
+              borderRadius: 1,
+            }),
+            backgroundColor: 'grey.950',
+            borderBottomColor: isDarkMode ? 'grey.800' : 'grey.300',
+            '&:hover': {
+              backgroundColor: isDarkMode ? 'grey.700' : 'grey.300',
+            },
+          }}
         >
           <Grid container spacing={2} alignItems='center'>
             <Grid item xs={5}>
@@ -80,9 +91,9 @@ const ReferenceItem = ({ reference, preview, divider }) => {
                 spacing={2}
                 alignItems='center'
               >
-                <Value color='red'>{displayMacro(reference.protein)}</Value>
-                <Value color='blue'>{displayMacro(reference.carbs)}</Value>
-                <Value color='green'>{displayMacro(reference.fat)}</Value>
+                <Value color='error.main'>{displayMacro(reference.protein)}</Value>
+                <Value color='primary.main'>{displayMacro(reference.carbs)}</Value>
+                <Value color='success.main'>{displayMacro(reference.fat)}</Value>
                 <Grid item xs={3} sx={{ textAlign: 'right' }}>
                   <Typography variant='body2'>
                     {reference.isDirty && reference.isAlcohol

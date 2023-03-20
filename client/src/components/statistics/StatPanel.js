@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import { Box, Button, MenuItem, Grid, FormControl, Stack } from '@mui/material'
 import { capitalize, mean } from '../../util'
 

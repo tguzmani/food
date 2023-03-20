@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListItem, Grid, Input, Box } from '@mui/material'
+import { ListItem, Grid, Input, Box, Typography } from '@mui/material'
 import { capitalize } from './../../util/index'
 import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
 import '@sandstreamdev/react-swipeable-list/dist/styles.css'
@@ -8,6 +8,7 @@ import { useStoreActions, useStoreState } from 'easy-peasy'
 import useUser from 'hooks/useUser'
 import { useDrag } from 'react-dnd'
 import useResponsive from 'hooks/useResponsive'
+import useIsDarkMode from 'hooks/useIsDarkMode'
 
 const Value = ({ children, color }) => {
   const { userIsPremium } = useStoreState(state => state.users)
@@ -43,6 +44,8 @@ const Delete = () => (
 )
 
 const FoodItem = ({ food }) => {
+  const isDarkMode = useIsDarkMode()
+
   const {
     replaceFood: softUpdateFood,
     updateFood,
@@ -91,6 +94,8 @@ const FoodItem = ({ food }) => {
     // eslint-disable-next-line
   }, [quantity])
 
+
+
   return (
     <SwipeableListItem
       blockSwipe={canDragFoods}
@@ -105,12 +110,19 @@ const FoodItem = ({ food }) => {
         ref={drag}
         sx={{
           backgroundColor:
-            isDragging && isMobile ? 'primary.lighter' : 'inherit',
+          isDarkMode ? 'grey.950' : 'inherit',
+          borderBottomColor: isDarkMode ? 'grey.800' : 'grey.300',
+          fontSize: '14px'
         }}
       >
         <Grid container spacing={2} alignItems='center'>
           <Grid item xs={5}>
-            {capitalize(food.name)} {food.isDirty && '*'}
+            {capitalize(food.name)}{' '}
+            {food.isDirty && (
+              <Typography variant='caption' color='error'>
+                •
+              </Typography>
+            )}
           </Grid>
 
           <Grid item xs={7}>
@@ -127,12 +139,17 @@ const FoodItem = ({ food }) => {
                   disableUnderline
                   type='number'
                   onBlur={onBlurUpdate}
+                  inputProps={{
+                    style: {
+                      fontSize: '14px'
+                    }
+                  }}
                 ></Input>
               </Grid>
 
-              <Value color='red'>{food.protein}</Value>
-              <Value color='blue'>{food.carbs}</Value>
-              <Value color='green'>{food.fat}</Value>
+              <Value color='error.main'>{food.protein}</Value>
+              <Value color='primary.main'>{food.carbs}</Value>
+              <Value color='success.main'>{food.fat}</Value>
             </Grid>
           </Grid>
         </Grid>

@@ -3,13 +3,14 @@ import React from 'react'
 import CanvasJSReact from '../../lib/canvasjs.react'
 import { capitalize } from '../../util/index'
 
-import { red, green, blue } from '@mui/material/colors'
+import useIsDarkMode from 'hooks/useIsDarkMode'
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart
 
 const PropertyPlot = ({ data, property }) => {
   // console.log({ data, property })
   const theme = useTheme()
+  const isDarkMode = useIsDarkMode()
 
   let dataPoints = data.map(element => ({
     x: new Date(element.createdAt),
@@ -29,10 +30,10 @@ const PropertyPlot = ({ data, property }) => {
 
   const options = {
     animationEnabled: true,
-    theme: 'light2',
+    theme: isDarkMode ? 'dark2' : 'light2',
     title: {
       text: capitalize(property),
-      fontFamily: 'Lato',
+      fontFamily: 'Poppins',
       fontSize: 16,
     },
 
@@ -52,11 +53,11 @@ const PropertyPlot = ({ data, property }) => {
   }
 
   return (
-      <Paper>
-        <Box p={4}>
-          <CanvasJSChart options={options} />
-        </Box>
-      </Paper>
+    <Paper>
+      <Box p={4}>
+        <CanvasJSChart options={options} />
+      </Box>
+    </Paper>
   )
 }
 
