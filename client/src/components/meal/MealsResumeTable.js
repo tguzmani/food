@@ -12,7 +12,7 @@ import useMealNumbers from 'hooks/useMealNumbers'
 import React from 'react'
 import MealsResumeTableRow from './MealsResumeTableRow'
 
-const MealsResumeTable = () => {
+const MealsResumeTable = ({ viewMode }) => {
   const mealNumbers = useMealNumbers()
 
   return (
@@ -29,7 +29,7 @@ const MealsResumeTable = () => {
         </TableHead>
         <TableBody>
           {mealNumbers.map(mealNumber => (
-            <MealsResumeTableRow mealNumber={mealNumber} />
+            <MealsResumeTableRow mealNumber={mealNumber} viewMode={viewMode} />
           ))}
         </TableBody>
       </Table>
