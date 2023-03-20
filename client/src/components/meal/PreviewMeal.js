@@ -79,7 +79,7 @@ const PreviewMeal = ({ foods }) => {
   )
 
   return (
-    <Box mt={4} ref={drop}>
+    <Box ref={drop}>
       <WhatDidYouEat />
 
       {isOver && previewMealFoods.length === 0 && (
