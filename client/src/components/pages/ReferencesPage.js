@@ -7,35 +7,40 @@ import useConditionalRead from 'hooks/useConditionalRead'
 import Loading from 'components/layout/Loading'
 import NewReferenceDialog from 'components/reference/NewReferenceDialog'
 import NoReferences from 'components/reference/NoReferences'
+import Page from 'components/layout/Page'
 
 const ReferencesPage = () => {
   const { readReferences } = useStoreActions(actions => actions.references)
   const { references, isFiltering, filteredReferences, loading } =
     useStoreState(state => state.references)
 
-  useConditionalRead([{
-    name: readReferences,
-    condition: references.length === 0,
-  }])
+  useConditionalRead([
+    {
+      name: readReferences,
+      condition: references.length === 0,
+    },
+  ])
 
   if (references.length === 0 && loading) return <Loading />
 
   return (
-    <Container disableGutters maxWidth='md'>
-      {references.length === 0 && !loading ? (
-        <NoReferences />
-      ) : (
-        <>
-          <SearchReference />
-          <References
-            references={isFiltering ? filteredReferences : references}
-            isFiltering={isFiltering}
-          />{' '}
-        </>
-      )}
+    <Page pathname='/references'>
+      <Container disableGutters maxWidth='md'>
+        {references.length === 0 && !loading ? (
+          <NoReferences />
+        ) : (
+          <>
+            <SearchReference />
+            <References
+              references={isFiltering ? filteredReferences : references}
+              isFiltering={isFiltering}
+            />{' '}
+          </>
+        )}
 
-      <NewReferenceDialog />
-    </Container>
+        <NewReferenceDialog />
+      </Container>
+    </Page>
   )
 }
 

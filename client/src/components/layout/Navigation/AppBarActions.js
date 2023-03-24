@@ -15,6 +15,7 @@ import {
   Stack,
   Chip,
   useTheme,
+  Collapse,
 } from '@mui/material'
 
 import { Link, useLocation } from 'react-router-dom'
@@ -54,19 +55,22 @@ const AppBarActions = ({ handleOpenMenu, handleToggleDrag }) => {
       </IconButton>
 
       {/* Drag N Drop */}
-      {pathname === '/' && userIsPremium && (
-        <>
-          <IconButton
-            id='dnd-toggle-button'
-            edge='end'
-            sx={{ color: canDragFoods ? 'primary.main' : 'inherit' }}
-            onClick={handleToggleDrag}
-          >
-            <OpenWithIcon />
-          </IconButton>
 
-        </>
-      )}
+      <Collapse
+        orientation='horizontal'
+        // mountOnEnter
+        // unmountOnExit
+        in={pathname === '/' && userIsPremium}
+      >
+        <IconButton
+          id='dnd-toggle-button'
+          edge='end'
+          sx={{ color: canDragFoods ? 'primary.main' : 'inherit', ml: 1 }}
+          onClick={handleToggleDrag}
+        >
+          <OpenWithIcon />
+        </IconButton>
+      </Collapse>
     </>
   )
 }

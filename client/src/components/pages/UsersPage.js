@@ -6,6 +6,7 @@ import NoMeasurementsStats from '../measure/NoMeasurementsStats'
 import useConditionalRead from 'hooks/useConditionalRead'
 import Loading from 'components/layout/Loading'
 import UsersTable from 'components/users/UsersTable'
+import Page from 'components/layout/Page'
 
 const UsersPage = () => {
   const { users, loading } = useStoreState(state => state.users)
@@ -16,9 +17,11 @@ const UsersPage = () => {
   if (users.length === 0 && loading) return <Loading />
 
   return (
-    <Container>
-      <UsersTable users={users} />
-    </Container>
+    <Page pathname='/users'>
+      <Container>
+        <UsersTable users={users} />
+      </Container>
+    </Page>
   )
 }
 

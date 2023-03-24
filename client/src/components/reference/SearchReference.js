@@ -17,7 +17,7 @@ const SearchReference = () => {
 
   return (
     <>
-      <Box mt={3} sx={{ textAlign: 'center' }}>
+      <Box sx={{ textAlign: 'center' }}>
         <TextField
           fullWidth
           label='Search Reference'

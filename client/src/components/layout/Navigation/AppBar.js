@@ -67,26 +67,13 @@ const AppBar = ({ title, openDrawer }) => {
       <Fade in={loadings}>
         <LinearProgress />
       </Fade>
-      <Toolbar sx={{ minHeight: '48px !important' }}>
-        {/* {isMobile && (
-          <IconButton
-            sx={{ position: 'relative', top: '1px', paddingLeft: 0 }}
-            color='inherit'
-            onClick={openDrawer}
-            edg='start'
-            size='large'
-          >
-            <MenuIcon />
-          </IconButton>
-        )} */}
-
+      <Toolbar sx={{ minHeight: '40px !important' }}>
         <Typography variant='h6' component='div' sx={{ flexGrow: 1, fontSize: 18 }}>
           {title}
         </Typography>
 
         <Stack
           direction='row'
-          spacing={2}
           justifyContent='center'
           alignItems='center'
         >
@@ -94,18 +81,6 @@ const AppBar = ({ title, openDrawer }) => {
             handleOpenMenu={handleOpenMenu}
             handleToggleDrag={handleToggleDrag}
           />
-
-          {/* <Stack
-            direction='row'
-            spacing={0}
-            justifyContent='center'
-            alignItems='center'
-          >
-            <Typography>{user && user.name.split(' ')[0]}</Typography>
-            <IconButton edge='end' color='inherit' onClick={handleOpenMenu}>
-              <AccountCircle />
-            </IconButton>
-          </Stack> */}
         </Stack>
 
         <Menu

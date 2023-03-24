@@ -4,6 +4,7 @@ import { Grid } from '@mui/material'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import NoMeasurementsStats from '../measure/NoMeasurementsStats'
 import useConditionalRead from 'hooks/useConditionalRead'
+import Page from 'components/layout/Page'
 
 const StatisticsPage = () => {
   const panelIds = [1]
@@ -25,13 +26,15 @@ const StatisticsPage = () => {
   if (measurements.length === 0 && !loading) return <NoMeasurementsStats />
 
   return (
-    <Grid container spacing={2}>
-      {panelIds.map(panel => (
-        <Grid item xs data-id={panel} key={panel}>
-          <StatPanel />
-        </Grid>
-      ))}
-    </Grid>
+    <Page pathname='/statistics'>
+      <Grid container spacing={2}>
+        {panelIds.map(panel => (
+          <Grid item xs data-id={panel} key={panel}>
+            <StatPanel />
+          </Grid>
+        ))}
+      </Grid>
+    </Page>
   )
 }
 
