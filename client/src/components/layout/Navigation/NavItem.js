@@ -36,7 +36,7 @@ const NavItem = ({ link, onClose }) => {
       onClick={onClose}
     >
       <ListItemIcon sx={{ color: 'grey.100' }}>
-        {link.icon}
+        <link.Icon/>
       </ListItemIcon>
       <ListItemText primary={link.text} />
     </StyledNavItem>

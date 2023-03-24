@@ -9,6 +9,7 @@ import MobileDrawer from './Navigation/MobileDrawer'
 import useResponsive from '../../hooks/useResponsive'
 
 import useTitle from 'hooks/useTitle'
+import BottomNavigation from './Navigation/BottomNavigation'
 
 const Nav = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
@@ -37,23 +38,37 @@ const Layout = ({ window, children }) => {
     setMobileOpen(false)
   }
 
-  return (
-    <Stack direction='row'>
-      <AppBar title={title} openDrawer={openDrawer}/>
+  const mobileStackHeight = `calc(100vh - ${theme.mixins.toolbar.minHeight}px)`
 
-      <Nav>
+  return (
+    <>
+      <Stack
+        direction='row'
+        sx={{
+          height: isMobile ? mobileStackHeight : '100%',
+          overflowY: 'scroll',
+        }}
+      >
+        <AppBar title={title} openDrawer={openDrawer} />
+
+        <Nav>{!isMobile && <DesktopDrawer onClose={closeDrawer} />}</Nav>
+
+        {/* <Nav>
         {isMobile ? (
           <MobileDrawer open={mobileOpen} onClose={closeDrawer} />
         ) : (
           <DesktopDrawer onClose={closeDrawer}/>
         )}
-      </Nav>
+      </Nav> */}
 
-      <Main>
-        <Box sx={{...theme.mixins.toolbar}} />
-        {children}
-      </Main>
-    </Stack>
+        <Main>
+          <Box sx={{ ...theme.mixins.toolbar }} />
+
+          {children}
+        </Main>
+      </Stack>
+      {isMobile && <BottomNavigation />}
+    </>
   )
 }
 

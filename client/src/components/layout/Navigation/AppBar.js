@@ -59,7 +59,6 @@ const AppBar = ({ title, openDrawer }) => {
     <MuiAppBar
       position='fixed'
       sx={{
-
         backgroundColor: 'transparent',
         backdropFilter: 'blur(8px)',
         color: isDarkMode ? 'white' : 'inherit',
@@ -69,7 +68,7 @@ const AppBar = ({ title, openDrawer }) => {
         <LinearProgress />
       </Fade>
       <Toolbar sx={{ minHeight: '48px !important' }}>
-        {isMobile && (
+        {/* {isMobile && (
           <IconButton
             sx={{ position: 'relative', top: '1px', paddingLeft: 0 }}
             color='inherit'
@@ -79,9 +78,9 @@ const AppBar = ({ title, openDrawer }) => {
           >
             <MenuIcon />
           </IconButton>
-        )}
+        )} */}
 
-        <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+        <Typography variant='h6' component='div' sx={{ flexGrow: 1, fontSize: 18 }}>
           {title}
         </Typography>
 
@@ -96,7 +95,7 @@ const AppBar = ({ title, openDrawer }) => {
             handleToggleDrag={handleToggleDrag}
           />
 
-          <Stack
+          {/* <Stack
             direction='row'
             spacing={0}
             justifyContent='center'
@@ -106,7 +105,7 @@ const AppBar = ({ title, openDrawer }) => {
             <IconButton edge='end' color='inherit' onClick={handleOpenMenu}>
               <AccountCircle />
             </IconButton>
-          </Stack>
+          </Stack> */}
         </Stack>
 
         <Menu

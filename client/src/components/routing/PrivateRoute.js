@@ -6,6 +6,7 @@ import { useStoreState, useStoreActions } from 'easy-peasy'
 import BackdropLoading from '../layout/BackdropLoading'
 import useConditionalRead from 'hooks/useConditionalRead'
 import CompleteSetup from 'components/profile/CompleteSetup'
+import { Box } from '@mui/material'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const isAuth = useAuth()
