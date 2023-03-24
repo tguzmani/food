@@ -5,7 +5,6 @@ import { Stack, Box, styled } from '@mui/material'
 
 import AppBar from './Navigation/AppBar'
 import DesktopDrawer from './Navigation/DesktopDrawer'
-import MobileDrawer from './Navigation/MobileDrawer'
 import useResponsive from '../../hooks/useResponsive'
 
 import useTitle from 'hooks/useTitle'
@@ -28,7 +27,7 @@ const Layout = ({ window, children }) => {
   const title = useTitle()
   const theme = useTheme()
 
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [_, setMobileOpen] = useState(false)
 
   const openDrawer = () => {
     setMobileOpen(true)
@@ -46,20 +45,12 @@ const Layout = ({ window, children }) => {
         direction='row'
         sx={{
           height: isMobile ? mobileStackHeight : '100%',
-          overflowY: 'scroll',
+          overflowY: isMobile ? 'scroll' : 'hidden',
         }}
       >
         <AppBar title={title} openDrawer={openDrawer} />
 
         <Nav>{!isMobile && <DesktopDrawer onClose={closeDrawer} />}</Nav>
-
-        {/* <Nav>
-        {isMobile ? (
-          <MobileDrawer open={mobileOpen} onClose={closeDrawer} />
-        ) : (
-          <DesktopDrawer onClose={closeDrawer}/>
-        )}
-      </Nav> */}
 
         <Main>
           <Box sx={{ ...theme.mixins.toolbar }} />

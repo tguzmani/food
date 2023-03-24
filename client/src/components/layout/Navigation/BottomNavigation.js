@@ -22,7 +22,7 @@ const BottomNavigation = () => {
         sx={{borderTop: '1px solid', borderColor: 'divider'}}
       >
         {routes.map(route => (
-          <BottomNavItem route={route} />
+          <BottomNavItem key={route.to} route={route} />
         ))}
       </MuiBottomNavigation>
     </Box>

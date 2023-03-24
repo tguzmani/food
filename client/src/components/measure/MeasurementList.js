@@ -6,8 +6,8 @@ import { sortByDate } from '../../util/measure'
 const MeasurementList = ({ measurements, half }) => {
   return (
     <Card>
-      <CardContent>
-        <List>
+      <CardContent sx={{ p: 0 }}>
+        <List sx={{ p: 0 }}>
           {sortByDate(measurements, 'dec').map(measure => (
             <MeasurementItem key={measure._id} measure={measure} />
           ))}

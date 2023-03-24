@@ -5,11 +5,11 @@ import MealsResumeTable from './MealsResumeTable'
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
 import { Typography } from '@mui/material'
 import MealViewType from './MealViewType'
+import Message from 'components/layout/Message'
 
-const MealsResume = ({ viewMode, handleChangeViewMode}) => {
+const MealsResume = ({ viewMode, handleChangeViewMode }) => {
   const userIsPremium = useStoreState(state => state.users.userIsPremium)
   const { foods } = useStoreState(state => state.foods)
-
 
   return (
     <>
@@ -31,12 +31,13 @@ const MealsResume = ({ viewMode, handleChangeViewMode}) => {
           )}
         </>
       ) : (
-        <Stack alignItems='center' spacing={1.5}>
-          <WorkspacePremiumIcon sx={{ color: 'grey.400', fontSize: '36px' }} />
-          <Typography variant='body2' className='text-muted'>
-            Upgrade to premium to see your meals resume
-          </Typography>
-        </Stack>
+        <Message
+          sx={{ pt: 3, px: 1 }}
+          Icon={WorkspacePremiumIcon}
+          title='Premium feature'
+        >
+          Upgrade to premium to see your meals resume
+        </Message>
       )}
     </>
   )

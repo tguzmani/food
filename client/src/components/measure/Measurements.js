@@ -4,9 +4,14 @@ import PropertyPlot from '../statistics/PropertyPlot'
 import StatisticsTable from '../statistics/StatisticsTable'
 import MeasureList from './MeasurementList'
 import { Stack, Typography } from '@mui/material'
+import Collapsable from 'components/layout/Collapsable'
 
 const Measurements = ({ measurements, current }) => {
   let thisMeasurements = []
+
+  const [showList, setShowList] = React.useState(false)
+
+  const toggleShowList = () => setShowList(!showList)
 
   if (current && dayjs().get('date') > 15) {
     // console.log('current && > 15')
@@ -56,7 +61,9 @@ const Measurements = ({ measurements, current }) => {
     <Stack spacing={2}>
       <PropertyPlot data={thisMeasurements} property='weight' />
       <StatisticsTable data={thisMeasurements} property='weight' />
-      <MeasureList measurements={thisMeasurements} />
+      <Collapsable open={showList} toggler={toggleShowList} text='Details'>
+        <MeasureList measurements={thisMeasurements} />
+      </Collapsable>
     </Stack>
   )
 }

@@ -41,7 +41,7 @@ const MeasurementItem = ({ measure }) => {
 
   return (
     <>
-      <ListItem divider button onClick={handleOpen}>
+      <ListItem divider button onClick={handleOpen} sx={{px: 4, height: '115px'}}>
         <Grid container alignItems='center' justifyContent='space-between'>
           <Grid item xs={6}>
             <Box> 

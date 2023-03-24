@@ -4,7 +4,6 @@ import useResponsive from 'hooks/useResponsive'
 
 const FabContainer = styled('div')(({ theme }) => ({
   position: 'fixed',
-  left: theme.spacing(-3),
   display: 'flex',
   justifyContent: 'flex-end',
   width: '100%',
@@ -15,7 +14,12 @@ const FAB = ({ Icon, onClick, show, disabled, tooltipTitle }) => {
   const isMobile = useResponsive('md')
 
   return (
-    <FabContainer sx={{ bottom: isMobile ? '64px' : '56px' }}>
+    <FabContainer
+      sx={{
+        bottom: isMobile ? 'calc(56px + 16px)' : '24px',
+        left: isMobile ? '-16px' : '-24px',
+      }}
+    >
       <Zoom in={show}>
         <Tooltip placement='left' title={tooltipTitle} arrow>
           <span>

@@ -9,6 +9,7 @@ import useUser from 'hooks/useUser'
 import { useDrag } from 'react-dnd'
 import useResponsive from 'hooks/useResponsive'
 import useIsDarkMode from 'hooks/useIsDarkMode'
+import DirtyIndicator from './DirtyIndicator'
 
 const Value = ({ children, color }) => {
   const { userIsPremium } = useStoreState(state => state.users)
@@ -115,12 +116,7 @@ const FoodItem = ({ food }) => {
       >
         <Grid container spacing={2} alignItems='center'>
           <Grid item xs={5}>
-            {capitalize(food.name)}{' '}
-            {food.isDirty && (
-              <Typography variant='caption' color='error' sx={{fontSize: '14px'}}>
-                •
-              </Typography>
-            )}
+            {capitalize(food.name)} {food.isDirty && <DirtyIndicator />}
           </Grid>
 
           <Grid item xs={7}>

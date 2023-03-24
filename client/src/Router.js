@@ -16,25 +16,22 @@ import Register from './components/pages/Register'
 import PremiumRoute from 'components/routing/PremiumRoute'
 import AdminRoute from 'components/routing/AdminRoute'
 import PrivateRoute from './components/routing/PrivateRoute'
-import { Box } from '@mui/material'
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <>
-        <Switch>
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/register' component={Register} />
-          <PrivateRoute exact path='/' component={Day} />
-          <PrivateRoute exact path='/measurements' component={MeasuresPage} />
+      <Switch>
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/register' component={Register} />
+        <PrivateRoute exact path='/' component={Day} />
+        <PrivateRoute exact path='/measurements' component={MeasuresPage} />
 
-          <PrivateRoute exact path='/references' component={ReferencesPage} />
-          <PremiumRoute exact path='/statistics' component={StatisticsPage} />
-          <PrivateRoute exact path='/profile' component={ProfilePage} />
-          <AdminRoute exact path='/users' component={UsersPage} />
-          <Route path='*' component={NotFound} />
-        </Switch>
-      </>
+        <PrivateRoute exact path='/references' component={ReferencesPage} />
+        <PremiumRoute exact path='/statistics' component={StatisticsPage} />
+        <PrivateRoute exact path='/profile' component={ProfilePage} />
+        <AdminRoute exact path='/users' component={UsersPage} />
+        <Route path='*' component={NotFound} />
+      </Switch>
     </BrowserRouter>
   )
 }

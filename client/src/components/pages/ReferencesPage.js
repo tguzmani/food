@@ -25,7 +25,7 @@ const ReferencesPage = () => {
 
   return (
     <Page pathname='/references'>
-      <Container disableGutters maxWidth='md'>
+      <Container disableGutters maxWidth='sm'>
         {references.length === 0 && !loading ? (
           <NoReferences />
         ) : (
@@ -34,7 +34,7 @@ const ReferencesPage = () => {
             <References
               references={isFiltering ? filteredReferences : references}
               isFiltering={isFiltering}
-            />{' '}
+            />
           </>
         )}
 

@@ -18,7 +18,7 @@ const UsersPage = () => {
 
   return (
     <Page pathname='/users'>
-      <Container>
+      <Container sx={{ p: 0 }}>
         <UsersTable users={users} />
       </Container>
     </Page>

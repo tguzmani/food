@@ -1,44 +1,29 @@
-import React from 'react'
 import { useStoreActions, useStoreState } from 'easy-peasy'
-
+import React from 'react'
 import {
   Toolbar,
   Typography,
-  IconButton,
   Menu,
   MenuItem,
   Divider,
   AppBar as MuiAppBar,
   LinearProgress,
   Stack,
-  Chip,
-  useTheme,
 } from '@mui/material'
 
-import { Link, useLocation } from 'react-router-dom'
-
-import MenuIcon from '@mui/icons-material/Menu'
-import AccountCircle from '@mui/icons-material/AccountCircle'
-import OpenWithIcon from '@mui/icons-material/OpenWith'
+import { Link } from 'react-router-dom'
 
 import useMenu from 'hooks/useMenu'
-import useUser from 'hooks/useUser'
-import useResponsive from 'hooks/useResponsive'
 
 import Fade from '@mui/material/Fade'
 import useIsDarkMode from 'hooks/useIsDarkMode'
 import AppBarActions from './AppBarActions'
 
-const AppBar = ({ title, openDrawer }) => {
-  const { user, userIsPremium } = useStoreState(state => state.users)
-  const { pathname } = useLocation()
+const AppBar = ({ title }) => {
   const isDarkMode = useIsDarkMode()
 
-  const isMobile = useResponsive('sm')
   const { signOut } = useStoreActions(actions => actions.users)
   const { toggleCanDragFoods } = useStoreActions(actions => actions.foods)
-
-  const { canDragFoods } = useStoreState(state => state.foods)
 
   const state = useStoreState(state => state)
 
@@ -68,15 +53,15 @@ const AppBar = ({ title, openDrawer }) => {
         <LinearProgress />
       </Fade>
       <Toolbar sx={{ minHeight: '40px !important' }}>
-        <Typography variant='h6' component='div' sx={{ flexGrow: 1, fontSize: 18 }}>
+        <Typography
+          variant='h6'
+          component='div'
+          sx={{ flexGrow: 1, fontSize: 18 }}
+        >
           {title}
         </Typography>
 
-        <Stack
-          direction='row'
-          justifyContent='center'
-          alignItems='center'
-        >
+        <Stack direction='row' justifyContent='center' alignItems='center'>
           <AppBarActions
             handleOpenMenu={handleOpenMenu}
             handleToggleDrag={handleToggleDrag}

@@ -55,7 +55,6 @@ const AppBarActions = ({ handleOpenMenu, handleToggleDrag }) => {
       </IconButton>
 
       {/* Drag N Drop */}
-
       <Collapse
         orientation='horizontal'
         // mountOnEnter

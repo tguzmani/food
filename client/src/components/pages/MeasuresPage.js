@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Grid, Typography, useTheme } from '@mui/material'
 import Measurements from './../measure/Measurements'
 import AddMeasureDialog from '../measure/AddMeasureDialog'
@@ -7,6 +7,7 @@ import useConditionalRead from 'hooks/useConditionalRead'
 import Loading from 'components/layout/Loading'
 import NoMeasurements from 'components/measure/NoMeasurements'
 import Page from 'components/layout/Page'
+import Collapsable from 'components/layout/Collapsable'
 
 const MeasurementsPage = () => {
   const theme = useTheme()
@@ -33,14 +34,16 @@ const MeasurementsPage = () => {
               <Typography variant='h6' component='h2' gutterBottom>
                 This block
               </Typography>
-
+M
               <Measurements measurements={measurements} current />
             </Grid>
 
-            <Grid item xs={12} lg={6}>
+              <Grid item xs={12} lg={6}>
+                
               <Typography variant='h6' component='h2' gutterBottom>
                 Last block
               </Typography>
+
               <Measurements measurements={measurements} />
             </Grid>
           </Grid>

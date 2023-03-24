@@ -75,7 +75,11 @@ const NewReferenceDialog = () => {
         show
         Icon={AddIcon}
         onClick={handleClickOpen}
-        tooltipTitle='Add Reference'
+        tooltipTitle={
+          cantAddMoreReferences
+            ? 'You have reached your reference limit for a free account. Upgrade to premium to add more references.'
+            : 'Add Reference'
+        }
         disabled={cantAddMoreReferences}
       />
 

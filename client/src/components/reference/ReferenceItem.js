@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListItem, Grid, Box, Typography } from '@mui/material'
+import { ListItem, Grid, Box, Typography, Stack } from '@mui/material'
 import { capitalize } from './../../util/index'
 
 import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import UpdateReferenceDialog from './UpdateReferenceDialog'
 import { useStoreActions } from 'easy-peasy'
 import useIsDarkMode from 'hooks/useIsDarkMode'
+import DirtyIndicator from 'components/food/DirtyIndicator'
 
 const Value = ({ children, color }) => (
   <Grid item xs={3} sx={{ textAlign: 'right', color }}>
@@ -29,7 +30,7 @@ const Delete = () => (
   </Box>
 )
 
-const ReferenceItem = ({ reference, preview, divider }) => {
+const ReferenceItem = ({ reference, preview, divider, index }) => {
   const { deleteReference } = useStoreActions(actions => actions.references)
   const isDarkMode = useIsDarkMode()
 
@@ -49,6 +50,20 @@ const ReferenceItem = ({ reference, preview, divider }) => {
 
   const handleDeleteReference = () => deleteReference(reference)
 
+  const backgroundColor = index => {
+    if (isDarkMode) {
+      if (index % 2 === 0) return 'grey.950'
+      return 'background.default'
+    }
+
+    if (!isDarkMode) {
+      if (index % 2 === 0) return 'inherit'
+      return 'grey.100'
+    }
+
+    return 'inherit'
+  }
+
   return (
     <>
       <SwipeableListItem
@@ -65,13 +80,7 @@ const ReferenceItem = ({ reference, preview, divider }) => {
           onClick={handleOpen}
           button={!preview}
           sx={{
-            ...(preview && {
-              border: 1,
-              borderColor: 'grey.300',
-              borderRadius: 1,
-            }),
-            backgroundColor: isDarkMode ? 'grey.950' : 'inherit',
-            borderBottomColor: isDarkMode ? 'grey.800' : 'grey.300',
+            backgroundColor: backgroundColor(index),
             '&:hover': {
               backgroundColor: isDarkMode ? 'grey.700' : 'grey.300',
             },
@@ -91,16 +100,30 @@ const ReferenceItem = ({ reference, preview, divider }) => {
                 spacing={2}
                 alignItems='center'
               >
-                <Value color='error.main'>{displayMacro(reference.protein)}</Value>
-                <Value color='primary.main'>{displayMacro(reference.carbs)}</Value>
-                <Value color='success.main'>{displayMacro(reference.fat)}</Value>
-                <Grid item xs={3} sx={{ textAlign: 'right' }}>
-                  <Typography variant='body2'>
-                    {reference.isDirty && reference.isAlcohol
-                      ? 'A'
-                      : reference.isDirty && 'D'}
-                  </Typography>
-                </Grid>
+                <Value color='error.main'>
+                  {displayMacro(reference.protein)}
+                </Value>
+                <Value color='primary.main'>
+                  {displayMacro(reference.carbs)}
+                </Value>
+                <Value color='success.main'>
+                  {displayMacro(reference.fat)}
+                </Value>
+                <Stack
+                  component={Grid}
+                  item
+                  xs={3}
+                  sx={{ textAlign: 'center' }}
+                  direction='row'
+                  spacing={1}
+                  justifyContent='center'
+                  alignItems='center'
+                >
+                  {reference.isDirty && <DirtyIndicator />}
+                  {reference.isAlcohol && (
+                    <Typography variant='body2'>A</Typography>
+                  )}
+                </Stack>
               </Grid>
             </Grid>
           </Grid>
