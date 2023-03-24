@@ -3,7 +3,7 @@ import React from 'react'
 import HelpIcon from '@mui/icons-material/Help'
 import CancelIcon from '@mui/icons-material/Cancel'
 
-import { IconButton, Typography, Box } from '@mui/material'
+import { IconButton, Typography, Box, Collapse } from '@mui/material'
 
 const Detail = ({ title, children }) => {
   const [show, setShow] = React.useState(false)
@@ -12,17 +12,19 @@ const Detail = ({ title, children }) => {
   return (
     <>
       <Box display='flex' alignItems='center'>
-        <Typography variant='h6'>{title}</Typography>
+        <Typography variant='body1'>{title}</Typography>
         {children && (
-          <IconButton onClick={() => setShow(!show)} size="large">
+          <IconButton onClick={() => setShow(!show)} size='large'>
             <Icon sx={{ fontSize: 16 }} />
           </IconButton>
         )}
       </Box>
 
-      {show && <Typography variant='body2'>{children}</Typography>}
+      <Collapse in={show}>
+        <Typography variant='body2'>{children}</Typography>
+      </Collapse>
     </>
-  );
+  )
 }
 
 export default Detail

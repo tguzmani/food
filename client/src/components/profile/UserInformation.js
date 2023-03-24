@@ -1,5 +1,12 @@
 import React from 'react'
-import { Box, Divider, Typography, Grid } from '@mui/material'
+import {
+  Box,
+  Divider,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+} from '@mui/material'
 
 import dayjs from 'dayjs'
 
@@ -12,9 +19,12 @@ import useUser from 'hooks/useUser'
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
 import PersonIcon from '@mui/icons-material/Person'
 import { useStoreState } from 'easy-peasy'
+import CaloriesToolbar from './CaloriesToolbar'
+import useResponsive from 'hooks/useResponsive'
 
 const UserInformation = () => {
   const { userIsPremium, user } = useStoreState(state => state.users)
+  const isMobile = useResponsive('md')
 
   if (!user) return <div>Loading...</div>
 
@@ -28,46 +38,46 @@ const UserInformation = () => {
   const MembershipIcon = userIsPremium ? WorkspacePremiumIcon : PersonIcon
 
   return (
-    <Grid container spacing={4}>
-      {/* User Details */}
-      <Grid item xs={12} lg={3}>
-        <Box mb={3}>
-          <Typography variant='h4' gutterBottom>
-            {user.firstName} {user.lastName}
-          </Typography>
-          <Detail Icon={EmailIcon}>{user.email}</Detail>
-          <Detail Icon={EventIcon}>
-            Since {dayjs(user.createdAt).format('MMMM DD, YYYY')}
-          </Detail>
-          <Detail Icon={MembershipIcon}>
-            {userIsPremium ? 'Premium' : 'Free'} Membership
-          </Detail>
-        </Box>
-        <Divider />
+    <>
+      <Grid container spacing={4}>
+        {/* User Details */}
+        <Grid item xs={12} lg={3}>
+          <Box mb={3}>
+            <Typography variant='h4' gutterBottom>
+              {user.firstName} {user.lastName}
+            </Typography>
+            <Detail Icon={EmailIcon}>{user.email}</Detail>
+            <Detail Icon={EventIcon}>
+              Since {dayjs(user.createdAt).format('MMMM DD, YYYY')}
+            </Detail>
+            <Detail Icon={MembershipIcon}>
+              {userIsPremium ? 'Premium' : 'Free'} Membership
+            </Detail>
+          </Box>
 
-        {/* Personal Information */}
-        <Box mt={3}>
-          <Typography variant='h5' gutterBottom>
-            Personal Information
-          </Typography>
-          <PersonalInformation />
-        </Box>
-      </Grid>
+          {/* Caloric Intake */}
+          <Card mt={2}>
+            <CardContent>
+              <BMRs />
+            </CardContent>
+          </Card>
 
-      {/* Macronutrient Information */}
-      <Grid item xs={12} lg={6}>
-        <Typography variant='h5'>Macronutrient Information</Typography>
-        <MacroInformation />
-      </Grid>
+          {/* Personal Information */}
+          <Box mt={isMobile ? 3 : 3}>
+            <Typography variant='h6' gutterBottom>
+              Personal Information
+            </Typography>
+            <PersonalInformation />
+          </Box>
+        </Grid>
 
-      {/* Caloric Intake */}
-      <Grid item xs={12} lg={3}>
-        <Typography variant='h5' gutterBottom>
-          Caloric Intake
-        </Typography>
-        <BMRs />
+        {/* Macronutrient Information */}
+        <Grid item xs={12} lg={6}>
+          <Typography variant='h6'>Macronutrient Information</Typography>
+          <MacroInformation />
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   )
 }
 

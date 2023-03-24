@@ -34,7 +34,7 @@ const MeasurementsPage = () => {
               <Typography variant='h6' component='h2' gutterBottom>
                 This block
               </Typography>
-M
+
               <Measurements measurements={measurements} current />
             </Grid>
 

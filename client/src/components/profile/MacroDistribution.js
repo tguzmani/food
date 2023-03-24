@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Box, Typography } from '@mui/material'
 import { useStoreState } from 'easy-peasy'
-import useResponsive from 'hooks/useResponsive';
+import useResponsive from 'hooks/useResponsive'
 
 const MacroDistribution = () => {
   const { profile, user, profileBaseWeight, offsetBMR } = useStoreState(
@@ -21,10 +21,12 @@ const MacroDistribution = () => {
   const carbsGrams = carbsCalories / 4
 
   return (
-    <Grid container spacing={3} justifyContent='space-between' mb={isMobile ? 10 : 0}>
+    <Grid container spacing={3} justifyContent='space-between'>
       <Grid item xs={4}>
         <Box>
-          <Typography align='center'>Protein</Typography>
+          <Typography align='center' variant='body1' color='error.main' gutterBottom>
+            Protein
+          </Typography>
           <Typography align='center' variant='body2'>
             {proteinGrams.toFixed(0)} g
           </Typography>
@@ -36,7 +38,9 @@ const MacroDistribution = () => {
 
       <Grid item xs={4}>
         <Box>
-          <Typography align='center'>Carbs</Typography>
+          <Typography align='center' variant='body1' color='primary.main' gutterBottom>
+            Carbs
+          </Typography>
           <Typography align='center' variant='body2'>
             {carbsGrams.toFixed(0)} g
           </Typography>
@@ -48,7 +52,9 @@ const MacroDistribution = () => {
 
       <Grid item xs={4}>
         <Box>
-          <Typography align='center'>Fat</Typography>
+          <Typography align='center ' variant='body1' color='success.main' gutterBottom>
+            Fat
+          </Typography>
           <Typography align='center' variant='body2'>
             {fatGrams.toFixed(0)} g
           </Typography>

@@ -9,14 +9,12 @@ const BMRs = () => {
   if (!user) return <div>Loading...</div>
 
   return (
-    <Box>
-      <Box mb={3}>
-        <Typography align='center' variant='h6' gutterBottom>
-          {offsetBMR.toFixed(0)} cal
-        </Typography>
-        <MacroDistribution />
-      </Box>
-    </Box>
+    <>
+      <Typography align='center' variant='h6' mb={2}>
+        {offsetBMR.toFixed(0)} cal
+      </Typography>
+      <MacroDistribution />
+    </>
   )
 }
 

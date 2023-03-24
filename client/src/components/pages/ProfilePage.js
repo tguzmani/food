@@ -5,6 +5,7 @@ import FAB from './../layout/FAB'
 import SaveIcon from '@mui/icons-material/Save'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import Page from 'components/layout/Page'
+import CaloriesToolbar from 'components/profile/CaloriesToolbar'
 
 const ProfilePage = () => {
   const { user, loading, profile } = useStoreState(state => state.users)

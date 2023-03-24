@@ -132,7 +132,7 @@ const MacroInformation = () => {
 
       <Box mb={3}>
         <Detail title='Activity'>
-          This cover how many times you exercise per week, how intense and also
+          This covers how many times you exercise per week, how intense and also
           if your work involves physical activity or not.
         </Detail>
 
@@ -145,7 +145,7 @@ const MacroInformation = () => {
           step={null}
         />
         <Box sx={{ height: '2em' }}>
-          <Typography>{activityOptions[activity]}</Typography>
+          <Typography variant='body2'>{activityOptions[activity]}</Typography>
         </Box>
       </Box>
 
@@ -164,7 +164,7 @@ const MacroInformation = () => {
           step={0.1}
           valueLabelDisplay='auto'
         />
-        <Typography>{proteinPref} g per lb of base weight</Typography>
+        <Typography variant='body2'>{proteinPref} g per lb of base weight</Typography>
       </Box>
 
       <Box mb={3}>
@@ -181,7 +181,7 @@ const MacroInformation = () => {
           step={1}
           valueLabelDisplay='auto'
         />
-        <Typography>{fatPref}%</Typography>
+        <Typography variant='body2'>{fatPref}%</Typography>
       </Box>
     </>
   )

@@ -41,7 +41,6 @@ const UpdateReferenceDialog = ({ initalReference, open, setOpen }) => {
       <DialogTitle>Update Reference</DialogTitle>
       <DialogContent>
         <TextField
-          autoFocus
           margin='normal'
           label='Name'
           type='text'
