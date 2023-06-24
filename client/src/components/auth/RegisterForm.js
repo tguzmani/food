@@ -14,13 +14,12 @@ import dayjs from 'dayjs'
 
 import HowToRegIcon from '@mui/icons-material/HowToReg'
 import { useStoreActions, useStoreState } from 'easy-peasy'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useTheme, Box } from '@mui/material'
 import useResponsive from 'hooks/useResponsive'
 import useForm from 'hooks/useForm'
 import useAuth from 'hooks/useAuth'
 import Alert from 'components/layout/Alert'
-import useRead from 'hooks/useRead'
 
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
@@ -35,6 +34,7 @@ const RegisterForm = ({ history }) => {
   const isMobile = useResponsive('sm')
   const theme = useTheme()
   const isAuth = useAuth()
+  const navigate = useNavigate()
 
   const { signUp, setLoading } = useStoreActions(actions => actions.users)
   const { error } = useStoreState(state => state.users)
@@ -54,11 +54,11 @@ const RegisterForm = ({ history }) => {
 
   useEffect(() => {
     setLoading(false)
-  }, [isAuth, history])
+  }, [isAuth, setLoading])
 
   useEffect(() => {
-    if (isAuth) history.push('/')
-  }, [isAuth, history])
+    if (isAuth) navigate('/')
+  }, [isAuth, navigate])
 
   const onClick = e => {
     e.preventDefault()
@@ -66,7 +66,7 @@ const RegisterForm = ({ history }) => {
       ...credentials,
       birthdate: dayjs(birthdate).format('YYYY-MM-DD'),
       gender,
-      units
+      units,
     })
   }
 
@@ -86,7 +86,9 @@ const RegisterForm = ({ history }) => {
 
   return (
     <Card sx={{ paddingTop: '4px', width: isMobile ? '100%' : '85%' }}>
-      <CardContent sx={{ height: isMobile ? '95vh' : '85vh', overflowY: 'scroll' }}>
+      <CardContent
+        sx={{ height: isMobile ? '95vh' : '85vh', overflowY: 'scroll' }}
+      >
         <Stack
           sx={{ height: '100%' }}
           direction='column'
@@ -95,7 +97,7 @@ const RegisterForm = ({ history }) => {
           {error && <Alert>{error}</Alert>}
           <Box mt={2}>
             <Stack alignItems='center' spacing={1}>
-              <Avatar sx={{ bgcolor: theme.palette.primary.main }}>
+              <Avatar sx={{ bgcolor: 'primary.main' }}>
                 <HowToRegIcon />
               </Avatar>
               <Typography variant='h6' sx={{ fontWeight: 'bold' }}>
@@ -170,12 +172,14 @@ const RegisterForm = ({ history }) => {
             <FormControl sx={{ mt: 1 }}>
               <FormLabel>Metric system</FormLabel>
               <RadioGroup value={units} onChange={handleChangeUnits} row>
-                <FormControlLabel sx={{ label: {fontSize: '14px'}}}
+                <FormControlLabel
+                  sx={{ label: { fontSize: '14px' } }}
                   value='kg'
                   control={<Radio />}
                   label='Metric (kg)'
                 />
-                <FormControlLabel sx={{ label: {fontSize: '14px'}}}
+                <FormControlLabel
+                  sx={{ label: { fontSize: '14px' } }}
                   value='lb'
                   control={<Radio />}
                   label='Imperial (lb)'
@@ -203,4 +207,4 @@ const RegisterForm = ({ history }) => {
   )
 }
 
-export default withRouter(RegisterForm)
+export default RegisterForm

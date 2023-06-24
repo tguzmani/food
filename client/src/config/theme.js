@@ -10,7 +10,7 @@ const typography = {
 
   body2: {
     fontSize: '14px',
-  }
+  },
 }
 
 export const palette = mode => ({
@@ -38,7 +38,7 @@ export const palette = mode => ({
 
   grey: {
     950: '#1e1e1e',
-  }
+  },
 })
 
 const theme = createTheme({
@@ -48,6 +48,10 @@ const theme = createTheme({
   mixins: {
     drawer: {
       width: drawerWidth,
+    },
+
+    toolbar: {
+      minHeight: 48,
     },
   },
 
@@ -72,8 +76,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '&:last-child': {
-            borderBottom: 'none'
-          }
+            borderBottom: 'none',
+          },
         },
       },
     },
@@ -111,11 +115,11 @@ const theme = createTheme({
             fontWeight: 'bold',
           },
           '&.text-muted': {
-            color: baseTheme.palette.grey['400']
-          }
-        }
-      }
-    }
+            color: baseTheme.palette.grey['400'],
+          },
+        },
+      },
+    },
   },
 })
 

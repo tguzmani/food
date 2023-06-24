@@ -12,18 +12,18 @@ import {
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { useStoreActions, useStoreState } from 'easy-peasy'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useTheme, Box } from '@mui/material'
 import useResponsive from 'hooks/useResponsive'
 import useForm from 'hooks/useForm'
 import useAuth from 'hooks/useAuth'
 import Alert from 'components/layout/Alert'
-import useRead from 'hooks/useRead'
 
 const LoginForm = ({ history }) => {
   const isMobile = useResponsive('sm')
   const theme = useTheme()
   const isAuth = useAuth()
+  const navigate = useNavigate()
 
   const { signIn, setLoading } = useStoreActions(actions => actions.users)
   const { error } = useStoreState(state => state.users)
@@ -33,22 +33,22 @@ const LoginForm = ({ history }) => {
     email: '',
     password: '',
   })
-  
+
   useEffect(() => {
     setLoading(false)
-  }, [isAuth, history])
+  }, [isAuth, setLoading])
 
   useEffect(() => {
-    if (isAuth) history.push('/')
-  }, [isAuth, history])
+    if (isAuth) navigate('/')
+  }, [isAuth, navigate])
 
-  const onClick = e => {
+  const handleSignIn = e => {
     e.preventDefault()
     signIn(credentials)
   }
 
   return (
-    <Card sx={{ paddingTop: '4px', width: isMobile ? '100%' : '85%' }}>
+    <Card sx={{ paddingTop: 0.5, width: isMobile ? '100%' : '85%' }}>
       <CardContent sx={{ height: isMobile ? '50vh' : '45vh' }}>
         <Stack
           sx={{ height: '100%' }}
@@ -92,7 +92,7 @@ const LoginForm = ({ history }) => {
           </Stack>
 
           <Button
-            onClick={onClick}
+            onClick={handleSignIn}
             color='primary'
             variant='contained'
             fullWidth
@@ -110,4 +110,4 @@ const LoginForm = ({ history }) => {
   )
 }
 
-export default withRouter(LoginForm)
+export default LoginForm

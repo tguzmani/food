@@ -1,6 +1,5 @@
 import { ToggleButton, ToggleButtonGroup } from '@mui/material'
 import React from 'react'
-import WhatshotIcon from '@mui/icons-material/Whatshot'
 
 const OffsetMode = ({ offsetMode, onChangeOffsetMode }) => {
   return (

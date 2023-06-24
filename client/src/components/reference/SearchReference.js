@@ -1,6 +1,5 @@
 import { Box, InputAdornment, TextField } from '@mui/material'
 import React from 'react'
-import NewReferenceDialog from './NewReferenceDialog'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 import SearchIcon from '@mui/icons-material/Search'
 

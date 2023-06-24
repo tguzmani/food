@@ -52,12 +52,14 @@ const AppBar = ({ title }) => {
       <Fade in={loadings}>
         <LinearProgress />
       </Fade>
-      <Toolbar sx={{ minHeight: '40px !important' }}>
-        <Typography
-          variant='h6'
-          component='div'
-          sx={{ flexGrow: 1, fontSize: 18 }}
-        >
+
+      <Stack
+        component={Toolbar}
+        sx={{ minHeight: '40px !important' }}
+        direction='row'
+        justifyContent='space-between'
+      >
+        <Typography variant='h6' sx={{ fontSize: 18 }}>
           {title}
         </Typography>
 
@@ -79,7 +81,7 @@ const AppBar = ({ title }) => {
           <Divider />
           <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
-      </Toolbar>
+      </Stack>
     </MuiAppBar>
   )
 }

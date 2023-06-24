@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const useAuth = () => {
+const useToggle = () => {
   const [value, setValue] = useState(false)
 
   const toggleValue = () => {
@@ -10,4 +10,4 @@ const useAuth = () => {
   return { value, setValue, toggleValue }
 }
 
-export default useAuth
+export default useToggle

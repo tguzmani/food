@@ -1,13 +1,11 @@
 import React from 'react'
-import { ListItem, Grid, Input, Box, Typography } from '@mui/material'
+import { ListItem, Grid, Input, Box } from '@mui/material'
 import { capitalize } from './../../util/index'
 import { SwipeableListItem } from '@sandstreamdev/react-swipeable-list'
 import '@sandstreamdev/react-swipeable-list/dist/styles.css'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useStoreActions, useStoreState } from 'easy-peasy'
-import useUser from 'hooks/useUser'
 import { useDrag } from 'react-dnd'
-import useResponsive from 'hooks/useResponsive'
 import useIsDarkMode from 'hooks/useIsDarkMode'
 import DirtyIndicator from './DirtyIndicator'
 
@@ -54,13 +52,13 @@ const FoodItem = ({ food }) => {
     deleteFood,
   } = useStoreActions(actions => actions.foods)
 
-  const isMobile = useResponsive('sm')
 
   const { canDragFoods } = useStoreState(state => state.foods)
 
   const [quantity, setQuantity] = React.useState(food.quantity)
   const { protein, carbs, fat } = food.reference
 
+  // eslint-disable-next-line
   const [{ isDragging }, drag, preview] = useDrag(
     () => ({
       type: 'food',

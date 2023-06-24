@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+
 import { Box, Button, MenuItem, Grid, FormControl, Stack } from '@mui/material'
 import { capitalize, mean } from '../../util'
 
@@ -69,6 +70,7 @@ const StatPanel = () => {
           createdAt: weekByNumber(index),
           value: mean,
         })),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [measurementsByQuery, property]
   )
 
@@ -168,7 +170,12 @@ const StatPanel = () => {
             </Grid>
 
             {weeksBetween > 1 && (
-              <Grid item xs={12} lg={6} sx={{ pl: isMobile ? 0 : 1, mt: isMobile ? 2 : 0 }}>
+              <Grid
+                item
+                xs={12}
+                lg={6}
+                sx={{ pl: isMobile ? 0 : 1, mt: isMobile ? 2 : 0 }}
+              >
                 <Plot data={propertiesMeansByWeek} title={weekPlotTitle} />
               </Grid>
             )}

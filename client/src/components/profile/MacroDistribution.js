@@ -1,67 +1,61 @@
 import React from 'react'
-import { Grid, Box, Typography } from '@mui/material'
+import { Grid, Typography, Stack } from '@mui/material'
 import { useStoreState } from 'easy-peasy'
-import useResponsive from 'hooks/useResponsive'
+
+const Macro = ({ name, grams, calories, color }) => (
+  <Stack alignItems='center'>
+    <Typography align='center' variant='body1' color={color} gutterBottom>
+      {name}
+    </Typography>
+    <Typography align='center' variant='body2'>
+      {grams.toFixed(0)} g
+    </Typography>
+    <Typography display='block' align='center' variant='caption'>
+      {calories.toFixed(0)} cal
+    </Typography>
+  </Stack>
+)
 
 const MacroDistribution = () => {
-  const { profile, user, profileBaseWeight, offsetBMR } = useStoreState(
-    state => state.users
-  )
-
-  const isMobile = useResponsive('sm')
+  const {
+    user,
+    proteinCalories,
+    fatCalories,
+    carbsCalories,
+    proteinGrams,
+    fatGrams,
+    carbsGrams,
+  } = useStoreState(state => state.users)
 
   if (!user) return <div>Loading...</div>
-
-  const proteinCalories = profileBaseWeight * 2.2 * profile.proteinPref * 4
-  const fatCalories = (offsetBMR * profile.fatPref) / 100
-  const carbsCalories = offsetBMR - proteinCalories - fatCalories
-
-  const proteinGrams = proteinCalories / 4
-  const fatGrams = fatCalories / 9
-  const carbsGrams = carbsCalories / 4
 
   return (
     <Grid container spacing={3} justifyContent='space-between'>
       <Grid item xs={4}>
-        <Box>
-          <Typography align='center' variant='body1' color='error.main' gutterBottom>
-            Protein
-          </Typography>
-          <Typography align='center' variant='body2'>
-            {proteinGrams.toFixed(0)} g
-          </Typography>
-          <Typography display='block' align='center' variant='caption'>
-            {proteinCalories.toFixed(0)} cal
-          </Typography>
-        </Box>
+        <Macro
+          name='Protein'
+          grams={proteinGrams}
+          calories={proteinCalories}
+          color='error.main'
+        />
       </Grid>
 
       <Grid item xs={4}>
-        <Box>
-          <Typography align='center' variant='body1' color='primary.main' gutterBottom>
-            Carbs
-          </Typography>
-          <Typography align='center' variant='body2'>
-            {carbsGrams.toFixed(0)} g
-          </Typography>
-          <Typography display='block' align='center' variant='caption'>
-            {carbsCalories.toFixed(0)} cal
-          </Typography>
-        </Box>
+        <Macro
+          name='Carbs'
+          grams={carbsGrams}
+          calories={carbsCalories}
+          color='primary.main'
+        />
       </Grid>
 
       <Grid item xs={4}>
-        <Box>
-          <Typography align='center ' variant='body1' color='success.main' gutterBottom>
-            Fat
-          </Typography>
-          <Typography align='center' variant='body2'>
-            {fatGrams.toFixed(0)} g
-          </Typography>
-          <Typography display='block' align='center' variant='caption'>
-            {fatCalories.toFixed(0)} cal
-          </Typography>
-        </Box>
+        <Macro
+          name='Fat'
+          grams={fatGrams}
+          calories={fatCalories}
+          color='success.main'
+        />
       </Grid>
     </Grid>
   )

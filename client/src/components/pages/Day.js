@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
-
 import Meals from './../meal/Meals'
 import PreviewMeal from '../meal/PreviewMeal'
 import Macros from '../macro/Macros'
 import useMealNumbers from './../../hooks/useMealNumbers'
-import { Container, Fade, Tab, Tabs } from '@mui/material'
+import { Container, Tab, Tabs } from '@mui/material'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import useConditionalRead from 'hooks/useConditionalRead'
-import useUser from 'hooks/useUser'
 import Loading from 'components/layout/Loading'
 import NoMeasurementsFoods from '../measure/NoMeasurementsFoods'
 import NoReferencesFoods from 'components/reference/NoReferencesFoods'
@@ -17,15 +15,11 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import { TouchBackend } from 'react-dnd-touch-backend'
 import useResponsive from 'hooks/useResponsive'
 import TabPanel from 'components/layout/TabPanel'
-import MealsResumeTable from 'components/meal/MealsResumeTable'
 import MealsResume from 'components/meal/MealsResume'
-import { useLocation } from 'react-router-dom'
 import Page from 'components/layout/Page'
 
 const Day = () => {
-  const user = useUser()
   const isMobile = useResponsive('sm')
-  const { pathname } = useLocation()
 
   const [value, setValue] = useState(0)
   const [viewMode, setViewMode] = useState('numeric')
@@ -69,7 +63,7 @@ const Day = () => {
     delayTouchStart: 50,
   }
 
-  const handleChange = (event, newValue) => {
+  const handleChangeTab = (event, newValue) => {
     setValue(newValue)
   }
 
@@ -87,7 +81,7 @@ const Day = () => {
           <Tabs
             sx={{ mt: 2, mb: 3 }}
             value={value}
-            onChange={handleChange}
+            onChange={handleChangeTab}
             variant='fullWidth'
           >
             <Tab label='Foods' />

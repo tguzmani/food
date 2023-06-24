@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Box, Grid, Typography, useTheme } from '@mui/material'
 import Measurements from './../measure/Measurements'
 import AddMeasureDialog from '../measure/AddMeasureDialog'
@@ -7,7 +7,6 @@ import useConditionalRead from 'hooks/useConditionalRead'
 import Loading from 'components/layout/Loading'
 import NoMeasurements from 'components/measure/NoMeasurements'
 import Page from 'components/layout/Page'
-import Collapsable from 'components/layout/Collapsable'
 
 const MeasurementsPage = () => {
   const theme = useTheme()

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListItem, Grid, Typography, Divider } from '@mui/material'
+import { ListItem, Grid, Typography } from '@mui/material'
 import { getTotalMacro } from 'util/food'
 
 const Value = ({ children, color }) => (

@@ -7,10 +7,9 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material'
-import { useStoreState } from 'easy-peasy'
 import useMealNumbers from 'hooks/useMealNumbers'
-import React from 'react'
 import MealsResumeTableRow from './MealsResumeTableRow'
+import React from 'react'
 
 const MealsResumeTable = ({ viewMode }) => {
   const mealNumbers = useMealNumbers()

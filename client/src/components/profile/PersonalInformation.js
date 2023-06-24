@@ -21,22 +21,8 @@ const PersonalInformation = () => {
     setProfileFields({ name, value })
   }
 
-  const { age, height } = profile
-
   return (
     <form>
-      {/* <TextField
-      fullWidth
-        variant='outlined'
-        margin='normal'
-        required
-        label='Age'
-        name='age'
-        type='number'
-        value={age}
-        onChange={onChange}
-      /> */}
-
       <TextField
       fullWidth
         variant='outlined'
@@ -45,7 +31,7 @@ const PersonalInformation = () => {
         label='Height'
         name='height'
         onChange={onChange}
-        value={height}
+        value={profile.height}
         type='number'
         InputProps={{
           endAdornment: (

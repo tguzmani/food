@@ -1,11 +1,8 @@
 import React from 'react'
 import {
   Box,
-  Divider,
   Typography,
   Grid,
-  Card,
-  CardContent,
 } from '@mui/material'
 
 import dayjs from 'dayjs'
@@ -15,11 +12,9 @@ import EmailIcon from '@mui/icons-material/Email'
 import PersonalInformation from './PersonalInformation'
 import MacroInformation from './MacroInformation'
 import BMRs from './BMRs'
-import useUser from 'hooks/useUser'
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
 import PersonIcon from '@mui/icons-material/Person'
 import { useStoreState } from 'easy-peasy'
-import CaloriesToolbar from './CaloriesToolbar'
 import useResponsive from 'hooks/useResponsive'
 
 const UserInformation = () => {
@@ -56,11 +51,7 @@ const UserInformation = () => {
           </Box>
 
           {/* Caloric Intake */}
-          <Card mt={2}>
-            <CardContent>
-              <BMRs />
-            </CardContent>
-          </Card>
+          <BMRs />
 
           {/* Personal Information */}
           <Box mt={isMobile ? 3 : 3}>

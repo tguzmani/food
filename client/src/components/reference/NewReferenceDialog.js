@@ -15,7 +15,6 @@ import ReferenceItem from './ReferenceItem'
 import FAB from '../layout/FAB'
 import AddIcon from '@mui/icons-material/Add'
 import { useStoreActions, useStoreState } from 'easy-peasy'
-import useUser from 'hooks/useUser'
 
 const NewReferenceDialog = () => {
   const [open, setOpen] = React.useState(false)

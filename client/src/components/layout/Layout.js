@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useTheme } from '@mui/material'
 
 import { Stack, Box, styled } from '@mui/material'
@@ -27,6 +27,7 @@ const Layout = ({ window, children }) => {
   const title = useTitle()
   const theme = useTheme()
 
+  // eslint-disable-next-line no-unused-vars
   const [_, setMobileOpen] = useState(false)
 
   const openDrawer = () => {
@@ -42,6 +43,7 @@ const Layout = ({ window, children }) => {
   return (
     <>
       <Stack
+        id='layout-stack'
         direction='row'
         sx={{
           height: isMobile ? mobileStackHeight : '100%',
@@ -58,6 +60,7 @@ const Layout = ({ window, children }) => {
           {children}
         </Main>
       </Stack>
+      
       {isMobile && <BottomNavigation />}
     </>
   )

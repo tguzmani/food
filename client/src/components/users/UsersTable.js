@@ -7,9 +7,7 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import { useStoreState } from 'easy-peasy'
-import dayjs from 'dayjs'
 import UsersTableRow from './UsersTableRow'
-import { Box } from '@mui/material'
 import useResponsive from 'hooks/useResponsive';
 
 const UsersTable = () => {

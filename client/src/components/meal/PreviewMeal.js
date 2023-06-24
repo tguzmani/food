@@ -19,8 +19,7 @@ import Total from '../food/Total'
 import WhatDidYouEat from './WhatDidYouEat'
 import useMealNumbers from '../../hooks/useMealNumbers'
 import { useStoreState, useStoreActions } from 'easy-peasy'
-import useUser from 'hooks/useUser'
-import { useDrop, useDrag } from 'react-dnd'
+import { useDrop } from 'react-dnd'
 
 const PreviewMeal = ({ foods }) => {
   const mealNumbers = useMealNumbers()

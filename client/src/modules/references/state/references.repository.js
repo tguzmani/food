@@ -9,8 +9,8 @@ export default class ReferencesRepository extends AxiosRepository {
     return await super.post('/', reference)
   }
 
-  async readReferences() {
-    return await super.get('/')
+  async readReferences(page) {
+    return await super.get(`/?page=${page}`)
   }
 
   async updateReference(reference) {

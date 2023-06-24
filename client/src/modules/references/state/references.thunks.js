@@ -15,9 +15,9 @@ const referencesThunks = {
     }
   }),
 
-  readReferences: thunk(async (actions, _, { fail }) => {
+  readReferences: thunk(async (actions, page, { fail }) => {
     try {
-      const references = await referencesRepository.readReferences()
+      const references = await referencesRepository.readReferences(page)
       actions.setReferences(references)
     } catch (error) {
       fail(error)

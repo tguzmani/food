@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import UserInformation from '../profile/UserInformation'
 import FAB from './../layout/FAB'
 import SaveIcon from '@mui/icons-material/Save'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import Page from 'components/layout/Page'
-import CaloriesToolbar from 'components/profile/CaloriesToolbar'
+import { Box, Tab, Tabs } from '@mui/material'
+import TabPanel from 'components/layout/TabPanel'
+import useResponsive from 'hooks/useResponsive'
 
 const ProfilePage = () => {
   const { user, loading, profile } = useStoreState(state => state.users)
   const { updateUser } = useStoreActions(state => state.users)
 
+  const isMobile = useResponsive('sm')
+
+  const [tab, setTab] = useState(0)
+
   const handleSaveChanges = () => {
     updateUser(profile)
+  }
+
+  const handleChangeTab = (event, newValue) => {
+    setTab(newValue)
   }
 
   if (!user) return <div>Loading...</div>
@@ -23,7 +33,7 @@ const ProfilePage = () => {
 
   return (
     <Page pathname='/profile'>
-      <div>
+      <Box mb={4}>
         <UserInformation />
         <FAB
           Icon={SaveIcon}
@@ -32,7 +42,7 @@ const ProfilePage = () => {
           disabled={loading}
           tooltipTitle='Save Changes'
         />
-      </div>
+      </Box>
     </Page>
   )
 }

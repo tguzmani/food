@@ -1,6 +1,5 @@
 import { useStoreState } from 'easy-peasy'
 import React from 'react'
-import useFoods from '../../hooks/useFoods'
 
 const Cleanliness = () => {
   const { alcoholUnits } = useStoreState(state => state.foods)

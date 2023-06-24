@@ -1,5 +1,4 @@
 import React from 'react'
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { Collapse, IconButton, Stack, Typography } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 

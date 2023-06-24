@@ -21,6 +21,7 @@ const StatisticsPage = () => {
 
   useEffect(() => {
     clearMeasurementsByQuery()
+    // eslint-disable-next-line
   }, [])
 
   if (measurements.length === 0 && !loading) return <NoMeasurementsStats />

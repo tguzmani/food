@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 // Pages
 import NotFound from './components/pages/NotFound'
@@ -16,22 +16,86 @@ import Register from './components/pages/Register'
 import PremiumRoute from 'components/routing/PremiumRoute'
 import AdminRoute from 'components/routing/AdminRoute'
 import PrivateRoute from './components/routing/PrivateRoute'
+import SettingsPage from 'components/pages/SettingsPage'
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/register' component={Register} />
-        <PrivateRoute exact path='/' component={Day} />
-        <PrivateRoute exact path='/measurements' component={MeasuresPage} />
+      <Routes>
+        <Route exact path='/login' element={<Login />} />
+        <Route exact path='/register' element={<Register />} />
 
-        <PrivateRoute exact path='/references' component={ReferencesPage} />
-        <PremiumRoute exact path='/statistics' component={StatisticsPage} />
-        <PrivateRoute exact path='/profile' component={ProfilePage} />
-        <AdminRoute exact path='/users' component={UsersPage} />
-        <Route path='*' component={NotFound} />
-      </Switch>
+        <Route
+          exact
+          path='/'
+          element={
+            <PrivateRoute>
+              <Day />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          exact
+          path='/measurements'
+          element={
+            <PrivateRoute>
+              <MeasuresPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          exact
+          path='/references'
+          element={
+            <PrivateRoute>
+              <ReferencesPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          exact
+          path='/profile'
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          exact
+          path='/settings'
+          element={
+            <PrivateRoute>
+              <SettingsPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          exact
+          path='/statistics'
+          element={
+            <PremiumRoute>
+              <StatisticsPage />
+            </PremiumRoute>
+          }
+        />
+
+        <Route
+          exact
+          path='/users'
+          element={
+            <AdminRoute>
+              <UsersPage />
+            </AdminRoute>
+          }
+        />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
     </BrowserRouter>
   )
 }

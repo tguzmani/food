@@ -1,24 +1,28 @@
-import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
-import Layout from '../layout/Layout'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import useAuth from 'hooks/useAuth'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 import BackdropLoading from '../layout/BackdropLoading'
 import useConditionalRead from 'hooks/useConditionalRead'
 import PrivateRoute from './PrivateRoute'
 
-const PremiumRoute = ({ component: Component, ...rest }) => {
+const PremiumRoute = ({ children }) => {
   const isAuth = useAuth()
   const { loading, user, userIsPremium } = useStoreState(state => state.users)
   const { readUser } = useStoreActions(state => state.users)
+  const navigate = useNavigate()
 
   useConditionalRead([{ name: readUser, condition: !user }])
 
+  useEffect(() => {
+    if (isAuth && userIsPremium) {
+      navigate('/')
+    }
+  }, [isAuth, loading, userIsPremium, navigate])
+
   if (loading && !user) return <BackdropLoading open={loading} />
 
-  const condition = isAuth && userIsPremium
-
-  return condition ? <PrivateRoute component={Component} /> : <Redirect to='/' />
+  return <PrivateRoute>{children}</PrivateRoute>
 }
 
 export default PremiumRoute

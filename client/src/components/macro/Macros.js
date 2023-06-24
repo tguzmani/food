@@ -5,8 +5,7 @@ import Cleanliness from './Cleanliness'
 import Drinks from './Drinks'
 import Macro from './Macro'
 import useResponsive from './../../hooks/useResponsive'
-import { useStoreActions, useStoreState } from 'easy-peasy'
-import useUser from 'hooks/useUser'
+import { useStoreState } from 'easy-peasy'
 
 const Macros = () => {
   const isMobile = useResponsive('sm')

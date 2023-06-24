@@ -1,6 +1,5 @@
-import { Stack } from '@mui/system'
 import { useStoreState } from 'easy-peasy'
-import React, { useState } from 'react'
+import React from 'react'
 import MealsResumeTable from './MealsResumeTable'
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
 import { Typography } from '@mui/material'

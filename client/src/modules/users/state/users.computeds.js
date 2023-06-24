@@ -46,6 +46,25 @@ const usersComputeds = {
 
     return state.baseBMR === 0 ? 0 : state.activiyBMR + offset
   }),
+
+  proteinCalories: computed(state =>
+    state.profileBaseWeight * 2.2 * state.profile.proteinPref * 4
+  ),
+
+  fatCalories: computed(state =>
+    (state.offsetBMR * state.profile.fatPref) / 100
+  ),
+
+  carbsCalories: computed(state =>
+    state.offsetBMR - state.proteinCalories - state.fatCalories
+  ),
+
+  proteinGrams: computed(state => state.proteinCalories / 4),
+
+  fatGrams: computed(state => state.fatCalories / 9),
+
+  carbsGrams: computed(state => state.carbsCalories / 4),
+  
 }
 
 export default usersComputeds

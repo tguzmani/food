@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, List } from '@mui/material'
+import { Card, CardContent, List } from '@mui/material'
 import React from 'react'
 import MeasurementItem from './MeasureItem'
 import { sortByDate } from '../../util/measure'

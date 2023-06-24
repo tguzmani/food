@@ -7,7 +7,6 @@ import {
   Avatar,
   IconButton,
   MenuItem,
-  useTheme,
   Divider,
 } from '@mui/material'
 import React from 'react'
@@ -18,12 +17,10 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
 import Menu from '../layout/Menu'
 import useMenu from 'hooks/useMenu'
 import { useStoreActions, useStoreState } from 'easy-peasy'
-import useUser from 'hooks/useUser'
 import { useDrop } from 'react-dnd'
 
 const MealItem = ({ foods, number }) => {
   const { deleteFood, updateFood } = useStoreActions(actions => actions.foods)
-  const theme = useTheme()
   const { userIsPremium } = useStoreState(state => state.users)
   const thisMealFoods = foods.filter(food => food.meal === number)
 
