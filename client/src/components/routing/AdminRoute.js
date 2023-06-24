@@ -15,7 +15,7 @@ const AdminRoute = ({ children }) => {
   useConditionalRead([{ name: readUser, condition: !user }])
 
   useEffect(() => {
-    if (isAuth && userIsAdmin) {
+    if (!isAuth && !userIsAdmin) {
       navigate('/')
     }
   }, [isAuth, loading, userIsAdmin, navigate])

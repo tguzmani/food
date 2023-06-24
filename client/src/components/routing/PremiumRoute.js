@@ -15,7 +15,10 @@ const PremiumRoute = ({ children }) => {
   useConditionalRead([{ name: readUser, condition: !user }])
 
   useEffect(() => {
-    if (isAuth && userIsPremium) {
+    if (!isAuth && !userIsPremium) {
+      console.log('isAuth', isAuth)
+      console.log('userIsPremium', userIsPremium)
+      console.log('loading', loading)
       navigate('/')
     }
   }, [isAuth, loading, userIsPremium, navigate])
