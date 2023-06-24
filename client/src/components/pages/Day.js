@@ -74,18 +74,18 @@ const Day = () => {
   }
 
   return (
-    <Page pathname='/'>
-      <Container disableGutters maxWidth='md'>
+    <Page pathname="/">
+      <Container disableGutters maxWidth="md">
         <Macros />
         <DndProvider backend={Backend} options={dndOptions}>
           <Tabs
             sx={{ mt: 2, mb: 3 }}
             value={value}
             onChange={handleChangeTab}
-            variant='fullWidth'
+            variant="fullWidth"
           >
-            <Tab label='Foods' />
-            <Tab label='Meals' />
+            <Tab label="Foods" />
+            <Tab label="Meals" />
           </Tabs>
           <TabPanel value={value} index={0}>
             <>
