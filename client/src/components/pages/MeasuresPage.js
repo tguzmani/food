@@ -7,11 +7,14 @@ import useConditionalRead from 'hooks/useConditionalRead'
 import Loading from 'components/layout/Loading'
 import NoMeasurements from 'components/measure/NoMeasurements'
 import Page from 'components/layout/Page'
+import { useTranslation } from 'react-i18next'
 
 const MeasurementsPage = () => {
   const theme = useTheme()
   const { readMeasurements } = useStoreActions(actions => actions.measurements)
   const { measurements, loading } = useStoreState(state => state.measurements)
+
+  const { t } = useTranslation()
 
   useConditionalRead([
     {
@@ -31,7 +34,7 @@ const MeasurementsPage = () => {
           <Grid container display='flex' spacing={3}>
             <Grid item xs={12} lg={6}>
               <Typography variant='h6' component='h2' gutterBottom>
-                This block
+                {t('measurements.thisBlock')}
               </Typography>
 
               <Measurements measurements={measurements} current />
@@ -40,7 +43,7 @@ const MeasurementsPage = () => {
               <Grid item xs={12} lg={6}>
                 
               <Typography variant='h6' component='h2' gutterBottom>
-                Last block
+              {t('measurements.lastBlock')}
               </Typography>
 
               <Measurements measurements={measurements} />

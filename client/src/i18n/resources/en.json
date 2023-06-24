@@ -39,6 +39,7 @@
     "measurements": {
       "measurements": "Measurements",
       "thisBlock": "This block",
+      "lastBlock": "Last block",
       "details": "Details",
       "weight": "Weight",
       "mean": "Mean",

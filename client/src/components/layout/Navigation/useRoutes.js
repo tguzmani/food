@@ -5,13 +5,16 @@ import TimelineIcon from '@mui/icons-material/Timeline'
 import PersonIcon from '@mui/icons-material/Person'
 import PeopleIcon from '@mui/icons-material/People'
 import { useStoreState } from 'easy-peasy'
+import { useTranslation } from 'react-i18next'
 
 const useRoutes = () => {
   const { userIsPremium, userIsAdmin } = useStoreState(state => state.users)
 
+  const { t } = useTranslation()
+
   let routes = [
-    { to: '/', text: 'Day', Icon: TodayIcon },
-    { to: '/measurements', text: 'Measurements', Icon: AssessmentIcon },
+    { to: '/', text: t('sidebar.day'), Icon: TodayIcon },
+    { to: '/measurements', text: t('sidebar.measurements'), Icon: AssessmentIcon },
     { to: '/references', text: 'References', Icon: InfoIcon },
     {
       to: '/statistics',

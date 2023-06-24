@@ -39,6 +39,7 @@
     "measurements": {
       "measurements": "Medidas",
       "thisBlock": "Este bloque",
+      "lastBlock": "Último bloque",
       "details": "Detalles",
       "weight": "Peso",
       "mean": "Media",
