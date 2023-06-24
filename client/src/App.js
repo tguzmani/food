@@ -11,6 +11,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import Theme from 'Theme'
 import Router from 'Router'
 
+import './i18n/config';
+
 const App = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>

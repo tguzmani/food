@@ -1,0 +1,112 @@
+{
+  "translation": {
+    "actions": {
+      "cancel": "Cancel",
+      "add": "Add",
+      "update": "Update"
+    },
+
+    "common": {
+      "protein": "Protein",
+      "carbs": "Carbs",
+      "fat": "Fat",
+      "cal": "cal",
+      "Cal": "Cal"
+    },
+
+    "day": {
+      "day": "Day",
+      "whatDidYouEat": "What did you eat?",
+      "foods": "Foods",
+      "meals": "Meals"
+    },
+
+    "meals": {
+      "clean": "Clean",
+      "deleteMeal": "Delete Meal",
+      "total": "Total"
+    },
+
+    "sidebar": {
+      "day": "Day",
+      "measurements": "Measurements",
+      "references": "References",
+      "statistics": "Statistics",
+      "users": "Users",
+      "profile": "Profile"
+    },
+
+    "measurements": {
+      "measurements": "Measurements",
+      "thisBlock": "This block",
+      "details": "Details",
+      "weight": "Weight",
+      "mean": "Mean",
+      "stdev": "Stdev",
+      "min": "Min",
+      "max": "Max"
+    },
+
+    "references": {
+      "references": "References",
+      "searchReference": "Search Reference",
+      "referenceNotFound": "Reference Not Found",
+      "tryAgainWithDifferentSearchTerm": "Try again with a different search term",
+      "addReference": "Add Reference",
+      "name": "Name",
+      "portionSize": "Portion Size",
+      "dirty": "Dirty",
+      "alcohol": "Alcohol",
+      "preview": "Preview"
+    },
+
+    "statistics": {
+      "statistics": "Statistics",
+      "sendQuery": "Send Query",
+      "from": "From",
+      "to": "To",
+      "category": "Category",
+      "weight": "Weight",
+      "fat": "Fat",
+      "alcohol": "Alcohol",
+      "sleep": "Sleep",
+      "cleanliness": "Cleanliness",
+      "calories": "Calories",
+      "averageCategoryPerWeek": "Average {{category}} per week"
+    },
+
+    "profile": {
+      "since": "Since",
+      "profile": "Profile",
+      "premiumMembership": "Premium Membership",
+      "trialMembership": "Trial Membership",
+      "personalInformation": "Personal Information",
+      "height": "Height",
+      "macronutrientInformation": "Macronutrient Information",
+      "baseWeight": "Base Weight",
+      "offsetMode": "Offset Mode",
+      "deficit": "Deficit",
+      "maintenance": "Maintenance",
+      "surplus": "Surplus",
+      "offset": "Offset",
+      "offsetDescription": "Offset is the difference between your maintenance calories and your daily calorie target. For weight loss, we recommend setting a daily calorie target between 200 to 700 calories below your maintenance level. For muscle gain, we recommend a target between 250 to 450 calories above your maintenance level. Please note that these are general guidelines, and your ideal calorie target may vary depending on your unique body and goals. We encourage you to experiment and adjust your target based on your progress and how you feel.",
+      "activity": "Activity",
+      "moderatelyActive": "Moderately Active: 3-5 days of moderate exercise",
+      "proteinPreference": "{{grams}} g per lb of base weight",
+      "proteinPreferenceDescription": "If you enjoy eating protein-rich foods, you may choose to set a higher protein target. Increasing your protein intake will naturally decrease your carbohydrate intake.",
+      "fatPreference": "Fat Preference",
+      "fatPreferenceDescription": "If you prefer a diet that's higher in fat, you may choose to set a higher fat target. This will naturally decrease your carbohydrate intake."
+    },
+
+    "settings": {
+      "settings": "Settings",
+      "display": "Display",
+      "darkMode": "Dark Mode",
+      "lightMode": "Light Mode",
+      "accessibility": "Accessibility",
+      "language": "Language",
+      "english": "English",
+      "spanish": "Spanish"
+    }
+  }
+}

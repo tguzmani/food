@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 
 const useTitle = () => {
   const location = useLocation().pathname
   const [title, setTitle] = useState('Food')
+  const { t } = useTranslation()
 
   const titles = {
-    '/': 'Day',
-    '/measurements': 'Measurements',
-    '/references': 'References',
-    '/profile': 'Profile',
-    '/statistics': 'Statistics',
-    '/users': 'Users',
-    '/settings': 'Settings',
-  }
+    '/': t('sidebar.day'),
+    '/measurements': t('sidebar.measurements'),
+    '/references': t('sidebar.references'),
+    '/profile': t('sidebar.profile'),
+    '/statistics': t('sidebar.statistics'),
+    '/users': t('sidebar.users'),
+    '/settings': t('sidebar.settings'),
+  };
 
   useEffect(() => {
     const title = titles[location.match(/\/[a-z]*/)[0]]

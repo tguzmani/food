@@ -14,6 +14,10 @@ const UsersTable = () => {
   const { users } = useStoreState(state => state.users)
   const isMobile = useResponsive('sm')
 
+  const sortedUsersByFirstName = users.sort((a, b) => 
+    a.firstName < b.firstName ? -1 : 1
+  )
+
   return (
     <div>
       <TableContainer component={Paper}>
@@ -27,7 +31,7 @@ const UsersTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map(user => (
+            {sortedUsersByFirstName.map(user => (
               <UsersTableRow user={user} key={user._id} />
             ))}
           </TableBody>

@@ -28,10 +28,6 @@ const AppBar = ({ title }) => {
 
   const loadings = Object.keys(state).some(key => state[key].loading)
 
-  const handleToggleDrag = () => {
-    toggleCanDragFoods()
-  }
-
   return (
     <MuiAppBar
       position='fixed'
@@ -57,7 +53,7 @@ const AppBar = ({ title }) => {
 
         <Stack direction='row' justifyContent='center' alignItems='center' spacing={1}>
           <AppBarActions
-            handleToggleDrag={handleToggleDrag}
+            handleToggleDrag={toggleCanDragFoods}
           />
         </Stack>
 

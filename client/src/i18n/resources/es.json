@@ -1,0 +1,111 @@
+{
+  "translation": {
+    "actions": {
+      "cancel": "Cancelar",
+      "add": "Agregar",
+      "update": "Actualizar"
+    },
+
+    "common": {
+      "protein": "Proteína",
+      "carbs": "Carbohidratos",
+      "fat": "Grasa",
+      "cal": "cal",
+      "Cal": "Cal"
+    },
+
+    "day": {
+      "day": "Día",
+      "whatDidYouEat": "¿Qué comiste?",
+      "foods": "Alimentos",
+      "meals": "Comidas"
+    },
+
+    "meals": {
+      "clean": "Limpiar",
+      "deleteMeal": "Eliminar Comida",
+      "total": "Total"
+    },
+
+    "sidebar": {
+      "day": "Día",
+      "measurements": "Medidas",
+      "references": "Referencias",
+      "statistics": "Estadísticas",
+      "users": "Usuarios",
+      "profile": "Perfil"
+    },
+
+    "measurements": {
+      "measurements": "Medidas",
+      "thisBlock": "Este bloque",
+      "details": "Detalles",
+      "weight": "Peso",
+      "mean": "Media",
+      "stdev": "Desviación estándar",
+      "min": "Mínimo",
+      "max": "Máximo"
+    },
+
+    "references": {
+      "references": "Referencias",
+      "searchReference": "Buscar Referencia",
+      "referenceNotFound": "Referencia No Encontrada",
+      "tryAgainWithDifferentSearchTerm": "Inténtalo de nuevo con un término de búsqueda diferente",
+      "addReference": "Agregar Referencia",
+      "name": "Nombre",
+      "portionSize": "Tamaño de Porción",
+      "dirty": "Sucio",
+      "alcohol": "Alcohol",
+      "preview": "Vista previa"
+    },
+
+    "statistics": {
+      "statistics": "Estadísticas",
+      "sendQuery": "Enviar Consulta",
+      "from": "Desde",
+      "to": "Hasta",
+      "category": "Categoría",
+      "weight": "Peso",
+      "fat": "Grasa",
+      "alcohol": "Alcohol",
+      "sleep": "Sueño",
+      "cleanliness": "Limpieza",
+      "calories": "Calorías",
+      "averageCategoryPerWeek": "{{category}} promedio por semana"
+    },
+
+    "profile": {
+      "since": "Desde",
+      "profile": "Perfil",
+      "premiumMembership": "Membresía Premium",
+      "trialMembership": "Membresía de Prueba",
+      "personalInformation": "Información Personal",
+      "height": "Altura",
+      "macronutrientInformation": "Información de Macronutrientes",
+      "baseWeight": "Peso Base",
+      "offsetMode": "Modo de Desviación",
+      "deficit": "Déficit",
+      "maintenance": "Mantenimiento",
+      "surplus": "Superávit",
+      "offset": "Desviación es la diferencia entre tus calorías de mantenimiento y tu objetivo diario de calorías. Para perder peso, recomendamos establecer un objetivo diario de calorías entre 200 y 700 calorías por debajo de tu nivel de mantenimiento. Para ganar músculo, recomendamos un objetivo entre 250 y 450 calorías por encima de tu nivel de mantenimiento. Ten en cuenta que estas son pautas generales, y tu objetivo ideal de calorías puede variar según tu cuerpo y metas únicas. Te animamos a experimentar y ajustar tu objetivo según tu progreso y cómo te sientas.",
+      "activity": "Actividad",
+      "moderatelyActive": "Moderadamente Activo: 3-5 días de ejercicio moderado",
+      "proteinPreference": "{{grams}} g por lb de peso base",
+      "proteinPreferenceDescription": "Si te gustan los alimentos ricos en proteínas, puedes elegir establecer un objetivo de proteínas más alto. Aumentar tu ingesta de proteínas disminuirá naturalmente tu ingesta de carbohidratos.",
+      "fatPreference": "Preferencia de Grasa",
+      "fatPreferenceDescription": "Si prefieres una dieta con más grasa, puedes elegir establecer un objetivo de grasa más alto. Esto disminuirá naturalmente tu ingesta de carbohidratos."
+    },
+
+    "settings": {
+      "settings": "Configuración",
+      "display": "Visualización",
+      "darkMode": "ModoOscuro",
+      "lightMode": "Modo Claro",
+      "accessibility": "Accesibilidad",
+      "language": "Idioma",
+      "english": "Inglés",
+      "spanish": "Español"
+    }
+  }
+}
