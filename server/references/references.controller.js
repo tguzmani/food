@@ -15,9 +15,7 @@ exports.createReference = async (req, res) => {
 
 exports.readReferencesByUserId = async (req, res) => {
   try {
-    const references = await referencesServices.readReferencesByUserId(
-      req.userId
-    )
+    references = await referencesServices.readReferencesByUserId(req.userId)
 
     res.send(references)
   } catch (error) {
@@ -45,7 +43,10 @@ exports.updateReference = async (req, res) => {
 exports.deleteReference = async (req, res) => {
   const { referenceId } = req.params
   try {
-    const reference = await referencesServices.deleteReference(referenceId, req.userId)
+    const reference = await referencesServices.deleteReference(
+      referenceId,
+      req.userId
+    )
 
     res.send(reference)
   } catch (error) {

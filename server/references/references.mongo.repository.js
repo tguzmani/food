@@ -19,6 +19,13 @@ exports.readReferencesByUserId = async userId => {
   return await Reference.find({ user: userId }).sort({ name: 1 })
 }
 
+exports.readReferencesByUserIdPaginated = async (userId, page, perPage) => {
+  return await Reference.find({ user: userId })
+    .sort({ name: 1 })
+    .skip((page - 1) * perPage)
+    .limit(perPage)
+}
+
 exports.readReferenceByUserId = async (referenceId, userId) => {
   return await Reference.findOne({ _id: referenceId, user: userId })
 }
@@ -31,10 +38,10 @@ exports.updateReference = async (referenceId, reference) => {
   })
 }
 
-exports.createManyReferences = async (references) => {
+exports.createManyReferences = async references => {
   return await Reference.create(references)
 }
 
-exports.deleteReference = async (referenceId) => {
+exports.deleteReference = async referenceId => {
   return await Reference.findByIdAndDelete(referenceId)
 }

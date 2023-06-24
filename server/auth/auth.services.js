@@ -1,4 +1,5 @@
 const usersRepository = require('../users/users.mongo.repository')
+const referencesServices = require('../references/references.services')
 const encrypt = require('../common/encrypt')
 
 exports.signUp = async userData => {
@@ -17,6 +18,11 @@ exports.signUp = async userData => {
   })
 
   newUser.password = undefined
+
+  await referencesServices.copyReferencesToUser(
+    '5e923079db60c276d5c278f9',
+    newUser._id,
+  )
 
   return newUser
 }

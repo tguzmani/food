@@ -38,6 +38,10 @@ exports.readReferencesByUserId = async userId => {
   return await referencesRepository.readReferencesByUserId(userId)
 }
 
+exports.readReferencesByUserIdPaginated = async (userId, page, perPage) => { 
+   return await referencesRepository.readReferencesByUserIdPaginated(userId, page, perPage)
+}
+
 exports.updateReference = async (referenceId, reference) => {
   return await referencesRepository.updateReference(referenceId, reference)
 }
