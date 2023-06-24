@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import React from 'react'
 
 import UserInformation from '../profile/UserInformation'
 import FAB from './../layout/FAB'
 import SaveIcon from '@mui/icons-material/Save'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import Page from 'components/layout/Page'
-import { Box, Tab, Tabs } from '@mui/material'
-import TabPanel from 'components/layout/TabPanel'
+import { Box } from '@mui/material'
 import useResponsive from 'hooks/useResponsive'
 
 const ProfilePage = () => {

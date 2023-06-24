@@ -12,6 +12,7 @@ const useTitle = () => {
     '/profile': 'Profile',
     '/statistics': 'Statistics',
     '/users': 'Users',
+    '/settings': 'Settings',
   }
 
   useEffect(() => {

@@ -22,23 +22,15 @@ import AppBarActions from './AppBarActions'
 const AppBar = ({ title }) => {
   const isDarkMode = useIsDarkMode()
 
-  const { signOut } = useStoreActions(actions => actions.users)
   const { toggleCanDragFoods } = useStoreActions(actions => actions.foods)
 
   const state = useStoreState(state => state)
 
   const loadings = Object.keys(state).some(key => state[key].loading)
 
-  const handleLogout = () => {
-    handleCloseMenu()
-    signOut()
-  }
-
   const handleToggleDrag = () => {
     toggleCanDragFoods()
   }
-
-  const [anchorEl, handleOpenMenu, handleCloseMenu] = useMenu()
 
   return (
     <MuiAppBar
@@ -63,24 +55,13 @@ const AppBar = ({ title }) => {
           {title}
         </Typography>
 
-        <Stack direction='row' justifyContent='center' alignItems='center'>
+        <Stack direction='row' justifyContent='center' alignItems='center' spacing={1}>
           <AppBarActions
-            handleOpenMenu={handleOpenMenu}
             handleToggleDrag={handleToggleDrag}
           />
         </Stack>
 
-        <Menu
-          open={Boolean(anchorEl)}
-          onClose={handleCloseMenu}
-          anchorEl={anchorEl}
-        >
-          <MenuItem component={Link} to='/profile' onClick={handleCloseMenu}>
-            Profile
-          </MenuItem>
-          <Divider />
-          <MenuItem onClick={handleLogout}>Logout</MenuItem>
-        </Menu>
+       
       </Stack>
     </MuiAppBar>
   )

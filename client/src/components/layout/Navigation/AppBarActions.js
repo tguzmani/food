@@ -1,29 +1,30 @@
 import React from 'react'
 import { useStoreActions, useStoreState } from 'easy-peasy'
-import LightModeIcon from '@mui/icons-material/LightMode'
-import DarkModeIcon from '@mui/icons-material/DarkMode'
 
 import SettingsIcon from '@mui/icons-material/Settings'
 
-import { IconButton, Collapse } from '@mui/material'
+import {
+  IconButton,
+  Collapse,
+  Typography,
+  Stack,
+  Menu,
+  MenuItem,
+  Divider,
+} from '@mui/material'
 
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import OpenWithIcon from '@mui/icons-material/OpenWith'
 
-import useIsDarkMode from 'hooks/useIsDarkMode'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import useMenu from 'hooks/useMenu'
 
-const AppBarActions = ({ handleOpenMenu, handleToggleDrag }) => {
-  const { userIsPremium } = useStoreState(state => state.users)
+const AppBarActions = ({ handleToggleDrag }) => {
+  const { userIsPremium, user } = useStoreState(state => state.users)
   const { pathname } = useLocation()
   const { canDragFoods } = useStoreState(state => state.foods)
-  const isDarkMode = useIsDarkMode()
-
-  const { updateUser } = useStoreActions(state => state.users)
-
-  const handleToggleTheme = () => {
-    updateUser({ themeMode: isDarkMode ? 'light' : 'dark' })
-  }
+  const { signOut } = useStoreActions(actions => actions.users)
 
   const navigate = useNavigate()
 
@@ -31,28 +32,60 @@ const AppBarActions = ({ handleOpenMenu, handleToggleDrag }) => {
     navigate('/settings')
   }
 
+  const [anchorEl, handleOpenMenu, handleCloseMenu] = useMenu()
+
+  const handleLogout = () => {
+    handleCloseMenu()
+    signOut()
+  }
+
   return (
     <>
-      {/* Theme toggler */}
-      <IconButton
-        edge='end'
-        sx={{ color: 'inherit' }}
-        onClick={handleGoToSettings}
-      >
-        <SettingsIcon />
-      </IconButton>
-
       {/* Drag N Drop */}
       <Collapse orientation='horizontal' in={pathname === '/' && userIsPremium}>
         <IconButton
           id='dnd-toggle-button'
-          edge='end'
-          sx={{ color: canDragFoods ? 'primary.main' : 'inherit', ml: 1 }}
+          sx={{ color: canDragFoods ? 'primary.main' : 'inherit' }}
           onClick={handleToggleDrag}
         >
           <OpenWithIcon />
         </IconButton>
       </Collapse>
+
+      {pathname === '/profile' && (
+        <IconButton
+          edge='end'
+          sx={{ color: 'inherit' }}
+          onClick={handleGoToSettings}
+        >
+          <SettingsIcon />
+        </IconButton>
+      )}
+
+      {pathname !== '/profile' && (
+        <Stack direction='row' spacing={0.5} alignItems='center' mr={-1.5}>
+          <Typography variant='body2'>{user?.firstName}</Typography>
+          <IconButton
+            edge='end'
+            sx={{ color: 'inherit' }}
+            onClick={handleOpenMenu}
+          >
+            <AccountCircleIcon />
+          </IconButton>
+        </Stack>
+      )}
+
+      <Menu
+        open={Boolean(anchorEl)}
+        onClose={handleCloseMenu}
+        anchorEl={anchorEl}
+      >
+        <MenuItem component={Link} to='/profile' onClick={handleCloseMenu}>
+          Profile
+        </MenuItem>
+        <Divider />
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      </Menu>
     </>
   )
 }
