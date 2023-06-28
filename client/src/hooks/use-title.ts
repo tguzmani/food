@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 
 const useTitle = () => {
   const location = useLocation().pathname
-  const [title, setTitle] = useState('Food')
+  const [title, setTitle] = useState<string>('Physfit')
   const { t } = useTranslation()
 
   const titles: Record<string, string> = {
@@ -21,7 +21,7 @@ const useTitle = () => {
     const baseUrl = location.match(/\/[a-z]*/)
     const title = titles[baseUrl ? baseUrl[0] : '']
     setTitle(title)
-    document.title = `Food | ${t(title)}`
+    document.title = `Physfit | ${t(title)}`
     // eslint-disable-next-line
   }, [location])
 
