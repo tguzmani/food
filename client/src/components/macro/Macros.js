@@ -16,7 +16,7 @@ const Macros = () => {
   const justify = isMobile ? 'space-around' : 'center'
 
   return (
-    <Box>
+    <Box mb={3}>
       <Box mb={2}>
         <Grid
           container
