@@ -1,7 +1,8 @@
-import { BottomNavigationAction } from '@mui/material'
+import { BottomNavigationAction, Typography } from '@mui/material'
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { NavigationItem } from './navigation.model'
+import { useTranslation } from 'react-i18next'
 
 interface BottomNavItemProps {
   navigationItem: NavigationItem
@@ -27,6 +28,8 @@ const BottomNavItem = ({ navigationItem }: BottomNavItemProps) => {
       }}
       icon={<navigationItem.Icon />}
       onClick={handleNavigateTo}
+      label={<Typography variant='caption' fontSize='9px'>{navigationItem.text}</Typography>}
+      showLabel
     />
   )
 }
