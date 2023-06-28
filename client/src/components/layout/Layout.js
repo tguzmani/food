@@ -8,7 +8,7 @@ import DesktopDrawer from './Navigation/DesktopDrawer'
 import useResponsive from '../../hooks/useResponsive'
 
 import useTitle from 'hooks/use-title'
-import BottomNavigation from './Navigation/BottomNavigation'
+import BottomNavigation from './Navigation/bottom-navigation'
 import { useTranslation } from 'react-i18next'
 
 const Nav = styled(Box)(({ theme }) => ({

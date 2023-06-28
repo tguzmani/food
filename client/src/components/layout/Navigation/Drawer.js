@@ -3,10 +3,10 @@ import React from 'react'
 import { Box, Typography, List } from '@mui/material'
 import NavItem from './NavItem'
 
-import useRoutes from './useRoutes'
+import useNavigationItems from './use-navigation-items'
 
 const Drawer = ({ onClose }) => {
-  const routes = useRoutes()
+  const routes = useNavigationItems()
 
   return (
     <>

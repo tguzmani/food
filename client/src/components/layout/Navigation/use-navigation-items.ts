@@ -4,15 +4,17 @@ import InfoIcon from '@mui/icons-material/Info'
 import TimelineIcon from '@mui/icons-material/Timeline'
 import PersonIcon from '@mui/icons-material/Person'
 import PeopleIcon from '@mui/icons-material/People'
-import { useStoreState } from 'easy-peasy'
+import { useStoreState } from 'config/easy-peasy.store'
 import { useTranslation } from 'react-i18next'
+import { NavigationItem } from './navigation.model'
 
-const useRoutes = () => {
-  const { userIsPremium, userIsAdmin } = useStoreState(state => state.users)
+
+const useNavigationItems = () => {
+  // const { userIsPremium, userIsAdmin } = useStoreState(state => state.users)
 
   const { t } = useTranslation()
 
-  let routes = [
+  let navigationItems: NavigationItem[] = [
     { to: '/', text: t('sidebar.day'), Icon: TodayIcon },
     { to: '/measurements', text: t('sidebar.measurements'), Icon: AssessmentIcon },
     { to: '/references', text: 'References', Icon: InfoIcon },
@@ -26,11 +28,11 @@ const useRoutes = () => {
     { to: '/profile', text: 'Profile', Icon: PersonIcon },
   ]
 
-  if (!userIsPremium) routes = routes.filter(link => !link.isPremium)
+  // if (!userIsPremium) navigationItems = navigationItems.filter(link => !link.isPremium)
 
-  if (!userIsAdmin) routes = routes.filter(link => !link.isAdmin)
+  // if (!userIsAdmin) navigationItems = navigationItems.filter(link => !link.isAdmin)
 
-  return routes
+  return navigationItems
 }
 
-export default useRoutes
+export default useNavigationItems
