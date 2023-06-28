@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { useTheme } from '@mui/material'
 
 import { Stack, Box, styled } from '@mui/material'
@@ -7,8 +7,9 @@ import AppBar from './Navigation/AppBar'
 import DesktopDrawer from './Navigation/DesktopDrawer'
 import useResponsive from '../../hooks/useResponsive'
 
-import useTitle from 'hooks/useTitle'
+import useTitle from 'hooks/use-title'
 import BottomNavigation from './Navigation/BottomNavigation'
+import { useTranslation } from 'react-i18next'
 
 const Nav = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
@@ -26,6 +27,7 @@ const Layout = ({ window, children }) => {
   const isMobile = useResponsive('md')
   const title = useTitle()
   const theme = useTheme()
+  const { t } = useTranslation()
 
   // eslint-disable-next-line no-unused-vars
   const [_, setMobileOpen] = useState(false)
@@ -50,7 +52,7 @@ const Layout = ({ window, children }) => {
           overflowY: isMobile ? 'scroll' : 'hidden',
         }}
       >
-        <AppBar title={title} openDrawer={openDrawer} />
+        <AppBar title={t(title)} openDrawer={openDrawer} />
 
         <Nav>{!isMobile && <DesktopDrawer onClose={closeDrawer} />}</Nav>
 

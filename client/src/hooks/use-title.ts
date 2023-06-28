@@ -7,18 +7,19 @@ const useTitle = () => {
   const [title, setTitle] = useState('Food')
   const { t } = useTranslation()
 
-  const titles = {
-    '/': t('sidebar.day'),
-    '/measurements': t('sidebar.measurements'),
-    '/references': t('sidebar.references'),
-    '/profile': t('sidebar.profile'),
-    '/statistics': t('sidebar.statistics'),
-    '/users': t('sidebar.users'),
-    '/settings': t('sidebar.settings'),
+  const titles: Record<string, string> = {
+    '/': 'sidebar.day',
+    '/measurements': 'sidebar.measurements',
+    '/references': 'sidebar.references',
+    '/profile': 'sidebar.profile',
+    '/statistics': 'sidebar.statistics',
+    '/users': 'sidebar.users',
+    '/settings': 'sidebar.settings',
   };
 
   useEffect(() => {
-    const title = titles[location.match(/\/[a-z]*/)[0]]
+    const baseUrl = location.match(/\/[a-z]*/)
+    const title = titles[baseUrl ? baseUrl[0] : '']
     setTitle(title)
     document.title = `Food | ${title}`
     // eslint-disable-next-line
