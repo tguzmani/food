@@ -14,8 +14,12 @@ jobs:
       - name: Login to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          heroku_api_key: 682c31c2-b7ae-4ce0-92bc-bbd1a1c024dd
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: tom-food
+      - name: Show secrets
+        run: |
+          echo ${{ secrets.HEROKU_API_KEY }}
+          echo ${{ secrets.HEROKU_APP_NAME }}
       - name: Deploy to production in Heroku
         run: |
           cd /
