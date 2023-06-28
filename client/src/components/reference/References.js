@@ -13,7 +13,7 @@ const References = ({ references, isFiltering }) => {
   const { readReferences } = useStoreActions(actions => actions.references)
 
   return (
-    <Box my={3}>
+    <Box mt={3}>
       <Card
         sx={{
           border: isDarkMode ? '1px solid' : 'none',

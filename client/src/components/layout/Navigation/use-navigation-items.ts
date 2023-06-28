@@ -24,7 +24,7 @@ const useNavigationItems = () => {
       Icon: TimelineIcon,
       isPremium: true,
     },
-    // { to: '/users', text: 'Users', Icon: PeopleIcon, isAdmin: true },
+    { to: '/users', text: 'Users', Icon: PeopleIcon, isAdmin: true },
     { to: '/profile', text: 'Profile', Icon: PersonIcon },
   ]
 
