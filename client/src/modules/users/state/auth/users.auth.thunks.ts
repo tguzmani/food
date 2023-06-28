@@ -1,10 +1,13 @@
-import { thunk } from 'easy-peasy'
+import { Actions, thunk } from 'easy-peasy'
 import UsersAuthRepository from './users.auth.repository'
+import UsersStoreModel from '../users.store.model'
+import { UserCredentials } from '../models/users.auth.model'
+import { User } from '../models/users.model'
 
 const usersAuthRepository = new UsersAuthRepository()
 
 const usersAuthThunks = {
-  signIn: thunk(async (actions, credentials, { fail }) => {
+  signIn: thunk(async (actions: Actions<UsersStoreModel>, credentials: UserCredentials, { fail }) => {
     try {
       const user = await usersAuthRepository.signIn(credentials)
 
@@ -15,7 +18,7 @@ const usersAuthThunks = {
     }
   }),
 
-  signUp: thunk(async (actions, credentials, { fail }) => {
+  signUp: thunk(async (actions: Actions<UsersStoreModel>, credentials: UserCredentials, { fail }) => {
     try {
       const user = await usersAuthRepository.signUp(credentials)
 
@@ -26,10 +29,10 @@ const usersAuthThunks = {
     }
   }),
 
-  signOut: thunk(async (actions, credentials) => {
+  signOut: thunk(async (actions: Actions<UsersStoreModel>) => {
     await usersAuthRepository.signOut()
 
-    actions.setUser(undefined)
+    actions.unsetUser()
     actions.setIsAuthenticated(false)
   }),
 }

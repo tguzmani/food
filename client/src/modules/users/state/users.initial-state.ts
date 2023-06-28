@@ -1,8 +1,11 @@
-const profile = {
+import { UserProfile } from "./models/users.model"
+import { UsersInitialState } from "./users.store.model"
+
+const profile: UserProfile = {
   age: 0,
-  height: '',
+  height: 0,
   sex: '',
-  baseWeight: '',
+  baseWeight: 0,
   offset: 0,
   offsetMode: 'maintenance',
 
@@ -11,11 +14,11 @@ const profile = {
   fatPref: 20,
 }
 
-const usersInitialState = {
+const usersInitialState: UsersInitialState = {
   user: undefined,
   users: [], 
   isAuthenticated: false,
-  loading: true,
+  loading: false,
   error: undefined,
   profile,
 }

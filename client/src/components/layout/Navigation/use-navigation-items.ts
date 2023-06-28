@@ -10,7 +10,7 @@ import { NavigationItem } from './navigation.model'
 
 
 const useNavigationItems = () => {
-  // const { userIsPremium, userIsAdmin } = useStoreState(state => state.users)
+  const { userIsPremium, userIsAdmin } = useStoreState(state => state.users)
 
   const { t } = useTranslation()
 

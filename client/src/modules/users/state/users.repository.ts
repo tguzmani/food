@@ -1,4 +1,5 @@
 import AxiosRepository from 'common/axios.repository'
+import { User } from './models/users.model'
 
 export default class UsersRepository extends AxiosRepository {
   constructor() {
@@ -13,11 +14,11 @@ export default class UsersRepository extends AxiosRepository {
     return await super.get('/')
   }
 
-  async updateUser(user) {
+  async updateUser(user: User) {
     return await super.put('/', user)
   }
 
-  async updateUserByAdmin(user) {
+  async updateUserByAdmin(user: User) {
     return await super.put(`/${user._id}`, user)
   }
 }
