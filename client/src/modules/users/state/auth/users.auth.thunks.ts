@@ -18,7 +18,7 @@ const usersAuthThunks = {
     }
   }),
 
-  signUp: thunk(async (actions: Actions<UsersStoreModel>, credentials: UserCredentials, { fail }) => {
+  signUp: thunk(async (actions: Actions<UsersStoreModel>, credentials: any, { fail }) => {
     try {
       const user = await usersAuthRepository.signUp(credentials)
 

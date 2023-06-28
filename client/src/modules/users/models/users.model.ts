@@ -1,6 +1,9 @@
 import { MongoModel } from 'common/models'
 
 export type UserProfileOffsetMode = 'deficit' | 'surplus' | 'maintenance'
+export type Units = 'kg' | 'lb'
+export type Gender = 'm' | 'f'
+
 
 export interface UserGoals {
   protein: number

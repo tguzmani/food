@@ -6,7 +6,7 @@ import bg2 from 'img/bg-1.jpg'
 import bg3 from 'img/bg-2.jpg'
 import bg4 from 'img/bg-3.jpg'
 
-import RegisterForm from '../auth/RegisterForm'
+import RegisterForm from '../auth/register-form'
 import useResponsive from 'hooks/useResponsive'
 
 const backgrounds = [bg1, bg2, bg3, bg4]
