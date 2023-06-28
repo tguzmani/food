@@ -16,6 +16,11 @@ jobs:
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: tom-food
+      - name: Set up Heroku remote
+        uses: actions/heroku@v7
+        with:
+          args: 'git:remote -a tom-food'
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
       - name: Deploy to production in Heroku
         run: |
           cd app
@@ -24,4 +29,4 @@ jobs:
           heroku config:set NODE_ENV=production
           npm install --legacy-peer-deps
           npm run build
-          git push heroku HEAD:master
+          git push heroku HEAD:refs/heads/main --force
