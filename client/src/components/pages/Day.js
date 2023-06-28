@@ -78,28 +78,8 @@ const Day = () => {
       <Container disableGutters maxWidth="md">
         <Macros />
         <DndProvider backend={Backend} options={dndOptions}>
-          <Tabs
-            sx={{ mt: 2, mb: 3 }}
-            value={value}
-            onChange={handleChangeTab}
-            variant="fullWidth"
-          >
-            <Tab label="Foods" />
-            <Tab label="Meals" />
-          </Tabs>
-          <TabPanel value={value} index={0}>
-            <>
-              <PreviewMeal />
-              <Meals foods={mealsFoods} mealNumbers={mealNumbers} />
-            </>
-          </TabPanel>
-
-          <TabPanel value={value} index={1}>
-            <MealsResume
-              viewMode={viewMode}
-              handleChangeViewMode={handleChangeViewMode}
-            />
-          </TabPanel>
+          <PreviewMeal />
+          <Meals foods={mealsFoods} mealNumbers={mealNumbers} />
         </DndProvider>
       </Container>
     </Page>
