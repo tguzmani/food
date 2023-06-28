@@ -1,5 +1,5 @@
 import AxiosRepository from 'common/axios.repository'
-import { User } from './models/users.model'
+import { User } from '../models/users.model'
 
 export default class UsersRepository extends AxiosRepository {
   constructor() {

@@ -1,4 +1,4 @@
-import { UserProfile } from "./models/users.model"
+import { UserProfile } from "../models/users.model"
 import { UsersInitialState } from "./users.store.model"
 
 const profile: UserProfile = {

@@ -1,7 +1,7 @@
 import { Actions, thunk } from 'easy-peasy'
 import UsersRepository from './users.repository'
 import UsersStoreModel from './users.store.model'
-import { User } from './models/users.model'
+import { User } from '../models/users.model'
 
 const usersRepository = new UsersRepository()
 

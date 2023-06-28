@@ -1,8 +1,8 @@
 import { CommonStoreActions, CommonStoreModel } from 'common/models'
 import { Action, Computed, FilterActionTypes, StateMapper, Thunk } from 'easy-peasy'
-import { User, UserProfile } from './models/users.model'
-import { UserCredentials } from './models/users.auth.model'
-import { SetProfileFieldsDto } from './models/users.dto.model'
+import { User, UserProfile } from '../models/users.model'
+import { UserCredentials } from '../models/users.auth.model'
+import { SetProfileFieldsDto } from '../models/users.dto.model'
 
 export type UsersState = StateMapper<FilterActionTypes<UsersStoreModel>>
 

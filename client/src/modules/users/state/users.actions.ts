@@ -1,7 +1,7 @@
 import { action } from 'easy-peasy'
 import usersInitialState from './users.initial-state'
-import { SetProfileFieldsDto } from './models/users.dto.model'
-import { User, UserProfile } from './models/users.model'
+import { SetProfileFieldsDto } from '../models/users.dto.model'
+import { User, UserProfile } from '../models/users.model'
 import { UsersState } from './users.store.model'
 import { StoreError } from 'common/models'
 

@@ -1,8 +1,8 @@
 import { Actions, thunk } from 'easy-peasy'
 import UsersAuthRepository from './users.auth.repository'
 import UsersStoreModel from '../users.store.model'
-import { UserCredentials } from '../models/users.auth.model'
-import { User } from '../models/users.model'
+import { UserCredentials } from '../../models/users.auth.model'
+import { User } from '../../models/users.model'
 
 const usersAuthRepository = new UsersAuthRepository()
 
