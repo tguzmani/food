@@ -11,19 +11,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Show secrets
-        run: |
-          echo ${{ secrets.HEROKU_API_KEY }}
-          echo ${{ secrets.HEROKU_APP_NAME }}
       - name: Login to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: tom-food
-
       - name: Deploy to production in Heroku
         run: |
-          cd /
+          cd app
           heroku config:set NPM_CONFIG_PRODUCTION=false
           heroku config:set NODE_MODULES_CACHE=false
           heroku config:set NODE_ENV=production
