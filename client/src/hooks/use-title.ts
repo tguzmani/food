@@ -21,7 +21,7 @@ const useTitle = () => {
     const baseUrl = location.match(/\/[a-z]*/)
     const title = titles[baseUrl ? baseUrl[0] : '']
     setTitle(title)
-    document.title = `Food | ${title}`
+    document.title = `Food | ${t(title)}`
     // eslint-disable-next-line
   }, [location])
 
