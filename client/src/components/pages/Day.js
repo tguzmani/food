@@ -3,7 +3,7 @@ import Meals from './../meal/Meals'
 import PreviewMeal from '../meal/PreviewMeal'
 import Macros from '../macro/Macros'
 import useMealNumbers from './../../hooks/useMealNumbers'
-import { Container, Tab, Tabs } from '@mui/material'
+import { Container } from '@mui/material'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import useConditionalRead from 'hooks/useConditionalRead'
 import Loading from 'components/layout/Loading'
@@ -14,15 +14,10 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { TouchBackend } from 'react-dnd-touch-backend'
 import useResponsive from 'hooks/useResponsive'
-import TabPanel from 'components/layout/TabPanel'
-import MealsResume from 'components/meal/MealsResume'
 import Page from 'components/layout/Page'
 
 const Day = () => {
   const isMobile = useResponsive('sm')
-
-  const [value, setValue] = useState(0)
-  const [viewMode, setViewMode] = useState('numeric')
 
   const { foods, mealsFoods, loading } = useStoreState(state => state.foods)
   const { measurements, loading: loadingMeasurements } = useStoreState(
@@ -61,16 +56,6 @@ const Day = () => {
 
   const dndOptions = {
     delayTouchStart: 50,
-  }
-
-  const handleChangeTab = (event, newValue) => {
-    setValue(newValue)
-  }
-
-  const handleChangeViewMode = (_, mode) => {
-    if (mode !== null) {
-      setViewMode(mode)
-    }
   }
 
   return (
