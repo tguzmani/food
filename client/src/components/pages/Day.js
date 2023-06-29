@@ -28,12 +28,8 @@ const Day = () => {
   const [viewMode, setViewMode] = useState('numeric')
 
   const { foods, mealsFoods, loading } = useStoreState(state => state.foods)
-  const { measurements, loading: loadingMeasurements } = useStoreState(
-    state => state.measurements
-  )
-  const { references, loading: loadingReferences } = useStoreState(
-    state => state.references
-  )
+  const { measurements, loading: loadingMeasurements } = useStoreState(state => state.measurements)
+  const { references, loading: loadingReferences } = useStoreState(state => state.references)
 
   const { readFoods } = useStoreActions(actions => actions.foods)
   const { readMeasurements } = useStoreActions(actions => actions.measurements)
@@ -54,11 +50,9 @@ const Day = () => {
 
   if (foods.length === 0 && loading && !foodsRead) return <Loading />
 
-  if (measurements.length === 0 && !loadingMeasurements)
-    return <NoMeasurementsFoods />
+  if (measurements.length === 0 && !loadingMeasurements) return <NoMeasurementsFoods />
 
-  if (references.length === 0 && !loadingReferences)
-    return <NoReferencesFoods />
+  if (references.length === 0 && !loadingReferences) return <NoReferencesFoods />
 
   const Backend = isMobile ? TouchBackend : HTML5Backend
 
@@ -81,28 +75,8 @@ const Day = () => {
       <Container disableGutters maxWidth="md">
         <Macros />
         <DndProvider backend={Backend} options={dndOptions}>
-          <Tabs
-            sx={{ mt: 2, mb: 3 }}
-            value={value}
-            onChange={handleChangeTab}
-            variant="fullWidth"
-          >
-            <Tab label={t('day.foods')} />
-            <Tab label={t('day.meals')} />
-          </Tabs>
-          <TabPanel value={value} index={0}>
-            <>
-              <PreviewMeal />
-              <Meals foods={mealsFoods} mealNumbers={mealNumbers} />
-            </>
-          </TabPanel>
-
-          <TabPanel value={value} index={1}>
-            <MealsResume
-              viewMode={viewMode}
-              handleChangeViewMode={handleChangeViewMode}
-            />
-          </TabPanel>
+          <PreviewMeal />
+          <Meals foods={mealsFoods} mealNumbers={mealNumbers} />
         </DndProvider>
       </Container>
     </Page>

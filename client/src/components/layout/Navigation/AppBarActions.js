@@ -83,6 +83,10 @@ const AppBarActions = ({ handleToggleDrag }) => {
         <MenuItem component={Link} to='/profile' onClick={handleCloseMenu}>
           Profile
         </MenuItem>
+
+        <MenuItem component={Link} to='/settings' onClick={handleCloseMenu}>
+          Settings
+        </MenuItem>
         <Divider />
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>

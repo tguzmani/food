@@ -30,7 +30,7 @@ const AppBar = ({ title }) => {
 
   return (
     <MuiAppBar
-      position='fixed'
+      position="fixed"
       sx={{
         backgroundColor: 'transparent',
         backdropFilter: 'blur(8px)',
@@ -44,20 +44,21 @@ const AppBar = ({ title }) => {
       <Stack
         component={Toolbar}
         sx={{ minHeight: '40px !important' }}
-        direction='row'
-        justifyContent='space-between'
+        direction="row"
+        justifyContent="space-between"
       >
-        <Typography variant='h6' sx={{ fontSize: 18 }}>
+        <Typography variant="h6" sx={{ fontSize: 18 }}>
           {title}
         </Typography>
 
-        <Stack direction='row' justifyContent='center' alignItems='center' spacing={1}>
-          <AppBarActions
-            handleToggleDrag={toggleCanDragFoods}
-          />
+        <Stack
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          spacing={1}
+        >
+          <AppBarActions handleToggleDrag={toggleCanDragFoods} />
         </Stack>
-
-       
       </Stack>
     </MuiAppBar>
   )

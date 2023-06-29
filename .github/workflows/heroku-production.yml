@@ -1,0 +1,28 @@
+name: Deploy to production in Heroku
+
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Login to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: tom-food
+          heroku_email: tomasg92@gmail.com
+      - name: Deploy to production in Heroku
+        run: |
+          cd app
+          heroku config:set NPM_CONFIG_PRODUCTION=false
+          heroku config:set NODE_MODULES_CACHE=false
+          heroku config:set NODE_ENV=production
+          npm install --legacy-peer-deps
+          npm run build
+          git push heroku HEAD:refs/heads/main --force

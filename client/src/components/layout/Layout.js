@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { useTheme } from '@mui/material'
 
 import { Stack, Box, styled } from '@mui/material'
@@ -7,8 +7,9 @@ import AppBar from './Navigation/AppBar'
 import DesktopDrawer from './Navigation/DesktopDrawer'
 import useResponsive from '../../hooks/useResponsive'
 
-import useTitle from 'hooks/useTitle'
-import BottomNavigation from './Navigation/BottomNavigation'
+import useTitle from 'hooks/use-title'
+import BottomNavigation from './Navigation/bottom-navigation'
+import { useTranslation } from 'react-i18next'
 
 const Nav = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
@@ -19,6 +20,8 @@ const Nav = styled(Box)(({ theme }) => ({
 
 const Main = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3),
+  height: `calc(100vh - 54px)`,
+  overflowY: 'scroll',
   flexGrow: 1,
 }))
 
@@ -26,6 +29,7 @@ const Layout = ({ window, children }) => {
   const isMobile = useResponsive('md')
   const title = useTitle()
   const theme = useTheme()
+  const { t } = useTranslation()
 
   // eslint-disable-next-line no-unused-vars
   const [_, setMobileOpen] = useState(false)
@@ -38,29 +42,26 @@ const Layout = ({ window, children }) => {
     setMobileOpen(false)
   }
 
-  const mobileStackHeight = `calc(100vh - ${theme.mixins.toolbar.minHeight}px)`
+  const mobileStackHeight = `calc(100vh - 54px)`
+
+  console.log(theme.mixins.toolbar)
 
   return (
     <>
       <Stack
-        id='layout-stack'
-        direction='row'
-        sx={{
-          height: isMobile ? mobileStackHeight : '100%',
-          overflowY: isMobile ? 'scroll' : 'hidden',
-        }}
+        id="layout-stack"
+        direction="row"
       >
-        <AppBar title={title} openDrawer={openDrawer} />
+        <AppBar title={t(title)} openDrawer={openDrawer} />
 
         <Nav>{!isMobile && <DesktopDrawer onClose={closeDrawer} />}</Nav>
 
-        <Main>
+        <Main id='main'>
           <Box sx={{ ...theme.mixins.toolbar }} />
-
           {children}
         </Main>
       </Stack>
-      
+
       {isMobile && <BottomNavigation />}
     </>
   )
