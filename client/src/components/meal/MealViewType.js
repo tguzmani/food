@@ -1,18 +1,20 @@
 import { ToggleButton, ToggleButtonGroup } from '@mui/material'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
-const MealViewType = ({viewMode, onChangeViewMode }) => {
+const MealViewType = ({ viewMode, onChangeViewMode }) => {
+  const { t } = useTranslation()
   return (
     <ToggleButtonGroup
       sx={{ mb: 3 }}
       fullWidth
       value={viewMode}
-      variant='contained'
+      variant="contained"
       exclusive
       onChange={onChangeViewMode}
     >
-      <ToggleButton value='numeric'>Numeric</ToggleButton>
-      <ToggleButton value='percent'>Percent</ToggleButton>
+      <ToggleButton value="numeric">{t('mealView.numeric')}</ToggleButton>
+      <ToggleButton value="percent">{t('mealView.percent')}</ToggleButton>
     </ToggleButtonGroup>
   )
 }

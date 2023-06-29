@@ -3,7 +3,9 @@
     "actions": {
       "cancel": "Cancel",
       "add": "Add",
-      "update": "Update"
+      "update": "Update",
+      "clear": "Clear",
+      "create": "Create"
     },
 
     "common": {
@@ -24,7 +26,8 @@
     "meals": {
       "clean": "Clean",
       "deleteMeal": "Delete Meal",
-      "total": "Total"
+      "total": "Total",
+      "addToMeal": "Add To Meal"
     },
 
     "sidebar": {
@@ -108,6 +111,20 @@
       "language": "Language",
       "english": "English",
       "spanish": "Spanish"
+    },
+
+    "mealView": {
+      "numeric": "Numeric",
+      "percent": "Percent"
+    },
+
+    "dialog": {
+      "addMeasurement": "Add Measurement",
+      "addFoodToMealResume": "Add some food to see the resume of your meals",
+      "upgradePremium": "Upgrade to premium to see the resume of your meals",
+      "noFoodInMeal": "No foods in this meal",
+      "dropHereToCreateMeal": "Drop here to create preview meal",
+      "noMeasureAvailable": "No measurements available"
     }
   }
 }

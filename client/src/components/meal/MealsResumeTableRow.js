@@ -1,6 +1,7 @@
 import { TableCell, TableRow, Typography } from '@mui/material'
 import { useStoreState } from 'easy-peasy'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { getTotalCalories, getTotalMacro } from 'util/food'
 
 const Value = ({ children, color }) => {
@@ -8,8 +9,8 @@ const Value = ({ children, color }) => {
 
   return (
     <Typography
-      variant='body2'
-      align='center'
+      variant="body2"
+      align="center"
       xs={3}
       sx={{
         color,
@@ -25,7 +26,6 @@ const Value = ({ children, color }) => {
 const toPercent = value => {
   return Math.round(value * 100) + '%'
 }
-
 
 const MealsResumeTableRow = ({ viewMode, mealNumber }) => {
   const { foods } = useStoreState(state => state.foods)
@@ -52,28 +52,28 @@ const MealsResumeTableRow = ({ viewMode, mealNumber }) => {
       key={mealNumber}
       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
     >
-      <TableCell align='center'>{mealNumber}</TableCell>
+      <TableCell align="center">{mealNumber}</TableCell>
 
-      <TableCell align='center'>
+      <TableCell align="center">
         <Value>
           {viewMode === 'percent' ? thisMealCaloriesPercent : thisMealCalories}
         </Value>
       </TableCell>
 
-      <TableCell align='center'>
-        <Value color='error.main'>
+      <TableCell align="center">
+        <Value color="error.main">
           {viewMode === 'percent' ? thisMealProteinPercent : thisMealProtein}
         </Value>
       </TableCell>
 
-      <TableCell align='center'>
-        <Value color='primary.main'>
+      <TableCell align="center">
+        <Value color="primary.main">
           {viewMode === 'percent' ? thisMealCarbsPercent : thisMealCarbs}
         </Value>
       </TableCell>
 
-      <TableCell align='center'>
-        <Value color='success.main'>
+      <TableCell align="center">
+        <Value color="success.main">
           {viewMode === 'percent' ? thisMealFatPercent : thisMealFat}
         </Value>
       </TableCell>

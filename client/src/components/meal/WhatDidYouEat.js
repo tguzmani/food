@@ -1,11 +1,14 @@
 import { TextField } from '@mui/material'
 import React from 'react'
 import { useStoreActions } from 'easy-peasy'
+import { useTranslation } from 'react-i18next'
 
 const WhatDidYouEat = () => {
   const { createFood } = useStoreActions(actions => actions.foods)
 
   const [query, setQuery] = React.useState('')
+
+  const { t } = useTranslation()
 
   const onChangeQuery = e => {
     setQuery(e.target.value)
@@ -76,11 +79,11 @@ const WhatDidYouEat = () => {
     <form onSubmit={handleSubmit}>
       <TextField
         fullWidth
-        label='What did you eat?'
+        label={t('day.whatDidYouEat')}
         value={query}
-        variant='outlined'
+        variant="outlined"
         onChange={onChangeQuery}
-        className='bg-white'
+        className="bg-white"
       />
     </form>
   )

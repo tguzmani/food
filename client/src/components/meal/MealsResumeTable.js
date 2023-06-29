@@ -10,20 +10,23 @@ import {
 import useMealNumbers from 'hooks/useMealNumbers'
 import MealsResumeTableRow from './MealsResumeTableRow'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const MealsResumeTable = ({ viewMode }) => {
   const mealNumbers = useMealNumbers()
+
+  const { t } = useTranslation()
 
   return (
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell align='center'>#</TableCell>
-            <TableCell align='center'>Cal</TableCell>
-            <TableCell align='center'>Protein</TableCell>
-            <TableCell align='center'>Carbs</TableCell>
-            <TableCell align='center'>Fat</TableCell>
+            <TableCell align="center">#</TableCell>
+            <TableCell align="center">{t('common.Cal')}</TableCell>
+            <TableCell align="center">{t('common.protein')}</TableCell>
+            <TableCell align="center">{t('common.carbs')}</TableCell>
+            <TableCell align="center">{t('common.fat')}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

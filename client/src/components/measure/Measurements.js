@@ -56,12 +56,12 @@ const Measurements = ({ measurements, current }) => {
   }
 
   return thisMeasurements.length === 0 ? (
-    <Typography variant='body1'>No measurements available</Typography>
+    <Typography variant="body1">{t('dialog.noMeasureAvailable')}</Typography>
   ) : (
     <Stack spacing={2}>
-      <PropertyPlot data={thisMeasurements} property='weight' />
-      <StatisticsTable data={thisMeasurements} property='weight' />
-      <Collapsable open={showList} toggler={toggleShowList} text='Details'>
+      <PropertyPlot data={thisMeasurements} property="weight" />
+      <StatisticsTable data={thisMeasurements} property="weight" />
+      <Collapsable open={showList} toggler={toggleShowList} text="Details">
         <MeasureList measurements={thisMeasurements} />
       </Collapsable>
     </Stack>

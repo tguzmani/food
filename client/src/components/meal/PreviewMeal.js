@@ -20,6 +20,7 @@ import WhatDidYouEat from './WhatDidYouEat'
 import useMealNumbers from '../../hooks/useMealNumbers'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 import { useDrop } from 'react-dnd'
+import { useTranslation } from 'react-i18next'
 
 const PreviewMeal = ({ foods }) => {
   const mealNumbers = useMealNumbers()
@@ -29,6 +30,8 @@ const PreviewMeal = ({ foods }) => {
   const { deleteFood, updateFood } = useStoreActions(actions => actions.foods)
 
   const [anchorEl, setAnchorEl] = React.useState(null)
+
+  const { t } = useTranslation()
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget)
@@ -93,8 +96,8 @@ const PreviewMeal = ({ foods }) => {
             marginTop: 2,
           }}
         >
-          <Typography variant='h6' align='center' color='primary.main'>
-            Drop here to create preview meal
+          <Typography variant="h6" align="center" color="primary.main">
+            {t('dialog.dropHereToCreateMeal')}
           </Typography>
         </Box>
       )}
@@ -106,10 +109,10 @@ const PreviewMeal = ({ foods }) => {
               backgroundColor: isOver ? 'primary.lighter' : 'inherit',
             }}
           >
-            <CardHeader avatar={<Avatar>P</Avatar>} title='Preview' />
+            <CardHeader avatar={<Avatar>P</Avatar>} title="Preview" />
 
             <CardContent>
-              <Typography variant='body1' gutterBottom align='right'>
+              <Typography variant="body1" gutterBottom align="right">
                 {Math.round(getTotalCalories(previewMealFoods))} cal
               </Typography>
               <Foods foods={previewMealFoods} />
@@ -124,23 +127,23 @@ const PreviewMeal = ({ foods }) => {
             {previewMealFoods.length > 0 && (
               <CardActions>
                 <Stack
-                  direction='row'
-                  justifyContent='space-between'
-                  alignItems='center'
+                  direction="row"
+                  justifyContent="space-between"
+                  alignItems="center"
                   width={1}
                 >
-                  <Button size='small' onClick={handleClear}>
-                    Clear
+                  <Button size="small" onClick={handleClear}>
+                    {t('actions.clear')}
                   </Button>
 
-                  <Stack direction='row' alignItems='center' spacing={2}>
+                  <Stack direction="row" alignItems="center" spacing={2}>
                     {mealNumbers.length > 0 && (
                       <Button
-                        size='small'
-                        color='primary'
+                        size="small"
+                        color="primary"
                         onClick={handleClick}
                       >
-                        Add To Meal
+                        {t('meals.addToMeal')}
                       </Button>
                     )}
                     <Menu
@@ -162,12 +165,12 @@ const PreviewMeal = ({ foods }) => {
                         ))}
                     </Menu>
                     <Button
-                      size='small'
-                      color='primary'
-                      variant='contained'
+                      size="small"
+                      color="primary"
+                      variant="contained"
                       onClick={handleCreate}
                     >
-                      Create
+                      {t('actions.create')}
                     </Button>
                   </Stack>
                 </Stack>

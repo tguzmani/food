@@ -17,9 +17,12 @@ import useResponsive from 'hooks/useResponsive'
 import TabPanel from 'components/layout/TabPanel'
 import MealsResume from 'components/meal/MealsResume'
 import Page from 'components/layout/Page'
+import { useTranslation } from 'react-i18next'
 
 const Day = () => {
   const isMobile = useResponsive('sm')
+
+  const { t } = useTranslation()
 
   const [value, setValue] = useState(0)
   const [viewMode, setViewMode] = useState('numeric')
@@ -84,8 +87,8 @@ const Day = () => {
             onChange={handleChangeTab}
             variant="fullWidth"
           >
-            <Tab label="Foods" />
-            <Tab label="Meals" />
+            <Tab label={t('day.foods')} />
+            <Tab label={t('day.meals')} />
           </Tabs>
           <TabPanel value={value} index={0}>
             <>

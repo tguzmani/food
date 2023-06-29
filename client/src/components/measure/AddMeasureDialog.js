@@ -19,6 +19,7 @@ import dayjs from 'dayjs'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import useConditionalRead from 'hooks/useConditionalRead'
 import useUser from 'hooks/useUser'
+import { useTranslation } from 'react-i18next'
 
 var isToday = require('dayjs/plugin/isToday')
 dayjs.extend(isToday)
@@ -78,72 +79,74 @@ const AddMeasureDialog = () => {
   const lastMeasureIsFromToday =
     lastMeasure && !dayjs(lastMeasure.createdAt).isToday()
 
+  const { t } = useTranslation()
+
   return (
     <>
       <FAB
         Icon={AddIcon}
         show={lastMeasureIsFromToday || measurements.length === 0}
         onClick={handleOpen}
-        tooltipTitle='Weight In!'
+        tooltipTitle="Weight In!"
       />
 
-      <Dialog maxWidth='xs' open={open} onClose={handleClose}>
-        <DialogTitle>Add Measurement</DialogTitle>
+      <Dialog maxWidth="xs" open={open} onClose={handleClose}>
+        <DialogTitle>{t('dialog.addMeasurement')}</DialogTitle>
 
         <DialogContent>
           <TextField
-            margin='normal'
+            margin="normal"
             fullWidth
-            name='weight'
+            name="weight"
             value={weight}
             onChange={onChange}
-            type='number'
-            label='Weight'
+            type="number"
+            label="Weight"
             InputProps={{
               endAdornment: (
-                <InputAdornment position='end'>{user?.units}</InputAdornment>
+                <InputAdornment position="end">{user?.units}</InputAdornment>
               ),
             }}
           ></TextField>
 
           <TextField
-            margin='normal'
+            margin="normal"
             fullWidth
-            name='fat'
+            name="fat"
             value={fat}
             onChange={onChange}
-            type='number'
-            label='Fat %'
+            type="number"
+            label="Fat %"
             InputProps={{
-              endAdornment: <InputAdornment position='end'>%</InputAdornment>,
+              endAdornment: <InputAdornment position="end">%</InputAdornment>,
             }}
           ></TextField>
 
           <TextField
-            margin='normal'
+            margin="normal"
             fullWidth
-            name='sleep'
+            name="sleep"
             value={sleep}
             onChange={onChange}
-            type='number'
-            label='Sleep'
+            type="number"
+            label="Sleep"
             InputProps={{
-              endAdornment: <InputAdornment position='end'>h</InputAdornment>,
+              endAdornment: <InputAdornment position="end">h</InputAdornment>,
             }}
           ></TextField>
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={handleClose} color='primary'>
-            Cancel
+          <Button onClick={handleClose} color="primary">
+            {t('actions.cancel')}
           </Button>
           <Button
-            variant='contained'
+            variant="contained"
             onClick={handleAddMeasure}
-            color='primary'
+            color="primary"
             disabled={weight === ''}
           >
-            Add
+            {t('actions.add')}
           </Button>
         </DialogActions>
       </Dialog>
