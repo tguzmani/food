@@ -1,10 +1,12 @@
-import { thunk } from 'easy-peasy'
+import { Actions, thunk } from 'easy-peasy'
 import UsersRepository from './users.repository'
+import UsersStoreModel from './users.store.model'
+import { User } from '../models/users.model'
 
 const usersRepository = new UsersRepository()
 
 const usersThunks = {
-  readUser: thunk(async (actions, _, { fail }) => {
+  readUser: thunk(async (actions: Actions<UsersStoreModel>, _, { fail }) => {
     try {
       const user = await usersRepository.readUser()
       actions.setUser(user)
@@ -14,7 +16,7 @@ const usersThunks = {
     }
   }),
 
-  readUsers: thunk(async (actions, _, { fail }) => {
+  readUsers: thunk(async (actions: Actions<UsersStoreModel>, _, { fail }) => {
     try {
       const users = await usersRepository.readUsers()
       actions.setUsers(users)
@@ -23,7 +25,7 @@ const usersThunks = {
     }
   }),
 
-  updateUser: thunk(async (actions, user, { fail }) => {
+  updateUser: thunk(async (actions: Actions<UsersStoreModel>, user: User, { fail }) => {
     const isSetupComplete = user.isSetupComplete || true
 
     try {
@@ -37,7 +39,7 @@ const usersThunks = {
     }
   }),
 
-  updateUserByAdmin: thunk(async (actions, user, { fail }) => {
+  updateUserByAdmin: thunk(async (actions: Actions<UsersStoreModel>, user: User, { fail }) => {
     try {
       const updatedUser = await usersRepository.updateUserByAdmin(user)
       actions.replaceUser(updatedUser)

@@ -19,10 +19,11 @@ exports.signUp = async userData => {
 
   newUser.password = undefined
 
-  await referencesServices.copyReferencesToUser(
-    '5e923079db60c276d5c278f9',
-    newUser._id,
-  )
+  if (process.env.SOURCE_USER_ID)
+    await referencesServices.copyReferencesToUser(
+      process.env.SOURCE_USER_ID,
+      newUser._id
+    )
 
   return newUser
 }

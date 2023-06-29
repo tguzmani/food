@@ -3,13 +3,13 @@ import Box from '@mui/material/Box'
 import {
   BottomNavigation as MuiBottomNavigation,
 } from '@mui/material'
-import useRoutes from './useRoutes'
-import BottomNavItem from './BottomNavItem'
+import useNavigationItems from './use-navigation-items'
+import BottomNavItem from './bottom-navigation.item'
 
 const BottomNavigation = () => {
   const [value, setValue] = React.useState(0)
 
-  const routes = useRoutes()
+  const navigationItems = useNavigationItems()
 
   return (
     <Box sx={{ position: 'fixed', bottom: 0, width: '100vw' }}>
@@ -21,8 +21,8 @@ const BottomNavigation = () => {
         }}
         sx={{borderTop: '1px solid', borderColor: 'divider'}}
       >
-        {routes.map(route => (
-          <BottomNavItem key={route.to} route={route} />
+        {navigationItems.map(navigationItem => (
+          <BottomNavItem key={navigationItem.to} navigationItem={navigationItem} />
         ))}
       </MuiBottomNavigation>
     </Box>

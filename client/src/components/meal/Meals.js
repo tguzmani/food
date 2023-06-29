@@ -4,7 +4,7 @@ import MealItem from './MealItem'
 
 const Meals = ({ foods, mealNumbers }) => {
   return (
-    <List>
+    <List disablePadding>
       {mealNumbers.map(number => (
         <MealItem
           key={number}
