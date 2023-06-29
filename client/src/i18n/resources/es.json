@@ -3,7 +3,9 @@
     "actions": {
       "cancel": "Cancelar",
       "add": "Agregar",
-      "update": "Actualizar"
+      "update": "Actualizar",
+      "clear": "Borrar",
+      "create": "Crear"
     },
 
     "common": {
@@ -23,8 +25,9 @@
 
     "meals": {
       "clean": "Limpiar",
-      "deleteMeal": "Eliminar Comida",
-      "total": "Total"
+      "deleteMeal": "Eliminar comida",
+      "total": "Total",
+      "addToMeal": "Agregar a la comida"
     },
 
     "sidebar": {
@@ -51,12 +54,12 @@
 
     "references": {
       "references": "Referencias",
-      "searchReference": "Buscar Referencia",
-      "referenceNotFound": "Referencia No Encontrada",
+      "searchReference": "Buscar referencia",
+      "referenceNotFound": "Referencia no encontrada",
       "tryAgainWithDifferentSearchTerm": "Inténtalo de nuevo con un término de búsqueda diferente",
-      "addReference": "Agregar Referencia",
+      "addReference": "Agregar referencia",
       "name": "Nombre",
-      "portionSize": "Tamaño de Porción",
+      "portionSize": "Tamaño de porción",
       "dirty": "Sucio",
       "alcohol": "Alcohol",
       "preview": "Vista previa"
@@ -64,7 +67,7 @@
 
     "statistics": {
       "statistics": "Estadísticas",
-      "sendQuery": "Enviar Consulta",
+      "sendQuery": "Enviar consulta",
       "from": "Desde",
       "to": "Hasta",
       "category": "Categoría",
@@ -80,13 +83,13 @@
     "profile": {
       "since": "Desde",
       "profile": "Perfil",
-      "premiumMembership": "Membresía Premium",
-      "trialMembership": "Membresía de Prueba",
-      "personalInformation": "Información Personal",
+      "premiumMembership": "Membresía premium",
+      "trialMembership": "Membresía de prueba",
+      "personalInformation": "Información personal",
       "height": "Altura",
-      "macronutrientInformation": "Información de Macronutrientes",
-      "baseWeight": "Peso Base",
-      "offsetMode": "Modo de Desviación",
+      "macronutrientInformation": "Información de macronutrientes",
+      "baseWeight": "Peso base",
+      "offsetMode": "Modo de desviación",
       "deficit": "Déficit",
       "maintenance": "Mantenimiento",
       "surplus": "Superávit",
@@ -95,19 +98,33 @@
       "moderatelyActive": "Moderadamente Activo: 3-5 días de ejercicio moderado",
       "proteinPreference": "{{grams}} g por lb de peso base",
       "proteinPreferenceDescription": "Si te gustan los alimentos ricos en proteínas, puedes elegir establecer un objetivo de proteínas más alto. Aumentar tu ingesta de proteínas disminuirá naturalmente tu ingesta de carbohidratos.",
-      "fatPreference": "Preferencia de Grasa",
+      "fatPreference": "Preferencia de grasa",
       "fatPreferenceDescription": "Si prefieres una dieta con más grasa, puedes elegir establecer un objetivo de grasa más alto. Esto disminuirá naturalmente tu ingesta de carbohidratos."
     },
 
     "settings": {
       "settings": "Configuración",
       "display": "Visualización",
-      "darkMode": "ModoOscuro",
-      "lightMode": "Modo Claro",
+      "darkMode": "Modo oscuro",
+      "lightMode": "Modo claro",
       "accessibility": "Accesibilidad",
       "language": "Idioma",
       "english": "Inglés",
       "spanish": "Español"
+    },
+
+    "mealView": {
+      "numeric": "Numérico",
+      "percent": "Porcentaje"
+    },
+
+    "dialog": {
+      "addMeasurement": "Agregar medida",
+      "addFoodToMealResume": "Ingresa alimentos para ver un resumen de tus comidas",
+      "upgradePremium": "Actualiza a premium para ver el resumen de tus comidas",
+      "noFoodInMeal": "No hay alimentos en esta comida",
+      "dropHereToCreateMeal": "Arrastra aquí para crear una vista previa de la comida",
+      "noMeasureAvailable": "No hay medidas disponibles"
     }
   }
 }
