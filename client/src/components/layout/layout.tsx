@@ -10,53 +10,49 @@ import useResponsive from '../../hooks/useResponsive'
 import useTitle from 'hooks/use-title'
 import BottomNavigation from './Navigation/bottom-navigation'
 import { useTranslation } from 'react-i18next'
+import { BOTTOM_NAV_HEIGHT, DRAWER_WIDTH } from 'config/theme'
 
 const Nav = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
-    width: theme.mixins.drawer.width,
+    width: DRAWER_WIDTH,
     flexShrink: 0,
   },
 }))
 
 const Main = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3),
-  height: `calc(100vh - 54px)`,
   overflowY: 'scroll',
   flexGrow: 1,
+  [theme.breakpoints.down('sm')]: {
+    height: `calc(100vh - ${BOTTOM_NAV_HEIGHT}px)`,
+  },
 }))
 
-const Layout = ({ window, children }) => {
+interface LayoutProps {
+  children: React.ReactNode
+}
+
+const Layout = ({ children }: LayoutProps) => {
   const isMobile = useResponsive('md')
   const title = useTitle()
   const theme = useTheme()
   const { t } = useTranslation()
 
   // eslint-disable-next-line no-unused-vars
-  const [_, setMobileOpen] = useState(false)
-
-  const openDrawer = () => {
-    setMobileOpen(true)
-  }
+  const [_, setMobileOpen] = useState<boolean>(false)
 
   const closeDrawer = () => {
     setMobileOpen(false)
   }
 
-  const mobileStackHeight = `calc(100vh - 54px)`
-
-  console.log(theme.mixins.toolbar)
-
   return (
     <>
-      <Stack
-        id="layout-stack"
-        direction="row"
-      >
-        <AppBar title={t(title)} openDrawer={openDrawer} />
+      <Stack id="layout-stack" direction="row">
+        <AppBar title={t(title)} />
 
         <Nav>{!isMobile && <DesktopDrawer onClose={closeDrawer} />}</Nav>
 
-        <Main id='main'>
+        <Main id="main">
           <Box sx={{ ...theme.mixins.toolbar }} />
           {children}
         </Main>
