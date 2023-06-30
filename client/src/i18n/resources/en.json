@@ -125,7 +125,12 @@
       "upgradePremium": "Upgrade to premium to see the resume of your meals",
       "noFoodInMeal": "No foods in this meal",
       "dropHereToCreateMeal": "Drop here to create preview meal",
-      "noMeasureAvailable": "No measurements available"
+      "noMeasureAvailable": "No measurements available",
+      "noMeasureYet": "No measurements yet!",
+      "pressToAddFirstMeasure": "Press the button below to add your first measurement",
+      "goTo": "Go to",
+      "addFirstMeasureBeforeFood": "and add your first measurement before you can see add foods",
+      "addFirstMeasureBeforeStatistics": "and add your first measurement before you can see your statistics"
     }
   }
 }

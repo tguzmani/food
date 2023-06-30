@@ -5,9 +5,12 @@ import StatisticsTable from '../statistics/StatisticsTable'
 import MeasureList from './MeasurementList'
 import { Stack, Typography } from '@mui/material'
 import Collapsable from 'components/layout/Collapsable'
+import { useTranslation } from 'react-i18next'
 
 const Measurements = ({ measurements, current }) => {
   let thisMeasurements = []
+
+  const { t } = useTranslation()
 
   const [showList, setShowList] = React.useState(false)
 
@@ -49,8 +52,7 @@ const Measurements = ({ measurements, current }) => {
 
     thisMeasurements = measurements.filter(
       measure =>
-        dayjs().subtract(1, 'month').startOf('month').add(15, 'day') <
-          dayjs(measure.createdAt) &&
+        dayjs().subtract(1, 'month').startOf('month').add(15, 'day') < dayjs(measure.createdAt) &&
         dayjs(measure.createdAt) < dayjs().subtract(1, 'month').endOf('month')
     )
   }
