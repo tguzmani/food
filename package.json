@@ -7,8 +7,8 @@
   "description": "A calorie and body measure tracker",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app",
+    "start": "ts-node app.ts",
+    "server": "nodemon app.ts",
     "client": "npm start --prefix client",
     "clientinstall": "npm install --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
@@ -37,6 +37,7 @@
     "nodemon": "^2.0.2"
   },
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "typescript": "^5.1.6"
   }
 }

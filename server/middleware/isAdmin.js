@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const usersRepository = require('../users/users.mongo.repository')
+const usersRepository = require('../users/users.mongo.repository.ts')
 
 const isAuth = async (req, res, next) => {
   const user = await usersRepository.readUserById(req.userId)

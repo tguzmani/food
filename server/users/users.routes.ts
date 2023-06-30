@@ -1,9 +1,10 @@
-const express = require('express')
-const router = express.Router()
-const isAuth = require('../middleware/isAuth')
-const isAdmin = require('../middleware/isAdmin')
+import express from 'express'
+import isAuth from '../middleware/is-auth'
+import isAdmin from '../middleware/isAdmin'
 
-const usersController = require('./users.controller')
+import * as usersController from './users.controller'
+
+const router = express.Router()
 
 router.get('/profile', isAuth, usersController.readUserById)
 router.put('/', isAuth, usersController.updateUser)
@@ -11,4 +12,4 @@ router.put('/', isAuth, usersController.updateUser)
 router.get('/', [isAuth, isAdmin], usersController.readUsers)
 router.put('/:userId', [isAuth, isAdmin], usersController.updateUserByAdmin)
 
-module.exports = router
+export default router

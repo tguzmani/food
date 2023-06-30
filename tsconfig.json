@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "baseUrl": "server"
+  },
+  "include": ["server/**/*"],
+  "exclude": ["node_modules"]
+}
