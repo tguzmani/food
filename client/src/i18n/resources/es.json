@@ -49,7 +49,9 @@
       "mean": "Media",
       "stdev": "Desviación estándar",
       "min": "Mínimo",
-      "max": "Máximo"
+      "max": "Máximo",
+      "fatPer": "% de Grasa",
+      "sleep": "Sueño"
     },
 
     "references": {
@@ -80,6 +82,13 @@
       "averageCategoryPerWeek": "{{category}} promedio por semana"
     },
 
+    "users": {
+      "name": "Nombre",
+      "membership": "Membresía",
+      "until": "Hasta",
+      "daysRemaining": "Días restantes"
+    },
+
     "profile": {
       "since": "Desde",
       "profile": "Perfil",
@@ -99,7 +108,8 @@
       "proteinPreference": "{{grams}} g por lb de peso base",
       "proteinPreferenceDescription": "Si te gustan los alimentos ricos en proteínas, puedes elegir establecer un objetivo de proteínas más alto. Aumentar tu ingesta de proteínas disminuirá naturalmente tu ingesta de carbohidratos.",
       "fatPreference": "Preferencia de grasa",
-      "fatPreferenceDescription": "Si prefieres una dieta con más grasa, puedes elegir establecer un objetivo de grasa más alto. Esto disminuirá naturalmente tu ingesta de carbohidratos."
+      "fatPreferenceDescription": "Si prefieres una dieta con más grasa, puedes elegir establecer un objetivo de grasa más alto. Esto disminuirá naturalmente tu ingesta de carbohidratos.",
+      "logOut": "Salir"
     },
 
     "settings": {
@@ -110,7 +120,8 @@
       "accessibility": "Accesibilidad",
       "language": "Idioma",
       "english": "Inglés",
-      "spanish": "Español"
+      "spanish": "Español",
+      "chooseLanguage": "Elija un idioma"
     },
 
     "mealView": {
@@ -124,7 +135,14 @@
       "upgradePremium": "Actualiza a premium para ver el resumen de tus comidas",
       "noFoodInMeal": "No hay alimentos en esta comida",
       "dropHereToCreateMeal": "Arrastra aquí para crear una vista previa de la comida",
-      "noMeasureAvailable": "No hay medidas disponibles"
+      "noMeasureAvailable": "No hay medidas disponibles",
+      "updateMeasurement": "Actualizar Medida"
+    },
+
+    "error": {
+      "invalidWeight": "Peso inválido",
+      "invalidFatPercentage": "Porcentaje de grasa no válido",
+      "invalidSleepHours": "Horas de sueño inválidas"
     }
   }
 }

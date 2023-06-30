@@ -63,7 +63,7 @@ const Measurements = ({ measurements, current }) => {
     <Stack spacing={2}>
       <PropertyPlot data={thisMeasurements} property="weight" />
       <StatisticsTable data={thisMeasurements} property="weight" />
-      <Collapsable open={showList} toggler={toggleShowList} text="Details">
+      <Collapsable open={showList} toggler={toggleShowList} text={t('measurements.details')}>
         <MeasureList measurements={thisMeasurements} />
       </Collapsable>
     </Stack>

@@ -16,26 +16,16 @@ import useResponsive from 'hooks/useResponsive'
 import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
 import Plot from './Plot'
+import { useTranslation } from 'react-i18next'
 
 const StatPanel = () => {
   const isMobile = useResponsive('sm')
 
-  const { loading, measurementsByQuery } = useStoreState(
-    state => state.measurements
-  )
+  const { loading, measurementsByQuery } = useStoreState(state => state.measurements)
 
-  const { readMeasurementsByDate } = useStoreActions(
-    actions => actions.measurements
-  )
+  const { readMeasurementsByDate } = useStoreActions(actions => actions.measurements)
 
-  const properties = [
-    'weight',
-    'sleep',
-    'fat',
-    'calories',
-    'cleanliness',
-    'alcohol',
-  ]
+  const properties = ['weight', 'sleep', 'fat', 'calories', 'cleanliness', 'alcohol']
 
   const [property, setProperty] = React.useState(properties[0])
   const [fromDate, setFromDate] = React.useState(dayjs())
@@ -50,17 +40,12 @@ const StatPanel = () => {
   for (let i = 0; i < weeksBetween; i++) {
     measuresByWeek.push(
       measurementsByQuery.filter(measure => {
-        return dayjs(measure.createdAt).isBetween(
-          weekByNumber(i),
-          weekByNumber(i + 1)
-        )
+        return dayjs(measure.createdAt).isBetween(weekByNumber(i), weekByNumber(i + 1))
       })
     )
   }
 
-  const propertiesByWeek = measuresByWeek.map(measures =>
-    measures.map(measure => measure[property])
-  )
+  const propertiesByWeek = measuresByWeek.map(measures => measures.map(measure => measure[property]))
 
   const propertiesMeansByWeek = useMemo(
     () =>
@@ -96,6 +81,8 @@ const StatPanel = () => {
 
   const weekPlotTitle = `Average ${property} per week`
 
+  const { t } = useTranslation()
+
   return (
     <>
       <BackdropLoading open={loading} />
@@ -105,7 +92,7 @@ const StatPanel = () => {
           <Grid item xs={12} sm={2} md={4}>
             <DatePicker
               sx={{ width: 1 }}
-              label='From'
+              label="From"
               maxDate={dayjs()}
               value={fromDate}
               onChange={handleFromDateChange}
@@ -116,7 +103,7 @@ const StatPanel = () => {
               sx={{ width: 1 }}
               minDate={fromDate}
               maxDate={dayjs()}
-              label='To'
+              label="To"
               value={toDate}
               onChange={handleToDateChange}
             />
@@ -124,13 +111,8 @@ const StatPanel = () => {
 
           <Grid item xs={12} sm={2} md={4}>
             <FormControl fullWidth>
-              <InputLabel id='select-category-label'>Category</InputLabel>
-              <Select
-                labelId='select-category-label'
-                value={property}
-                onChange={handleSetProperty}
-                label='Category'
-              >
+              <InputLabel id="select-category-label">{t('statistics.category')}</InputLabel>
+              <Select labelId="select-category-label" value={property} onChange={handleSetProperty} label="Category">
                 {properties.map(property => (
                   <MenuItem key={property} value={property}>
                     {capitalize(property)}
@@ -142,40 +124,22 @@ const StatPanel = () => {
         </Grid>
 
         <Box>
-          <Button
-            variant='contained'
-            onClick={handleSendQuery}
-            disabled={areDatesEqual}
-            fullWidth={isMobile}
-          >
-            Send Query
+          <Button variant="contained" onClick={handleSendQuery} disabled={areDatesEqual} fullWidth={isMobile}>
+            {t('statistics.sendQuery')}
           </Button>
         </Box>
 
         {measurementsByQuery.length > 0 && (
           <Grid container>
-            <Grid
-              item
-              xs={12}
-              lg={weeksBetween > 1 ? 6 : 12}
-              sx={{ pr: isMobile ? 0 : 1 }}
-            >
+            <Grid item xs={12} lg={weeksBetween > 1 ? 6 : 12} sx={{ pr: isMobile ? 0 : 1 }}>
               <Stack spacing={2}>
                 <PropertyPlot data={measurementsByQuery} property={property} />
-                <StatisticsTable
-                  data={measurementsByQuery}
-                  property={property}
-                />
+                <StatisticsTable data={measurementsByQuery} property={property} />
               </Stack>
             </Grid>
 
             {weeksBetween > 1 && (
-              <Grid
-                item
-                xs={12}
-                lg={6}
-                sx={{ pl: isMobile ? 0 : 1, mt: isMobile ? 2 : 0 }}
-              >
+              <Grid item xs={12} lg={6} sx={{ pl: isMobile ? 0 : 1, mt: isMobile ? 2 : 0 }}>
                 <Plot data={propertiesMeansByWeek} title={weekPlotTitle} />
               </Grid>
             )}

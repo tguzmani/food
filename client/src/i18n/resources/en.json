@@ -49,7 +49,9 @@
       "mean": "Mean",
       "stdev": "Stdev",
       "min": "Min",
-      "max": "Max"
+      "max": "Max",
+      "fatPer": "Fat %",
+      "sleep": "Sleep"
     },
 
     "references": {
@@ -80,6 +82,13 @@
       "averageCategoryPerWeek": "Average {{category}} per week"
     },
 
+    "users": {
+      "name": "Name",
+      "membership": "Membership",
+      "until": "Until",
+      "daysRemaining": "Days remaining"
+    },
+
     "profile": {
       "since": "Since",
       "profile": "Profile",
@@ -100,7 +109,8 @@
       "proteinPreference": "{{grams}} g per lb of base weight",
       "proteinPreferenceDescription": "If you enjoy eating protein-rich foods, you may choose to set a higher protein target. Increasing your protein intake will naturally decrease your carbohydrate intake.",
       "fatPreference": "Fat Preference",
-      "fatPreferenceDescription": "If you prefer a diet that's higher in fat, you may choose to set a higher fat target. This will naturally decrease your carbohydrate intake."
+      "fatPreferenceDescription": "If you prefer a diet that's higher in fat, you may choose to set a higher fat target. This will naturally decrease your carbohydrate intake.",
+      "logOut": "Log Out"
     },
 
     "settings": {
@@ -111,7 +121,8 @@
       "accessibility": "Accessibility",
       "language": "Language",
       "english": "English",
-      "spanish": "Spanish"
+      "spanish": "Spanish",
+      "chooseLanguage": "Choose a language"
     },
 
     "mealView": {
@@ -130,7 +141,14 @@
       "pressToAddFirstMeasure": "Press the button below to add your first measurement",
       "goTo": "Go to",
       "addFirstMeasureBeforeFood": "and add your first measurement before you can see add foods",
-      "addFirstMeasureBeforeStatistics": "and add your first measurement before you can see your statistics"
+      "addFirstMeasureBeforeStatistics": "and add your first measurement before you can see your statistics",
+      "updateMeasurement": "Update Measurement"
+    },
+
+    "error": {
+      "invalidWeight": "Invalid weight",
+      "invalidFatPercentage": "Invalid fat percentage",
+      "invalidSleepHours": "Invalid sleep hours"
     }
   }
 }
