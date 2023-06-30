@@ -1,19 +1,6 @@
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import React from 'react'
-import {
-  Toolbar,
-  Typography,
-  Menu,
-  MenuItem,
-  Divider,
-  AppBar as MuiAppBar,
-  LinearProgress,
-  Stack,
-} from '@mui/material'
-
-import { Link } from 'react-router-dom'
-
-import useMenu from 'hooks/useMenu'
+import { Toolbar, Typography, AppBar as MuiAppBar, LinearProgress, Stack } from '@mui/material'
 
 import Fade from '@mui/material/Fade'
 import useIsDarkMode from 'hooks/useIsDarkMode'
@@ -41,22 +28,12 @@ const AppBar = ({ title }) => {
         <LinearProgress />
       </Fade>
 
-      <Stack
-        component={Toolbar}
-        sx={{ minHeight: '40px !important' }}
-        direction="row"
-        justifyContent="space-between"
-      >
+      <Stack component={Toolbar} sx={{ minHeight: '40px !important' }} direction="row" justifyContent="space-between">
         <Typography variant="h6" sx={{ fontSize: 18 }}>
           {title}
         </Typography>
 
-        <Stack
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-          spacing={1}
-        >
+        <Stack direction="row" justifyContent="center" alignItems="center" spacing={1}>
           <AppBarActions handleToggleDrag={toggleCanDragFoods} />
         </Stack>
       </Stack>
