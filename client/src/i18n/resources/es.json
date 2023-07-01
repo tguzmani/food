@@ -5,7 +5,23 @@
       "add": "Agregar",
       "update": "Actualizar",
       "clear": "Borrar",
-      "create": "Crear"
+      "create": "Crear",
+      "saveChanges": "Guardar Cambios"
+    },
+
+    "register": {
+      "register": "Registrarse",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "emailAddress": "Correo Electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirme su contraseña",
+      "birthdate": "Fecha de nacimiento",
+      "gender": "Género",
+      "metricSystem": "Sistema métrico",
+      "imperial": "Imperial",
+      "alreadyHaveAccount": "Ya posee una cuenta?",
+      "login": "Ingresar"
     },
 
     "common": {
@@ -64,7 +80,8 @@
       "portionSize": "Tamaño de porción",
       "dirty": "Sucio",
       "alcohol": "Alcohol",
-      "preview": "Vista previa"
+      "preview": "Vista previa",
+      "referenceLimits": "Haz alcanzado el límite de referencias para una cuenta gratuita. Actualice a Premium para agregar más referencias."
     },
 
     "statistics": {
@@ -98,13 +115,18 @@
       "height": "Altura",
       "macronutrientInformation": "Información de macronutrientes",
       "baseWeight": "Peso base",
+      "baseWeightDescription": "Referencia de peso para calcular los macros. Actualice este campo si su peso ha cambiado significativamente. Por ejemplo, si ha perdido o ganado alrededor de 10 libras (aproximadamente 4 a 5 kg).",
       "offsetMode": "Modo de desviación",
+      "offsetModeDescription": "Seleccione el modo de déficit, mantenimiento o superávit. Si su objetivo es la pérdida de peso, seleccione el déficit. Si su objetivo es ganar músculo, seleccione el superávit. Si desea mantener su peso, seleccione el mantenimiento.",
       "deficit": "Déficit",
       "maintenance": "Mantenimiento",
       "surplus": "Superávit",
-      "offset": "Desviación es la diferencia entre tus calorías de mantenimiento y tu objetivo diario de calorías. Para perder peso, recomendamos establecer un objetivo diario de calorías entre 200 y 700 calorías por debajo de tu nivel de mantenimiento. Para ganar músculo, recomendamos un objetivo entre 250 y 450 calorías por encima de tu nivel de mantenimiento. Ten en cuenta que estas son pautas generales, y tu objetivo ideal de calorías puede variar según tu cuerpo y metas únicas. Te animamos a experimentar y ajustar tu objetivo según tu progreso y cómo te sientas.",
+      "offset": "Compensar",
+      "offsetDescription": "Desviación es la diferencia entre tus calorías de mantenimiento y tu objetivo diario de calorías. Para perder peso, recomendamos establecer un objetivo diario de calorías entre 200 y 700 calorías por debajo de tu nivel de mantenimiento. Para ganar músculo, recomendamos un objetivo entre 250 y 450 calorías por encima de tu nivel de mantenimiento. Ten en cuenta que estas son pautas generales, y tu objetivo ideal de calorías puede variar según tu cuerpo y metas únicas. Te animamos a experimentar y ajustar tu objetivo según tu progreso y cómo te sientas.",
       "activity": "Actividad",
+      "activityDescription": "Esto cubre cuántas veces se ejercita por semana, qué tan intenso es su entrenamiento y si su trabajo implica actividad física o no.",
       "moderatelyActive": "Moderadamente Activo: 3-5 días de ejercicio moderado",
+      "proteinPreferences": "Preferencia de proteínas",
       "proteinPreference": "{{grams}} g por lb de peso base",
       "proteinPreferenceDescription": "Si te gustan los alimentos ricos en proteínas, puedes elegir establecer un objetivo de proteínas más alto. Aumentar tu ingesta de proteínas disminuirá naturalmente tu ingesta de carbohidratos.",
       "fatPreference": "Preferencia de grasa",
@@ -142,7 +164,9 @@
     "error": {
       "invalidWeight": "Peso inválido",
       "invalidFatPercentage": "Porcentaje de grasa no válido",
-      "invalidSleepHours": "Horas de sueño inválidas"
+      "invalidSleepHours": "Horas de sueño inválidas",
+      "notFound": "No encontrado :",
+      "goBack": "Regresar"
     }
   }
 }

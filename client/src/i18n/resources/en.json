@@ -5,7 +5,8 @@
       "add": "Add",
       "update": "Update",
       "clear": "Clear",
-      "create": "Create"
+      "create": "Create",
+      "saveChanges": "Save Changes"
     },
 
     "common": {
@@ -64,7 +65,8 @@
       "portionSize": "Portion Size",
       "dirty": "Dirty",
       "alcohol": "Alcohol",
-      "preview": "Preview"
+      "preview": "Preview",
+      "referenceLimits": "You have reached your reference limit for a free account. Upgrade to premium to add more references."
     },
 
     "statistics": {
@@ -98,14 +100,18 @@
       "height": "Height",
       "macronutrientInformation": "Macronutrient Information",
       "baseWeight": "Base Weight",
+      "baseWeightDescription": "Reference weight for calculating macros. Update this field if your weight have changed by a significant amount. For example you lost or gained about 10 lb (about 4 to 5 kg).",
       "offsetMode": "Offset Mode",
+      "offsetModeDescription": "Select deficit, maintenance or surplus mode. If you're aiming for weight loss, select deficit. If you're aiming for muscle gains, select surplus. If you're maintaining your weight, select maintenance.",
       "deficit": "Deficit",
       "maintenance": "Maintenance",
       "surplus": "Surplus",
       "offset": "Offset",
       "offsetDescription": "Offset is the difference between your maintenance calories and your daily calorie target. For weight loss, we recommend setting a daily calorie target between 200 to 700 calories below your maintenance level. For muscle gain, we recommend a target between 250 to 450 calories above your maintenance level. Please note that these are general guidelines, and your ideal calorie target may vary depending on your unique body and goals. We encourage you to experiment and adjust your target based on your progress and how you feel.",
       "activity": "Activity",
+      "activityDescription": "This covers how many times you exercise per week, how intense and also if your work involves physical activity or not.",
       "moderatelyActive": "Moderately Active: 3-5 days of moderate exercise",
+      "proteinPreferences": "Protein Preference",
       "proteinPreference": "{{grams}} g per lb of base weight",
       "proteinPreferenceDescription": "If you enjoy eating protein-rich foods, you may choose to set a higher protein target. Increasing your protein intake will naturally decrease your carbohydrate intake.",
       "fatPreference": "Fat Preference",
@@ -148,7 +154,9 @@
     "error": {
       "invalidWeight": "Invalid weight",
       "invalidFatPercentage": "Invalid fat percentage",
-      "invalidSleepHours": "Invalid sleep hours"
+      "invalidSleepHours": "Invalid sleep hours",
+      "notFound": "Not found :",
+      "goBack": "Go back"
     }
   }
 }

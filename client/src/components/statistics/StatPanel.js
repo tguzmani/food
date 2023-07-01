@@ -25,7 +25,16 @@ const StatPanel = () => {
 
   const { readMeasurementsByDate } = useStoreActions(actions => actions.measurements)
 
-  const properties = ['weight', 'sleep', 'fat', 'calories', 'cleanliness', 'alcohol']
+  const { t } = useTranslation()
+
+  const properties = [
+    t('statistics.weight'),
+    t('statistics.sleep'),
+    t('statistics.fat'),
+    t('statistics.calories'),
+    t('statistics.cleanliness'),
+    t('statistics.alcohol'),
+  ]
 
   const [property, setProperty] = React.useState(properties[0])
   const [fromDate, setFromDate] = React.useState(dayjs())
@@ -81,8 +90,6 @@ const StatPanel = () => {
 
   const weekPlotTitle = `Average ${property} per week`
 
-  const { t } = useTranslation()
-
   return (
     <>
       <BackdropLoading open={loading} />
@@ -92,7 +99,7 @@ const StatPanel = () => {
           <Grid item xs={12} sm={2} md={4}>
             <DatePicker
               sx={{ width: 1 }}
-              label="From"
+              label={t('statistics.from')}
               maxDate={dayjs()}
               value={fromDate}
               onChange={handleFromDateChange}
@@ -103,7 +110,7 @@ const StatPanel = () => {
               sx={{ width: 1 }}
               minDate={fromDate}
               maxDate={dayjs()}
-              label="To"
+              label={t('statistics.to')}
               value={toDate}
               onChange={handleToDateChange}
             />
@@ -112,7 +119,12 @@ const StatPanel = () => {
           <Grid item xs={12} sm={2} md={4}>
             <FormControl fullWidth>
               <InputLabel id="select-category-label">{t('statistics.category')}</InputLabel>
-              <Select labelId="select-category-label" value={property} onChange={handleSetProperty} label="Category">
+              <Select
+                labelId="select-category-label"
+                value={property}
+                onChange={handleSetProperty}
+                label={t('statistics.category')}
+              >
                 {properties.map(property => (
                   <MenuItem key={property} value={property}>
                     {capitalize(property)}
