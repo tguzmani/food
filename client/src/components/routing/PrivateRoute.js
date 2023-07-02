@@ -21,7 +21,7 @@ const PrivateRoute = ({ children }) => {
     user && !user.isSetupComplete && location !== '/profile'
 
   useEffect(() => {
-    if (!isAuth && !loading && !user) {
+    if (!isAuth && !loading) {
       navigate('/login')
     }
   }, [isAuth, loading, navigate])
