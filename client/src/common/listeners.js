@@ -39,7 +39,7 @@ export const setError = (...actionsNames) => {
       (state, target) => {
         // console.log('target', target)
         state.loading = false
-        state.error = target.error.response.data.error
+        state.error = { severity: "error", message: target.error.response.data.error }
       }
     ),
   }

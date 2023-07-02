@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import Layout from '../layout/Layout'
+import Layout from '../layout/layout'
 import useAuth from 'hooks/useAuth'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 import BackdropLoading from '../layout/BackdropLoading'

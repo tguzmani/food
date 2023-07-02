@@ -1,10 +1,11 @@
-import { useStoreActions, useStoreState } from 'easy-peasy'
 import React from 'react'
 import { Toolbar, Typography, AppBar as MuiAppBar, LinearProgress, Stack } from '@mui/material'
 
 import Fade from '@mui/material/Fade'
 import useIsDarkMode from 'hooks/useIsDarkMode'
 import AppBarActions from './AppBarActions'
+import { useStoreActions, useStoreState } from 'config/easy-peasy.store'
+
 
 const AppBar = ({ title }) => {
   const isDarkMode = useIsDarkMode()

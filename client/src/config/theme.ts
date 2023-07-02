@@ -1,9 +1,12 @@
 import { createTheme } from '@mui/material'
 import { blue } from '@mui/material/colors'
 
-const baseTheme = createTheme({})
+export const DRAWER_WIDTH = 260
+export const BOTTOM_NAV_HEIGHT = 54
 
-const drawerWidth = 260
+type ThemeMode = 'light' | 'dark'
+
+const baseTheme = createTheme({})
 
 const typography = {
   fontFamily: 'Poppins, sans-serif',
@@ -13,7 +16,7 @@ const typography = {
   },
 }
 
-export const palette = mode => ({
+export const palette = (mode: ThemeMode) => ({
   mode,
   primary: {
     lighter: blue[100],
@@ -46,10 +49,6 @@ const theme = createTheme({
   shape: { borderRadius: 8 },
 
   mixins: {
-    drawer: {
-      width: drawerWidth,
-    },
-
     toolbar: {
       minHeight: 48,
     },
@@ -85,11 +84,9 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          width: `calc(100% - ${drawerWidth}px)`,
+          width: `calc(100% - ${DRAWER_WIDTH}px)`,
           paddingBottom: '6px',
           boxShadow: 'none',
-          // backgroundColor: baseTheme.palette.background.default,
-          // color: baseTheme.palette.text.primary,
           [baseTheme.breakpoints.down('sm')]: {
             width: '100%',
           },
@@ -100,7 +97,7 @@ const theme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          width: drawerWidth,
+          width: DRAWER_WIDTH,
           backgroundColor: baseTheme.palette.grey[900],
           color: baseTheme.palette.grey[100],
           padding: baseTheme.spacing(2),

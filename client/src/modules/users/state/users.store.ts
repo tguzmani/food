@@ -13,7 +13,7 @@ const usersStore: UsersStoreModel = {
   ...usersThunks,
   ...usersAuthActions,
   ...usersAuthThunks,
-  // ...usersListeners,
+  ...usersListeners,
   ...usersComputeds,
 }
 
