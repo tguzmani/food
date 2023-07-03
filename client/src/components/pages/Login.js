@@ -7,6 +7,7 @@ import bg3 from 'img/bg-2.jpg'
 import bg4 from 'img/bg-3.jpg'
 
 import LoginForm from '../auth/LoginForm'
+import Notification from 'components/layout/notifications'
 
 const backgrounds = [bg1, bg2, bg3, bg4]
 const random = Math.floor(Math.random() * backgrounds.length);
@@ -14,10 +15,12 @@ const random = Math.floor(Math.random() * backgrounds.length);
 const background = backgrounds[random]
 
 const Login = () => {
-  document.title = 'Food | Login'
+  document.title = 'Physfit | Login'
 
   return (
     <>
+      <Notification store='users' />
+      
       <Box
         sx={{
           background: `url(${background}) no-repeat center center fixed`,

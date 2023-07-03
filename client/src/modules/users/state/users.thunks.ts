@@ -27,7 +27,7 @@ const usersThunks = {
       actions.setLoading(false)
     } catch (error) {
       actions.setLoading(false)
-      actions.setError(`${error}`)
+      // actions.setError(`${error}`)
     }
   }),
 
@@ -44,7 +44,7 @@ const usersThunks = {
       actions.setLoading(false)
     } catch (error) {
       actions.setLoading(false)
-      actions.setError(`${error}`)
+      // actions.setError(`${error}`)
     }
   }),
 
@@ -56,7 +56,7 @@ const usersThunks = {
       actions.setLoading(false)
     } catch (error) {
       actions.setLoading(false)
-      actions.setError(`${error}`)
+      // actions.setError(`${error}`)
     }
   }),
 }

@@ -1,10 +1,10 @@
-import { startLoading, stopLoading, setError } from 'common/listeners'
+import { startLoading, stopLoading, onError } from 'common/listeners'
 import { foodsThunksNames } from './foods.thunks'
 
 const foodsListeners = {
   ...startLoading(...foodsThunksNames),
   ...stopLoading(...foodsThunksNames),
-  ...setError(...foodsThunksNames),
+  ...onError(...foodsThunksNames),
 }
 
 export default foodsListeners

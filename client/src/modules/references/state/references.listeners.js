@@ -1,10 +1,10 @@
-import { startLoading, stopLoading, setError } from 'common/listeners'
+import { startLoading, stopLoading, onError } from 'common/listeners'
 import { referencesThunksNames } from './references.thunks'
 
 const referencesListeners = {
   ...startLoading(...referencesThunksNames),
   ...stopLoading(...referencesThunksNames),
-  ...setError(...referencesThunksNames),
+  ...onError(...referencesThunksNames),
 }
 
 export default referencesListeners

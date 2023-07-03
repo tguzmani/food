@@ -29,7 +29,7 @@ export const stopLoading = (...actionsNames) => {
   }
 }
 
-export const setError = (...actionsNames) => {
+export const onError = (...actionsNames) => {
   const actionsOnFailure = actions =>
     actionsNames.map(actionName => actions[actionName].failType)
 
@@ -39,7 +39,7 @@ export const setError = (...actionsNames) => {
       (state, target) => {
         // console.log('target', target)
         state.loading = false
-        state.error = { severity: "error", message: target.error.response.data.error }
+        state.error = `${target.error.response.data.error}`
       }
     ),
   }

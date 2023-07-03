@@ -1,8 +1,9 @@
 import { CommonStoreActions, CommonStoreModel } from 'common/models'
-import { Action, Computed, FilterActionTypes, StateMapper, Thunk } from 'easy-peasy'
+import { Action, ActionOn, Computed, FilterActionTypes, StateMapper, Thunk } from 'easy-peasy'
 import { User, UserProfile } from '../models/users.model'
 import { UserCredentials } from '../models/users.auth.model'
 import { SetProfileFieldsDto } from '../models/users.dto.model'
+import StoreModel from 'config/easy-peasy.store.model'
 
 export type UsersState = StateMapper<FilterActionTypes<UsersStoreModel>>
 
@@ -51,7 +52,6 @@ interface UsersComputeds {
   fatGrams: Computed<UsersStoreModel, number>
   carbsGrams: Computed<UsersStoreModel, number>
 }
-
 
 type UsersStoreModel = UsersInitialState & UsersActions & UsersAuthActions & UsersThunks & UsersComputeds;
 
