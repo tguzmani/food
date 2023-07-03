@@ -21,6 +21,8 @@
       "metricSystem": "Sistema métrico",
       "imperial": "Imperial",
       "alreadyHaveAccount": "Ya posee una cuenta?",
+      "dontHaveAccount": "No posee una cuenta?",
+      "signIn": "Iniciar Sesión",
       "login": "Ingresar"
     },
 
@@ -67,7 +69,8 @@
       "min": "Mínimo",
       "max": "Máximo",
       "fatPer": "% de Grasa",
-      "sleep": "Sueño"
+      "sleep": "Sueño",
+      "weightIn": "¡Ingresa tu peso!"
     },
 
     "references": {
@@ -81,7 +84,8 @@
       "dirty": "Sucio",
       "alcohol": "Alcohol",
       "preview": "Vista previa",
-      "referenceLimits": "Haz alcanzado el límite de referencias para una cuenta gratuita. Actualice a Premium para agregar más referencias."
+      "referenceLimits": "Haz alcanzado el límite de referencias para una cuenta gratuita. Actualice a Premium para agregar más referencias.",
+      "updateReferences": "Actualizar referencia"
     },
 
     "statistics": {
@@ -103,7 +107,9 @@
       "name": "Nombre",
       "membership": "Membresía",
       "until": "Hasta",
-      "daysRemaining": "Días restantes"
+      "daysRemaining": "Días restantes",
+      "free": "Gratuita",
+      "premium": "Premium"
     },
 
     "profile": {
@@ -132,6 +138,14 @@
       "fatPreference": "Preferencia de grasa",
       "fatPreferenceDescription": "Si prefieres una dieta con más grasa, puedes elegir establecer un objetivo de grasa más alto. Esto disminuirá naturalmente tu ingesta de carbohidratos.",
       "logOut": "Salir"
+    },
+
+    "activityOptions": {
+      "sedentary": "Sedentario: poco o nada de ejercicio",
+      "lighlyActive": "Actividad ligera: 1-3 días de ejercicio ligero",
+      "moderatelyActive": "Actividad moderada: 3-5 días de ejercicio moderado",
+      "veryActive": "Muy activo: 6-7 días de ejercicio intenso",
+      "extremelyActive": "Extremadamente activo: ejercicio muy intenso y trabajo físico"
     },
 
     "settings": {

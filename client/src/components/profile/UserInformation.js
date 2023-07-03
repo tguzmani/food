@@ -41,9 +41,11 @@ const UserInformation = () => {
               {user.firstName} {user.lastName}
             </Typography>
             <Detail Icon={EmailIcon}>{user.email}</Detail>
-            <Detail Icon={EventIcon}>Since {dayjs(user.createdAt).format('MMMM DD, YYYY')}</Detail>
+            <Detail Icon={EventIcon}>
+              {t('profile.since')} {dayjs(user.createdAt).format('MMMM DD, YYYY')}
+            </Detail>
             <Detail Icon={MembershipIcon}>
-              {userIsPremium ? 'Premium' : 'Free'} {t('users.membership')}
+              {t('users.membership')} {userIsPremium ? 'Premium' : 'Free'}
             </Detail>
           </Box>
 

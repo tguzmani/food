@@ -74,7 +74,7 @@ const AddMeasureDialog = () => {
         Icon={AddIcon}
         show={lastMeasureIsFromToday || measurements.length === 0}
         onClick={handleOpen}
-        tooltipTitle="Weight In!"
+        tooltipTitle={t('measurements.weightIn')}
       />
 
       <Dialog maxWidth="xs" open={open} onClose={handleClose}>

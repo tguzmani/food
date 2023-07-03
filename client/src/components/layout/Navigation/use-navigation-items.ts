@@ -8,7 +8,6 @@ import { useStoreState } from 'config/easy-peasy.store'
 import { useTranslation } from 'react-i18next'
 import { NavigationItem } from './navigation.model'
 
-
 const useNavigationItems = () => {
   const { userIsPremium, userIsAdmin } = useStoreState(state => state.users)
 
@@ -17,15 +16,15 @@ const useNavigationItems = () => {
   let navigationItems: NavigationItem[] = [
     { to: '/', text: t('sidebar.day'), Icon: TodayIcon },
     { to: '/measurements', text: t('sidebar.measurements'), Icon: AssessmentIcon },
-    { to: '/references', text: 'References', Icon: InfoIcon },
+    { to: '/references', text: t('sidebar.references'), Icon: InfoIcon },
     {
       to: '/statistics',
-      text: 'Statistics',
+      text: t('sidebar.statistics'),
       Icon: TimelineIcon,
       isPremium: true,
     },
-    { to: '/users', text: 'Users', Icon: PeopleIcon, isAdmin: true },
-    { to: '/profile', text: 'Profile', Icon: PersonIcon },
+    { to: '/users', text: t('sidebar.users'), Icon: PeopleIcon, isAdmin: true },
+    { to: '/profile', text: t('sidebar.profile'), Icon: PersonIcon },
   ]
 
   // if (!userIsPremium) navigationItems = navigationItems.filter(link => !link.isPremium)

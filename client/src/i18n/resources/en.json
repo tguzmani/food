@@ -9,6 +9,23 @@
       "saveChanges": "Save Changes"
     },
 
+    "register": {
+      "register": "Register",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "emailAddress": "Email Address",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "birthdate": "Birthdate",
+      "gender": "Gender",
+      "metricSystem": "Metric System",
+      "imperial": "Imperial",
+      "alreadyHaveAccount": "Ya posee una cuenta?",
+      "dontHaveAccount": "Don't have an account?",
+      "signIn": "Sign In",
+      "login": "Login"
+    },
+
     "common": {
       "protein": "Protein",
       "carbs": "Carbs",
@@ -52,7 +69,8 @@
       "min": "Min",
       "max": "Max",
       "fatPer": "Fat %",
-      "sleep": "Sleep"
+      "sleep": "Sleep",
+      "weightIn": "Weight In!"
     },
 
     "references": {
@@ -66,7 +84,8 @@
       "dirty": "Dirty",
       "alcohol": "Alcohol",
       "preview": "Preview",
-      "referenceLimits": "You have reached your reference limit for a free account. Upgrade to premium to add more references."
+      "referenceLimits": "You have reached your reference limit for a free account. Upgrade to premium to add more references.",
+      "updateReferences": "Update References"
     },
 
     "statistics": {
@@ -88,7 +107,9 @@
       "name": "Name",
       "membership": "Membership",
       "until": "Until",
-      "daysRemaining": "Days remaining"
+      "daysRemaining": "Days remaining",
+      "free": "Free",
+      "premium": "Premium"
     },
 
     "profile": {
@@ -117,6 +138,14 @@
       "fatPreference": "Fat Preference",
       "fatPreferenceDescription": "If you prefer a diet that's higher in fat, you may choose to set a higher fat target. This will naturally decrease your carbohydrate intake.",
       "logOut": "Log Out"
+    },
+
+    "activityOptions": {
+      "sedentary": "Sedentary: little to no exercise",
+      "lighlyActive": "Lightly Active: 1-3 days of light exercise",
+      "moderatelyActive": "Moderately Active: 3-5 days of moderate exercise",
+      "veryActive": "Very Active: 6-7 of hard exercise",
+      "extremelyActive": "Extremely Active: very hard exercise and physical job"
     },
 
     "settings": {
