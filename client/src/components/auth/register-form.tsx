@@ -33,7 +33,7 @@ const RegisterForm = () => {
   const navigate = useNavigate()
 
   const { signUp, setLoading } = useStoreActions(actions => actions.users)
-  const { error, loading } = useStoreState(state => state.users)
+  const { feedback, loading } = useStoreState(state => state.users)
 
   const [birthdate, setBirthdate] = useState(dayjs())
   const [gender, setGender] = useState<Gender>('m')
@@ -86,7 +86,7 @@ const RegisterForm = () => {
     <Card sx={{ paddingTop: '4px', width: isMobile ? '100%' : '85%' }}>
       <CardContent sx={{ height: isMobile ? '95vh' : '85vh', overflowY: 'scroll' }}>
         <Stack sx={{ height: '100%' }} direction="column" justifyContent="space-between">
-          {error && <Alert>{error}</Alert>}
+          {feedback && <Alert>{feedback}</Alert>}
 
           <Box mt={2}>
             <Stack alignItems="center" spacing={1}>
