@@ -3,6 +3,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Alert, IconButton, Snackbar } from '@mui/material';
 import { useStoreActions, useStoreState } from 'config/easy-peasy.store';
 import StoreModel from 'config/easy-peasy.store.model';
+import useResponsive from 'hooks/useResponsive';
 
 interface NotificationProps {
   store: keyof StoreModel;
@@ -11,6 +12,7 @@ interface NotificationProps {
 const Notification = ({ store }: NotificationProps) => {
   const { feedback }: any = useStoreState((state) => state[store]);
   const { unsetFeedback }: any = useStoreActions((actions) => actions[store]);
+  const isMobile = useResponsive('sm')
 
   const handleClose = (event: any) => {
     unsetFeedback();
@@ -24,7 +26,7 @@ const Notification = ({ store }: NotificationProps) => {
       autoHideDuration={5000}
       anchorOrigin={{
         vertical: 'top',
-        horizontal: 'right',
+        horizontal: isMobile ? 'center' : 'right',
       }}
       onClose={handleClose}
     >

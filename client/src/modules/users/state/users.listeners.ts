@@ -10,7 +10,7 @@ const actionsNames = [...usersAuthThunksNames, ...usersThunksNames]
 type ActionsTypes = 'startType' | 'successType' | 'failType'
 
 const actionsByType = (actions: any, type: ActionsTypes) =>
-  actionsNames.map(actionName => actions[actionName].startType)
+  actionsNames.map(actionName => actions[actionName][type])
 
 const usersListeners = {
   startLoading: actionOn(
@@ -31,16 +31,9 @@ const usersListeners = {
     (actions: Actions<UsersState>) => actionsByType(actions, 'failType'), 
     (state: any, target: any) => {
       state.loading = false
-      state.feedback = StoreFeedbackFactory.error(`${target.error?.response?.data?.error}`)
+      state.feedback = StoreFeedbackFactory.error(target.error.response.data.error)
     }
   ),
-  // ...startLoading(...usersAuthThunksNames),
-  // ...stopLoading(...usersAuthThunksNames),
-  // ...onError(...usersAuthThunksNames),
-
-  // ...startLoading(...usersThunksNames),
-  // ...stopLoading(...usersThunksNames),
-  // ...onError(...usersThunksNames),
 }
 
 export default usersListeners

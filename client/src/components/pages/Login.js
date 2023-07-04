@@ -10,7 +10,7 @@ import LoginForm from '../auth/LoginForm'
 import Notification from 'components/layout/notifications'
 
 const backgrounds = [bg1, bg2, bg3, bg4]
-const random = Math.floor(Math.random() * backgrounds.length);
+const random = Math.floor(Math.random() * backgrounds.length)
 
 const background = backgrounds[random]
 
@@ -19,33 +19,23 @@ const Login = () => {
 
   return (
     <>
-      <Notification store='users' />
-      
+      <Notification store="users" />
+
       <Box
         sx={{
           background: `url(${background}) no-repeat center center fixed`,
           backgroundSize: 'cover',
         }}
-        className='background'
+        className="background"
       ></Box>
       <Container>
-        <Grid
-          container
-          spacing={0}
-          justifyContent='space-between'
-          sx={{ height: '100vh', padding: '32px 0' }}
-        >
+        <Grid container spacing={0} justifyContent="space-between" sx={{ height: '100vh', padding: '32px 0' }}>
           <Grid item xs={12} lg={4}>
-            <Typography variant='h4' sx={{ color: 'white'  }}>
-              Food
+            <Typography variant="h4" sx={{ color: 'white' }}>
+              Physfit
             </Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={4}
-            sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}
-          >
+          <Grid item xs={12} lg={4} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <LoginForm />
           </Grid>
           <Grid
@@ -58,8 +48,8 @@ const Login = () => {
               justifyContent: 'flex-end',
             }}
           >
-            <Typography variant='caption' sx={{ color: 'white' }}>
-              &copy; 2023. By Tomás Guzmán
+            <Typography variant="caption" sx={{ color: 'white' }}>
+              &copy; 2023. By Physfit
             </Typography>
           </Grid>
         </Grid>
