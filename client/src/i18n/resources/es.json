@@ -9,22 +9,6 @@
       "saveChanges": "Guardar cambios"
     },
 
-    "register": {
-      "register": "Regístrate",
-      "firstName": "Nombre",
-      "lastName": "Apellido",
-      "emailAddress": "Correo electrónico",
-      "password": "Contraseña",
-      "confirmPassword": "Confirma tu contraseña",
-      "birthdate": "Fecha de nacimiento",
-      "gender": "Género",
-      "metricSystem": "Métrico",
-      "imperial": "Imperial",
-      "alreadyHaveAccount": "¿Ya posee una cuenta?",
-      "signIn": "Iniciar sesión",
-      "login": "Ingresar"
-    },
-
     "common": {
       "protein": "Proteína",
       "carbs": "Carbohidratos",
@@ -39,7 +23,26 @@
       "login": "Iniciar sesión",
       "dontHaveAccount": "¿No tienes una cuenta?",
       "email": "Correo electrónico",
-      "register": "Regístrate"
+      "signIn": "Iniciar sesión"
+    },
+
+    "register": {
+      "register": "Regístrate",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirma tu contraseña",
+      "birthdate": "Fecha de nacimiento",
+      "gender": "Género",
+      "metricSystem": "Sistema métrico",
+      "imperial": "Imperial (lb)",
+      "metric": "Metric (kg)",
+      "alreadyHaveAccount": "¿Ya posee una cuenta?",
+      "signUp": "Registrarse",
+      "login": "Ingresar",
+      "male": "Hombre",
+      "female": "Mujer" 
     },
 
     "day": {
@@ -139,8 +142,8 @@
       "maintenance": "Mantener peso",
       "surplus": "Ganar músculo",
       "offset": "Compensación",
-      "offsetDescriptionDeficit": "La compensación es un valor entre 0 y 400. A mayor el número, más rápido quemas grasa, pero también corres mayor riesgo de perder músculo y fuerza.",
-      "offsetDescriptionSurplus": "La compensación es un valor entre 0 y 400. A mayor el número, más rápido ganas músculo, pero también corres mayor riesgo de ganar grasa.",
+      "offsetDescriptionDeficit": "Es un valor entre 0 y 500. A mayor el número, más rápido quemas grasa, pero también corres mayor riesgo de perder músculo y fuerza.",
+      "offsetDescriptionSurplus": "Es un valor entre 0 y 500. A mayor el número, más rápido ganas músculo, pero también corres mayor riesgo de ganar grasa.",
       "activity": "Actividad",
       "activityDescription": "Esto cubre cuántas veces se ejercita por semana, qué tan intenso es su entrenamiento y si su trabajo implica actividad física o no.",
       "moderatelyActive": "Moderadamente Activo: 3-5 días de ejercicio moderado",

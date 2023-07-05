@@ -64,7 +64,7 @@ const LoginForm = ({ history }) => {
               margin="dense"
               required
               fullWidth
-              label={t('register.emailAddress')}
+              label={t('login.email')}
               type="email"
               autoComplete="email"
               autoFocus
@@ -75,7 +75,7 @@ const LoginForm = ({ history }) => {
               margin="dense"
               required
               fullWidth
-              label={t('register.password')}
+              label={t('login.password')}
               type="password"
               autoComplete="password"
               {...bindCredentials('password')}
@@ -89,11 +89,11 @@ const LoginForm = ({ history }) => {
             fullWidth
             disabled={areCredentialsEmpty || loading}
           >
-            {loading ? 'Loading...' : t('register.signIn')}
+            {loading ? t('common.loading') : t('login.signIn')}
           </Button>
 
           <Typography variant="caption" align="center">
-            {t('register.dontHaveAccount')} <Link to="/register">{t('register.register')}</Link>
+            {t('login.dontHaveAccount')} <Link to="/register">{t('register.register')}</Link>
           </Typography>
         </Stack>
       </CardContent>

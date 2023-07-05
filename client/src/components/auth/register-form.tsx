@@ -25,12 +25,13 @@ import { SignUpDto } from 'modules/users/models/users.dto.model'
 import { Gender, Units } from 'modules/users/models/users.model'
 import { DateValidationError } from '@mui/x-date-pickers'
 import { PickerChangeHandler } from '@mui/x-date-pickers/internals/hooks/usePicker/usePickerValue'
+import { useTranslation } from 'react-i18next'
 
 const RegisterForm = () => {
   const isMobile = useResponsive('sm')
-  const theme = useTheme()
   const isAuth = useAuth()
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const { signUp, setLoading } = useStoreActions(actions => actions.users)
   const { feedback, loading } = useStoreState(state => state.users)
@@ -94,7 +95,7 @@ const RegisterForm = () => {
                 <HowToRegIcon />
               </Avatar>
               <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-                Register
+                {t('register.register')}
               </Typography>
             </Stack>
           </Box>
@@ -105,7 +106,7 @@ const RegisterForm = () => {
               margin="dense"
               required
               fullWidth
-              label="First name"
+              label= {t('register.firstName')}
               {...bindCredentials('firstName')}
             />
             <TextField
@@ -113,7 +114,7 @@ const RegisterForm = () => {
               margin="dense"
               required
               fullWidth
-              label="Last name"
+              label={t('register.lastName')}
               {...bindCredentials('lastName')}
             />
             <TextField
@@ -121,7 +122,7 @@ const RegisterForm = () => {
               margin="dense"
               required
               fullWidth
-              label="Email Address"
+              label={t('register.email')}
               type="email"
               {...bindCredentials('email')}
             />
@@ -130,7 +131,7 @@ const RegisterForm = () => {
               margin="dense"
               required
               fullWidth
-              label="Password"
+              label={t('register.password')}
               type="password"
               {...bindCredentials('password')}
             />
@@ -139,39 +140,39 @@ const RegisterForm = () => {
               margin="dense"
               required
               fullWidth
-              label="Confirm password"
+              label={t('register.confirmPassword')}
               type="password"
               {...bindCredentials('passwordConfirm')}
             />
             <DatePicker
               sx={{ width: 1, mt: 1 }}
-              label="Birthdate"
+              label={t('register.birthdate')}
               maxDate={dayjs()}
               value={birthdate}
               onChange={handleChangeBirthdate}
             />
             <FormControl sx={{ mt: 1 }}>
-              <FormLabel>Gender</FormLabel>
+              <FormLabel>{t('register.gender')}</FormLabel>
               <RadioGroup value={gender} onChange={handleChangeGender} row>
-                <FormControlLabel value="m" control={<Radio />} label="Male" />
-                <FormControlLabel value="f" control={<Radio />} label="Female" />
+                <FormControlLabel value="m" control={<Radio />} label={t('register.male')} />
+                <FormControlLabel value="f" control={<Radio />} label={t('register.female')} />
               </RadioGroup>
             </FormControl>
 
             <FormControl sx={{ mt: 1 }}>
-              <FormLabel>Metric system</FormLabel>
+              <FormLabel>{t('register.gender')}</FormLabel>
               <RadioGroup value={units} onChange={handleChangeUnits} row>
                 <FormControlLabel
                   sx={{ label: { fontSize: '14px' } }}
                   value="kg"
                   control={<Radio />}
-                  label="Metric (kg)"
+                  label={t('register.metric')}
                 />
                 <FormControlLabel
                   sx={{ label: { fontSize: '14px' } }}
                   value="lb"
                   control={<Radio />}
-                  label="Imperial (lb)"
+                  label={t('register.imperial')}
                 />
               </RadioGroup>
             </FormControl>
@@ -184,11 +185,11 @@ const RegisterForm = () => {
             fullWidth
             disabled={areCredentialsEmpty || !birthdate || loading}
           >
-            {loading ? 'Loading...' : 'Sign up'}
+            {t(loading ? 'common.loading' : 'register.register')}
           </Button>
 
           <Typography variant="caption" align="center">
-            Already have an account? <Link to="/login">Login</Link>
+            {t('register.alreadyHaveAccount')} <Link to="/login">{t('register.login')}</Link>
           </Typography>
         </Stack>
       </CardContent>

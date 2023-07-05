@@ -45,7 +45,7 @@ const UserInformation = () => {
               {t('profile.since')} {dayjs(user.createdAt).format('MMMM DD, YYYY')}
             </Detail>
             <Detail Icon={MembershipIcon}>
-              {t('users.membership')} {userIsPremium ? 'Premium' : 'Free'}
+              {t('users.membership')}: {userIsPremium ? 'Premium' : 'Free'}
             </Detail>
           </Box>
 

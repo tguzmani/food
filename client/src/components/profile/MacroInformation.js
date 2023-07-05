@@ -87,9 +87,12 @@ const MacroInformation = () => {
 
       <Collapse in={profile.offsetMode !== 'maintenance'}>
         <Box mb={1}>
-          <Detail title={t('profile.offset')}>{t('profile.offsetDescription')}</Detail>
+          <Detail title={t('profile.offset')}>
+            {t(offsetMode === 'surplus' ? 'profile.offsetDescriptionSurplus' : 'profile.offsetDescriptionDeficit')}
+          </Detail>
 
           <TextField
+            sx={{ mt: 2 }}
             fullWidth
             variant="outlined"
             margin="dense"

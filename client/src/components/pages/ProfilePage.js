@@ -14,18 +14,10 @@ const ProfilePage = () => {
   const { user, loading, profile } = useStoreState(state => state.users)
   const { updateUser } = useStoreActions(state => state.users)
 
-  const isMobile = useResponsive('sm')
-
   const { t } = useTranslation()
-
-  const [tab, setTab] = useState(0)
 
   const handleSaveChanges = () => {
     updateUser(profile)
-  }
-
-  const handleChangeTab = (event, newValue) => {
-    setTab(newValue)
   }
 
   if (!user) return <div>Loading...</div>

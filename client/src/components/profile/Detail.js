@@ -21,7 +21,7 @@ const Detail = ({ title, children }) => {
       </Box>
 
       <Collapse in={show}>
-        <Typography variant='body2'>{children}</Typography>
+        <Typography gutterBottom variant='body2'>{children}</Typography>
       </Collapse>
     </>
   )
