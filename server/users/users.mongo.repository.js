@@ -35,3 +35,7 @@ exports.updateUser = async (userId, userData) => {
 
   return user
 }
+
+exports.deleteUser = async (userId) => {
+  await User.findByIdAndDelete(userId)
+}

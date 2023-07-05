@@ -18,8 +18,8 @@ const usersInitialState: UsersInitialState = {
   user: undefined,
   users: [], 
   isAuthenticated: false,
-  loading: false,
-  error: undefined,
+  loading: true,
+  feedback: undefined,
   profile,
 }
 

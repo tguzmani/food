@@ -7,25 +7,32 @@ const usersRepository = new UsersRepository()
 
 const usersThunks = {
   readUser: thunk(async (actions: Actions<UsersStoreModel>, _, { fail }) => {
+    actions.setLoading(true)
     try {
       const user = await usersRepository.readUser()
       actions.setUser(user)
       actions.setIsAuthenticated(true)
+      actions.setLoading(false)
     } catch (error) {
-      fail(error)
+      actions.setLoading(false)
+      // actions.setError(`${error}`)
     }
   }),
 
   readUsers: thunk(async (actions: Actions<UsersStoreModel>, _, { fail }) => {
+    actions.setLoading(true)
     try {
       const users = await usersRepository.readUsers()
       actions.setUsers(users)
+      actions.setLoading(false)
     } catch (error) {
-      fail(error)
+      actions.setLoading(false)
+      // actions.setError(`${error}`)
     }
   }),
 
   updateUser: thunk(async (actions: Actions<UsersStoreModel>, user: User, { fail }) => {
+    actions.setLoading(true)
     const isSetupComplete = user.isSetupComplete || true
 
     try {
@@ -34,17 +41,22 @@ const usersThunks = {
         isSetupComplete,
       })
       actions.setUser(updatedUser)
+      actions.setLoading(false)
     } catch (error) {
-      fail(error)
+      actions.setLoading(false)
+      // actions.setError(`${error}`)
     }
   }),
 
   updateUserByAdmin: thunk(async (actions: Actions<UsersStoreModel>, user: User, { fail }) => {
+    actions.setLoading(true)
     try {
       const updatedUser = await usersRepository.updateUserByAdmin(user)
       actions.replaceUser(updatedUser)
+      actions.setLoading(false)
     } catch (error) {
-      fail(error)
+      actions.setLoading(false)
+      // actions.setError(`${error}`)
     }
   }),
 }

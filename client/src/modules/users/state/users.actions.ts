@@ -3,7 +3,7 @@ import usersInitialState from './users.initial-state'
 import { SetProfileFieldsDto } from '../models/users.dto.model'
 import { User, UserProfile } from '../models/users.model'
 import { UsersState } from './users.store.model'
-import { StoreError } from 'common/models'
+import { StoreFeedback } from 'common/models'
 
 const usersActions = {
   setUser: action((state: UsersState, user: User) => {
@@ -18,12 +18,16 @@ const usersActions = {
     state.user = undefined
   }),
 
-  setError: action((state: UsersState, error: StoreError) => {
-    state.error = error
+  setFeedback: action((state: UsersState, feedback: StoreFeedback) => {
+    state.feedback = feedback
+  }),
+
+  unsetFeedback: action((state: UsersState) => {
+    state.feedback = undefined
   }),
 
   unsetError: action((state: UsersState) => {
-    state.error = undefined
+    state.feedback = undefined
   }),
 
   setLoading: action((state: UsersState, loading) => {

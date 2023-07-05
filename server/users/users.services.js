@@ -19,3 +19,7 @@ exports.readUsers = async () => {
 exports.updateUser = async (userId, user) => {
   return await usersRepository.updateUser(userId, user)
 }
+
+exports.deleteUser = async (userId) => {
+  await usersRepository.deleteUser(userId)
+}
