@@ -56,7 +56,6 @@ const FoodItem = ({ food }) => {
   const { canDragFoods } = useStoreState(state => state.foods)
 
   const [quantity, setQuantity] = React.useState(food.quantity)
-  const { protein, carbs, fat } = food.reference
 
   // eslint-disable-next-line
   const [{ isDragging }, drag, preview] = useDrag(
@@ -78,9 +77,9 @@ const FoodItem = ({ food }) => {
   const updatedFood = {
     ...food,
     quantity: isNaN(quantity) ? 0 : quantity,
-    protein: isNaN(protein * quantity) ? 0 : protein * quantity,
-    carbs: isNaN(carbs * quantity) ? 0 : carbs * quantity,
-    fat: isNaN(fat * quantity) ? 0 : fat * quantity,
+    protein: isNaN(food?.protein * quantity) ? 0 : food?.protein * quantity,
+    carbs: isNaN(food?.carbs * quantity) ? 0 : food?.carbs * quantity,
+    fat: isNaN(food?.fat * quantity) ? 0 : food?.fat * quantity,
   }
 
   const onBlurUpdate = e => {
@@ -90,7 +89,7 @@ const FoodItem = ({ food }) => {
   }
 
   React.useEffect(() => {
-    if (quantity !== food.quantity) softUpdateFood(updatedFood)
+    if (quantity !== food?.quantity) softUpdateFood(updatedFood)
     // eslint-disable-next-line
   }, [quantity])
 
@@ -114,7 +113,7 @@ const FoodItem = ({ food }) => {
       >
         <Grid container spacing={2} alignItems='center'>
           <Grid item xs={5}>
-            {capitalize(food.name)} {food.isDirty && <DirtyIndicator />}
+            {capitalize(food?.name)} {food?.isDirty && <DirtyIndicator />}
           </Grid>
 
           <Grid item xs={7}>
@@ -139,9 +138,9 @@ const FoodItem = ({ food }) => {
                 ></Input>
               </Grid>
 
-              <Value color='error.main'>{food.protein}</Value>
-              <Value color='primary.main'>{food.carbs}</Value>
-              <Value color='success.main'>{food.fat}</Value>
+              <Value color='error.main'>{food?.protein}</Value>
+              <Value color='primary.main'>{food?.carbs}</Value>
+              <Value color='success.main'>{food?.fat}</Value>
             </Grid>
           </Grid>
         </Grid>

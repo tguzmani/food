@@ -7,11 +7,13 @@ import { IconButton, Collapse, Typography, Stack, Menu, MenuItem, Divider } from
 
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
-import OpenWithIcon from '@mui/icons-material/OpenWith'
-
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import useMenu from 'hooks/useMenu'
 import { useTranslation } from 'react-i18next'
+
+import OpenWithIcon from '@mui/icons-material/OpenWith'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import PersonIcon from '@mui/icons-material/Person'
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const AppBarActions = ({ handleToggleDrag }) => {
   const { userIsPremium, user } = useStoreState(state => state.users)
@@ -64,14 +66,27 @@ const AppBarActions = ({ handleToggleDrag }) => {
 
       <Menu open={Boolean(anchorEl)} onClose={handleCloseMenu} anchorEl={anchorEl}>
         <MenuItem component={Link} to="/profile" onClick={handleCloseMenu}>
-          {t('profile.profile')}
+          <Stack direction="row" alignItems="center" spacing={1}>
+            <PersonIcon />
+            <Typography variant="body2">{t('sidebar.profile')}</Typography>
+          </Stack>
         </MenuItem>
 
         <MenuItem component={Link} to="/settings" onClick={handleCloseMenu}>
-          {t('settings.settings')}
+          <Stack direction="row" alignItems="center" spacing={1}>
+            <SettingsIcon />
+            <Typography variant="body2">{t('sidebar.users')}</Typography>
+          </Stack>
         </MenuItem>
+
         <Divider />
-        <MenuItem onClick={handleLogout}>{t('profile.logOut')}</MenuItem>
+
+        <MenuItem onClick={handleLogout}>
+          <Stack direction="row" alignItems="center" spacing={1}>
+            <LogoutIcon />
+            <Typography variant="body2">{t('sidebar.logout')}</Typography>
+          </Stack>
+        </MenuItem>
       </Menu>
     </>
   )

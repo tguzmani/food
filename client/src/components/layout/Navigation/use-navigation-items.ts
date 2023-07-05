@@ -27,9 +27,9 @@ const useNavigationItems = () => {
     { to: '/profile', text: t('sidebar.profile'), Icon: PersonIcon },
   ]
 
-  // if (!userIsPremium) navigationItems = navigationItems.filter(link => !link.isPremium)
+  if (!userIsPremium) navigationItems = navigationItems.filter(link => !link.isPremium)
 
-  // if (!userIsAdmin) navigationItems = navigationItems.filter(link => !link.isAdmin)
+  if (!userIsAdmin) navigationItems = navigationItems.filter(link => !link.isAdmin)
 
   return navigationItems
 }
