@@ -76,7 +76,7 @@ const AppBarActions = ({ handleToggleDrag }) => {
         <MenuItem component={Link} to="/settings" onClick={handleCloseMenu}>
           <Stack direction="row" alignItems="center" spacing={1}>
             <SettingsIcon />
-            <Typography variant="body2">{t('sidebar.users')}</Typography>
+            <Typography variant="body2">{t('sidebar.settings')}</Typography>
           </Stack>
         </MenuItem>
 

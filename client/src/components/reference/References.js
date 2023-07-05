@@ -6,9 +6,11 @@ import SearchOffIcon from '@mui/icons-material/SearchOff'
 import Message from 'components/layout/Message'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useStoreActions } from 'easy-peasy'
+import { useTranslation } from 'react-i18next'
 
 const References = ({ references, isFiltering }) => {
   const isDarkMode = useIsDarkMode()
+  const { t } = useTranslation()
 
   const { readReferences } = useStoreActions(actions => actions.references)
 
@@ -25,9 +27,9 @@ const References = ({ references, isFiltering }) => {
             <Message
               sx={{ p: 3 }}
               Icon={SearchOffIcon}
-              title='Reference not found'
+              title={t('references.notFound')}
             >
-              Try again with a different search term
+              {t('references.tryAgain')}
             </Message>
           ) : (
             <List sx={{ p: 0 }}>

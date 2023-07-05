@@ -10,7 +10,7 @@
     },
 
     "register": {
-      "register": "Registrarse",
+      "register": "Regístrate",
       "firstName": "Nombre",
       "lastName": "Apellido",
       "emailAddress": "Correo electrónico",
@@ -18,10 +18,9 @@
       "confirmPassword": "Confirma tu contraseña",
       "birthdate": "Fecha de nacimiento",
       "gender": "Género",
-      "metricSystem": "Sistema métrico",
+      "metricSystem": "Métrico",
       "imperial": "Imperial",
-      "alreadyHaveAccount": "Ya posee una cuenta?",
-      "dontHaveAccount": "¿No posee una cuenta?",
+      "alreadyHaveAccount": "¿Ya posee una cuenta?",
       "signIn": "Iniciar sesión",
       "login": "Ingresar"
     },
@@ -47,11 +46,13 @@
       "day": "Día",
       "whatDidYouEat": "¿Qué comiste?",
       "foods": "Alimentos",
-      "meals": "Comidas"
+      "meals": "Comidas",
+      "calOver": "de más",
+      "calLeft": "restantes"
     },
 
     "meals": {
-      "clean": "Limpiar",
+      "clean": "limpio",
       "deleteMeal": "Eliminar comida",
       "total": "Total",
       "addToMeal": "Agregar a la comida"
@@ -64,7 +65,8 @@
       "statistics": "Estadísticas",
       "users": "Usuarios",
       "profile": "Perfil",
-      "settings": "Configuración"
+      "settings": "Configuración",
+      "logout": "Cerrar sesión"
     },
 
     "measurements": {
@@ -74,9 +76,9 @@
       "details": "Detalles",
       "weight": "Peso",
       "mean": "Media",
-      "stdev": "Desviación estándar",
-      "min": "Mínimo",
-      "max": "Máximo",
+      "stdev": "Desviación",
+      "min": "Mín",
+      "max": "Máx",
       "fatPer": "% de Grasa",
       "sleep": "Sueño",
       "weightIn": "¡Ingresa tu peso!"
@@ -85,8 +87,8 @@
     "references": {
       "references": "Referencias",
       "searchReference": "Buscar referencia",
-      "referenceNotFound": "Referencia no encontrada",
-      "tryAgainWithDifferentSearchTerm": "Inténtalo de nuevo con un término de búsqueda diferente",
+      "notFound": "Referencia no encontrada",
+      "tryAgain": "Inténtalo de nuevo con un término de búsqueda diferente",
       "addReference": "Agregar referencia",
       "name": "Nombre",
       "portionSize": "Tamaño de porción",
@@ -99,7 +101,7 @@
 
     "statistics": {
       "statistics": "Estadísticas",
-      "sendQuery": "Enviar consulta",
+      "sendQuery": "Consultar",
       "from": "Desde",
       "to": "Hasta",
       "category": "Categoría",
@@ -131,13 +133,14 @@
       "macronutrientInformation": "Información de macronutrientes",
       "baseWeight": "Peso base",
       "baseWeightDescription": "Referencia de peso para calcular los macros. Actualice este campo si su peso ha cambiado significativamente. Por ejemplo, si ha perdido o ganado alrededor de 10 libras (aproximadamente 4 a 5 kg).",
-      "offsetMode": "Modo de desviación",
+      "offsetMode": "Objetivo fitness",
       "offsetModeDescription": "Seleccione el modo de déficit, mantenimiento o superávit. Si su objetivo es la pérdida de peso, seleccione el déficit. Si su objetivo es ganar músculo, seleccione el superávit. Si desea mantener su peso, seleccione el mantenimiento.",
-      "deficit": "Déficit",
-      "maintenance": "Mantenimiento",
-      "surplus": "Superávit",
-      "offset": "Compensar",
-      "offsetDescription": "Desviación es la diferencia entre tus calorías de mantenimiento y tu objetivo diario de calorías. Para perder peso, recomendamos establecer un objetivo diario de calorías entre 200 y 700 calorías por debajo de tu nivel de mantenimiento. Para ganar músculo, recomendamos un objetivo entre 250 y 450 calorías por encima de tu nivel de mantenimiento. Ten en cuenta que estas son pautas generales, y tu objetivo ideal de calorías puede variar según tu cuerpo y metas únicas. Te animamos a experimentar y ajustar tu objetivo según tu progreso y cómo te sientas.",
+      "deficit": "Quemar grasa",
+      "maintenance": "Mantener peso",
+      "surplus": "Ganar músculo",
+      "offset": "Compensación",
+      "offsetDescriptionDeficit": "La compensación es un valor entre 0 y 400. A mayor el número, más rápido quemas grasa, pero también corres mayor riesgo de perder músculo y fuerza.",
+      "offsetDescriptionSurplus": "La compensación es un valor entre 0 y 400. A mayor el número, más rápido ganas músculo, pero también corres mayor riesgo de ganar grasa.",
       "activity": "Actividad",
       "activityDescription": "Esto cubre cuántas veces se ejercita por semana, qué tan intenso es su entrenamiento y si su trabajo implica actividad física o no.",
       "moderatelyActive": "Moderadamente Activo: 3-5 días de ejercicio moderado",
@@ -164,7 +167,7 @@
       "lightMode": "Modo claro",
       "accessibility": "Accesibilidad",
       "language": "Idioma",
-      "english": "Inglés",
+      "english": "English",
       "spanish": "Español",
       "chooseLanguage": "Elija un idioma"
     },
@@ -188,7 +191,7 @@
       "invalidWeight": "Peso inválido",
       "invalidFatPercentage": "Porcentaje de grasa no válido",
       "invalidSleepHours": "Horas de sueño inválidas",
-      "notFound": "No encontrado :",
+      "notFound": "No encontrado",
       "goBack": "Regresar"
     }
   }

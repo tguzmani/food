@@ -9,8 +9,6 @@ import { useTranslation } from 'react-i18next'
 
 const Measurements = ({ measurements, current }) => {
   let thisMeasurements = []
-  
-  const { t } = useTranslation()
 
   const { t } = useTranslation()
 

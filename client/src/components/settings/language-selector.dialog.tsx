@@ -41,7 +41,7 @@ const LanguageSelectorDialog = ({ open, onClose }: any) => {
             <ListItem key={language.code} disablePadding>
               <ListItemButton onClick={handleChangeLanguage(language.code)} sx={{ p: 0 }}>
                 <Radio checked={i18n.language === language.code} />
-                <ListItemText primary={`${language.flag} ${language.name}`} />
+                <ListItemText primary={`${language.flag} ${t(language.i18nKey)}`} />
               </ListItemButton>
             </ListItem>
           ))}

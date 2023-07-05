@@ -72,7 +72,7 @@ const MealItem = ({ foods, number }) => {
             )
           }
           title={`${totalCalories} cal`}
-          subheader={thisMealFoods.length > 0 && `${cleanliness}% clean`}
+          subheader={thisMealFoods.length > 0 && `${cleanliness}% ${t('meals.clean')}`}
         />
 
         <CardContent>

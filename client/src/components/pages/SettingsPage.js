@@ -78,7 +78,7 @@ const SettingsPage = () => {
               <LanguageIcon />
             </ListItemAvatar>
 
-            <ListItemText primary={t('settings.language')} secondary={displayLanguage?.name} />
+            <ListItemText primary={t('settings.language')} secondary={t(displayLanguage?.i18nKey)} />
 
             <LanguageSelectorDialog open={openLanguageDialog} onClose={toggleOpenLanguageDialog} />
           </ListItemButton>
