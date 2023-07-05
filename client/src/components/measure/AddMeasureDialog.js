@@ -1,14 +1,6 @@
 import React from 'react'
 import FAB from '../layout/FAB'
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  InputAdornment,
-  TextField,
-} from '@mui/material'
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, InputAdornment, TextField } from '@mui/material'
 
 import { getTotalCalories, getCleanliness } from 'util/food'
 
@@ -29,12 +21,8 @@ const AddMeasureDialog = () => {
   const { foods, alcoholUnits } = useStoreState(state => state.foods)
   const { measurements } = useStoreState(state => state.measurements)
 
-  const { readFoods, deleteAllFoodsFromDay } = useStoreActions(
-    state => state.foods
-  )
-  const { updateMeasurement, createMeasurement } = useStoreActions(
-    actions => actions.measurements
-  )
+  const { readFoods, deleteAllFoodsFromDay } = useStoreActions(state => state.foods)
+  const { updateMeasurement, createMeasurement } = useStoreActions(actions => actions.measurements)
 
   useConditionalRead([{ name: readFoods, value: foods.length === 0 }])
 
@@ -76,8 +64,7 @@ const AddMeasureDialog = () => {
     handleClose()
   }
 
-  const lastMeasureIsFromToday =
-    lastMeasure && !dayjs(lastMeasure.createdAt).isToday()
+  const lastMeasureIsFromToday = lastMeasure && !dayjs(lastMeasure.createdAt).isToday()
 
   const { t } = useTranslation()
 
@@ -87,7 +74,7 @@ const AddMeasureDialog = () => {
         Icon={AddIcon}
         show={lastMeasureIsFromToday || measurements.length === 0}
         onClick={handleOpen}
-        tooltipTitle="Weight In!"
+        tooltipTitle={t('measurements.weightIn')}
       />
 
       <Dialog maxWidth="xs" open={open} onClose={handleClose}>
@@ -101,11 +88,9 @@ const AddMeasureDialog = () => {
             value={weight}
             onChange={onChange}
             type="number"
-            label="Weight"
+            label={t('measurements.weight')}
             InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">{user?.units}</InputAdornment>
-              ),
+              endAdornment: <InputAdornment position="end">{user?.units}</InputAdornment>,
             }}
           ></TextField>
 
@@ -116,7 +101,7 @@ const AddMeasureDialog = () => {
             value={fat}
             onChange={onChange}
             type="number"
-            label="Fat %"
+            label={t('measurements.fatPer')}
             InputProps={{
               endAdornment: <InputAdornment position="end">%</InputAdornment>,
             }}
@@ -129,7 +114,7 @@ const AddMeasureDialog = () => {
             value={sleep}
             onChange={onChange}
             type="number"
-            label="Sleep"
+            label={t('measurements.sleep')}
             InputProps={{
               endAdornment: <InputAdornment position="end">h</InputAdornment>,
             }}
@@ -140,12 +125,7 @@ const AddMeasureDialog = () => {
           <Button onClick={handleClose} color="primary">
             {t('actions.cancel')}
           </Button>
-          <Button
-            variant="contained"
-            onClick={handleAddMeasure}
-            color="primary"
-            disabled={weight === ''}
-          >
+          <Button variant="contained" onClick={handleAddMeasure} color="primary" disabled={weight === ''}>
             {t('actions.add')}
           </Button>
         </DialogActions>

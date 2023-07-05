@@ -8,12 +8,15 @@ import { useStoreActions, useStoreState } from 'easy-peasy'
 import Page from 'components/layout/Page'
 import { Box } from '@mui/material'
 import useResponsive from 'hooks/useResponsive'
+import { useTranslation } from 'react-i18next'
 
 const ProfilePage = () => {
   const { user, loading, profile } = useStoreState(state => state.users)
   const { updateUser } = useStoreActions(state => state.users)
 
   const isMobile = useResponsive('sm')
+
+  const { t } = useTranslation()
 
   const [tab, setTab] = useState(0)
 
@@ -32,7 +35,7 @@ const ProfilePage = () => {
     Object.keys(profile).every(key => profile[key] !== '')
 
   return (
-    <Page pathname='/profile'>
+    <Page pathname="/profile">
       <Box mb={4}>
         <UserInformation />
         <FAB
@@ -40,7 +43,7 @@ const ProfilePage = () => {
           show={showFAB}
           onClick={handleSaveChanges}
           disabled={loading}
-          tooltipTitle='Save Changes'
+          tooltipTitle={t('actions.saveChanges')}
         />
       </Box>
     </Page>

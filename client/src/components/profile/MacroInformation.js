@@ -1,24 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import {
-  Slider,
-  TextField,
-  Typography,
-  Box,
-  InputAdornment,
-  Collapse,
-} from '@mui/material'
+import { Slider, TextField, Typography, Box, InputAdornment, Collapse } from '@mui/material'
 
 import { activityOptions, activityMarks } from './activity'
 
 import Detail from './Detail'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import OffsetMode from './OffsetMode'
+import { useTranslation } from 'react-i18next'
 
 const MacroInformation = () => {
   const { profile, user } = useStoreState(state => state.users)
-  const { setProfile, setProfileFields } = useStoreActions(
-    actions => actions.users
-  )
+  const { setProfile, setProfileFields } = useStoreActions(actions => actions.users)
+
+  const { t } = useTranslation()
 
   const [offsetMode, setOffsetMode] = useState(user.offsetMode || 'maintenance')
 
@@ -67,74 +61,53 @@ const MacroInformation = () => {
   return (
     <>
       <Box mb={1}>
-        <Detail title='Base Weight'>
-          Reference weight for calculating macros. Update this field if your
-          weight have changed by a significant amount. For example you lost or
-          gained about 10 lb (about 4 to 5 kg).
-        </Detail>
+        <Detail title={t('profile.baseWeight')}>{t('profile.baseWeightDescription')}</Detail>
 
         <TextField
           fullWidth
-          variant='outlined'
-          margin='normal'
+          variant="outlined"
+          margin="normal"
           required
-          label='Base Weight'
-          name='baseWeight'
-          type='number'
+          label={t('profile.baseWeight')}
+          name="baseWeight"
+          type="number"
           value={baseWeight}
           onChange={onChange}
           InputProps={{
-            endAdornment: (
-              <InputAdornment position='end'>{user?.units}</InputAdornment>
-            ),
+            endAdornment: <InputAdornment position="end">{user?.units}</InputAdornment>,
           }}
         />
       </Box>
 
       <Box mb={1}>
-        <Detail title='Offset Mode'>
-          Select deficit, maintenance or surplus mode. If you're aiming for
-          weight loss, select deficit. If you're aiming for muscle gains, select
-          surplus. If you're maintaining your weight, select maintenance.
-        </Detail>
+        <Detail title={t('profile.offsetMode')}>{t('profile.offsetModeDescription')}</Detail>
 
-        <OffsetMode
-          offsetMode={offsetMode}
-          onChangeOffsetMode={handleChangeOffsetMode}
-        />
+        <OffsetMode offsetMode={offsetMode} onChangeOffsetMode={handleChangeOffsetMode} />
       </Box>
 
       <Collapse in={profile.offsetMode !== 'maintenance'}>
         <Box mb={1}>
-          <Detail title='Offset'>
-            If you're aiming for weight loss, use values between -1000 to -300.
-            If you're aiming for muscle gains, use values between 300 to 500.
-            These are general guidelines. Everyone is different, therefore your
-            values could be different.
-          </Detail>
+          <Detail title={t('profile.offset')}>{t('profile.offsetDescription')}</Detail>
 
           <TextField
             fullWidth
-            variant='outlined'
-            margin='dense'
+            variant="outlined"
+            margin="dense"
             required
-            label='Offset'
-            name='offset'
-            type='number'
+            label={t('profile.offset')}
+            name="offset"
+            type="number"
             onChange={onChange}
             value={offset}
             InputProps={{
-              endAdornment: <InputAdornment position='end'>cal</InputAdornment>,
+              endAdornment: <InputAdornment position="end">cal</InputAdornment>,
             }}
           />
         </Box>
       </Collapse>
 
       <Box mb={3}>
-        <Detail title='Activity'>
-          This covers how many times you exercise per week, how intense and also
-          if your work involves physical activity or not.
-        </Detail>
+        <Detail title={t('profile.activity')}>{t('profile.activityDescription')}</Detail>
 
         <Slider
           value={activity}
@@ -145,33 +118,27 @@ const MacroInformation = () => {
           step={null}
         />
         <Box sx={{ height: '2em' }}>
-          <Typography variant='body2'>{activityOptions[activity]}</Typography>
+          <Typography variant="body2">{activityOptions[activity]}</Typography>
         </Box>
       </Box>
 
       <Box mb={3}>
-        <Detail title='Protein Preference'>
-          If you like eating protein, then you can pick higher values. More
-          protein intake translates in less carbohydrates intake.
-        </Detail>
+        <Detail title={t('profile.proteinPreferences')}>{t('profile.proteinPreferenceDescription')}</Detail>
         <Slider
-          data-name='proteinPref'
+          data-name="proteinPref"
           value={proteinPref}
           onChange={(e, value) => setProteinPref(value)}
           marks
           min={0.7}
           max={1.5}
           step={0.1}
-          valueLabelDisplay='auto'
+          valueLabelDisplay="auto"
         />
-        <Typography variant='body2'>{proteinPref} g per lb of base weight</Typography>
+        <Typography variant="body2">{t('profile.proteinPreference', { grams: proteinPref })}</Typography>
       </Box>
 
       <Box mb={3}>
-        <Detail title='Fat Preference'>
-          If you like eating fats, then you can pick higher values. More fat
-          intake translates in less carbohydrates intake.
-        </Detail>
+        <Detail title={t('profile.fatPreference')}>{t('profile.fatPreferenceDescription')}</Detail>
         <Slider
           value={fatPref}
           onChange={(e, value) => setFatPref(value)}
@@ -179,9 +146,9 @@ const MacroInformation = () => {
           min={20}
           max={40}
           step={1}
-          valueLabelDisplay='auto'
+          valueLabelDisplay="auto"
         />
-        <Typography variant='body2'>{fatPref}%</Typography>
+        <Typography variant="body2">{fatPref}%</Typography>
       </Box>
     </>
   )

@@ -5,7 +5,25 @@
       "add": "Agregar",
       "update": "Actualizar",
       "clear": "Borrar",
-      "create": "Crear"
+      "create": "Crear",
+      "saveChanges": "Guardar cambios"
+    },
+
+    "register": {
+      "register": "Registrarse",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "emailAddress": "Correo electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirma tu contraseña",
+      "birthdate": "Fecha de nacimiento",
+      "gender": "Género",
+      "metricSystem": "Sistema métrico",
+      "imperial": "Imperial",
+      "alreadyHaveAccount": "Ya posee una cuenta?",
+      "dontHaveAccount": "¿No posee una cuenta?",
+      "signIn": "Iniciar sesión",
+      "login": "Ingresar"
     },
 
     "common": {
@@ -58,7 +76,10 @@
       "mean": "Media",
       "stdev": "Desviación estándar",
       "min": "Mínimo",
-      "max": "Máximo"
+      "max": "Máximo",
+      "fatPer": "% de Grasa",
+      "sleep": "Sueño",
+      "weightIn": "¡Ingresa tu peso!"
     },
 
     "references": {
@@ -71,7 +92,9 @@
       "portionSize": "Tamaño de porción",
       "dirty": "Sucio",
       "alcohol": "Alcohol",
-      "preview": "Vista previa"
+      "preview": "Vista previa",
+      "referenceLimits": "Haz alcanzado el límite de referencias para una cuenta gratuita. Actualice a Premium para agregar más referencias.",
+      "updateReferences": "Actualizar referencia"
     },
 
     "statistics": {
@@ -89,6 +112,15 @@
       "averageCategoryPerWeek": "{{category}} promedio por semana"
     },
 
+    "users": {
+      "name": "Nombre",
+      "membership": "Membresía",
+      "until": "Hasta",
+      "daysRemaining": "Días restantes",
+      "free": "Gratuita",
+      "premium": "Premium"
+    },
+
     "profile": {
       "since": "Desde",
       "profile": "Perfil",
@@ -98,17 +130,31 @@
       "height": "Altura",
       "macronutrientInformation": "Información de macronutrientes",
       "baseWeight": "Peso base",
-      "offsetMode": "Compensación",
+      "baseWeightDescription": "Referencia de peso para calcular los macros. Actualice este campo si su peso ha cambiado significativamente. Por ejemplo, si ha perdido o ganado alrededor de 10 libras (aproximadamente 4 a 5 kg).",
+      "offsetMode": "Modo de desviación",
+      "offsetModeDescription": "Seleccione el modo de déficit, mantenimiento o superávit. Si su objetivo es la pérdida de peso, seleccione el déficit. Si su objetivo es ganar músculo, seleccione el superávit. Si desea mantener su peso, seleccione el mantenimiento.",
       "deficit": "Déficit",
       "maintenance": "Mantenimiento",
       "surplus": "Superávit",
-      "offset": "Desviación es la diferencia entre tus calorías de mantenimiento y tu objetivo diario de calorías. Para perder peso, recomendamos establecer un objetivo diario de calorías entre 200 y 700 calorías por debajo de tu nivel de mantenimiento. Para ganar músculo, recomendamos un objetivo entre 250 y 450 calorías por encima de tu nivel de mantenimiento. Ten en cuenta que estas son pautas generales, y tu objetivo ideal de calorías puede variar según tu cuerpo y metas únicas. Te animamos a experimentar y ajustar tu objetivo según tu progreso y cómo te sientas.",
+      "offset": "Compensar",
+      "offsetDescription": "Desviación es la diferencia entre tus calorías de mantenimiento y tu objetivo diario de calorías. Para perder peso, recomendamos establecer un objetivo diario de calorías entre 200 y 700 calorías por debajo de tu nivel de mantenimiento. Para ganar músculo, recomendamos un objetivo entre 250 y 450 calorías por encima de tu nivel de mantenimiento. Ten en cuenta que estas son pautas generales, y tu objetivo ideal de calorías puede variar según tu cuerpo y metas únicas. Te animamos a experimentar y ajustar tu objetivo según tu progreso y cómo te sientas.",
       "activity": "Actividad",
-      "moderatelyActive": "Moderadamente activo: 3-5 días de ejercicio moderado",
+      "activityDescription": "Esto cubre cuántas veces se ejercita por semana, qué tan intenso es su entrenamiento y si su trabajo implica actividad física o no.",
+      "moderatelyActive": "Moderadamente Activo: 3-5 días de ejercicio moderado",
+      "proteinPreferences": "Preferencia de proteínas",
       "proteinPreference": "{{grams}} g por lb de peso base",
       "proteinPreferenceDescription": "Si te gustan los alimentos ricos en proteínas, puedes elegir establecer un objetivo de proteínas más alto. Aumentar tu ingesta de proteínas disminuirá naturalmente tu ingesta de carbohidratos.",
       "fatPreference": "Preferencia de grasa",
-      "fatPreferenceDescription": "Si prefieres una dieta con más grasa, puedes elegir establecer un objetivo de grasa más alto. Esto disminuirá naturalmente tu ingesta de carbohidratos."
+      "fatPreferenceDescription": "Si prefieres una dieta con más grasa, puedes elegir establecer un objetivo de grasa más alto. Esto disminuirá naturalmente tu ingesta de carbohidratos.",
+      "logOut": "Salir"
+    },
+
+    "activityOptions": {
+      "sedentary": "Sedentario: poco o nada de ejercicio",
+      "lighlyActive": "Actividad ligera: 1-3 días de ejercicio ligero",
+      "moderatelyActive": "Actividad moderada: 3-5 días de ejercicio moderado",
+      "veryActive": "Muy activo: 6-7 días de ejercicio intenso",
+      "extremelyActive": "Extremadamente activo: ejercicio muy intenso y trabajo físico"
     },
 
     "settings": {
@@ -119,7 +165,8 @@
       "accessibility": "Accesibilidad",
       "language": "Idioma",
       "english": "Inglés",
-      "spanish": "Español"
+      "spanish": "Español",
+      "chooseLanguage": "Elija un idioma"
     },
 
     "mealView": {
@@ -133,7 +180,16 @@
       "upgradePremium": "Actualiza a premium para ver el resumen de tus comidas",
       "noFoodInMeal": "No hay alimentos en esta comida",
       "dropHereToCreateMeal": "Arrastra aquí para crear una vista previa de la comida",
-      "noMeasureAvailable": "No hay medidas disponibles"
+      "noMeasureAvailable": "No hay medidas disponibles",
+      "updateMeasurement": "Actualizar Medida"
+    },
+
+    "error": {
+      "invalidWeight": "Peso inválido",
+      "invalidFatPercentage": "Porcentaje de grasa no válido",
+      "invalidSleepHours": "Horas de sueño inválidas",
+      "notFound": "No encontrado :",
+      "goBack": "Regresar"
     }
   }
 }

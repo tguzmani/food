@@ -21,12 +21,8 @@ const Day = () => {
   const isMobile = useResponsive('sm')
 
   const { foods, mealsFoods, loading } = useStoreState(state => state.foods)
-  const { measurements, loading: loadingMeasurements } = useStoreState(
-    state => state.measurements
-  )
-  const { references, loading: loadingReferences } = useStoreState(
-    state => state.references
-  )
+  const { measurements, loading: loadingMeasurements } = useStoreState(state => state.measurements)
+  const { references, loading: loadingReferences } = useStoreState(state => state.references)
 
   const { readFoods } = useStoreActions(actions => actions.foods)
   const { readMeasurements } = useStoreActions(actions => actions.measurements)
@@ -47,11 +43,9 @@ const Day = () => {
 
   if (foods.length === 0 && loading && !foodsRead) return <Loading />
 
-  if (measurements.length === 0 && !loadingMeasurements)
-    return <NoMeasurementsFoods />
+  if (measurements.length === 0 && !loadingMeasurements) return <NoMeasurementsFoods />
 
-  if (references.length === 0 && !loadingReferences)
-    return <NoReferencesFoods />
+  if (references.length === 0 && !loadingReferences) return <NoReferencesFoods />
 
   const Backend = isMobile ? TouchBackend : HTML5Backend
 

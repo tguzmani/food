@@ -8,6 +8,7 @@ import bg4 from 'img/bg-3.jpg'
 
 import LoginForm from '../auth/LoginForm'
 import Notification from 'components/layout/notifications'
+import { useTranslation } from 'react-i18next'
 
 const backgrounds = [bg1, bg2, bg3, bg4]
 const random = Math.floor(Math.random() * backgrounds.length)
@@ -15,8 +16,10 @@ const random = Math.floor(Math.random() * backgrounds.length)
 const background = backgrounds[random]
 
 const Login = () => {
-  document.title = 'Physfit | Login'
-  
+  const { t } = useTranslation()
+
+  document.title = `Physfit | ${t('login.login')}`
+
   return (
     <>
       <Notification store="users" />

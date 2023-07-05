@@ -6,10 +6,4 @@ export const activityOptions = {
   1.9: 'Extremely Active: very hard exercise and physical job',
 }
 
-export const activityMarks = [
-  { value: 1.2 },
-  { value: 1.37 },
-  { value: 1.55 },
-  { value: 1.72 },
-  { value: 1.9 },
-]
+export const activityMarks = [{ value: 1.2 }, { value: 1.37 }, { value: 1.55 }, { value: 1.72 }, { value: 1.9 }]

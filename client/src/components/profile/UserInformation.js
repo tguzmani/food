@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-  Box,
-  Typography,
-  Grid,
-} from '@mui/material'
+import { Box, Typography, Grid } from '@mui/material'
 
 import dayjs from 'dayjs'
 
@@ -16,17 +12,20 @@ import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium'
 import PersonIcon from '@mui/icons-material/Person'
 import { useStoreState } from 'easy-peasy'
 import useResponsive from 'hooks/useResponsive'
+import { useTranslation } from 'react-i18next'
 
 const UserInformation = () => {
   const { userIsPremium, user } = useStoreState(state => state.users)
   const isMobile = useResponsive('md')
 
+  const { t } = useTranslation()
+
   if (!user) return <div>Loading...</div>
 
   const Detail = ({ Icon, children }) => (
-    <Box display='flex' alignItems='center' mb={1}>
-      <Icon fontSize='small' sx={{ marginRight: '0.25em' }} />
-      <Typography variant='body'>{children}</Typography>
+    <Box display="flex" alignItems="center" mb={1}>
+      <Icon fontSize="small" sx={{ marginRight: '0.25em' }} />
+      <Typography variant="body">{children}</Typography>
     </Box>
   )
 
@@ -38,15 +37,15 @@ const UserInformation = () => {
         {/* User Details */}
         <Grid item xs={12} lg={3}>
           <Box mb={3}>
-            <Typography variant='h4' gutterBottom>
+            <Typography variant="h4" gutterBottom>
               {user.firstName} {user.lastName}
             </Typography>
             <Detail Icon={EmailIcon}>{user.email}</Detail>
             <Detail Icon={EventIcon}>
-              Since {dayjs(user.createdAt).format('MMMM DD, YYYY')}
+              {t('profile.since')} {dayjs(user.createdAt).format('MMMM DD, YYYY')}
             </Detail>
             <Detail Icon={MembershipIcon}>
-              {userIsPremium ? 'Premium' : 'Free'} Membership
+              {t('users.membership')} {userIsPremium ? 'Premium' : 'Free'}
             </Detail>
           </Box>
 
@@ -55,8 +54,8 @@ const UserInformation = () => {
 
           {/* Personal Information */}
           <Box mt={isMobile ? 3 : 3}>
-            <Typography variant='h6' gutterBottom>
-              Personal Information
+            <Typography variant="h6" gutterBottom>
+              {t('profile.personalInformation')}
             </Typography>
             <PersonalInformation />
           </Box>
@@ -64,7 +63,7 @@ const UserInformation = () => {
 
         {/* Macronutrient Information */}
         <Grid item xs={12} lg={6}>
-          <Typography variant='h6'>Macronutrient Information</Typography>
+          <Typography variant="h6">{t('profile.macronutrientInformation')}</Typography>
           <MacroInformation />
         </Grid>
       </Grid>

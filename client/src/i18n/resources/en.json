@@ -5,7 +5,25 @@
       "add": "Add",
       "update": "Update",
       "clear": "Clear",
-      "create": "Create"
+      "create": "Create",
+      "saveChanges": "Save Changes"
+    },
+
+    "register": {
+      "register": "Register",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "emailAddress": "Email Address",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "birthdate": "Birthdate",
+      "gender": "Gender",
+      "metricSystem": "Metric System",
+      "imperial": "Imperial",
+      "alreadyHaveAccount": "Ya posee una cuenta?",
+      "dontHaveAccount": "Don't have an account?",
+      "signIn": "Sign In",
+      "login": "Login"
     },
 
     "common": {
@@ -49,7 +67,10 @@
       "mean": "Mean",
       "stdev": "Stdev",
       "min": "Min",
-      "max": "Max"
+      "max": "Max",
+      "fatPer": "Fat %",
+      "sleep": "Sleep",
+      "weightIn": "Weight In!"
     },
 
     "references": {
@@ -62,7 +83,9 @@
       "portionSize": "Portion Size",
       "dirty": "Dirty",
       "alcohol": "Alcohol",
-      "preview": "Preview"
+      "preview": "Preview",
+      "referenceLimits": "You have reached your reference limit for a free account. Upgrade to premium to add more references.",
+      "updateReferences": "Update References"
     },
 
     "statistics": {
@@ -80,6 +103,15 @@
       "averageCategoryPerWeek": "Average {{category}} per week"
     },
 
+    "users": {
+      "name": "Name",
+      "membership": "Membership",
+      "until": "Until",
+      "daysRemaining": "Days remaining",
+      "free": "Free",
+      "premium": "Premium"
+    },
+
     "profile": {
       "since": "Since",
       "profile": "Profile",
@@ -89,18 +121,31 @@
       "height": "Height",
       "macronutrientInformation": "Macronutrient Information",
       "baseWeight": "Base Weight",
+      "baseWeightDescription": "Reference weight for calculating macros. Update this field if your weight have changed by a significant amount. For example you lost or gained about 10 lb (about 4 to 5 kg).",
       "offsetMode": "Offset Mode",
+      "offsetModeDescription": "Select deficit, maintenance or surplus mode. If you're aiming for weight loss, select deficit. If you're aiming for muscle gains, select surplus. If you're maintaining your weight, select maintenance.",
       "deficit": "Deficit",
       "maintenance": "Maintenance",
       "surplus": "Surplus",
       "offset": "Offset",
       "offsetDescription": "Offset is the difference between your maintenance calories and your daily calorie target. For weight loss, we recommend setting a daily calorie target between 200 to 700 calories below your maintenance level. For muscle gain, we recommend a target between 250 to 450 calories above your maintenance level. Please note that these are general guidelines, and your ideal calorie target may vary depending on your unique body and goals. We encourage you to experiment and adjust your target based on your progress and how you feel.",
       "activity": "Activity",
+      "activityDescription": "This covers how many times you exercise per week, how intense and also if your work involves physical activity or not.",
       "moderatelyActive": "Moderately Active: 3-5 days of moderate exercise",
+      "proteinPreferences": "Protein Preference",
       "proteinPreference": "{{grams}} g per lb of base weight",
       "proteinPreferenceDescription": "If you enjoy eating protein-rich foods, you may choose to set a higher protein target. Increasing your protein intake will naturally decrease your carbohydrate intake.",
       "fatPreference": "Fat Preference",
-      "fatPreferenceDescription": "If you prefer a diet that's higher in fat, you may choose to set a higher fat target. This will naturally decrease your carbohydrate intake."
+      "fatPreferenceDescription": "If you prefer a diet that's higher in fat, you may choose to set a higher fat target. This will naturally decrease your carbohydrate intake.",
+      "logOut": "Log Out"
+    },
+
+    "activityOptions": {
+      "sedentary": "Sedentary: little to no exercise",
+      "lighlyActive": "Lightly Active: 1-3 days of light exercise",
+      "moderatelyActive": "Moderately Active: 3-5 days of moderate exercise",
+      "veryActive": "Very Active: 6-7 of hard exercise",
+      "extremelyActive": "Extremely Active: very hard exercise and physical job"
     },
 
     "settings": {
@@ -111,7 +156,8 @@
       "accessibility": "Accessibility",
       "language": "Language",
       "english": "English",
-      "spanish": "Spanish"
+      "spanish": "Spanish",
+      "chooseLanguage": "Choose a language"
     },
 
     "mealView": {
@@ -125,7 +171,21 @@
       "upgradePremium": "Upgrade to premium to see the resume of your meals",
       "noFoodInMeal": "No foods in this meal",
       "dropHereToCreateMeal": "Drop here to create preview meal",
-      "noMeasureAvailable": "No measurements available"
+      "noMeasureAvailable": "No measurements available",
+      "noMeasureYet": "No measurements yet!",
+      "pressToAddFirstMeasure": "Press the button below to add your first measurement",
+      "goTo": "Go to",
+      "addFirstMeasureBeforeFood": "and add your first measurement before you can see add foods",
+      "addFirstMeasureBeforeStatistics": "and add your first measurement before you can see your statistics",
+      "updateMeasurement": "Update Measurement"
+    },
+
+    "error": {
+      "invalidWeight": "Invalid weight",
+      "invalidFatPercentage": "Invalid fat percentage",
+      "invalidSleepHours": "Invalid sleep hours",
+      "notFound": "Not found :",
+      "goBack": "Go back"
     }
   }
 }

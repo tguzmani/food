@@ -8,17 +8,21 @@ import { IconButton, Collapse, Typography, Stack, Menu, MenuItem, Divider } from
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import useMenu from 'hooks/useMenu'
+import { useTranslation } from 'react-i18next'
 
 import OpenWithIcon from '@mui/icons-material/OpenWith'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import PersonIcon from '@mui/icons-material/Person'
 import LogoutIcon from '@mui/icons-material/Logout';
 
+
 const AppBarActions = ({ handleToggleDrag }) => {
   const { userIsPremium, user } = useStoreState(state => state.users)
   const { pathname } = useLocation()
   const { canDragFoods } = useStoreState(state => state.foods)
   const { signOut } = useStoreActions(actions => actions.users)
+
+  const { t } = useTranslation()
 
   const navigate = useNavigate()
 
@@ -65,14 +69,14 @@ const AppBarActions = ({ handleToggleDrag }) => {
         <MenuItem component={Link} to="/profile" onClick={handleCloseMenu}>
           <Stack direction="row" alignItems="center" spacing={1}>
             <PersonIcon />
-            <Typography variant="body2">Profile</Typography>
+            <Typography variant="body2">{t('sidebar.profile')}</Typography>
           </Stack>
         </MenuItem>
 
         <MenuItem component={Link} to="/settings" onClick={handleCloseMenu}>
           <Stack direction="row" alignItems="center" spacing={1}>
             <SettingsIcon />
-            <Typography variant="body2">Settings</Typography>
+            <Typography variant="body2">{t('sidebar.users')}</Typography>
           </Stack>
         </MenuItem>
 
@@ -81,7 +85,7 @@ const AppBarActions = ({ handleToggleDrag }) => {
         <MenuItem onClick={handleLogout}>
           <Stack direction="row" alignItems="center" spacing={1}>
             <LogoutIcon />
-            <Typography variant="body2">Logout</Typography>
+            <Typography variant="body2">{t('sidebar.logout')}</Typography>
           </Stack>
         </MenuItem>
       </Menu>

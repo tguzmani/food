@@ -15,9 +15,12 @@ import ReferenceItem from './ReferenceItem'
 import FAB from '../layout/FAB'
 import AddIcon from '@mui/icons-material/Add'
 import { useStoreActions, useStoreState } from 'easy-peasy'
+import { useTranslation } from 'react-i18next'
 
 const NewReferenceDialog = () => {
   const [open, setOpen] = React.useState(false)
+
+  const { t } = useTranslation()
 
   const { userIsPremium } = useStoreState(state => state.users)
   const { createReference } = useStoreActions(actions => actions.references)
@@ -74,113 +77,95 @@ const NewReferenceDialog = () => {
         show
         Icon={AddIcon}
         onClick={handleClickOpen}
-        tooltipTitle={
-          cantAddMoreReferences
-            ? 'You have reached your reference limit for a free account. Upgrade to premium to add more references.'
-            : 'Add Reference'
-        }
+        tooltipTitle={cantAddMoreReferences ? t('references.referenceLimits') : t('references.addReference')}
         disabled={cantAddMoreReferences}
       />
 
-      <Dialog open={open} onClose={handleClose} maxWidth='xs'>
-        <DialogTitle>Add Reference</DialogTitle>
+      <Dialog open={open} onClose={handleClose} maxWidth="xs">
+        <DialogTitle>{t('references.addReference')}</DialogTitle>
         <DialogContent>
           <TextField
             error={referenceNameHasSpaces}
             helperText={referenceNameHasSpaces && 'Name cannot contain spaces'}
             autoFocus
-            margin='normal'
-            label='Name'
-            type='text'
-            name='name'
+            margin="normal"
+            label={t('references.name')}
+            type="text"
+            name="name"
             value={name}
             onChange={onChange}
             fullWidth
           />
 
           <TextField
-            margin='normal'
-            label='Portion Size'
-            type='number'
-            name='portion'
+            margin="normal"
+            label={t('references.portionSize')}
+            type="number"
+            name="portion"
             value={portion}
             onChange={onChange}
             fullWidth
           />
 
           <TextField
-            margin='normal'
-            label='Protein'
-            type='number'
-            name='protein'
+            margin="normal"
+            label={t('common.protein')}
+            type="number"
+            name="protein"
             value={protein}
             onChange={onChange}
             fullWidth
           />
 
           <TextField
-            margin='normal'
-            label='Carbs'
-            type='number'
-            name='carbs'
+            margin="normal"
+            label={t('common.carbs')}
+            type="number"
+            name="carbs"
             value={carbs}
             onChange={onChange}
             fullWidth
           />
 
           <TextField
-            margin='normal'
-            label='Fat'
-            type='number'
-            name='fat'
+            margin="normal"
+            label={t('common.fat')}
+            type="number"
+            name="fat"
             value={fat}
             onChange={onChange}
             fullWidth
           />
 
           <FormControlLabel
-            control={
-              <Switch
-                checked={isDirty}
-                onChange={onChangeSwitch}
-                name='isDirty'
-                color='primary'
-              />
-            }
-            label='Dirty'
+            control={<Switch checked={isDirty} onChange={onChangeSwitch} name="isDirty" color="primary" />}
+            label={t('references.dirty')}
           />
 
           <FormControlLabel
-            control={
-              <Switch
-                checked={isAlcohol}
-                onChange={onChangeSwitch}
-                name='isAlcohol'
-                color='primary'
-              />
-            }
-            label='Alcohol'
+            control={<Switch checked={isAlcohol} onChange={onChangeSwitch} name="isAlcohol" color="primary" />}
+            label={t('references.alcohol')}
           />
 
           <Divider sx={{ my: 2 }} />
 
-          <Typography variant='body1' gutterBottom>
-            Preview
+          <Typography variant="body1" gutterBottom>
+            {t('references.preview')}
           </Typography>
           <ReferenceItem reference={computedReference} preview />
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={handleClose} color='primary'>
-            Cancel
+          <Button onClick={handleClose} color="primary">
+            {t('actions.cancel')}
           </Button>
           <Button
-            variant='contained'
+            variant="contained"
             onClick={handleCreate}
-            color='primary'
+            color="primary"
             disabled={portion === 0 || name === '' || referenceNameHasSpaces}
           >
-            Add
+            {t('actions.add')}
           </Button>
         </DialogActions>
       </Dialog>

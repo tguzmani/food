@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
 import { InputAdornment, TextField } from '@mui/material'
 import { useStoreState, useStoreActions } from 'easy-peasy'
+import { useTranslation } from 'react-i18next'
 
 const PersonalInformation = () => {
   const { profile, user } = useStoreState(state => state.users)
-  const { setProfile, setProfileFields } = useStoreActions(
-    actions => actions.users
-  )
+  const { setProfile, setProfileFields } = useStoreActions(actions => actions.users)
+
+  const { t } = useTranslation()
 
   useEffect(() => {
-    if (user)
-      setProfile({ age: user.age, height: user.height || '', sex: user.sex })
+    if (user) setProfile({ age: user.age, height: user.height || '', sex: user.sex })
     // eslint-disable-next-line
   }, [])
 
@@ -24,19 +24,17 @@ const PersonalInformation = () => {
   return (
     <form>
       <TextField
-      fullWidth
-        variant='outlined'
-        margin='normal'
+        fullWidth
+        variant="outlined"
+        margin="normal"
         required
-        label='Height'
-        name='height'
+        label={t('profile.height')}
+        name="height"
         onChange={onChange}
         value={profile.height}
-        type='number'
+        type="number"
         InputProps={{
-          endAdornment: (
-            <InputAdornment position='end'>cm</InputAdornment>
-          ),
+          endAdornment: <InputAdornment position="end">cm</InputAdornment>,
         }}
       />
     </form>

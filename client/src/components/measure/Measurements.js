@@ -12,6 +12,8 @@ const Measurements = ({ measurements, current }) => {
   
   const { t } = useTranslation()
 
+  const { t } = useTranslation()
+
   const [showList, setShowList] = React.useState(false)
 
 
@@ -53,8 +55,7 @@ const Measurements = ({ measurements, current }) => {
 
     thisMeasurements = measurements.filter(
       measure =>
-        dayjs().subtract(1, 'month').startOf('month').add(15, 'day') <
-          dayjs(measure.createdAt) &&
+        dayjs().subtract(1, 'month').startOf('month').add(15, 'day') < dayjs(measure.createdAt) &&
         dayjs(measure.createdAt) < dayjs().subtract(1, 'month').endOf('month')
     )
   }
@@ -65,7 +66,7 @@ const Measurements = ({ measurements, current }) => {
     <Stack spacing={2}>
       <PropertyPlot data={thisMeasurements} property="weight" />
       <StatisticsTable data={thisMeasurements} property="weight" />
-      <Collapsable open={showList} toggler={toggleShowList} text="Details">
+      <Collapsable open={showList} toggler={toggleShowList} text={t('measurements.details')}>
         <MeasureList measurements={thisMeasurements} />
       </Collapsable>
     </Stack>

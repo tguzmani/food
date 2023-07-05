@@ -21,7 +21,7 @@ import useIsDarkMode from 'hooks/useIsDarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import useResponsive from 'hooks/useResponsive'
-import LanguageIcon from '@mui/icons-material/Language';
+import LanguageIcon from '@mui/icons-material/Language'
 import LanguageSelectorDialog from 'components/settings/language-selector.dialog'
 import { useStoreActions, useStoreState } from 'config/easy-peasy.store'
 import useToggle from 'hooks/useToggle'
@@ -35,7 +35,8 @@ const SettingsPage = () => {
   const isMobile = useResponsive('sm')
 
   const { i18n } = useTranslation()
-  
+  const { t } = useTranslation()
+
   const { value: openLanguageDialog, toggleValue: toggleOpenLanguageDialog } = useToggle()
 
   if (!user) return <div>Loading...</div>
@@ -47,16 +48,15 @@ const SettingsPage = () => {
   }
 
   const displayLanguage = languages.find(language => language.code === i18n.language)
-  
+
   return (
-    <Page pathname='/settings'>
-      
+    <Page pathname="/settings">
       <Box mb={4}>
-        <Typography variant='caption'>Display</Typography>
-        <List >
+        <Typography variant="caption">{t('settings.display')}</Typography>
+        <List>
           <ListItem
             secondaryAction={
-              <IconButton edge='end' onClick={handleToggleTheme}>
+              <IconButton edge="end" onClick={handleToggleTheme}>
                 <ThemeIcon />
               </IconButton>
             }
@@ -65,20 +65,20 @@ const SettingsPage = () => {
               <ColorLensIcon />
             </ListItemAvatar>
 
-            <ListItemText primary='Theme' secondary='Dark mode' />
+            <ListItemText primary={t('settings.display')} secondary={t('settings.darkMode')} />
           </ListItem>
         </List>
 
         <Divider sx={{ mb: 2 }} />
 
-        <Typography variant='caption'>Accessibility</Typography>
-        <List >
-          <ListItemButton onClick={toggleOpenLanguageDialog} >
+        <Typography variant="caption">{t('settings.accessibility')}</Typography>
+        <List>
+          <ListItemButton onClick={toggleOpenLanguageDialog}>
             <ListItemAvatar>
               <LanguageIcon />
             </ListItemAvatar>
 
-            <ListItemText primary='Language' secondary={displayLanguage?.name} />
+            <ListItemText primary={t('settings.language')} secondary={displayLanguage?.name} />
 
             <LanguageSelectorDialog open={openLanguageDialog} onClose={toggleOpenLanguageDialog} />
           </ListItemButton>

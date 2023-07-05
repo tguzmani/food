@@ -8,26 +8,27 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import { useStoreState } from 'easy-peasy'
 import UsersTableRow from './UsersTableRow'
-import useResponsive from 'hooks/useResponsive';
+import useResponsive from 'hooks/useResponsive'
+import { useTranslation } from 'react-i18next'
 
 const UsersTable = () => {
   const { users } = useStoreState(state => state.users)
   const isMobile = useResponsive('sm')
 
-  const sortedUsersByFirstName = users.sort((a, b) => 
-    a.firstName < b.firstName ? -1 : 1
-  )
+  const { t } = useTranslation()
+
+  const sortedUsersByFirstName = users.sort((a, b) => (a.firstName < b.firstName ? -1 : 1))
 
   return (
     <div>
       <TableContainer component={Paper}>
-        <Table >
+        <Table>
           <TableHead>
             <TableRow sx={{ '> .MuiTableCell-root': { fontWeight: 'bold' } }}>
-              <TableCell>Name</TableCell>
-              <TableCell>Membership</TableCell>
-              {!isMobile && <TableCell align='right'>Until</TableCell>}
-              {!isMobile && <TableCell align='right'>Days remaining</TableCell>}
+              <TableCell>{t('users.name')}</TableCell>
+              <TableCell>{t('users.membership')}</TableCell>
+              {!isMobile && <TableCell align="right">{t('users.until')}</TableCell>}
+              {!isMobile && <TableCell align="right">{t('users.daysRemaining')}</TableCell>}
             </TableRow>
           </TableHead>
           <TableBody>

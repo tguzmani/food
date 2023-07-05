@@ -1,14 +1,6 @@
 import React, { useEffect } from 'react'
 
-import {
-  Card,
-  CardContent,
-  TextField,
-  Button,
-  Typography,
-  Avatar,
-  Stack,
-} from '@mui/material'
+import { Card, CardContent, TextField, Button, Typography, Avatar, Stack } from '@mui/material'
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { useStoreActions, useStoreState } from 'easy-peasy'
@@ -53,18 +45,14 @@ const LoginForm = ({ history }) => {
   return (
     <Card sx={{ paddingTop: 0.5, width: isMobile ? '100%' : '85%' }}>
       <CardContent sx={{ height: isMobile ? '50vh' : '45vh' }}>
-        <Stack
-          sx={{ height: '100%' }}
-          direction='column'
-          justifyContent='space-between'
-        >
+        <Stack sx={{ height: '100%' }} direction="column" justifyContent="space-between">
           {error && <Alert>{error}</Alert>}
           <Box mt={2}>
-            <Stack alignItems='center' spacing={1}>
+            <Stack alignItems="center" spacing={1}>
               <Avatar sx={{ bgcolor: theme.palette.primary.main }}>
                 <LockOutlinedIcon />
               </Avatar>
-              <Typography variant='h6' sx={{ fontWeight: 'bold' }}>
+              <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
                 {t('login.login')}
               </Typography>
             </Stack>
@@ -72,40 +60,40 @@ const LoginForm = ({ history }) => {
 
           <Stack>
             <TextField
-              variant='outlined'
-              margin='dense'
+              variant="outlined"
+              margin="dense"
               required
               fullWidth
-              label={t('login.email')}
-              type='email'
-              autoComplete='email'
+              label={t('register.emailAddress')}
+              type="email"
+              autoComplete="email"
               autoFocus
               {...bindCredentials('email')}
             />
             <TextField
-              variant='outlined'
-              margin='dense'
+              variant="outlined"
+              margin="dense"
               required
               fullWidth
-              label={t('login.password')}
-              type='password'
-              autoComplete='password'
+              label={t('register.password')}
+              type="password"
+              autoComplete="password"
               {...bindCredentials('password')}
             />
           </Stack>
 
           <Button
             onClick={handleSignIn}
-            color='primary'
-            variant='contained'
+            color="primary"
+            variant="contained"
             fullWidth
             disabled={areCredentialsEmpty || loading}
           >
-            {t(loading ? 'common.loading' : 'login.login')}
+            {loading ? 'Loading...' : t('register.signIn')}
           </Button>
 
-          <Typography variant='caption' align='center'>
-            {t('login.dontHaveAccount')} <Link to='/register'>{t('login.register')}</Link>
+          <Typography variant="caption" align="center">
+            {t('register.dontHaveAccount')} <Link to="/register">{t('register.register')}</Link>
           </Typography>
         </Stack>
       </CardContent>

@@ -43,12 +43,9 @@ const PreviewMeal = ({ foods }) => {
 
   // updates food new meal
   const handleCreate = () => {
-    const maxMealNumber =
-      mealNumbers.length === 0 ? 0 : Math.max(...mealNumbers)
+    const maxMealNumber = mealNumbers.length === 0 ? 0 : Math.max(...mealNumbers)
 
-    previewMealFoods.forEach(food =>
-      updateFood({ ...food, meal: maxMealNumber + 1 })
-    )
+    previewMealFoods.forEach(food => updateFood({ ...food, meal: maxMealNumber + 1 }))
   }
 
   // deletes foods with meal = 0
@@ -58,9 +55,7 @@ const PreviewMeal = ({ foods }) => {
 
   // updates foods to meal = n
   const handleAddToFood = e => {
-    previewMealFoods.forEach(food =>
-      updateFood({ ...food, meal: e.target.value })
-    )
+    previewMealFoods.forEach(food => updateFood({ ...food, meal: e.target.value }))
 
     handleClose()
   }
@@ -109,7 +104,7 @@ const PreviewMeal = ({ foods }) => {
               backgroundColor: isOver ? 'primary.lighter' : 'inherit',
             }}
           >
-            <CardHeader avatar={<Avatar>P</Avatar>} title="Preview" />
+            <CardHeader avatar={<Avatar>P</Avatar>} title={t('references.preview')} />
 
             <CardContent>
               <Typography variant="body1" gutterBottom align="right">
@@ -126,50 +121,27 @@ const PreviewMeal = ({ foods }) => {
 
             {previewMealFoods.length > 0 && (
               <CardActions>
-                <Stack
-                  direction="row"
-                  justifyContent="space-between"
-                  alignItems="center"
-                  width={1}
-                >
+                <Stack direction="row" justifyContent="space-between" alignItems="center" width={1}>
                   <Button size="small" onClick={handleClear}>
                     {t('actions.clear')}
                   </Button>
 
                   <Stack direction="row" alignItems="center" spacing={2}>
                     {mealNumbers.length > 0 && (
-                      <Button
-                        size="small"
-                        color="primary"
-                        onClick={handleClick}
-                      >
+                      <Button size="small" color="primary" onClick={handleClick}>
                         {t('meals.addToMeal')}
                       </Button>
                     )}
-                    <Menu
-                      anchorEl={anchorEl}
-                      keepMounted
-                      open={Boolean(anchorEl)}
-                      onClose={handleClose}
-                    >
+                    <Menu anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
                       {mealNumbers
                         .filter(number => number !== 0)
                         .map(number => (
-                          <MenuItem
-                            key={number}
-                            value={number}
-                            onClick={handleAddToFood}
-                          >
+                          <MenuItem key={number} value={number} onClick={handleAddToFood}>
                             {number}
                           </MenuItem>
                         ))}
                     </Menu>
-                    <Button
-                      size="small"
-                      color="primary"
-                      variant="contained"
-                      onClick={handleCreate}
-                    >
+                    <Button size="small" color="primary" variant="contained" onClick={handleCreate}>
                       {t('actions.create')}
                     </Button>
                   </Stack>

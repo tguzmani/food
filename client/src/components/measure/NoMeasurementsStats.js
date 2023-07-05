@@ -2,17 +2,20 @@ import React from 'react'
 import { Stack, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import InfoIcon from '@mui/icons-material/Info'
+import { useTranslation } from 'react-i18next'
 
 const NoMeasurementsStats = () => {
+  const { t } = useTranslation
+
   return (
-    <Stack alignItems='center'>
+    <Stack alignItems="center">
       <InfoIcon sx={{ mb: 2, fontSize: 48 }} />
-      <Typography variant='h6' align='center' gutterBottom>
-        No measurements yet!
+      <Typography variant="h6" align="center" gutterBottom>
+        {t('dialog.noMeasureYet')}
       </Typography>
-      <Typography variant='body1' align='center'>
-        Go to <Link to='measurements'>measurements</Link> and add your first measurement before you can see
-        your statistics
+      <Typography variant="body1" align="center">
+        {t('dialog.goTo')} <Link to="measurements">{t('measurements.measurements')}</Link>
+        {t('dialog.addFirstMeasureBedoreStatistics')}
       </Typography>
     </Stack>
   )
