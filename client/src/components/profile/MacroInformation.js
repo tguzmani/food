@@ -121,7 +121,7 @@ const MacroInformation = () => {
           step={null}
         />
         <Box sx={{ height: '2em' }}>
-          <Typography variant="body2">{activityOptions[activity]}</Typography>
+          <Typography variant="body2">{t(`profile.${activityOptions[activity]}`)}</Typography>
         </Box>
       </Box>
 

@@ -42,7 +42,7 @@
       "signUp": "Registrarse",
       "login": "Ingresar",
       "male": "Hombre",
-      "female": "Mujer" 
+      "female": "Mujer"
     },
 
     "day": {
@@ -137,7 +137,7 @@
       "baseWeight": "Peso base",
       "baseWeightDescription": "Referencia de peso para calcular los macros. Actualice este campo si su peso ha cambiado significativamente. Por ejemplo, si ha perdido o ganado alrededor de 10 libras (aproximadamente 4 a 5 kg).",
       "offsetMode": "Objetivo fitness",
-      "offsetModeDescription": "Seleccione el modo de déficit, mantenimiento o superávit. Si su objetivo es la pérdida de peso, seleccione el déficit. Si su objetivo es ganar músculo, seleccione el superávit. Si desea mantener su peso, seleccione el mantenimiento.",
+      "offsetModeDescription": "Seleccione tu objetivo fitness para calcular los macros y tu ingesta calórica",
       "deficit": "Quemar grasa",
       "maintenance": "Mantener peso",
       "surplus": "Ganar músculo",
@@ -145,8 +145,12 @@
       "offsetDescriptionDeficit": "Es un valor entre 0 y 500. A mayor el número, más rápido quemas grasa, pero también corres mayor riesgo de perder músculo y fuerza.",
       "offsetDescriptionSurplus": "Es un valor entre 0 y 500. A mayor el número, más rápido ganas músculo, pero también corres mayor riesgo de ganar grasa.",
       "activity": "Actividad",
-      "activityDescription": "Esto cubre cuántas veces se ejercita por semana, qué tan intenso es su entrenamiento y si su trabajo implica actividad física o no.",
-      "moderatelyActive": "Moderadamente Activo: 3-5 días de ejercicio moderado",
+      "activityDescription": "Esto cubre cuántas veces se ejercita por semana, qué tan intenso es tu entrenamiento y si tu trabajo implica actividad física o no.",
+      "sedentary": "Poco o nada de ejercicio",
+      "lightActivity": "1 a 3 días de ejercicio ligero",
+      "moderateActivity": "3 a 5 días de ejercicio moderado",
+      "highActivity": "6 a 7 días de ejercicio intenso",
+      "extremeActivity": "Todos los días de ejercicio intenso con un trabajo activo",
       "proteinPreferences": "Preferencia de proteínas",
       "proteinPreference": "{{grams}} g por lb de peso base",
       "proteinPreferenceDescription": "Si te gustan los alimentos ricos en proteínas, puedes elegir establecer un objetivo de proteínas más alto. Aumentar tu ingesta de proteínas disminuirá naturalmente tu ingesta de carbohidratos.",
