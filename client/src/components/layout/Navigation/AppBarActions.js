@@ -15,6 +15,11 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import PersonIcon from '@mui/icons-material/Person'
 import LogoutIcon from '@mui/icons-material/Logout';
 
+import OpenWithIcon from '@mui/icons-material/OpenWith'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import PersonIcon from '@mui/icons-material/Person'
+import LogoutIcon from '@mui/icons-material/Logout';
+
 const AppBarActions = ({ handleToggleDrag }) => {
   const { userIsPremium, user } = useStoreState(state => state.users)
   const { pathname } = useLocation()
@@ -68,14 +73,22 @@ const AppBarActions = ({ handleToggleDrag }) => {
         <MenuItem component={Link} to="/profile" onClick={handleCloseMenu}>
           <Stack direction="row" alignItems="center" spacing={1}>
             <PersonIcon />
+<<<<<<< HEAD
             <Typography variant="body2">{t('sidebar.profile')}</Typography>
+=======
+            <Typography variant="body2">Profile</Typography>
+>>>>>>> e68c260 (fix(food item): adds conditional operator to food)
           </Stack>
         </MenuItem>
 
         <MenuItem component={Link} to="/settings" onClick={handleCloseMenu}>
           <Stack direction="row" alignItems="center" spacing={1}>
             <SettingsIcon />
+<<<<<<< HEAD
             <Typography variant="body2">{t('sidebar.users')}</Typography>
+=======
+            <Typography variant="body2">Settings</Typography>
+>>>>>>> e68c260 (fix(food item): adds conditional operator to food)
           </Stack>
         </MenuItem>
 
@@ -84,7 +97,11 @@ const AppBarActions = ({ handleToggleDrag }) => {
         <MenuItem onClick={handleLogout}>
           <Stack direction="row" alignItems="center" spacing={1}>
             <LogoutIcon />
+<<<<<<< HEAD
             <Typography variant="body2">{t('sidebar.logout')}</Typography>
+=======
+            <Typography variant="body2">Logout</Typography>
+>>>>>>> e68c260 (fix(food item): adds conditional operator to food)
           </Stack>
         </MenuItem>
       </Menu>
