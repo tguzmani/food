@@ -16,7 +16,7 @@ const background = backgrounds[random]
 
 const Login = () => {
   document.title = 'Physfit | Login'
-
+  
   return (
     <>
       <Notification store="users" />
@@ -49,7 +49,7 @@ const Login = () => {
             }}
           >
             <Typography variant="caption" sx={{ color: 'white' }}>
-              &copy; 2023. By Physfit
+              &copy; 2023. Physfit
             </Typography>
           </Grid>
         </Grid>

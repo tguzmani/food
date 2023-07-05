@@ -18,12 +18,15 @@ import useResponsive from 'hooks/useResponsive'
 import useForm from 'hooks/useForm'
 import useAuth from 'hooks/useAuth'
 import Alert from 'components/layout/Alert'
+import { useTranslation } from 'react-i18next'
 
 const LoginForm = ({ history }) => {
   const isMobile = useResponsive('sm')
   const theme = useTheme()
   const isAuth = useAuth()
   const navigate = useNavigate()
+
+  const { t } = useTranslation()
 
   const { signIn, setLoading } = useStoreActions(actions => actions.users)
   const { error } = useStoreState(state => state.users)
@@ -62,7 +65,7 @@ const LoginForm = ({ history }) => {
                 <LockOutlinedIcon />
               </Avatar>
               <Typography variant='h6' sx={{ fontWeight: 'bold' }}>
-                Login
+                {t('login.login')}
               </Typography>
             </Stack>
           </Box>
@@ -73,7 +76,7 @@ const LoginForm = ({ history }) => {
               margin='dense'
               required
               fullWidth
-              label='Email Address'
+              label={t('login.email')}
               type='email'
               autoComplete='email'
               autoFocus
@@ -84,7 +87,7 @@ const LoginForm = ({ history }) => {
               margin='dense'
               required
               fullWidth
-              label='Password'
+              label={t('login.password')}
               type='password'
               autoComplete='password'
               {...bindCredentials('password')}
@@ -98,11 +101,11 @@ const LoginForm = ({ history }) => {
             fullWidth
             disabled={areCredentialsEmpty || loading}
           >
-            {loading ? 'Loading...' : 'Sign in'}
+            {t(loading ? 'common.loading' : 'login.login')}
           </Button>
 
           <Typography variant='caption' align='center'>
-            Don't have an account? <Link to='/register'>Register</Link>
+            {t('login.dontHaveAccount')} <Link to='/register'>{t('login.register')}</Link>
           </Typography>
         </Stack>
       </CardContent>

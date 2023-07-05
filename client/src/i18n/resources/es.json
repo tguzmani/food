@@ -13,7 +13,16 @@
       "carbs": "Carbohidratos",
       "fat": "Grasa",
       "cal": "cal",
-      "Cal": "Cal"
+      "Cal": "Cal",
+      "loading": "Cargando..."
+    },
+
+    "login": {
+      "password": "Contraseña",
+      "login": "Iniciar sesión",
+      "dontHaveAccount": "¿No tienes una cuenta?",
+      "email": "Correo electrónico",
+      "register": "Regístrate"
     },
 
     "day": {

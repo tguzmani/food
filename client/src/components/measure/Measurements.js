@@ -5,11 +5,15 @@ import StatisticsTable from '../statistics/StatisticsTable'
 import MeasureList from './MeasurementList'
 import { Stack, Typography } from '@mui/material'
 import Collapsable from 'components/layout/Collapsable'
+import { useTranslation } from 'react-i18next'
 
 const Measurements = ({ measurements, current }) => {
   let thisMeasurements = []
+  
+  const { t } = useTranslation()
 
   const [showList, setShowList] = React.useState(false)
+
 
   const toggleShowList = () => setShowList(!showList)
 
