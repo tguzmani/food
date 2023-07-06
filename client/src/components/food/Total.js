@@ -12,9 +12,9 @@ const Value = ({ children, color }) => (
 )
 
 const Total = ({ foods }) => {
-  const totalProtein = getTotalMacro(foods, 'Protein')
-  const totalCarbs = getTotalMacro(foods, 'Carbs')
-  const totalFat = getTotalMacro(foods, 'Fat')
+  const totalProtein = getTotalMacro(foods, 'protein')
+  const totalCarbs = getTotalMacro(foods, 'carbs')
+  const totalFat = getTotalMacro(foods, 'fat')
 
   return (
     <ListItem>

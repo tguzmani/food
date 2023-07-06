@@ -77,9 +77,9 @@ const FoodItem = ({ food }) => {
   const updatedFood = {
     ...food,
     quantity: isNaN(quantity) ? 0 : quantity,
-    protein: isNaN(food?.protein * quantity) ? 0 : food?.protein * quantity,
-    carbs: isNaN(food?.carbs * quantity) ? 0 : food?.carbs * quantity,
-    fat: isNaN(food?.fat * quantity) ? 0 : food?.fat * quantity,
+    protein: isNaN(food.reference.protein * quantity) ? 0 : food.reference.protein * quantity,
+    carbs: isNaN(food.reference.carbs * quantity) ? 0 : food.reference.carbs * quantity,
+    fat: isNaN(food.reference.fat * quantity) ? 0 : food.reference.fat * quantity,
   }
 
   const onBlurUpdate = e => {
