@@ -57,7 +57,7 @@ const PropertyPlot = ({ data, property }) => {
   }
 
   return (
-    <Paper>
+    <Paper sx={{borderRadius: 1.5}}>
       <Box p={3.5}>
         <CanvasJSChart options={options} />
       </Box>

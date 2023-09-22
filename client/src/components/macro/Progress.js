@@ -7,8 +7,8 @@ import useResponsive from './../../hooks/useResponsive'
 import useIsDarkMode from 'hooks/useIsDarkMode'
 
 const Progress = ({ progress, macro }) => {
-  const SIZE = useResponsive('md') ? 55 : 70
-  const THICKNESS = useResponsive('md') ? 5 : 4
+  const SIZE = useResponsive('md') ? 60 : 70
+  const THICKNESS = useResponsive('md') ? 5.5 : 4
 const isDarkMode = useIsDarkMode()
   const colors = {
     protein: red[700],
@@ -58,7 +58,7 @@ const isDarkMode = useIsDarkMode()
         alignItems='center'
         justifyContent='center'
       >
-        <Typography variant='body1' component='div' color='textPrimary'>
+        <Typography variant='body2' component='div' color='textPrimary'>
           {Math.round(progress)}%
         </Typography>
       </Box>

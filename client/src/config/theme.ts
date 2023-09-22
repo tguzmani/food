@@ -2,7 +2,7 @@ import { createTheme } from '@mui/material'
 import { blue } from '@mui/material/colors'
 
 export const DRAWER_WIDTH = 96
-export const BOTTOM_NAV_HEIGHT = 64
+export const BOTTOM_NAV_HEIGHT = 72
 
 type ThemeMode = 'light' | 'dark'
 

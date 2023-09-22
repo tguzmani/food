@@ -23,8 +23,10 @@ const Main = styled(Box)(({ theme }) => ({
   padding: theme.spacing(2),
   overflowY: 'scroll',
   flexGrow: 1,
+  paddingTop: theme.spacing(12),
+  paddingBottom: theme.spacing(2),
   [theme.breakpoints.down('sm')]: {
-    height: `calc(100vh - ${BOTTOM_NAV_HEIGHT}px - 48px)`,
+    height: `calc(100vh - ${BOTTOM_NAV_HEIGHT}px)`,
   },
 }))
 
@@ -52,8 +54,7 @@ const Layout = ({ children }: LayoutProps) => {
 
         <Nav>{!isMobile && <DesktopDrawer onClose={closeDrawer} />}</Nav>
 
-        <Main id="main" mt={4}>
-          <Box sx={{ ...theme.mixins.toolbar }} />
+        <Main id="main">
           {children}
         </Main>
       </Stack>

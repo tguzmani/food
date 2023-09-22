@@ -19,7 +19,7 @@ const Macro = ({ macro }) => {
     <Stack alignItems='center'>
       <Progress progress={progress} macro={macro} />
 
-      <Typography variant='body1'>
+      <Typography variant='body1' mt={1}>
         {consumed}/{goal}
       </Typography>
 

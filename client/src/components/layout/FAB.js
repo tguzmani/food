@@ -16,7 +16,7 @@ const FAB = ({ Icon, onClick, show, disabled, tooltipTitle }) => {
   return (
     <FabContainer
       sx={{
-        bottom: isMobile ? 'calc(56px + 16px)' : '24px',
+        bottom: isMobile ? 'calc(80px + 16px)' : '24px',
         left: isMobile ? '-16px' : '-24px',
       }}
     >

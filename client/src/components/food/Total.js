@@ -1,7 +1,7 @@
 import React from 'react'
 import { ListItem, Grid, Typography } from '@mui/material'
 import { getTotalMacro } from 'util/food'
-import { useTranslation } from 'react-i18next'
+import { useTheme } from '@emotion/react'
 
 const Value = ({ children, color }) => (
   <Grid item xs={3} sx={{ textAlign: 'right', color, fontWeight: 'bold' }}>
@@ -16,8 +16,10 @@ const Total = ({ foods }) => {
   const totalCarbs = getTotalMacro(foods, 'carbs')
   const totalFat = getTotalMacro(foods, 'fat')
 
+  const theme = useTheme()
+
   return (
-    <ListItem sx={{ borderRadius: 1, p: 2, border: '1px solid', borderColor: 'dark.light' }}>
+    <ListItem sx={{ borderRadius: 1, p: 2, border: `1px solid ${theme.palette.dark.light} !important` }}>
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={5}>
           <Typography variant="body2" className="text-bold">

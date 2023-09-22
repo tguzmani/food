@@ -53,7 +53,7 @@ const MealItem = ({ foods, number }) => {
   )
 
   return (
-    <Box mt={6}>
+    <Box mt={2}>
       <Card
         ref={drop}
         sx={{
