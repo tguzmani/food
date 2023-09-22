@@ -27,14 +27,7 @@ const StatPanel = () => {
 
   const { t } = useTranslation()
 
-  const properties = [
-    t('statistics.weight'),
-    t('statistics.sleep'),
-    t('statistics.fat'),
-    t('statistics.calories'),
-    t('statistics.cleanliness'),
-    t('statistics.alcohol'),
-  ]
+  const properties = ['weight', 'sleep', 'fat', 'calories', 'cleanliness', 'alcohol']
 
   const [property, setProperty] = React.useState(properties[0])
   const [fromDate, setFromDate] = React.useState(dayjs())
@@ -88,7 +81,7 @@ const StatPanel = () => {
 
   const areDatesEqual = dayjs(fromDate).isSame(dayjs(toDate))
 
-  const weekPlotTitle = `Average ${property} per week`
+  const weekPlotTitle = t('statistics.averageCategoryPerWeek', { category: t(`statistics.${property}`) })
 
   return (
     <>
@@ -127,7 +120,7 @@ const StatPanel = () => {
               >
                 {properties.map(property => (
                   <MenuItem key={property} value={property}>
-                    {capitalize(property)}
+                    {capitalize(t(`statistics.${property}`))}
                   </MenuItem>
                 ))}
               </Select>

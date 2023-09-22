@@ -4,13 +4,17 @@ import CanvasJSReact from '../../lib/canvasjs.react'
 import { capitalize } from '../../util/index'
 
 import useIsDarkMode from 'hooks/useIsDarkMode'
+import { useTranslation } from 'react-i18next'
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart
 
 const PropertyPlot = ({ data, property }) => {
-  // console.log({ data, property })
+  console.log({ data, property })
   const theme = useTheme()
   const isDarkMode = useIsDarkMode()
+  const { t } = useTranslation()
+
+  const propertyLabel = capitalize(t(`statistics.${property}`))
 
   let dataPoints = data.map(element => ({
     x: new Date(element.createdAt),
@@ -21,7 +25,7 @@ const PropertyPlot = ({ data, property }) => {
     {
       color: theme.palette.primary.main,
       type: 'spline',
-      name: capitalize(property),
+      name: propertyLabel,
       connectNullData: true,
       yValueFormatString: '#0.##',
       dataPoints,
@@ -32,7 +36,7 @@ const PropertyPlot = ({ data, property }) => {
     animationEnabled: true,
     theme: isDarkMode ? 'dark2' : 'light2',
     title: {
-      text: capitalize(property),
+      text: propertyLabel,
       fontFamily: 'Poppins',
       fontSize: 16,
     },

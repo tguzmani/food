@@ -27,7 +27,7 @@ const Router = () => {
 
         <Route
           exact
-          path='/ '
+          path='/'
           element={
             <PrivateRoute>
               <Day />
