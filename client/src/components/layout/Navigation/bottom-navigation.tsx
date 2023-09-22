@@ -1,8 +1,6 @@
 import * as React from 'react'
 import Box from '@mui/material/Box'
-import {
-  BottomNavigation as MuiBottomNavigation,
-} from '@mui/material'
+import { BottomNavigation as MuiBottomNavigation } from '@mui/material'
 import useNavigationItems from './use-navigation-items'
 import BottomNavItem from './bottom-navigation.item'
 
@@ -19,7 +17,7 @@ const BottomNavigation = () => {
         onChange={(event, newValue) => {
           setValue(newValue)
         }}
-        sx={{borderTop: '1px solid', borderColor: 'divider'}}
+        sx={{ height: 64, borderTop: '1px solid', borderColor: 'divider' }}
       >
         {navigationItems.map(navigationItem => (
           <BottomNavItem key={navigationItem.to} navigationItem={navigationItem} />

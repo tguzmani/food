@@ -1,4 +1,4 @@
-import { BottomNavigationAction, Typography } from '@mui/material'
+import { BottomNavigationAction, Box, Typography, alpha, useTheme } from '@mui/material'
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { NavigationItem } from './navigation.model'
@@ -11,6 +11,7 @@ interface BottomNavItemProps {
 const BottomNavItem = ({ navigationItem }: BottomNavItemProps) => {
   const { pathname } = useLocation()
   const navigate = useNavigate()
+  const theme = useTheme()
 
   const handleNavigateTo = () => {
     navigate(navigationItem.to)
@@ -22,13 +23,22 @@ const BottomNavItem = ({ navigationItem }: BottomNavItemProps) => {
 
   return (
     <BottomNavigationAction
-      sx={{
-        minWidth: 0,
-        color: isSelected ? 'primary.main' : 'text.secondary',
-      }}
-      icon={<navigationItem.Icon />}
+      disableRipple
+
+      icon={
+        <Box
+          bgcolor={isSelected ? alpha(theme.palette.primary.main, 0.25) : 'transparent'}
+          sx={{ width: 48, p: 0.25, borderRadius: 8 }}
+        >
+          <navigationItem.Icon sx={{ fontSize: 16 }} />
+        </Box>
+      }
       onClick={handleNavigateTo}
-      label={<Typography variant='caption' fontSize='9px'>{navigationItem.text}</Typography>}
+      label={
+        <Typography variant="caption" fontSize="9px" fontWeight={isSelected ? 'bold' : 'normal'}>
+          {navigationItem.text}
+        </Typography>
+      }
       showLabel
     />
   )
