@@ -113,7 +113,6 @@ const PreviewMeal = ({ foods }) => {
               <Foods foods={previewMealFoods} />
               {userIsPremium && (
                 <>
-                  <Divider />
                   <Total foods={previewMealFoods} />
                 </>
               )}

@@ -36,7 +36,7 @@ const UserInformation = () => {
       <Grid container spacing={4}>
         {/* User Details */}
         <Grid item xs={12} lg={3}>
-          <Box mb={3}>
+          <Box mb={6}>
             <Typography variant="h4" gutterBottom>
               {user.firstName} {user.lastName}
             </Typography>
@@ -50,7 +50,9 @@ const UserInformation = () => {
           </Box>
 
           {/* Caloric Intake */}
-          <BMRs />
+          <Box mb={6}>
+            <BMRs />
+          </Box>
 
           {/* Personal Information */}
           <Box mt={isMobile ? 3 : 3}>
@@ -62,7 +64,7 @@ const UserInformation = () => {
         </Grid>
 
         {/* Macronutrient Information */}
-        <Grid item xs={12} lg={6}>
+        <Grid item xs={12} lg={6} mb={isMobile ? 6 : 0}>
           <Typography variant="h6">{t('profile.macronutrientInformation')}</Typography>
           <MacroInformation />
         </Grid>

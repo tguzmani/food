@@ -106,6 +106,9 @@ const FoodItem = ({ food }) => {
         divider
         ref={drag}
         sx={{
+          px: 1,
+          py: 1,
+
           backgroundColor: isDarkMode ? 'grey.950' : 'inherit',
           borderBottomColor: isDarkMode ? 'grey.800' : 'grey.300',
           fontSize: '14px',

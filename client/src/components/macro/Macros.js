@@ -47,6 +47,8 @@ const Macros = () => {
           alignItems='center'
           justifyContent={justify}
           spacing={spacing}
+          my={4}
+          mb={6}
         >
           <Macro macro='protein' />
           <Macro macro='carbs' />

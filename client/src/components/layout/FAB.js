@@ -23,7 +23,7 @@ const FAB = ({ Icon, onClick, show, disabled, tooltipTitle }) => {
       <Zoom in={show}>
         <Tooltip placement='left' title={tooltipTitle} arrow>
           <span>
-            <Fab color='primary' onClick={onClick} disabled={disabled}>
+            <Fab color='primary' sx={{borderRadius: 1}} onClick={onClick} disabled={disabled}>
               <Icon />
             </Fab>
           </span>

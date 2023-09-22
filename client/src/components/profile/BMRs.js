@@ -41,7 +41,8 @@ const BMRs = () => {
           sx={{
             position: 'absolute',
             width: 'calc(100vw - 32px)',
-            top: 64,
+            padding: 1,
+            top: 80,
             left: 16,
             zIndex: 1000,
             backgroundColor: 'transparent',

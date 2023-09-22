@@ -1,8 +1,8 @@
 import { createTheme } from '@mui/material'
 import { blue } from '@mui/material/colors'
 
-export const DRAWER_WIDTH = 260
-export const BOTTOM_NAV_HEIGHT = 54
+export const DRAWER_WIDTH = 96
+export const BOTTOM_NAV_HEIGHT = 64
 
 type ThemeMode = 'light' | 'dark'
 
@@ -10,6 +10,11 @@ const baseTheme = createTheme({})
 
 const typography = {
   fontFamily: 'Poppins, sans-serif',
+
+  h1: {
+    fontSize: '32px',
+    lineHeight: '64px',
+  },
 
   body2: {
     fontSize: '14px',
@@ -46,11 +51,11 @@ export const palette = (mode: ThemeMode) => ({
 
 const theme = createTheme({
   typography,
-  shape: { borderRadius: 8 },
+  shape: { borderRadius: 16 },
 
   mixins: {
     toolbar: {
-      minHeight: 48,
+      minHeight: 56,
     },
   },
 
@@ -98,9 +103,20 @@ const theme = createTheme({
       styleOverrides: {
         paper: {
           width: DRAWER_WIDTH,
+          border: 'none',
+
           backgroundColor: baseTheme.palette.grey[900],
           color: baseTheme.palette.grey[100],
           padding: baseTheme.spacing(2),
+        },
+      },
+    },
+
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          padding: 8,
+          borderRadius: 24,
         },
       },
     },

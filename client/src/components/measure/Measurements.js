@@ -14,7 +14,6 @@ const Measurements = ({ measurements, current }) => {
 
   const [showList, setShowList] = React.useState(false)
 
-
   const toggleShowList = () => setShowList(!showList)
 
   if (current && dayjs().get('date') > 15) {
@@ -63,8 +62,8 @@ const Measurements = ({ measurements, current }) => {
   ) : (
     <Stack spacing={2}>
       <PropertyPlot data={thisMeasurements} property="weight" />
-      <StatisticsTable data={thisMeasurements} property="weight" />
       <Collapsable open={showList} toggler={toggleShowList} text={t('measurements.details')}>
+        <StatisticsTable data={thisMeasurements} property="weight" />
         <MeasureList measurements={thisMeasurements} />
       </Collapsable>
     </Stack>

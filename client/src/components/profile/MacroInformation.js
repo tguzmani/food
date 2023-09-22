@@ -79,7 +79,7 @@ const MacroInformation = () => {
         />
       </Box>
 
-      <Box mb={1}>
+      <Box mb={6}>
         <Detail title={t('profile.offsetMode')}>{t('profile.offsetModeDescription')}</Detail>
 
         <OffsetMode offsetMode={offsetMode} onChangeOffsetMode={handleChangeOffsetMode} />

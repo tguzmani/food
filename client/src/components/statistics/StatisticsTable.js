@@ -1,7 +1,20 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import {
+  Grid,
+  Paper,
+  Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from '@mui/material'
 import React from 'react'
 import { mean, stdev, sum } from '../../util/index'
 import { useTranslation } from 'react-i18next'
+
+const statistics = ['mean', 'stdev', 'min', 'max']
 
 const StatisticsTable = ({ data, property }) => {
   const tableData = data.map(element => element[property])
@@ -19,27 +32,20 @@ const StatisticsTable = ({ data, property }) => {
   }
 
   return (
-    <TableContainer component={Paper}>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell align="center">{t('measurements.mean')}</TableCell>
-            <TableCell align="center">{t('measurements.stdev')}</TableCell>
-            <TableCell align="center">{t('measurements.min')}</TableCell>
-            <TableCell align="center">{t('measurements.max')}</TableCell>
-          </TableRow>
-        </TableHead>
-
-        <TableBody>
-          <TableRow sx={{ '.MuiTableCell-root': { borderBottom: 'none' } }}>
-            <TableCell align="center">{cellContent(row.mean)}</TableCell>
-            <TableCell align="center">{cellContent(row.stdev)}</TableCell>
-            <TableCell align="center">{cellContent(row.min)}</TableCell>
-            <TableCell align="center">{cellContent(row.max)}</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <Grid container component={Paper} sx={{ p: 2, my: 2 }}>
+      {statistics.map(stat => (
+        <Grid item xs={3}>
+          <Stack alignItems="center" spacing={2}>
+            <Typography variant="body1" align="center">
+              {cellContent(row[stat])}
+            </Typography>
+            <Typography variant="caption" color="grey.500">
+              {t(`measurements.${stat}`)}
+            </Typography>
+          </Stack>
+        </Grid>
+      ))}
+    </Grid>
   )
 }
 

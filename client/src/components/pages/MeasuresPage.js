@@ -33,7 +33,7 @@ const MeasurementsPage = () => {
         ) : (
           <Grid container display='flex' spacing={3}>
             <Grid item xs={12} lg={6}>
-              <Typography variant='h6' component='h2' gutterBottom>
+              <Typography variant='h1'  gutterBottom>
                 {t('measurements.thisBlock')}
               </Typography>
 
@@ -42,7 +42,7 @@ const MeasurementsPage = () => {
 
               <Grid item xs={12} lg={6}>
                 
-              <Typography variant='h6' component='h2' gutterBottom>
+              <Typography variant='h1'  gutterBottom>
               {t('measurements.lastBlock')}
               </Typography>
 

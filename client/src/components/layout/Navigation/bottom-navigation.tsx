@@ -10,14 +10,14 @@ const BottomNavigation = () => {
   const navigationItems = useNavigationItems()
 
   return (
-    <Box sx={{ position: 'fixed', bottom: 0, width: '100vw' }}>
+    <Box sx={{ position: 'fixed', bottom: 0, width: '100vw', border: 'none' }}>
       <MuiBottomNavigation
         showLabels
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue)
         }}
-        sx={{ height: 64, borderTop: '1px solid', borderColor: 'divider' }}
+        sx={{ height: 80 }}
       >
         {navigationItems.map(navigationItem => (
           <BottomNavItem key={navigationItem.to} navigationItem={navigationItem} />

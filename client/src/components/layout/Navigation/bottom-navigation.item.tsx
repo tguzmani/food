@@ -24,13 +24,21 @@ const BottomNavItem = ({ navigationItem }: BottomNavItemProps) => {
   return (
     <BottomNavigationAction
       disableRipple
-
+      sx={{ color: isSelected ? 'white' : 'grey.400' }}
       icon={
+       
         <Box
           bgcolor={isSelected ? alpha(theme.palette.primary.main, 0.25) : 'transparent'}
-          sx={{ width: 48, p: 0.25, borderRadius: 8 }}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          sx={{
+            width: 56,
+            height: 28,
+            borderRadius: 8,
+          }}
         >
-          <navigationItem.Icon sx={{ fontSize: 16 }} />
+          <navigationItem.Icon sx={{ fontSize: 18}} />
         </Box>
       }
       onClick={handleNavigateTo}

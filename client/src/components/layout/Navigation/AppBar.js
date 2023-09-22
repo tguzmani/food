@@ -6,7 +6,6 @@ import useIsDarkMode from 'hooks/useIsDarkMode'
 import AppBarActions from './AppBarActions'
 import { useStoreActions, useStoreState } from 'config/easy-peasy.store'
 
-
 const AppBar = ({ title }) => {
   const isDarkMode = useIsDarkMode()
 
@@ -20,6 +19,7 @@ const AppBar = ({ title }) => {
     <MuiAppBar
       position="fixed"
       sx={{
+        height: 64,
         backgroundColor: 'transparent',
         backdropFilter: 'blur(8px)',
         color: isDarkMode ? 'white' : 'inherit',
@@ -29,7 +29,12 @@ const AppBar = ({ title }) => {
         <LinearProgress />
       </Fade>
 
-      <Stack component={Toolbar} sx={{ minHeight: '40px !important' }} direction="row" justifyContent="space-between">
+      <Stack
+        component={Toolbar}
+        sx={{ height: '100%' }}
+        direction="row"
+        justifyContent="space-between"
+      >
         <Typography variant="h6" sx={{ fontSize: 18 }}>
           {title}
         </Typography>

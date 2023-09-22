@@ -53,20 +53,22 @@ const MealItem = ({ foods, number }) => {
   )
 
   return (
-    <Box mt={3}>
+    <Box mt={6}>
       <Card
         ref={drop}
         sx={{
           backgroundColor: isOver ? 'primary.lighter' : 'inherit',
+          borderRadius: 1.5
         }}
       >
         <CardHeader
+          sx={{p: 3, pb: 0}}
           avatar={
             <Avatar sx={{ backgroundColor: 'primary.light' }}>{number}</Avatar>
           }
           action={
             thisMealFoods.length > 0 && (
-              <IconButton onClick={handleOpenMenu} size="large">
+              <IconButton onClick={handleOpenMenu} >
                 <MoreVertIcon />
               </IconButton>
             )
@@ -86,7 +88,6 @@ const MealItem = ({ foods, number }) => {
 
           {userIsPremium && thisMealFoods.length > 0 && (
             <>
-              <Divider sx={{ mb: 1 }} />
               <Total foods={thisMealFoods} />
             </>
           )}

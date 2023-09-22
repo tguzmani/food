@@ -17,7 +17,7 @@ const Total = ({ foods }) => {
   const totalFat = getTotalMacro(foods, 'fat')
 
   return (
-    <ListItem>
+    <ListItem sx={{ borderRadius: 1, p: 2, border: '1px solid', borderColor: 'dark.light' }}>
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={5}>
           <Typography variant="body2" className="text-bold">
