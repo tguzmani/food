@@ -16,6 +16,8 @@ import FAB from '../layout/FAB'
 import AddIcon from '@mui/icons-material/Add'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import { useTranslation } from 'react-i18next'
+import useToggle from 'hooks/useToggle'
+import NeedPremiumDialog from 'components/users/need-premium-dialog'
 
 const NewReferenceDialog = () => {
   const [open, setOpen] = React.useState(false)
@@ -25,6 +27,7 @@ const NewReferenceDialog = () => {
   const { userIsPremium } = useStoreState(state => state.users)
   const { createReference } = useStoreActions(actions => actions.references)
   const { referenceCount } = useStoreState(state => state.references)
+  const { value: isOpenPremiumDialog, toggleValue: toggleOpenPremiumDialog } = useToggle()
 
   const [reference, setReference] = useState({
     name: '',
@@ -67,18 +70,19 @@ const NewReferenceDialog = () => {
     fat: fat / portion,
   }
 
-  const cantAddMoreReferences = referenceCount >= 20 && !userIsPremium
+  const cantAddMoreReferences = referenceCount >= 10 && !userIsPremium
 
   const referenceNameHasSpaces = name.match(/\s+/)
 
   return (
     <>
+      <NeedPremiumDialog open={isOpenPremiumDialog} onClose={toggleOpenPremiumDialog} />
+
       <FAB
         show
         Icon={AddIcon}
-        onClick={handleClickOpen}
+        onClick={cantAddMoreReferences ? toggleOpenPremiumDialog : handleClickOpen}
         tooltipTitle={cantAddMoreReferences ? t('references.referenceLimits') : t('references.addReference')}
-        disabled={cantAddMoreReferences}
       />
 
       <Dialog open={open} onClose={handleClose} maxWidth="xs">

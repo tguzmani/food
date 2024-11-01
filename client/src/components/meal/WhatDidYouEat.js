@@ -1,10 +1,15 @@
-import { TextField } from '@mui/material'
+import { Box, Button, TextField, Typography } from '@mui/material'
 import React from 'react'
-import { useStoreActions } from 'easy-peasy'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 import { useTranslation } from 'react-i18next'
+import NeedPremiumDialog from 'components/users/need-premium-dialog'
+import useToggle from 'hooks/useToggle'
 
 const WhatDidYouEat = () => {
   const { createFood } = useStoreActions(actions => actions.foods)
+  const { userIsPremium } = useStoreState(state => state.users)
+
+  const { value: isOpenDialog, toggleValue: toggleOpenDialog } = useToggle()
 
   const [query, setQuery] = React.useState('')
 
@@ -76,16 +81,37 @@ const WhatDidYouEat = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <TextField
-        fullWidth
-        label={t('day.whatDidYouEat')}
-        value={query}
-        variant="outlined"
-        onChange={onChangeQuery}
-        className="bg-white"
-      />
-    </form>
+    <>
+      <NeedPremiumDialog open={isOpenDialog} onClose={toggleOpenDialog} />
+
+      {!userIsPremium && (
+        <Box
+          width={1}
+          borderRadius={1}
+          border="1px solid"
+          borderColor="grey.600"
+          padding={2}
+          onClick={toggleOpenDialog}
+        >
+          <Typography variant="body1" color="grey.600">
+            {t('day.whatDidYouEat')}
+          </Typography>
+        </Box>
+      )}
+
+      {userIsPremium && (
+        <form onSubmit={handleSubmit}>
+          <TextField
+            fullWidth
+            label={t('day.whatDidYouEat')}
+            value={query}
+            variant="outlined"
+            onChange={onChangeQuery}
+            className="bg-white"
+          />
+        </form>
+      )}
+    </>
   )
 }
 

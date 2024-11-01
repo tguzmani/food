@@ -31,7 +31,10 @@
       "carbs": "Carbs",
       "fat": "Fat",
       "cal": "cal",
-      "Cal": "Cal"
+      "Cal": "Cal",
+      "ok": "Ok",
+      "cancel": "Cancel",
+      "premiumFeature": "This is a premium feature, please upgrade to premium to use it."
     },
 
     "day": {

@@ -12,14 +12,18 @@ import { useStoreActions, useStoreState } from 'easy-peasy'
 import useConditionalRead from 'hooks/useConditionalRead'
 import useUser from 'hooks/useUser'
 import { useTranslation } from 'react-i18next'
+import useToggle from 'hooks/useToggle'
+import NeedPremiumDialog from 'components/users/need-premium-dialog'
 
 var isToday = require('dayjs/plugin/isToday')
 dayjs.extend(isToday)
 
 const AddMeasureDialog = () => {
   const user = useUser()
+  const { userIsPremium } = useStoreState(state => state.users)
   const { foods, alcoholUnits } = useStoreState(state => state.foods)
   const { measurements } = useStoreState(state => state.measurements)
+  const { value: isOpenPremiumDialog, toggleValue: toggleOpenPremiumDialog } = useToggle()
 
   const { readFoods, deleteAllFoodsFromDay } = useStoreActions(state => state.foods)
   const { updateMeasurement, createMeasurement } = useStoreActions(actions => actions.measurements)
@@ -70,10 +74,12 @@ const AddMeasureDialog = () => {
 
   return (
     <>
+      <NeedPremiumDialog open={isOpenPremiumDialog} onClose={toggleOpenPremiumDialog} />
+
       <FAB
         Icon={AddIcon}
         show={lastMeasureIsFromToday || measurements.length === 0}
-        onClick={handleOpen}
+        onClick={userIsPremium ? handleOpen : toggleOpenPremiumDialog}
         tooltipTitle={t('measurements.weightIn')}
       />
 
