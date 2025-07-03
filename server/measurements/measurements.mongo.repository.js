@@ -31,7 +31,7 @@ exports.readMeasurementsByDate = async (initialDate, finalDate, userId) => {
       $gte: dayjs(initialDate),
       $lte: dayjs(finalDate),
     },
-  })
+  }).sort({ createdAt: -1 })
 }
 
 exports.updateMeasurement = async (measurementId, measurement) => {

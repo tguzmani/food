@@ -3,15 +3,12 @@ require('dotenv').config()
 
 const { DB_USER, DB_PASSWORD, DB_DBNAME } = process.env
 
-const mongoURI = `mongodb+srv://tguzmani:${DB_PASSWORD}@tguzmani-gbmzw.mongodb.net/${DB_DBNAME}?retryWrites=true&w=majority`
+const mongoURI = `mongodb+srv://tguzmani:${DB_PASSWORD}@tguzmani.gbmzw.mongodb.net/?retryWrites=true&w=majority&appName=TGuzmani`
 
 const connectDB = async () => {
   try {
     await mongoose.connect(mongoURI, {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-      useUnifiedTopology: true,
+      dbName: DB_DBNAME,
     })
     console.log('MongoDB Connected')
   } catch (error) {
