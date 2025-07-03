@@ -32,7 +32,7 @@
     "typescript": "^5.1.5"
   },
   "scripts": {
-    "prebuild": "npm install --legacy-peer-deps",
+    "prebuild": "npm install --force",
     "build": "react-scripts --openssl-legacy-provider build",
     "start": "react-scripts --openssl-legacy-provider start",
     "test": "react-scripts test",
