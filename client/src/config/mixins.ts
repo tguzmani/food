@@ -1,4 +1,6 @@
 
+export {}
+
 declare module "@mui/material/styles/createMixins" {
   interface Mixins {
     drawer?: {
