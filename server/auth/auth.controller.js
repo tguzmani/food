@@ -11,7 +11,12 @@ exports.signUp = async (req, res) => {
 
     const token = signToken({ _id: newUser._id })
 
-    res.cookie('t', token, { maxAge: ONE_YEAR, httpOnly: true })
+    res.cookie('t', token, { 
+      maxAge: ONE_YEAR, 
+      httpOnly: true, 
+      sameSite: 'none', 
+      secure: true 
+    })
 
     res.send(newUser)
   } catch (error) {
@@ -28,7 +33,12 @@ exports.signIn = async (req, res) => {
 
     const token = signToken({ _id: userId })
 
-    res.cookie('t', token, { maxAge: ONE_YEAR, httpOnly: true })
+    res.cookie('t', token, { 
+      maxAge: ONE_YEAR, 
+      httpOnly: true, 
+      sameSite: 'none', 
+      secure: true 
+    })
 
     res.send(user)
   } catch (error) {
