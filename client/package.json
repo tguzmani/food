@@ -27,12 +27,12 @@
     "react-redux": "^7.2.0",
     "react-responsive": "^8.2.0",
     "react-router-dom": "^6.13.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.5",
     "typescript": "^5.1.5"
   },
   "scripts": {
-    "prebuild": "npm install --force",
+    "prebuild": "npm install",
     "build": "react-scripts --openssl-legacy-provider build",
     "start": "react-scripts --openssl-legacy-provider start",
     "test": "react-scripts test",
