@@ -9,9 +9,10 @@ const usersAuthRepository = new UsersAuthRepository()
 const usersAuthThunks = {
   signIn: thunk(async (actions: Actions<UsersStoreModel>, credentials: UserCredentials, { fail }) => {
     try {
-      const user = await usersAuthRepository.signIn(credentials)
+      const response = await usersAuthRepository.signIn(credentials)
 
-      actions.setUser(user)
+      localStorage.setItem('token', response.token)
+      actions.setUser(response.user)
       actions.setIsAuthenticated(true)
     } catch (error) {
       fail(error)
@@ -20,9 +21,10 @@ const usersAuthThunks = {
 
   signUp: thunk(async (actions: Actions<UsersStoreModel>, credentials: any, { fail }) => {
     try {
-      const user = await usersAuthRepository.signUp(credentials)
+      const response = await usersAuthRepository.signUp(credentials)
 
-      actions.setUser(user)
+      localStorage.setItem('token', response.token)
+      actions.setUser(response.user)
       actions.setIsAuthenticated(true)
     } catch (error) {
       fail(error)
@@ -32,6 +34,7 @@ const usersAuthThunks = {
   signOut: thunk(async (actions: Actions<UsersStoreModel>) => {
     await usersAuthRepository.signOut()
 
+    localStorage.removeItem('token')
     actions.unsetUser()
     actions.setIsAuthenticated(false)
   }),

@@ -5,10 +5,26 @@ export default class AxiosRepository {
     this.resource = resource
 
     this.instance = axios.create({
-      baseURL: process.env.REACT_APP_API_URL,
-      withCredentials: true,
+      baseURL: process.env.REACT_APP_API_URL || 'http://localhost:8000/api',
       headers: { 'Content-Type': 'application/json' },
     })
+
+    this.instance.interceptors.request.use(config => {
+      const token = localStorage.getItem('token')
+      config.headers.Authorization = token ? `Bearer ${token}` : ''
+      return config
+    })
+
+    this.instance.interceptors.response.use(
+      response => response,
+      error => {
+        if (error.response?.status === 401 && error.response?.data?.message === 'Invalid token') {
+          localStorage.removeItem('token')
+          window.location.href = '/login?error=token_expired'
+        }
+        return Promise.reject(error)
+      }
+    )
   }
 
   endPoint(URL) {

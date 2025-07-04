@@ -1,7 +1,11 @@
 const jwt = require('jsonwebtoken')
 
 const isAuth = (req, res, next) => {
-  let token = req.cookies.t
+  const authHeader = req.headers.authorization
+  let token =
+    authHeader && authHeader.startsWith('Bearer ')
+      ? authHeader.substring(7)
+      : null
 
   if (!token) {
     return res.status(401).json({
@@ -12,9 +16,8 @@ const isAuth = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
     req.userId = decoded._id
-
   } catch (error) {
-    return res.status(401).json({ message: 'Token is not valid' })
+    return res.status(401).json({ message: 'Invalid token' })
   }
 
   next()
